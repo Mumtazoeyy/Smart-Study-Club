@@ -233,7 +233,12 @@ from django.db.models import Avg
 from alp_app.models import QuizResult # Pastikan path import sesuai dengan folder app Anda
 
 def leaderboard_view(request):
-    leaderboard_data = Profile.objects.select_related('user').order_by('-ability_score')[:10]
+    # .exclude(user__is_staff=True) akan membuang semua akun admin/staff dari daftar
+    # .exclude(user__is_superuser=True) untuk memastikan superuser juga hilang
+    leaderboard_data = Profile.objects.select_related('user')\
+        .exclude(user__is_staff=True)\
+        .exclude(user__is_superuser=True)\
+        .order_by('-ability_score')[:10]
 
     return render(request, 'leaderboard.html', {
         'leaderboard_data': leaderboard_data
