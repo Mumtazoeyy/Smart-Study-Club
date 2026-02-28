@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 6,
+    "fields": {
+      "title": "Matematika Kelas 9 (SMP 3)",
+      "description": "Persiapan tingkat akhir yang berfokus pada Perpangkatan, Persamaan Kuadrat, Transformasi Geometri, hingga Kesebangunan.",
+      "course_code": "MAT9-06",
+      "level": "Lanjut",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 51,
+    "fields": {
+      "course": 6,
+      "title": "Modul 1: Perpangkatan dan Bentuk Akar",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 401,
+    "fields": {
+      "module": 51,
+      "title": "Konsep Bilangan Berpangkat (Eksponen)",
+      "content": "Pernahkah kamu mendengar tentang pembelahan bakteri atau pertumbuhan virus? Proses tersebut seringkali dijelaskan menggunakan **Perpangkatan**. Perpangkatan adalah perkalian berulang dari suatu bilangan yang sama.\n\nJika ada $a^n$, maka:\n- $a$ disebut sebagai **Bilangan Pokok (Basis)**.\n- $n$ disebut sebagai **Pangkat (Eksponen)**.\n\nContoh: $3^4 = 3 \\times 3 \\times 3 \\times 3 = 81$. \nIngat, $3^4$ **BUKAN** $3 \\times 4$. Ini adalah kesalahan yang paling sering dilakukan siswa!\n\n\n\nAda juga pangkat khusus yang unik:\n1. **Pangkat Nol**: Semua bilangan (kecuali nol) jika dipangkatkan 0 hasilnya adalah 1. ($a^0 = 1$).\n2. **Pangkat Negatif**: Berfungsi sebagai pembagi. ($a^{-n} = \\frac{1}{a^n}$).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 402,
+    "fields": {
+      "module": 51,
+      "title": "Sifat-Sifat Operasi Perpangkatan",
+      "content": "Untuk menghitung angka-angka berpangkat besar, kita tidak perlu mengalikannya satu per satu secara manual. Gunakan sifat-sifat sakti berikut ini:\n\n1. **Perkalian**: Jika basisnya sama, pangkatnya dijumlahkan. ($a^m \\times a^n = a^{m+n}$).\n2. **Pembagian**: Jika basisnya sama, pangkatnya dikurangkan. ($a^m : a^n = a^{m-n}$).\n3. **Perpangkatan Pangkat**: Pangkatnya dikalikan. ($(a^m)^n = a^{m \\times n}$).\n4. **Perpangkatan dari Perkalian**: $(a \\times b)^n = a^n \\times b^n$.\n\n\n\nContoh: Sederhanakan $2^3 \\times 2^4 : 2^5$.\nLangkah: $2^{3+4} : 2^5 = 2^7 : 2^5 = 2^{7-5} = 2^2 = 4$. Sangat mudah, bukan?",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 403,
+    "fields": {
+      "module": 51,
+      "title": "Video: Bentuk Akar dan Cara Menyederhanakannya",
+      "content": "Panduan Menyimak Video:\n\nBentuk akar ($\\sqrt{n}$) adalah kebalikan dari perpangkatan. Jika $5^2 = 25$, maka $\\sqrt{25} = 5$. Namun, bagaimana jika akarnya tidak bulat, seperti $\\sqrt{20}$?\n\nDalam video ini, kamu akan belajar cara menyederhanakan akar dengan mencari faktor bilangan kuadrat di dalamnya:\n- $\\sqrt{20} = \\sqrt{4 \\times 5} = 2\\sqrt{5}$\n- Cara menjumlahkan akar: Hanya bisa jika angka di dalam akarnya sama ($3\\sqrt{2} + 5\\sqrt{2} = 8\\sqrt{2}$).\n\n[Image demonstrating how to simplify square roots by factoring out perfect squares]\n\nTugas: Simak video ini dan perhatikan teknik 'Merasionalkan Penyebut', yaitu cara menghilangkan akar yang berada di posisi bawah (pecahan)!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 404,
+    "fields": {
+      "module": 51,
+      "title": "Notasi Ilmiah (Bentuk Baku)",
+      "content": "Para ilmuwan sering bekerja dengan angka yang sangat besar (seperti jarak antar bintang) atau sangat kecil (seperti ukuran sel). Agar lebih mudah ditulis, mereka menggunakan **Notasi Ilmiah**.\n\nFormatnya: $a \\times 10^n$, di mana $1 \\le a < 10$.\n\nContoh:\n- Jarak matahari ke bumi 150.000.000 km ditulis $1,5 \\times 10^8$ km.\n- Ukuran bakteri 0,000005 m ditulis $5 \\times 10^{-6}$ m.\n\n\n\nTips: Jika koma bergeser ke KIRI, pangkatnya POSITIF. Jika koma bergeser ke KANAN, pangkatnya NEGATIF.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 405,
+    "fields": {
+      "module": 51,
+      "title": "Kuis: Eksponen dan Akar",
+      "content": "Selamat! Kamu telah memulai langkah pertama di Kelas 9 dengan baik. Materi perpangkatan ini akan terus kamu temui di mata pelajaran Fisika dan Kimia nantinya. Sekarang, siapkan coretanmu. Teliti dalam menerapkan sifat perkalian dan pembagian pangkat. Selamat mengerjakan kuis!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 51,
+    "fields": {
+      "lesson": 405,
+      "title": "Evaluasi Perpangkatan dan Akar",
+      "description": "Uji kemampuan menghitung sifat eksponen, menyederhanakan bentuk akar, dan notasi ilmiah."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 401,
+    "fields": {
+      "quiz": 51,
+      "text": "Hasil dari $2^3 \\times 2^2$ adalah...",
+      "topic": "Sifat Eksponen",
+      "option_a": "12",
+      "option_b": "32",
+      "option_c": "64",
+      "option_d": "16",
+      "correct_answer": "B",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 402,
+    "fields": {
+      "quiz": 51,
+      "text": "Bentuk sederhana dari $\\sqrt{48}$ adalah...",
+      "topic": "Bentuk Akar",
+      "option_a": "4\\sqrt{3}",
+      "option_b": "3\\sqrt{4}",
+      "option_c": "16\\sqrt{3}",
+      "option_d": "2\\sqrt{12}",
+      "correct_answer": "A",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 403,
+    "fields": {
+      "quiz": 51,
+      "text": "Hasil dari $5^0 + 2^{-1}$ adalah...",
+      "topic": "Pangkat Khusus",
+      "option_a": "1",
+      "option_b": "1,5",
+      "option_c": "3",
+      "option_d": "0,5",
+      "correct_answer": "B",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 404,
+    "fields": {
+      "quiz": 51,
+      "text": "Notasi ilmiah dari 0,000000045 adalah...",
+      "topic": "Notasi Ilmiah",
+      "option_a": "4,5 x 10^-8",
+      "option_b": "4,5 x 10^8",
+      "option_c": "45 x 10^-9",
+      "option_d": "0,45 x 10^-7",
+      "correct_answer": "A",
+      "difficulty_level": 0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 405,
+    "fields": {
+      "quiz": 51,
+      "text": "Hasil dari $\\sqrt{12} + \\sqrt{27}$ adalah...",
+      "topic": "Operasi Akar",
+      "option_a": "\\sqrt{39}",
+      "option_b": "5\\sqrt{3}",
+      "option_c": "6\\sqrt{3}",
+      "option_d": "13\\sqrt{3}",
+      "correct_answer": "B",
+      "difficulty_level": 1.2
+    }
+  }
+]

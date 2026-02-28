@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 6,
+    "fields": {
+      "title": "Matematika Kelas 9 (SMP 3)",
+      "description": "Persiapan tingkat akhir yang berfokus pada Perpangkatan, Persamaan Kuadrat, Transformasi Geometri, hingga Kesebangunan.",
+      "course_code": "MAT8-06",
+      "level": "Lanjut",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 54,
+    "fields": {
+      "course": 6,
+      "title": "Modul 4: Kesebangunan dan Kekongruenan",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 416,
+    "fields": {
+      "module": 54,
+      "title": "Kekongruenan: Dua Bangun yang Identik",
+      "content": "Pernahkah kamu melihat ubin di lantai rumahmu? Ubin-ubin tersebut biasanya memiliki bentuk dan ukuran yang sama persis. Dalam matematika, dua benda yang sama persis disebut **Kongruen**.\n\nDua bangun datar dikatakan kongruen jika memenuhi dua syarat mutlak:\n1. Sisi-sisi yang bersesuaian sama panjang.\n2. Sudut-sudut yang bersesuaian sama besar.\n\n\n\nIbaratnya, kekongruenan adalah hasil dari 'fotokopi' bangun asli tanpa mengubah skala. Simbol kekongruenan adalah $\\cong$. Jika kamu menumpuk dua bangun yang kongruen, mereka akan saling menutupi secara sempurna.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 417,
+    "fields": {
+      "module": 54,
+      "title": "Kesebangunan: Perubahan Ukuran yang Proporsional",
+      "content": "Berbeda dengan kekongruenan, **Kesebangunan** adalah hubungan antara dua bangun yang memiliki 'perbandingan' yang sama, meskipun ukurannya berbeda. Bayangkan sebuah foto dirimu; fotonya lebih kecil, tapi bentuk hidung dan mata tetap proporsional dengan wajah aslimu.\n\nSyarat dua bangun datar sebangun (simbol $\\sim$):\n1. Sudut-sudut yang bersesuaian sama besar.\n2. Perbandingan panjang sisi-sisi yang bersesuaian adalah tetap (senilai).\n\n\n\nContoh nyata kesebangunan adalah pada pembuatan maket rumah atau peta. Semua bagian diperkecil dengan perbandingan yang sama agar tetap terlihat seperti aslinya.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 418,
+    "fields": {
+      "module": 54,
+      "title": "Video: Kesebangunan pada Segitiga",
+      "content": "Panduan Menyimak Video:\n\nSegitiga memiliki aturan khusus dalam kesebangunan. Kamu tidak perlu mengecek semua sisi dan sudut, cukup gunakan syarat minimal seperti:\n- **Sd-Sd-Sd**: Ketiga sudutnya sama besar.\n- **S-Sd-S**: Dua sisi sebanding dan sudut di antaranya sama besar.\n\n\n\nDalam video ini, kamu akan belajar rumus cepat untuk menyelesaikan soal 'Segitiga di dalam Segitiga' (Kesebangunan pada segitiga siku-siku dengan garis tinggi). Ini adalah jenis soal yang paling sering muncul di ujian nasional.\n\nTugas: Simak video ini dan catatlah 'Rumus Air Mancur' yang digunakan untuk mencari panjang sisi pada segitiga siku-siku yang sebangun!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 419,
+    "fields": {
+      "module": 54,
+      "title": "Aplikasi Kesebangunan dalam Masalah Nyata",
+      "content": "Kesebangunan sangat membantu untuk mengukur benda-benda yang terlalu besar untuk diukur secara manual. Misalnya, mengukur tinggi tiang bendera atau gedung hanya dengan menggunakan bayangan.\n\nLogikanya:\n$\\frac{\\text{Tinggi Benda}}{\\text{Panjang Bayangan Benda}} = \\frac{\\text{Tinggi Tongkat}}{\\text{Panjang Bayangan Tongkat}}$\n\n\n\nContoh Soal:\nSeorang anak dengan tinggi 150 cm memiliki bayangan 2 m. Di saat yang sama, sebuah pohon memiliki bayangan 10 m. Berapakah tinggi pohon?\nLangkah: $\\frac{x}{10} = \\frac{1,5}{2} \\to 2x = 15 \\to x = 7,5$ meter.\n\nHanya dengan modal tongkat dan sinar matahari, kamu bisa menjadi ilmuwan yang mengukur tinggi apa pun!",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 420,
+    "fields": {
+      "module": 54,
+      "title": "Kuis: Logika Kesebangunan",
+      "content": "Kamu sudah mempelajari perbedaan antara 'Kembar Identik' (Kongruen) dan 'Kembar Skala' (Sebangun). Sekarang saatnya menguji ketajaman analisismu. Ingat, kuncinya adalah menentukan sisi-sisi mana yang saling bersesuaian sebelum mulai menghitung perbandingannya. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 54,
+    "fields": {
+      "lesson": 420,
+      "title": "Evaluasi Kesebangunan dan Kekongruenan",
+      "description": "Uji pemahaman tentang syarat kongruen, perbandingan sisi sebangun, dan aplikasi soal cerita."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 416,
+    "fields": {
+      "quiz": 54,
+      "text": "Dua bangun dikatakan kongruen jika memenuhi syarat...",
+      "topic": "Kekongruenan",
+      "option_a": "Bentuknya sama tapi ukurannya berbeda",
+      "option_b": "Sudut-sudut bersesuaian sama besar dan sisi-sisi sebanding",
+      "option_c": "Sisi-sisi bersesuaian sama panjang dan sudut-sudut bersesuaian sama besar",
+      "option_d": "Kelilingnya sama saja",
+      "correct_answer": "C",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 417,
+    "fields": {
+      "quiz": 54,
+      "text": "Sebuah foto berukuran 4 cm x 6 cm diperbesar sehingga lebarnya menjadi 12 cm. Panjang foto setelah diperbesar adalah...",
+      "topic": "Kesebangunan",
+      "option_a": "18 cm",
+      "option_b": "14 cm",
+      "option_c": "16 cm",
+      "option_d": "24 cm",
+      "correct_answer": "A",
+      "difficulty_level": 0.3
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 418,
+    "fields": {
+      "quiz": 54,
+      "text": "Simbol dari kesebangunan dalam matematika adalah...",
+      "topic": "Notasi",
+      "option_a": "\\cong",
+      "option_b": "\\sim",
+      "option_c": "=",
+      "option_d": "\\approx",
+      "correct_answer": "B",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 419,
+    "fields": {
+      "quiz": 54,
+      "text": "Jika dua segitiga memiliki sudut-sudut yang sama besar, maka kedua segitiga tersebut pasti...",
+      "topic": "Segitiga",
+      "option_a": "Kongruen",
+      "option_b": "Sebangun",
+      "option_c": "Sama kaki",
+      "option_d": "Siku-siku",
+      "correct_answer": "B",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 420,
+    "fields": {
+      "quiz": 54,
+      "text": "Tinggi sebuah tiang adalah 2 m dengan bayangan 1,5 m. Jika pada saat yang sama bayangan sebuah gedung adalah 12 m, maka tinggi gedung tersebut adalah...",
+      "topic": "Soal Cerita",
+      "option_a": "16 m",
+      "option_b": "9 m",
+      "option_c": "15 m",
+      "option_d": "18 m",
+      "correct_answer": "A",
+      "difficulty_level": 0.9
+    }
+  }
+]

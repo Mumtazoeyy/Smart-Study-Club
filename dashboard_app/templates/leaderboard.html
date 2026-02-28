@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Peringkat Belajar | Smart Study Club{% endblock title %}
+
+{% block content %}
+<style>
+    .industrial-dot-bg {
+        background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
+        background-size: 16px 16px;
+    }
+    .card-leaderboard {
+        background-color: rgba(255, 255, 255, 0.05); 
+        backdrop-filter: blur(12px); 
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    /* Animasi Shimmer untuk Garis Kuning */
+    @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(400%); }
+    }
+    .animate-shimmer { animation: shimmer 3s infinite linear; }
+</style>
+
+<div class="min-h-screen industrial-dot-bg flex flex-col items-center justify-start pt-2 pb-12 font-['Poppins']">
+    <div class="container mx-auto px-6 pt-2">
+        
+        {# --- HEADER SECTION --- #}
+        <div class="mb-10" data-aos="fade-right">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="flex items-center gap-1.5">
+                    <div class="w-1 h-4 bg-[#eab308]"></div>
+                    <div class="w-1 h-4 bg-gray-200"></div>
+                </div>
+                <span class="text-[10px] font-black text-gray-400 uppercase tracking-[0.5em]">Global Ranking</span>
+            </div>
+            
+            {# Menggunakan items-start agar sejajar dari atas, lalu diberi sedikit mt agar presisi #}
+            <div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                <div class="leading-none">
+                    <h1 class="text-5xl font-black text-gray-900 uppercase tracking-tighter italic leading-none">
+                        Papan <span class="text-transparent" style="-webkit-text-stroke: 1px #111;">Peringkat</span>
+                    </h1>
+                    <p class="text-[11px] font-bold text-gray-500 uppercase tracking-[0.2em] mt-4 flex items-center gap-2">
+                        <span class="w-1 h-1 bg-[#eab308] rounded-full"></span>
+                        Statistik performa belajar berbasis skor kemampuan (Theta)
+                    </p>
+                </div>
+
+                {# Sisi Kanan: Menggunakan -mt-1 (margin top negatif) untuk menaikkan posisi ke "puncak" huruf kapital judul #}
+                <div class="text-right border-r-4 border-[#eab308] pr-6 flex flex-col justify-start h-fit md:-mt-1">
+                    <span class="block text-[9px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">Peserta Aktif</span>
+                    <span class="text-3xl font-black text-gray-900 italic leading-none">{{ leaderboard_data|length }} User</span>
+                </div>
+            </div>
+            
+            <div class="h-[2px] w-full bg-gray-100 mt-10 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#eab308] to-transparent w-1/4 animate-shimmer"></div>
+            </div>
+        </div>
+
+        {# --- KOLOM HEADER (Rank, Nama, Nilai) --- #}
+        <div class="w-full mb-4 opacity-40"> 
+            {# Menggunakan container agar teks 'Posisi' sejajar dengan isi list di bawahnya #}
+            <div class="container mx-auto px-6 grid grid-cols-12 py-2 border-b border-gray-100">
+                <div class="col-span-2 text-[10px] font-black uppercase tracking-[0.3em]">Posisi</div>
+                <div class="col-span-7 text-[10px] font-black uppercase tracking-[0.3em]">Identitas Pelajar</div>
+                <div class="col-span-3 text-right text-[10px] font-black uppercase tracking-[0.3em]">Skor Theta</div>
+            </div>
+        </div>
+
+        {# --- LIST SECTION --- #}
+        <div class="w-full flex flex-col -space-y-[1px]"> 
+            {% for entry in leaderboard_data %}
+                
+                {# DESAIN KHUSUS RANK 1 (Full Width) #}
+                {% if forloop.counter == 1 %}
+                <div class="relative group overflow-hidden bg-gray-900 p-5 border-l-4 border-[#eab308] transition-all duration-300 z-30">
+                    <div class="container mx-auto px-6 relative z-10 grid grid-cols-12 items-center">
+                        <div class="col-span-2">
+                            <span class="text-3xl font-black italic text-[#eab308]">#1</span>
+                        </div>
+                        <div class="col-span-7">
+                            <span class="text-[8px] font-bold text-[#eab308] uppercase tracking-[0.4em]">Top Performer</span>
+                            <h3 class="text-lg font-black text-white uppercase italic tracking-tighter">{{ entry.user.username }}</h3>
+                        </div>
+                        <div class="col-span-3 text-right">
+                            {# GANTI KE ability_score #}
+                            <span class="text-2xl font-black text-white italic">{{ entry.ability_score|floatformat:2 }}</span>
+                        </div>
+                    </div>
+                    {# GARIS ANIMASI BAWAH #}
+                    <div class="absolute bottom-0 left-0 h-[3px] w-0 bg-[#eab308] transition-all duration-700 ease-in-out group-hover:w-full"></div>
+                    <div class="absolute -right-2 -bottom-2 text-white/5 text-6xl font-black italic uppercase">MVP</div>
+                </div>
+
+                {# DESAIN KHUSUS RANK 2 (Full Width) #}
+                {% elif forloop.counter == 2 %}
+                <div class="relative group overflow-hidden bg-white border border-gray-900 p-4 transition-all duration-300 z-20">
+                    <div class="container mx-auto px-6 relative z-10 grid grid-cols-12 items-center">
+                        <div class="col-span-2">
+                            <span class="text-2xl font-black italic text-gray-900">#2</span>
+                        </div>
+                        <div class="col-span-7">
+                            <span class="text-[8px] font-bold text-gray-400 uppercase tracking-[0.4em]">Runner Up</span>
+                            <h3 class="text-base font-black text-gray-900 uppercase italic">{{ entry.user.username }}</h3>
+                        </div>
+                        <div class="col-span-3 text-right">
+                            {# GANTI KE ability_score #}
+                            <span class="text-xl font-black text-gray-900 italic">{{ entry.ability_score|floatformat:2 }}</span>
+                        </div>
+                    </div>
+                    {# GARIS ANIMASI BAWAH #}
+                    <div class="absolute bottom-0 left-0 h-[2px] w-0 bg-gray-900 transition-all duration-500 ease-in-out group-hover:w-full"></div>
+                </div>
+
+                {# DESAIN RANK 3 DAN SETERUSNYA (Full Width) #}
+                {% else %}
+                <div class="group relative card-leaderboard p-3 hover:bg-white transition-all duration-300 z-10 border-t-0 overflow-hidden">
+                    <div class="container mx-auto px-6 relative z-10 grid grid-cols-12 items-center">
+                        <div class="col-span-2">
+                            <span class="text-base font-black italic text-gray-400 group-hover:text-gray-900">#{{ forloop.counter }}</span>
+                        </div>
+                        <div class="col-span-7">
+                            <h3 class="text-xs font-black text-gray-700 uppercase tracking-wide group-hover:text-gray-900 transition-colors">{{ entry.user.username }}</h3>
+                        </div>
+                        <div class="col-span-3 text-right">
+                            {# GANTI KE ability_score #}
+                            <span class="text-sm font-black text-gray-400 group-hover:text-gray-900 italic transition-all">{{ entry.ability_score|floatformat:2 }}</span>
+                        </div>
+                    </div>
+                    {# GARIS ANIMASI BAWAH #}
+                    <div class="absolute bottom-0 left-0 h-[2px] w-0 bg-gray-900 transition-all duration-500 ease-in-out group-hover:w-full"></div>
+                </div>
+                {% endif %}
+
+            {% empty %}
+                <div class="w-full py-10 text-center border border-dashed border-gray-300 card-leaderboard">
+                    <p class="text-[9px] font-black text-gray-400 uppercase tracking-[0.5em]">Belum ada data tersedia</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>AOS.init({ once: true });</script>
+{% endblock content %}

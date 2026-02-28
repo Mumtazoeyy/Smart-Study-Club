@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}Settings - Smart Study Club{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'fontawesome-free-7.1.0-web/css/all.min.css' %}">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<style>
+    body { font-family: 'Poppins', sans-serif; background-color: #ffffff; color: #111827; }
+
+    /* Industrial Card Style */
+    .profile-card-industrial {
+        background-color: rgba(255, 255, 255, 0.05); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+    /* Cyber Input Styling */
+    .cyber-input {
+        background: #ffffff !important;
+        border: 2px solid #111827 !important;
+        border-radius: 0px !important;
+        font-weight: 700 !important;
+        transition: all 0.2s ease;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+    }
+    .cyber-input:focus {
+        box-shadow: 4px 4px 0px #eab308 !important;
+        transform: translate(-2px, -2px);
+        outline: none;
+        background-color: #fffbeb !important;
+    }
+
+    .industrial-header-border {
+        border-left: 6px solid #eab308;
+        padding-left: 1.5rem;
+    }
+
+    .glow-dot {
+        width: 8px;
+        height: 8px;
+        background: #eab308;
+        border: 1.5px solid #111827;
+        display: inline-block;
+    }
+</style>
+
+<div class="container mx-auto px-6 min-h-screen pt-2 pb-16">
+    
+    {# Header Section (Diselaraskan dengan about.html) #}
+    <div class="w-full flex flex-col items-start gap-1 mb-12" data-aos="fade-down">
+        <div class="flex items-center gap-3">
+            <div class="h-8 w-1.5 bg-[#eab308]"></div>
+            <h1 class="text-3xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase">
+                Account <span class="text-gray-400">Settings</span>
+            </h1>
+        </div>
+        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mt-1">
+            <span class="text-gray-900">Security Terminal</span> / User Configuration Profile
+        </p>
+    </div>
+
+    {# Notifikasi Logic (Tetap) #}
+    {% if messages %}
+    <script>
+        const Toast = Swal.mixin({
+            toast: true, position: 'top-end', showConfirmButton: false, timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+        {% for message in messages %}
+            Toast.fire({
+                icon: '{% if message.tags == "success" %}success{% else %}error{% endif %}',
+                title: '{{ message|safe }}'
+            });
+        {% endfor %}
+    </script>
+    {% endif %}
+
+    <div class="profile-card-industrial shadow-2xl overflow-hidden" data-aos="fade-up">
+        {# Aksen Sudut Industrial #}
+        <div class="absolute top-0 right-0 w-16 h-16 bg-gray-100/50 rotate-45 -mr-8 -mt-8 border-b border-gray-900/10"></div>
+
+        <form method="post" enctype="multipart/form-data" class="divide-y-2 divide-gray-900">
+            {% csrf_token %}
+
+            {# SECTION 1: IDENTITY & AVATAR #}
+            <div class="grid grid-cols-1 md:grid-cols-3 p-8 md:p-12 gap-10">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="glow-dot"></span>
+                        <h3 class="text-sm font-black text-gray-900 uppercase tracking-widest">Access Identity</h3>
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-relaxed">Verifikasi identitas visual dan kredensial akses sistem.</p>
+                </div>
+                
+                <div class="md:col-span-2 space-y-8">
+                    <div class="flex flex-col sm:flex-row items-center gap-8">
+                        <div class="relative group">
+                            <div id="imageContainer" class="w-28 h-28 border-2 border-gray-900 bg-white shadow-[6px_6px_0px_#111827] flex items-center justify-center overflow-hidden">
+                                {% if profile.foto %}
+                                    <img id="previewImage" src="{{ profile.foto.url }}" alt="Foto" class="w-full h-full object-cover">
+                                {% else %}
+                                    <div class="text-4xl font-black text-gray-200">{{ user.username|slice:":1"|upper }}</div>
+                                {% endif %}
+                            </div>
+                            <label for="{{ profile_form.foto.id_for_label }}" class="absolute -bottom-2 -right-2 bg-[#eab308] border-2 border-gray-900 text-gray-900 p-2.5 cursor-pointer hover:bg-gray-900 hover:text-white transition-all shadow-[3px_3px_0px_#111827] active:translate-y-0.5 active:shadow-none">
+                                <i class="fas fa-camera text-xs"></i>
+                            </label>
+                            <div class="hidden">{{ profile_form.foto }}</div>
+                        </div>
+                        <div class="text-center sm:text-left">
+                            <span class="text-[9px] font-black text-white uppercase tracking-widest bg-gray-900 px-3 py-1 inline-block mb-2">Current Rank</span>
+                            <h4 class="text-2xl font-black text-[#eab308] uppercase tracking-tighter">{{ pangkat.nama|default:"New Student" }}</h4>
+                            <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest mt-1">Status: Active Member</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest">System ID (Read Only)</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
+                                <i class="fas fa-terminal text-[10px]"></i>
+                            </div>
+                            <input type="text" value="{{ user.username }}" disabled class="w-full pl-10 pr-4 py-3 bg-gray-50 border-2 border-gray-200 text-gray-400 font-bold uppercase text-[11px] cursor-not-allowed italic">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {# SECTION 2: PERSONAL DATA #}
+            <div class="grid grid-cols-1 md:grid-cols-3 p-8 md:p-12 gap-10 bg-gray-50/20 relative">
+                
+                {# BADGE ADMIN - Muncul hanya jika login sebagai admin #}
+                {% if user.is_staff %}
+                <div class="absolute top-0 right-0 bg-red-600 text-white px-4 py-1.5 text-[9px] font-black uppercase tracking-[0.2em] z-20 shadow-md">
+                    <i class="fas fa-user-shield mr-2"></i>Admin Mode
+                </div>
+                {% endif %}
+
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="glow-dot"></span>
+                        <h3 class="text-sm font-black text-gray-900 uppercase tracking-widest">Personal Data</h3>
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-relaxed">Konfigurasi data korespondensi dan validasi identitas sistem.</p>
+                </div>
+                
+                <div class="md:col-span-2 space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        
+                        {# FULL NAME: Tetap bisa diedit oleh SIAPA PUN (Siswa & Admin) #}
+                        <div class="space-y-2">
+                            <label class="block text-[10px] font-black text-gray-900 uppercase tracking-widest">Full Name</label>
+                            {% render_field profile_form.nama_lengkap class="cyber-input w-full px-4 py-3" placeholder="Input Name..." %}
+                            {% if user.is_staff %}
+                            <p class="text-[8px] font-bold text-red-500 uppercase tracking-tighter mt-1 italic">Authorized Personal Name</p>
+                            {% endif %}
+                        </div>
+
+                        {# EMAIL ADDRESS #}
+                        <div class="space-y-2">
+                            <label class="block text-[10px] font-black text-gray-900 uppercase tracking-widest">Email Address</label>
+                            {% render_field user_form.email class="cyber-input w-full px-4 py-3" placeholder="email@domain.com" %}
+                        </div>
+                    </div>
+
+                    {# DIVISION / CLASS: Logika Berbeda #}
+                    <div class="space-y-2">
+                        <label class="block text-[10px] font-black text-gray-900 uppercase tracking-widest">Division / Class</label>
+                        <div class="relative">
+                            {% if user.is_staff %}
+                                {# TAMPILAN UNTUK ADMIN (Hanya Visual) #}
+                                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-red-600">
+                                    <i class="fas fa-server text-[10px]"></i>
+                                </div>
+                                <input type="text" value="SYSTEM ADMINISTRATION UNIT" disabled 
+                                    class="cyber-input w-full pl-10 pr-4 py-3 border-red-600 text-red-600 bg-red-50/20 cursor-not-allowed">
+                                
+                                {# INPUT TERSEMBUNYI (Agar Django tidak error) #}
+                                <input type="hidden" name="kelas" value="ADMIN">
+                            {% else %}
+                                {# TAMPILAN UNTUK SISWA (Normal seperti awal) #}
+                                <select name="kelas" id="id_kelas" class="cyber-input w-full px-4 py-3 appearance-none cursor-pointer" required>
+                                    <option value="" disabled {% if not profile_form.kelas.value %}selected{% endif %}>-- SELECT CATEGORY --</option>
+                                    {% for value, label in profile_form.fields.kelas.choices %}
+                                        {% if value %}
+                                            <option value="{{ value }}" {% if profile_form.kelas.value == value %}selected{% endif %}>{{ label }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                                <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-gray-900">
+                                    <i class="fas fa-chevron-down text-[10px]"></i>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-[10px] font-black text-gray-900 uppercase tracking-widest">Bio / Mission Statement</label>
+                        {% render_field profile_form.bio class="cyber-input w-full px-4 py-3" rows="3" placeholder="Tell us about your mission..." %}
+                    </div>
+                </div>
+            </div>
+
+            {# SECTION 3: SECURITY #}
+            <div class="grid grid-cols-1 md:grid-cols-3 p-8 md:p-12 gap-10">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-2 h-2 bg-red-500 border border-gray-900"></div>
+                        <h3 class="text-sm font-black text-red-600 uppercase tracking-widest">Core Security</h3>
+                    </div>
+                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest leading-relaxed">Manajemen enkripsi dan proteksi akses akun.</p>
+                </div>
+                
+                <div class="md:col-span-2">
+                    <div class="p-6 border-2 border-dashed border-gray-200 hover:border-gray-900 transition-all group bg-white/50">
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+                            <div class="text-center sm:text-left">
+                                <h4 class="text-[11px] font-black text-gray-900 uppercase tracking-widest">Password Authentication</h4>
+                                <p class="text-[9px] text-gray-400 mt-1 font-bold uppercase tracking-tight">Terakhir diperbarui: Default System Hash</p>
+                            </div>
+                            <a href="{% url 'password_change' %}" class="px-6 py-3 bg-white border-2 border-gray-900 text-[10px] font-black uppercase tracking-widest text-gray-900 hover:bg-[#eab308] transition-all shadow-[4px_4px_0px_#111827] active:translate-y-1 active:shadow-none">
+                                Update Key <i class="fas fa-key ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {# FOOTER ACTION #}
+            <div class="p-8 md:px-12 bg-gray-900 flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-2 order-2 sm:order-1">
+                    <span class="w-2 h-2 bg-green-500 animate-pulse"></span>
+                    <span class="text-[9px] font-black text-gray-500 uppercase tracking-[0.2em]">Ready for synchronization</span>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto order-1 sm:order-2">
+                    <a href="{% url 'dashboard' %}" class="text-[10px] font-black text-gray-400 hover:text-white uppercase tracking-[0.2em] transition-colors">Abort Sync</a>
+                    <button type="submit" class="w-full sm:w-auto px-10 py-4 bg-[#eab308] text-gray-900 text-[11px] font-black uppercase tracking-[0.2em] border-2 border-white hover:bg-white transition-all shadow-[6px_6px_0px_rgba(0,0,0,0.5)] active:translate-y-1 active:shadow-none">
+                        Execute Update <i class="fas fa-sync-alt ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    AOS.init({ once: true, duration: 800 });
+
+    const photoInput = document.querySelector('input[type="file"]');
+    const imageContainer = document.getElementById('imageContainer');
+
+    if (photoInput) {
+        photoInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imageContainer.innerHTML = `<img id="previewImage" src="${e.target.result}" alt="Foto" class="w-full h-full object-cover animate-pulse">`;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+</script>
+
+<style>
+    /* Styling for SweetAlert to match industrial theme */
+    .swal2-popup {
+        border: 2px solid #111827 !important;
+        border-radius: 0px !important;
+        box-shadow: 6px 6px 0px #eab308 !important;
+        background: #ffffff !important;
+    }
+    .swal2-title {
+        font-family: 'Poppins', sans-serif !important;
+        font-weight: 900 !important;
+        text-transform: uppercase !important;
+        font-size: 1rem !important;
+        letter-spacing: -0.02em !important;
+    }
+</style>
+{% endblock content %}

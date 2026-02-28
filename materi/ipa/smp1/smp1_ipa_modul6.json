@@ -1,0 +1,110 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 66,
+    "fields": {
+      "course": 7,
+      "title": "Modul 6: Sistem Organisasi Kehidupan",
+      "order": 6
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 526,
+    "fields": {
+      "module": 66,
+      "title": "Sel: Unit Terkecil Kehidupan",
+      "content": "Tahukah kamu bahwa tubuhmu tersusun dari triliunan unit kecil yang disebut **Sel**? Sel adalah satuan struktural dan fungsional terkecil dari makhluk hidup. Ibarat sebuah rumah yang disusun oleh batu bata, sel adalah batu bata penyusun tubuh kita.\n\nSecara umum, sel memiliki bagian utama seperti Membran Sel (pelindung), Sitoplasma (cairan sel), dan Nukleus (pusat kendali). Kamu dapat melihat struktur dasar sel tersebut pada gambar yang tersedia.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 527,
+    "fields": {
+      "module": 66,
+      "title": "Perbedaan Sel Hewan dan Sel Tumbuhan",
+      "content": "Meskipun keduanya adalah unit kehidupan, sel hewan dan tumbuhan memiliki perbedaan besar. Tumbuhan memiliki **Dinding Sel** yang kaku dan **Kloroplas** untuk memasak makanan (fotosintesis), itulah sebabnya pohon tidak bisa berpindah tempat dan teksturnya keras. Sebaliknya, sel hewan tidak memiliki dinding sel sehingga bentuknya lebih lentur. Perhatikan tabel perbandingan dan struktur kedua sel tersebut pada gambar agar kamu lebih mudah membedakannya.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 528,
+    "fields": {
+      "module": 66,
+      "title": "Jaringan, Organ, dan Sistem Organ",
+      "content": "Sel-sel yang memiliki bentuk dan fungsi yang sama akan berkelompok membentuk **Jaringan**. Gabungan dari beberapa jaringan akan membentuk **Organ** (seperti jantung atau daun), dan kumpulan organ akan bekerja sama membentuk **Sistem Organ**. \n\nHirarki atau tingkatan organisasi ini dari yang terkecil hingga menjadi satu individu utuh dapat kamu pelajari melalui ilustrasi urutan organisasi kehidupan pada gambar.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 529,
+    "fields": {
+      "module": 66,
+      "title": "Video: Menjelajah Bagian-Bagian Sel",
+      "content": "Dalam video ini, kita akan masuk ke dalam sel untuk melihat bagaimana organel-organel kecil seperti Mitokondria (pembangkit energi) dan Ribosom (pembuat protein) bekerja layaknya sebuah pabrik yang sangat sibuk. Simaklah bagian-bagian mikroskopis yang tidak bisa dilihat mata telanjang ini dengan saksama!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 530,
+    "fields": {
+      "module": 66,
+      "title": "Kuis: Organisasi Kehidupan",
+      "content": "Sudah siap menguji pengetahuanmu tentang sel dan jaringan? Pastikan kamu sudah memahami perbedaan organel sel hewan dan tumbuhan sebelum memulai. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 66,
+    "fields": {
+      "lesson": 530,
+      "title": "Evaluasi Sistem Organisasi Kehidupan",
+      "description": "Uji kemampuanmu mengenai struktur sel, perbedaan sel hewan/tumbuhan, serta tingkatan organisasi kehidupan."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 526,
+    "fields": {
+      "quiz": 66,
+      "text": "Bagian sel yang berfungsi sebagai pusat pengatur seluruh kegiatan sel adalah...",
+      "topic": "Organel Sel",
+      "option_a": "Sitoplasma",
+      "option_b": "Nukleus (Inti Sel)",
+      "option_c": "Membran Sel",
+      "option_d": "Mitokondria",
+      "correct_answer": "B",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 527,
+    "fields": {
+      "quiz": 66,
+      "text": "Organel yang hanya dimiliki oleh sel tumbuhan dan berfungsi untuk fotosintesis adalah...",
+      "topic": "Perbedaan Sel",
+      "option_a": "Vakuola",
+      "option_b": "Ribosom",
+      "option_c": "Kloroplas",
+      "option_d": "Dinding Sel",
+      "correct_answer": "C",
+      "difficulty_level": 0.5
+    }
+  }
+]

@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 5,
+    "fields": {
+      "title": "Matematika Kelas 8 (SMP 2)",
+      "description": "Kurikulum Matematika tingkat menengah yang mencakup Pola Bilangan, Koordinat Kartesius, Relasi dan Fungsi, Persamaan Garis Lurus, serta Teorema Pythagoras.",
+      "course_code": "MAT8-05",
+      "level": "Menengah",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 42,
+    "fields": {
+      "course": 5,
+      "title": "Modul 2: Koordinat Kartesius",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 306,
+    "fields": {
+      "module": 42,
+      "title": "Mengenal Bidang Kartesius dan Sumbu Koordinat",
+      "content": "Pernahkah kamu memperhatikan denah tempat duduk di bioskop atau menggunakan GPS (Google Maps) untuk mencari lokasi? Cara kerja sistem tersebut sebenarnya menggunakan prinsip dasar yang sama dengan Koordinat Kartesius.\n\nSistem Koordinat Kartesius digunakan untuk menentukan posisi setiap titik dalam bidang datar menggunakan dua bilangan yang biasa disebut koordinat $x$ dan koordinat $y$. \n\nAda dua garis yang harus kamu pahami:\n1. **Sumbu X (Absis)**: Garis mendatar atau horizontal yang membentang dari kiri ke kanan.\n2. **Sumbu Y (Ordinat)**: Garis tegak lurus atau vertikal yang membentang dari atas ke bawah.\n\n\n\nTitik pertemuan antara sumbu $x$ dan sumbu $y$ disebut **Titik Pusat atau Origin**, yang dilambangkan dengan (0,0). Di bidang ini, setiap posisi titik ditulis dalam bentuk pasangan berurutan $(x, y)$. Ingat, jangan sampai tertukar! $x$ selalu ditulis di depan, baru kemudian $y$.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 307,
+    "fields": {
+      "module": 42,
+      "title": "Pembagian Kuadran dan Posisi Titik",
+      "content": "Bidang Kartesius terbagi menjadi empat wilayah utama yang disebut **Kuadran**. Pembagian ini ditentukan berdasarkan nilai positif atau negatif dari sumbu $x$ dan $y$.\n\nBerikut adalah aturan mainnya:\n- **Kuadran I**: Nilai $x$ positif dan $y$ positif. Titik berada di kanan atas.\n- **Kuadran II**: Nilai $x$ negatif dan $y$ positif. Titik berada di kiri atas.\n- **Kuadran III**: Nilai $x$ negatif dan $y$ negatif. Titik berada di kiri bawah.\n- **Kuadran IV**: Nilai $x$ positif dan $y$ negatif. Titik berada di kanan bawah.\n\n\n\nCara membaca titik:\nMisalkan ada titik $A(3, -4)$. Ini artinya dari titik nol, kamu harus melangkah ke kanan sebanyak 3 satuan ($x=3$), lalu turun ke bawah sebanyak 4 satuan ($y=-4$). Titik ini berada di Kuadran IV.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 308,
+    "fields": {
+      "module": 42,
+      "title": "Video: Jarak Titik Terhadap Sumbu X dan Sumbu Y",
+      "content": "Panduan Menyimak Video:\n\nDalam video ini, kamu akan belajar cara menghitung jarak sebuah titik terhadap sumbu koordinat. Ada aturan sederhana yang sering keluar di soal ujian:\n\n1. Jarak titik $(x, y)$ terhadap **Sumbu X** adalah nilai mutlak dari ordinat ($y$).\n2. Jarak titik $(x, y)$ terhadap **Sumbu Y** adalah nilai mutlak dari absis ($x$).\n\n[Image demonstrating the distance of a point (x, y) from the X-axis and Y-axis using perpendicular lines]\n\nContoh: Titik $B(-5, 3)$ memiliki:\n- Jarak 3 satuan terhadap sumbu X.\n- Jarak 5 satuan terhadap sumbu Y.\n\nCatatan Penting: Jarak tidak pernah bernilai negatif! Jadi meskipun angka koordinatnya $-5$, jaraknya tetap disebut 5 satuan.\n\nTugas: Simak video ini dan perhatikan bagaimana cara menentukan posisi sebuah titik jika titik acuannya bukan (0,0) melainkan titik lain!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 309,
+    "fields": {
+      "module": 42,
+      "title": "Posisi Garis Terhadap Sumbu Koordinat",
+      "content": "Selain menentukan posisi titik, kita juga bisa menentukan posisi sebuah garis. Ada tiga kedudukan garis yang perlu kamu tahu:\n\n1. **Garis Sejajar**: Garis yang tidak akan pernah berpotongan meskipun diperpanjang. \n   * Contoh: Garis yang melalui titik (2,5) dan (2,-3) akan sejajar dengan sumbu Y.\n2. **Garis Tegak Lurus**: Garis yang memotong sumbu koordinat dan membentuk sudut 90 derajat.\n   * Contoh: Jika sebuah garis sejajar sumbu X, maka otomatis ia tegak lurus sumbu Y.\n3. **Garis Memotong**: Garis yang miring dan memotong sumbu X maupun sumbu Y di titik tertentu.\n\n\n\nMemahami posisi garis ini sangat membantu ketika nanti kamu belajar tentang luas bangun datar yang digambar di dalam koordinat Kartesius.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 310,
+    "fields": {
+      "module": 42,
+      "title": "Kuis: Uji Ketelitian Lokasi Titik",
+      "content": "Hebat! Kamu sudah belajar cara membaca 'peta' matematika. Kamu sudah mengenal sumbu $x$ dan $y$, pembagian kuadran, hingga posisi garis. Sekarang, saatnya menguji ketelitianmu. Ingat, dalam koordinat Kartesius, tertukar urutan $x$ dan $y$ berarti kamu berada di lokasi yang salah. Selamat mengerjakan kuis!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 42,
+    "fields": {
+      "lesson": 310,
+      "title": "Evaluasi Koordinat Kartesius",
+      "description": "Uji kemampuan menentukan koordinat titik, jarak terhadap sumbu, dan posisi kuadran."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 306,
+    "fields": {
+      "quiz": 42,
+      "text": "Titik $P(-3, 5)$ berada pada wilayah kuadran...",
+      "topic": "Kuadran",
+      "option_a": "Kuadran I",
+      "option_b": "Kuadran II",
+      "option_c": "Kuadran III",
+      "option_d": "Kuadran IV",
+      "correct_answer": "B",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 307,
+    "fields": {
+      "quiz": 42,
+      "text": "Berapakah jarak titik $A(4, -7)$ terhadap sumbu X?",
+      "topic": "Jarak Titik",
+      "option_a": "4 satuan",
+      "option_b": "7 satuan",
+      "option_c": "-7 satuan",
+      "option_d": "11 satuan",
+      "correct_answer": "B",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 308,
+    "fields": {
+      "quiz": 42,
+      "text": "Koordinat titik yang berjarak 2 satuan di sebelah kiri sumbu Y dan 3 satuan di bawah sumbu X adalah...",
+      "topic": "Posisi Titik",
+      "option_a": "(2, 3)",
+      "option_b": "(-2, 3)",
+      "option_c": "(2, -3)",
+      "option_d": "(-2, -3)",
+      "correct_answer": "D",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 309,
+    "fields": {
+      "quiz": 42,
+      "text": "Jika sebuah garis ditarik melalui titik $(3, 5)$ dan $(3, -2)$, maka posisi garis tersebut adalah...",
+      "topic": "Posisi Garis",
+      "option_a": "Sejajar sumbu X",
+      "option_b": "Sejajar sumbu Y",
+      "option_c": "Memotong sumbu X dan Y secara miring",
+      "option_d": "Berhimpit dengan sumbu X",
+      "correct_answer": "B",
+      "difficulty_level": 1.1
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 310,
+    "fields": {
+      "quiz": 42,
+      "text": "Titik yang memiliki absis -4 dan ordinat 0 terletak di...",
+      "topic": "Posisi Titik",
+      "option_a": "Kuadran II",
+      "option_b": "Sumbu Y",
+      "option_c": "Sumbu X",
+      "option_d": "Pusat Koordinat",
+      "correct_answer": "C",
+      "difficulty_level": 0.3
+    }
+  }
+]

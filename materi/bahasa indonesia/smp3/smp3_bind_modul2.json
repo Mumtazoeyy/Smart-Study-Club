@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 12,
+    "fields": {
+      "course": 3,
+      "title": "Modul 2: Menyampaikan Pidato Persuasif",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 56,
+    "fields": {
+      "module": 12,
+      "title": "Tujuan dan Kekuatan Pidato Persuasif",
+      "content": "Pernahkah kamu mendengar seseorang berbicara di depan banyak orang dan tiba-tiba kamu merasa ingin mengikuti ajakannya? Itulah kekuatan dari Pidato Persuasif.\n\nPidato persuasif adalah jenis pidato yang bertujuan untuk menarik perhatian pendengar, mempengaruhi, serta mengajak atau membujuk audiens agar mereka yakin dan mau mengambil tindakan sesuai dengan tujuan pidato tersebut. Di kelas 9, kamu belajar bahwa pidato bukan sekadar bicara, melainkan seni mengolah gagasan agar diterima oleh orang lain.\n\nTujuan Utama Pidato Persuasif:\n1. Pembentukan Tanggapan: Memberikan pengertian baru agar audiens yang tadinya tidak tahu menjadi tahu.\n2. Penguatan Tanggapan: Menguatkan keyakinan audiens yang sudah setuju agar semakin mantap dengan pilihannya.\n3. Pengubahan Tanggapan: Mengubah pikiran audiens yang tadinya menolak menjadi setuju dengan argumen yang kamu sampaikan.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 57,
+    "fields": {
+      "module": 12,
+      "title": "Struktur Teks Pidato: Alur Pemikiran yang Rapi",
+      "content": "Sebuah pidato yang membingungkan tidak akan bisa mengajak orang lain. Oleh karena itu, kamu harus menyusun naskah pidato dengan struktur yang benar:\n\n1. Pembukaan\nBerisi salam pembuka, sapaan hormat kepada tokoh yang hadir, dan ucapan syukur. Bagian ini penting untuk membangun kedekatan dengan audiens di menit pertama.\n\n2. Isi Pidato\n- Pernyataan Posisi: Menjelaskan pandanganmu terhadap suatu masalah secara tegas.\n- Tahap Argumen: Menyampaikan alasan-alasan logis yang didukung oleh fakta atau data.\n- Penguatan Pernyataan Posisi: Merangkum argumen dan menekankan kembali mengapa audiens harus mengikuti ajakanmu.\n\n3. Penutup\nBerisi simpulan pendek, permintaan maaf jika ada kesalahan kata, harapan agar pesan tersampaikan, dan salam penutup.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 58,
+    "fields": {
+      "module": 12,
+      "title": "Video: Teknik Orasi dan Retorika di Atas Podium",
+      "content": "Panduan Menyimak Video:\n\nPidato yang bagus di atas kertas bisa menjadi membosankan jika cara menyampaikannya kurang menarik. Video ini akan mengajarkan kamu teknik 'Orasi' agar pesanmu memiliki daya ledak yang kuat.\n\nMateri yang terkandung dalam video:\n1. Intonasi dan Olah Vokal: Cara mengatur nada suara agar tidak monoton dan memberikan penekanan pada kata-kata kunci.\n2. Kontak Mata: Pentingnya melihat ke arah audiens untuk membangun kepercayaan dan menunjukkan bahwa kamu serius.\n3. Bahasa Tubuh (Gestur): Bagaimana gerakan tangan dan posisi berdiri dapat membantu menjelaskan poin-poin pidatomu.\n4. Manajemen Gerogot (Nervous): Tips tetap tenang saat berbicara di depan banyak orang.\n\nTugas: Simak video ini dan perhatikan bagaimana pembicara mengatur napasnya saat memberikan penekanan pada kalimat ajakan!",
+      "video_url": "https://www.youtube.com/embed/zS9YcR_kM2Q",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 59,
+    "fields": {
+      "module": 12,
+      "title": "Metode Membawakan Pidato: Pilih Gayamu",
+      "content": "Setiap orator memiliki gaya yang berbeda-beda dalam menyampaikan pesannya. Berikut adalah empat metode pidato yang umum digunakan:\n\n1. Impromptu (Serta-merta)\nPidato yang dilakukan secara mendadak tanpa persiapan naskah sama sekali. Biasanya dilakukan oleh orang yang sudah sangat ahli atau berpengalaman.\n\n2. Manuskrip (Naskah)\nPidato dengan membaca teks yang sudah disiapkan kata demi kata. Kelebihannya adalah tidak ada poin yang terlewat, namun kekurangannya kontak mata dengan audiens sering terabaikan.\n\n3. Memoriter (Menghafal)\nMenulis naskah terlebih dahulu kemudian menghafalkannya di luar kepala. Metode ini membutuhkan daya ingat yang kuat agar tidak terlihat kaku atau mendadak lupa di tengah panggung.\n\n4. Ekstemporan (Catatan Poin)\nMetode terbaik bagi pemula maupun profesional. Kamu hanya membawa catatan kecil berisi poin-poin penting, lalu mengembangkannya dengan kata-katamu sendiri saat berbicara.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 60,
+    "fields": {
+      "module": 12,
+      "title": "Kuis Kompetensi Modul 2",
+      "content": "Luar biasa! Kamu telah mempelajari rahasia di balik pidato yang mampu menggerakkan hati orang banyak. Sekarang, mari uji pemahamanmu mengenai struktur, metode, dan etika dalam berpidato. Bacalah setiap pertanyaan dengan teliti, terutama mengenai urutan bagian-bagian pidato!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 12,
+    "fields": {
+      "lesson": 60,
+      "title": "Evaluasi Pidato Persuasif",
+      "description": "Jadilah orator yang hebat dengan menguasai konsep dasar pidato ini."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 56,
+    "fields": {
+      "quiz": 12,
+      "text": "Bagian pidato yang berisi salam pembuka dan ucapan penghormatan kepada hadirin disebut...",
+      "topic": "Struktur",
+      "option_a": "Isi Pidato",
+      "option_b": "Pembukaan",
+      "option_c": "Penutup",
+      "option_d": "Amanat",
+      "correct_answer": "B",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 57,
+    "fields": {
+      "quiz": 12,
+      "text": "Metode pidato yang dilakukan secara mendadak tanpa persiapan naskah disebut...",
+      "topic": "Metode Pidato",
+      "option_a": "Manuskrip",
+      "option_b": "Ekstemporan",
+      "option_c": "Impromptu",
+      "option_d": "Memoriter",
+      "correct_answer": "C",
+      "difficulty_level": -0.4
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 58,
+    "fields": {
+      "quiz": 12,
+      "text": "Inti dari pidato persuasif adalah untuk...",
+      "topic": "Tujuan",
+      "option_a": "Menceritakan dongeng masa lalu",
+      "option_b": "Memberikan instruksi memasak",
+      "option_c": "Mengajak atau meyakinkan pendengar",
+      "option_d": "Menyindir hadirin secara kasar",
+      "correct_answer": "C",
+      "difficulty_level": 0.3
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 59,
+    "fields": {
+      "quiz": 12,
+      "text": "Metode pidato dengan hanya membawa catatan kecil berisi garis besar isi pidato disebut...",
+      "topic": "Metode Pidato",
+      "option_a": "Manuskrip",
+      "option_b": "Memoriter",
+      "option_c": "Ekstemporan",
+      "option_d": "Impromptu",
+      "correct_answer": "C",
+      "difficulty_level": 0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 60,
+    "fields": {
+      "quiz": 12,
+      "text": "Berikut adalah unsur yang harus diperhatikan dalam orasi, kecuali...",
+      "topic": "Teknik Orasi",
+      "option_a": "Lafal dan Intonasi",
+      "option_b": "Volume suara",
+      "option_c": "Jumlah penonton",
+      "option_d": "Bahasa tubuh (Gestur)",
+      "correct_answer": "C",
+      "difficulty_level": 1.1
+    }
+  }
+]

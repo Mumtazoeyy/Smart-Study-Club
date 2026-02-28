@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 5,
+    "fields": {
+      "title": "Matematika Kelas 8 (SMP 2)",
+      "description": "Kurikulum Matematika tingkat menengah yang mencakup Pola Bilangan, Koordinat Kartesius, Relasi dan Fungsi, Persamaan Garis Lurus, serta Teorema Pythagoras.",
+      "course_code": "MAT8-05",
+      "level": "Menengah",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 41,
+    "fields": {
+      "course": 5,
+      "title": "Modul 1: Pola Bilangan",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 301,
+    "fields": {
+      "module": 41,
+      "title": "Konsep Dasar dan Pengenalan Pola Bilangan",
+      "content": "Pernahkah kamu memperhatikan susunan kelopak bunga matahari, cangkang siput, atau susunan kursi di bioskop? Alam dan dunia di sekitar kita sebenarnya penuh dengan keteraturan yang disebut Pola.\n\nDalam matematika, Pola Bilangan adalah sekumpulan bilangan yang memiliki aturan tertentu dalam penyusunannya. Mempelajari pola bilangan akan melatih kemampuanmu dalam berpikir logis dan memprediksi urutan angka berikutnya berdasarkan aturan yang ditemukan.\n\nContoh Sederhana:\nJika ada barisan angka: 2, 4, 6, 8, ...\nKamu pasti bisa menebak angka berikutnya adalah 10. Mengapa? Karena kamu menemukan aturan bahwa setiap angka berikutnya didapat dengan cara 'ditambah 2'.\n\n\n\nMemahami pola bukan hanya tentang angka, tapi tentang bagaimana kita melihat struktur dan keteraturan dari suatu masalah.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 302,
+    "fields": {
+      "module": 41,
+      "title": "Jenis-Jenis Pola Bilangan Khusus",
+      "content": "Ada beberapa pola bilangan yang memiliki nama dan karakteristik khusus karena bentuknya yang unik jika digambarkan secara visual. Berikut adalah jenis-jenisnya:\n\n1. Pola Bilangan Ganjil\nBarisan: 1, 3, 5, 7, 9, ...\nRumus suku ke-$n$: $U_n = 2n - 1$\n\n2. Pola Bilangan Genap\nBarisan: 2, 4, 6, 8, 10, ...\nRumus suku ke-$n$: $U_n = 2n$\n\n3. Pola Bilangan Persegi\nBarisan: 1, 4, 9, 16, 25, ...\nPola ini disebut persegi karena jumlah titiknya membentuk bangun persegi ($1^2, 2^2, 3^2, ...$).\nRumus suku ke-$n$: $U_n = n^2$\n\n\n\n4. Pola Bilangan Segitiga\nBarisan: 1, 3, 6, 10, 15, ...\nJumlah titiknya membentuk bangun segitiga sama sisi.\nRumus suku ke-$n$: $U_n = \\frac{1}{2}n(n + 1)$\n\n5. Pola Bilangan Fibonacci\nBarisan: 1, 1, 2, 3, 5, 8, 13, ...\nAturannya unik: Suku berikutnya adalah hasil penjumlahan dari dua suku sebelumnya (1+1=2, 1+2=3, 2+3=5, dst).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 303,
+    "fields": {
+      "module": 41,
+      "title": "Video: Barisan dan Deret Aritmetika",
+      "content": "Panduan Menyimak Video:\n\nDalam video ini, kita akan mempelajari barisan bilangan yang memiliki selisih tetap (beda) di antara setiap dua suku berurutan. Barisan ini disebut Barisan Aritmetika.\n\nIstilah Penting:\n1. Suku Pertama ($a$ atau $U_1$): Angka paling depan dalam barisan.\n2. Beda ($b$): Selisih antara suku yang berdekatan ($U_2 - U_1$).\n3. Rumus Suku ke-$n$ ($U_n$): Digunakan untuk mencari angka di urutan ke berapapun tanpa harus menghitung satu per satu.\n\n\n\nContoh Kasus:\nPada barisan 5, 8, 11, 14, ...\nNilai $a = 5$ dan $b = 3$.\nJika ingin mencari suku ke-50, kita gunakan rumus $U_n = a + (n - 1)b$.\n\nTugas: Simak video ini dan catatlah bagaimana cara menghitung jumlah seluruh suku (Deret Aritmetika) menggunakan rumus $S_n$!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 304,
+    "fields": {
+      "module": 41,
+      "title": "Barisan Geometri: Pola Perkalian",
+      "content": "Berbeda dengan aritmetika yang menggunakan operasi tambah/kurang, Barisan Geometri adalah barisan bilangan yang setiap sukunnya didapatkan dengan mengalikan suku sebelumnya dengan suatu angka tetap yang disebut Rasio ($r$).\n\nContoh Barisan Geometri:\n2, 6, 18, 54, ...\nDi sini, setiap suku dikalikan dengan 3. Maka rasionya adalah 3.\n\nRumus Suku ke-$n$ Geometri:\n$U_n = a \\cdot r^{(n-1)}$\n\n[Image illustrating geometric progression growth comparing it to arithmetic progression growth]\n\nBarisan geometri sangat sering ditemukan dalam fenomena alam, seperti pembelahan sel bakteri atau perhitungan bunga majemuk dalam bank. Pertumbuhan barisan ini biasanya jauh lebih cepat dibandingkan barisan aritmetika.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 305,
+    "fields": {
+      "module": 41,
+      "title": "Kuis Kompetensi Pola Bilangan",
+      "content": "Luar biasa! Kamu telah menyelesaikan modul pertama tentang Pola Bilangan. Kamu sekarang sudah mengenal berbagai jenis pola, mulai dari aritmetika hingga geometri. Sekarang, saatnya menguji ketelitian dan kemampuan analisismu. Ingat, temukan dulu aturannya (beda atau rasio) sebelum menghitung hasil akhirnya!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 41,
+    "fields": {
+      "lesson": 305,
+      "title": "Evaluasi Pola Bilangan",
+      "description": "Uji pemahamanmu mengenai barisan aritmetika, geometri, dan pola khusus lainnya."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 301,
+    "fields": {
+      "quiz": 41,
+      "text": "Suku berikutnya dari barisan 2, 5, 10, 17, ... adalah...",
+      "topic": "Pola Bilangan",
+      "option_a": "24",
+      "option_b": "26",
+      "option_c": "25",
+      "option_d": "27",
+      "correct_answer": "B",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 302,
+    "fields": {
+      "quiz": 41,
+      "text": "Suku ke-10 dari pola bilangan persegi adalah...",
+      "topic": "Pola Khusus",
+      "option_a": "100",
+      "option_b": "90",
+      "option_c": "80",
+      "option_d": "110",
+      "correct_answer": "A",
+      "difficulty_level": -1.0
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 303,
+    "fields": {
+      "quiz": 41,
+      "text": "Diketahui barisan aritmetika 5, 8, 11, 14, ... Beda (b) dari barisan tersebut adalah...",
+      "topic": "Aritmetika",
+      "option_a": "2",
+      "option_b": "3",
+      "option_c": "4",
+      "option_d": "5",
+      "correct_answer": "B",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 304,
+    "fields": {
+      "quiz": 41,
+      "text": "Dalam barisan geometri 3, 6, 12, 24, ... nilai rasio (r) adalah...",
+      "topic": "Geometri",
+      "option_a": "2",
+      "option_b": "3",
+      "option_c": "4",
+      "option_d": "6",
+      "correct_answer": "A",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 305,
+    "fields": {
+      "quiz": 41,
+      "text": "Angka berikutnya dalam barisan Fibonacci 1, 1, 2, 3, 5, 8, ... adalah...",
+      "topic": "Fibonacci",
+      "option_a": "10",
+      "option_b": "11",
+      "option_c": "13",
+      "option_d": "15",
+      "correct_answer": "C",
+      "difficulty_level": 0.5
+    }
+  }
+]

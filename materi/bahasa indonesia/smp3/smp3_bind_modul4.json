@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 14,
+    "fields": {
+      "course": 3,
+      "title": "Modul 4: Memberi Tanggapan dengan Santun",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 66,
+    "fields": {
+      "module": 14,
+      "title": "Seni Menilai: Pengertian dan Fungsi Teks Tanggapan",
+      "content": "Pernahkah kamu menonton film yang sangat bagus lalu ingin merekomendasikannya kepada teman, atau justru melihat sebuah lukisan yang menurutmu kurang rapi lalu ingin memberikan saran? Tindakan memberikan penilaian tersebut jika dituangkan secara tertulis disebut Teks Tanggapan.\n\nTeks tanggapan adalah jenis teks yang digunakan untuk meringkas, menganalisis, dan menanggapi suatu teks, karya seni, atau fenomena sosial. Menanggapi bukan berarti hanya mencari kesalahan, tetapi juga bisa berupa pujian atau apresiasi terhadap keunggulan suatu karya.\n\nFungsi Utama Teks Tanggapan:\n1. Memberikan Masukan Konstruktif: Membantu pencipta karya agar tahu di mana letak kekurangannya sehingga bisa memperbaiki karyanya di masa depan.\n2. Wadah Apresiasi: Memberikan pujian yang jujur dan objektif atas kerja keras dan keindahan sebuah karya.\n3. Bahan Pertimbangan: Membantu orang lain (pembaca) dalam menentukan apakah sebuah karya layak dinikmati atau tidak.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 67,
+    "fields": {
+      "module": 14,
+      "title": "Membangun Penilaian yang Rapi: Struktur Teks",
+      "content": "Agar tanggapanmu tidak terkesan asal-asalan atau seperti hujatan, kamu harus menyusunnya dengan struktur yang sistematis:\n\n1. Konteks\nBagian awal yang berisi pengenalan mengenai apa yang akan ditanggapi. Di sini kamu menyebutkan identitas karya, seperti judul buku, nama penulis, sutradara, atau fenomena apa yang sedang terjadi.\n\n2. Deskripsi\nBerisi penjelasan rinci tentang isi karya tersebut. Penulis menjelaskan apa saja yang ada di dalam karya, gaya bahasanya, warnanya, atau alurnya tanpa memberikan penilaian dulu. Tujuannya agar pembaca mendapatkan gambaran yang jelas.\n\n3. Penilaian (Evaluasi)\nIni adalah bagian paling penting. Penulis menyampaikan pendapat pribadinya mengenai kelebihan dan kekurangan karya tersebut. Ingat, setiap penilaian harus disertai dengan alasan atau bukti yang logis dan objektif.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 68,
+    "fields": {
+      "module": 14,
+      "title": "Video: Etika Memberikan Kritik yang Membangun",
+      "content": "Panduan Menyimak Video:\n\nDi dunia media sosial, seringkali kritik disampaikan dengan bahasa yang kasar. Video ini akan melatih kamu cara memberikan kritik 'Elegan' yang fokus pada masalahnya, bukan menyerang orangnya.\n\nMateri Utama dalam Video:\n1. Prinsip Objektivitas: Cara menilai berdasarkan data dan standar yang jelas, bukan sekadar selera pribadi.\n2. Bahasa yang Santun: Menggunakan pilihan kata yang halus namun tegas agar pembuat karya tidak merasa sakit hati.\n3. Memberikan Solusi: Mengapa kritik yang baik harus selalu disertai dengan saran perbaikan.\n\nTugas: Simak video ini dan catatlah 3 kalimat 'Ajaib' yang bisa kamu gunakan saat ingin menyatakan ketidaksetujuanmu dengan cara yang sopan!",
+      "video_url": "https://www.youtube.com/embed/v9S_m8tY1vM",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 69,
+    "fields": {
+      "module": 14,
+      "title": "Kebahasaan: Kalimat Penilaian dan Rujukan",
+      "content": "Bahasa dalam teks tanggapan harus mencerminkan kecerdasan dan kesantunan penulisnya. Berikut ciri-cirinya:\n\n1. Menggunakan Kalimat Penilaian\nMengandung kata-kata yang menyatakan kualitas, seperti: mengagumkan, kurang tepat, sangat rapi, perlu diperbaiki, atau istimewa.\n\n2. Menggunakan Kalimat Deskriptif\nMenjelaskan detail karya secara objektif. Contoh: 'Warna yang digunakan dalam lukisan ini didominasi oleh warna-warna gelap.'\n\n3. Menggunakan Kata Rujukan\nBerfungsi untuk menyambungkan argumen dengan data pendukung. Contoh: 'Hal ini terbukti dari...', 'Berdasarkan data tersebut...', atau 'Seperti yang terlihat pada...'.\n\n4. Menggunakan Konjungsi Penyebaban\nKarena setiap penilaian butuh alasan, kata hubung seperti 'sebab', 'karena', dan 'akibatnya' sangat sering digunakan.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 70,
+    "fields": {
+      "module": 14,
+      "title": "Kuis Kompetensi Modul 4",
+      "content": "Bagus sekali! Kamu telah mempelajari bagaimana cara menjadi seorang penanggap atau kritikus yang cerdas dan beretika. Sekarang, mari uji pemahamanmu mengenai struktur dan cara memberikan penilaian yang objektif. Ingat, kejujuran dan kesantunan adalah kunci utama dalam memberikan tanggapan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 14,
+    "fields": {
+      "lesson": 70,
+      "title": "Evaluasi Teks Tanggapan",
+      "description": "Berikan penilaian yang adil dan logis melalui kuis ini."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 66,
+    "fields": {
+      "quiz": 14,
+      "text": "Bagian teks tanggapan yang berisi informasi tentang apa yang ditanggapi, di mana, dan kapan peristiwa itu terjadi disebut...",
+      "topic": "Struktur",
+      "option_a": "Penilaian",
+      "option_b": "Deskripsi",
+      "option_c": "Konteks",
+      "option_d": "Simpulan",
+      "correct_answer": "C",
+      "difficulty_level": -1.0
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 67,
+    "fields": {
+      "quiz": 14,
+      "text": "Tangggapan yang baik harus didasarkan pada...",
+      "topic": "Karakteristik",
+      "option_a": "Kebencian pribadi terhadap pembuat karya",
+      "option_b": "Fakta dan alasan yang logis (objektif)",
+      "option_c": "Opini orang lain di media sosial",
+      "option_d": "Keinginan untuk terlihat lebih pintar",
+      "correct_answer": "B",
+      "difficulty_level": -0.4
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 68,
+    "fields": {
+      "quiz": 14,
+      "text": "Manakah contoh kalimat pujian yang tepat dan santun dalam teks tanggapan?",
+      "topic": "Kebahasaan",
+      "option_a": "Buku ini lumayan lah, daripada tidak ada bacaan.",
+      "option_b": "Alur ceritanya sangat menarik dan bahasanya mudah dipahami remaja.",
+      "option_c": "Buku ini sangat sempurna tanpa ada kekurangan sedikitpun.",
+      "option_d": "Penulis ini adalah yang terbaik di seluruh dunia.",
+      "correct_answer": "B",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 69,
+    "fields": {
+      "quiz": 14,
+      "text": "Bagian teks tanggapan yang berisi opini pribadi penulis mengenai kelebihan atau kekurangan karya disebut...",
+      "topic": "Struktur",
+      "option_a": "Konteks",
+      "option_b": "Deskripsi",
+      "option_c": "Penilaian",
+      "option_d": "Identifikasi",
+      "correct_answer": "C",
+      "difficulty_level": 0.7
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 70,
+    "fields": {
+      "quiz": 14,
+      "text": "Kalimat kritik yang membangun ditujukan untuk...",
+      "topic": "Tujuan",
+      "option_a": "Mempermalukan pembuat karya di depan umum",
+      "option_b": "Memberikan masukan agar karya selanjutnya lebih baik",
+      "option_c": "Menurunkan harga jual sebuah karya",
+      "option_d": "Menunjukkan kekuatan kritikus",
+      "correct_answer": "B",
+      "difficulty_level": 1.1
+    }
+  }
+]

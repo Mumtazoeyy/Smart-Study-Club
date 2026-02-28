@@ -1,0 +1,194 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block title %}Kuis: {{ quiz.title }}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'fontawesome-free-7.1.0-web/css/all.min.css' %}">
+
+<style>
+    /* 1. Global Reset & Background */
+    footer, #section5 { display: none !important; }
+    
+    body {
+        background-color: #ffffff;
+        background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
+        background-size: 16px 16px;
+    }
+
+    .step-content { display: none; }
+    .step-content.active { display: block; animation: fadeIn 0.5s ease-out; }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 2. Card Glassmorphism (Tanpa Border) */
+    .card-quiz-transparan {
+        background-color: rgba(255, 255, 255, 0.05); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border: none !important; 
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* 3. Option Styling */
+    .option-card input[type="radio"] { 
+        position: absolute;
+        opacity: 0;
+    }
+
+    .option-card { 
+        position: relative;
+        background: transparent;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .opt-label {
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 999px;
+        font-weight: 800;
+        font-size: 12px;
+        color: #94a3b8;
+        transition: all 0.3s ease;
+    }
+
+    .option-card:has(input[type="radio"]:checked) .opt-label {
+        background-color: #eab308;
+        color: black;
+        border-color: #eab308;
+    }
+
+    .opt-text {
+        color: #475569;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .option-card:has(input[type="radio"]:checked) .opt-text {
+        color: black;
+        font-weight: 700;
+    }
+
+    /* 4. Desain Tombol Next & Prev Baru */
+    .btn-nav-custom {
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: none;
+        padding: 1rem 2.5rem;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-nav-custom:hover {
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+
+    /* Garis animasi bawah tombol */
+    .btn-line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        background-color: #eab308;
+        width: 0;
+        transition: width 0.5s ease;
+    }
+
+    .btn-nav-custom:hover .btn-line {
+        width: 100%;
+    }
+</style>
+
+<main class="pt-2 pb-20 min-h-screen">
+    <div class="max-w-4xl mx-auto px-6">
+        
+        {# PROGRESS BAR (Dikembalikan) #}
+        <div class="mb-12">
+            <div class="flex items-center justify-between mb-4 text-[10px] font-black uppercase tracking-[0.4em] text-gray-400">
+                <span>Progres Kuis</span>
+                <span class="text-black tracking-normal">{{ step }} / {{ total_steps }}</span>
+            </div>
+            <div class="w-full h-[2px] bg-gray-100 relative">
+                <div id="progressFill" class="absolute top-0 left-0 h-full bg-[#eab308] transition-all duration-1000" 
+                     style="width: {% widthratio step total_steps 100 %}%"></div>
+            </div>
+        </div>
+
+        <form id="quizForm" method="POST" action="{{ request.path }}">
+            {% csrf_token %}
+            <input type="hidden" name="question_id" value="{{ question.id }}">
+
+            {# KOTAK SOAL TRANSPARAN #}
+            <div class="card-quiz-transparan py-6 md:py-10 px-0 mb-8">
+                <div class="max-w-3xl mx-auto px-6 text-center">
+                    <div class="step-content active">
+                        {# AREA PERTANYAAN - Rata Tengah #}
+                        <div class="mb-8">
+                            <h3 class="text-2xl md:text-4xl font-black text-gray-900 leading-tight tracking-tight italic uppercase">
+                                {{ question.text|safe }}
+                            </h3>
+                        </div>
+                        
+                        {# LIST JAWABAN - Dibuat tetap rapi tapi berpusat #}
+                        <div class="space-y-4 max-w-2xl mx-auto text-left">
+                            {% with "A B C D" as alphabet %}
+                            {% for letter in alphabet.split %}
+                            <label class="option-card flex items-center py-4 group/item">
+                                <input type="radio" name="answer" value="{{ letter }}" required>
+                                
+                                <div class="opt-label mr-6">
+                                    {{ letter }}
+                                </div>
+
+                                <span class="opt-text text-lg md:text-xl group-hover/item:text-black">
+                                    {% if letter == 'A' %}{{ question.option_a|safe }}
+                                    {% elif letter == 'B' %}{{ question.option_b|safe }}
+                                    {% elif letter == 'C' %}{{ question.option_c|safe }}
+                                    {% else %}{{ question.option_d|safe }}{% endif %}
+                                </span>
+
+                                {# Garis aksen kanan #}
+                                <div class="h-[1px] w-0 bg-[#eab308] ml-4 transition-all duration-500 group-hover/item:flex-grow"></div>
+                            </label>
+                            {% endfor %}
+                            {% endwith %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {# TOMBOL NAVIGASI NEXT & PREV #}
+            <div class="flex items-center justify-end gap-4">
+                {% if step > 1 %}
+                <button type="button" onclick="history.back()" class="btn-nav-custom group">
+                    <i class="fas fa-arrow-left text-[10px] text-gray-400 group-hover:text-black transition-transform group-hover:-translate-x-1"></i>
+                    <span class="text-[10px] font-black uppercase tracking-widest text-gray-400 group-hover:text-black">Kembali</span>
+                    <div class="btn-line"></div>
+                </button>
+                {% endif %}
+
+                <button type="submit" class="btn-nav-custom group">
+                    <span class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-900">
+                        {% if step >= total_steps %}Selesai & Kirim{% else %}Lanjut Soal{% endif %}
+                    </span>
+                    <i class="fas fa-arrow-right text-[10px] text-[#eab308] transition-transform group-hover:translate-x-2"></i>
+                    <div class="btn-line"></div>
+                </button>
+            </div>
+        </form>
+    </div>
+</main>
+{% endblock %}

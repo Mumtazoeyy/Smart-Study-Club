@@ -1,0 +1,164 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 4,
+    "fields": {
+      "category": 1,
+      "title": "Matematika SMP 7",
+      "description": "Kurikulum lengkap Matematika untuk kelas 7 SMP yang mencakup Bilangan, Aljabar, hingga Geometri."
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 34,
+    "fields": {
+      "course": 4,
+      "title": "Modul 4: Persamaan Linear Satu Variabel",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 216,
+    "fields": {
+      "module": 34,
+      "title": "Konsep Kalimat Terbuka dan Persamaan",
+      "content": "Dalam matematika, kita mengenal dua jenis kalimat. Pertama, kalimat yang sudah jelas benar atau salahnya (Kalimat Tertutup). Contoh: '2 + 3 = 5' (Benar) atau 'Semarang adalah ibu kota Jawa Barat' (Salah).\n\nKedua, ada yang disebut **Kalimat Terbuka**. Kalimat ini mengandung variabel sehingga kita belum tahu apakah dia benar atau salah sebelum variabelnya diganti dengan angka tertentu.\nContoh: $x + 5 = 8$. Jika $x$ diganti 3, maka benar. Jika $x$ diganti 1, maka salah.\n\n\n\n**Persamaan Linear Satu Variabel (PLSV)** adalah kalimat terbuka yang dihubungkan oleh tanda sama dengan ($=$) dan hanya memiliki satu jenis variabel berpangkat satu. Tujuan utama kita di modul ini adalah menjadi 'detektif angka' untuk menemukan nilai variabel tersebut agar persamaannya menjadi bernilai benar.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 217,
+    "fields": {
+      "module": 34,
+      "title": "Metode Keseimbangan: Menjaga Keadilan",
+      "content": "Bayangkan sebuah persamaan seperti sebuah timbangan (neraca) yang sedang setimbang. Apa pun yang kamu lakukan di sisi kiri, harus kamu lakukan juga di sisi kanan agar timbangan tidak miring.\n\nContoh: $x + 3 = 10$\nKita ingin mencari nilai $x$. Artinya, kita harus mengusir angka $+3$ dari sisi kiri. Caranya? Kurangi sisi kiri dengan 3. Tapi ingat aturan keadilan: Sisi kanan juga harus dikurangi 3!\n\nLangkah-langkahnya:\n$x + 3 - 3 = 10 - 3$\n$x = 7$\n\n\n\nBegitu juga dengan perkalian. Jika $2x = 12$, maka untuk mendapatkan $x$, kita bagi sisi kiri dengan 2. Sisi kanan pun harus dibagi 2.\n$\\frac{2x}{2} = \\frac{12}{2}$\n$x = 6$\n\nIntinya: Matematika itu harus adil! Perlakuan di ruas kiri harus sama dengan ruas kanan.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 218,
+    "fields": {
+      "module": 34,
+      "title": "Video: Teknik Cepat 'Pindah Ruas'",
+      "content": "Panduan Menyimak Video:\n\nSetelah memahami konsep keseimbangan, kamu akan diajarkan teknik 'Pindah Ruas' yang lebih praktis dan cepat untuk mengerjakan soal ujian.\n\nAturan Pindah Ruas:\n1. Positif $(+)$ pindah ruas menjadi Negatif $(-)$.\n2. Negatif $(-)$ pindah ruas menjadi Positif $(+)$.\n3. Perkalian $(\\times)$ pindah ruas menjadi Pembagian $(:)$.\n4. Pembagian $(:)$ pindah ruas menjadi Perkalian $(\\times)$.\n\nContoh: $3x - 5 = 10$\nLangkah 1: Pindahkan $-5$ ke kanan $\\to 3x = 10 + 5$\nLangkah 2: Sederhanakan $\\to 3x = 15$\nLangkah 3: Pindahkan kali 3 menjadi bagi 3 $\\to x = \\frac{15}{3}$\nLangkah 4: Hasil $\\to x = 5$\n\nTugas: Simak video ini dan catatlah bagaimana cara menangani soal jika variabel $x$ muncul di kedua ruas (kiri dan kanan) sekaligus!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 219,
+    "fields": {
+      "module": 34,
+      "title": "Aplikasi PLSV dalam Masalah Sehari-hari",
+      "content": "Kenapa kita harus belajar PLSV? Karena banyak masalah di dunia nyata yang bisa diselesaikan dengan metode ini. Kita hanya perlu mengubah cerita menjadi bentuk matematika.\n\nContoh Kasus:\nUmur Budi 5 tahun lebih muda dari umur kakaknya. Jika jumlah umur mereka adalah 25 tahun, berapakah umur Budi?\n\nCara Menyelesaikan:\n1. Misalkan umur kakak = $x$\n2. Maka umur Budi = $x - 5$\n3. Persamaannya: $x + (x - 5) = 25$\n4. Selesaikan: $2x - 5 = 25 \\to 2x = 30 \\to x = 15$\n5. Jadi, umur kakak 15 tahun dan umur Budi adalah $15 - 5 = 10$ tahun.\n\n[Image showing a word problem being translated into a linear equation with visual aids]\n\nDengan PLSV, masalah yang tadinya terlihat rumit bisa kita selesaikan dengan langkah-langkah yang logis dan pasti.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 220,
+    "fields": {
+      "module": 34,
+      "title": "Kuis: Uji Kemampuan Detektif Angka",
+      "content": "Kamu sudah belajar cara menjaga keseimbangan timbangan matematika dan teknik pindah ruas. Sekarang saatnya membuktikan kemampuanmu dalam menemukan nilai variabel yang hilang. Fokuslah pada perubahan tanda saat angka berpindah ruas. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 34,
+    "fields": {
+      "lesson": 220,
+      "title": "Kuis PLSV SMP 7",
+      "description": "Evaluasi kemampuan menyelesaikan persamaan linear satu variabel dan soal cerita."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 216,
+    "fields": {
+      "quiz": 34,
+      "text": "Manakah di bawah ini yang merupakan contoh Kalimat Terbuka?",
+      "topic": "Konsep Dasar",
+      "option_a": "3 + 5 = 8",
+      "option_b": "Matahari terbit di sebelah timur",
+      "option_c": "x + 2 = 10",
+      "option_d": "2 x 3 = 5",
+      "correct_answer": "C",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 217,
+    "fields": {
+      "quiz": 34,
+      "text": "Nilai x yang memenuhi persamaan x - 7 = 12 adalah...",
+      "topic": "Penyelesaian PLSV",
+      "option_a": "5",
+      "option_b": "19",
+      "option_c": "-5",
+      "option_d": "-19",
+      "correct_answer": "B",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 218,
+    "fields": {
+      "quiz": 34,
+      "text": "Hasil dari persamaan 3x + 4 = 19 adalah...",
+      "topic": "Penyelesaian PLSV",
+      "option_a": "5",
+      "option_b": "7",
+      "option_c": "15",
+      "option_d": "4",
+      "correct_answer": "A",
+      "difficulty_level": 0.3
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 219,
+    "fields": {
+      "quiz": 34,
+      "text": "Jika 2x + 5 = x + 10, maka nilai x adalah...",
+      "topic": "Variabel di Dua Ruas",
+      "option_a": "15",
+      "option_b": "5",
+      "option_c": "2",
+      "option_d": "10",
+      "correct_answer": "B",
+      "difficulty_level": 0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 220,
+    "fields": {
+      "quiz": 34,
+      "text": "Jumlah dua bilangan berurutan adalah 31. Bilangan terkecilnya adalah...",
+      "topic": "Soal Cerita",
+      "option_a": "14",
+      "option_b": "15",
+      "option_c": "16",
+      "option_d": "17",
+      "correct_answer": "B",
+      "difficulty_level": 1.3
+    }
+  }
+]

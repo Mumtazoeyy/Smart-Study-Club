@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 83,
+    "fields": {
+      "course": 9,
+      "title": "Modul 3: Pewarisan Sifat (Genetika)",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 611,
+    "fields": {
+      "module": 83,
+      "title": "Materi Genetik: DNA, RNA, dan Kromosom",
+      "content": "Setiap karakteristik yang kamu miliki, mulai dari warna iris mata hingga bentuk cuping telinga, dikendalikan oleh materi genetik yang diwariskan dari orang tuamu melalui sel kelamin.\n\n1. **Kromosom**: Struktur berbentuk benang halus di dalam inti sel yang membawa informasi genetik. Manusia memiliki 46 kromosom (23 pasang).\n2. **Gen**: Segmen tertentu pada DNA yang membawa instruksi untuk protein tertentu. Gen inilah yang menentukan sifat (karakter).\n3. **DNA (Deoxyribonucleic Acid)**: Molekul raksasa berbentuk untai ganda berpilin (**Double Helix**) yang menyimpan kode genetik.\n\nIstilah Penting dalam Genetika:\n- **Genotipe**: Komposisi genetik suatu individu yang tidak tampak (disimbolkan dengan sepasang huruf, misal: BB, Bb, bb).\n- **Fenotipe**: Sifat fisik yang dapat diamati (misal: rambut keriting, warna kulit sawo matang).\n- **Dominan**: Gen yang kuat dan menutupi sifat gen pasangannya (disimbolkan huruf kapital).\n- **Resesif**: Gen yang lemah dan tertutupi oleh gen dominan (disimbolkan huruf kecil).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 612,
+    "fields": {
+      "module": 83,
+      "title": "Hukum Mendel I: Persilangan Monohibrid",
+      "content": "Gregor Mendel melakukan eksperimen dengan kacang ercis untuk membuktikan hukum pewarisan sifat. **Hukum I Mendel (Segregasi)** menyatakan bahwa pada pembentukan gamet, pasangan gen akan memisah secara bebas.\n\n**Persilangan Monohibrid** adalah persilangan dengan satu sifat beda (misal: menyilangkan bunga merah dengan bunga putih).\n- Jika sifat merah dominan (MM) disilangkan dengan putih resesif (mm), maka keturunan pertama (F1) semuanya akan berwarna merah (Mm).\n- Jika F1 disilangkan sesamanya (Mm x Mm), maka pada keturunan kedua (F2) akan dihasilkan rasio fenotipe **3 Merah : 1 Putih**.\n\n",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 613,
+    "fields": {
+      "module": 83,
+      "title": "Hukum Mendel II: Persilangan Dihibrid",
+      "content": "Mendel juga mempelajari bagaimana dua sifat yang berbeda diwariskan secara bersamaan melalui **Hukum II Mendel (Asortasi Bebas)**.\n\n**Persilangan Dihibrid** adalah persilangan dengan dua sifat beda (misal: kacang biji bulat warna kuning disilangkan dengan biji keriput warna hijau).\n\nDalam persilangan antara individu heterozigot sempurna (BbKk x BbKk), akan terbentuk papan catur (Punnett Square) dengan 16 kotak. Hasil rasio fenotipe yang akan muncul adalah:\n- 9 Bulat Kuning\n- 3 Bulat Hijau\n- 3 Keriput Kuning\n- 1 Keriput Hijau\n\n**Rasio Fenotipe F2 = 9 : 3 : 3 : 1**\n\n",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 614,
+    "fields": {
+      "module": 83,
+      "title": "Video: Penerapan Genetika dalam Pemuliaan Makhluk Hidup",
+      "content": "Genetika tidak hanya dipelajari di sekolah, tapi sangat berguna di dunia nyata. Video ini menjelaskan bagaimana para petani menciptakan bibit unggul padi yang tahan hama, atau bagaimana para peternak menghasilkan sapi perah dengan produksi susu melimpah melalui seleksi genetik. Kita juga akan membahas sedikit tentang penyakit menurun pada manusia seperti Hemofilia dan Albino yang terpaut pada kromosom.",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 615,
+    "fields": {
+      "module": 83,
+      "title": "Kuis: Master Genetika",
+      "content": "Persiapkan alat tulis dan kertas coretan! Kuis ini akan menguji kemampuanmu dalam menentukan gamet dan menghitung persentase kemunculan keturunan menggunakan hukum Mendel. Fokus pada simbol-simbol genotipenya!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 83,
+    "fields": {
+      "lesson": 615,
+      "title": "Evaluasi Pewarisan Sifat",
+      "description": "Uji kompetensi tentang materi genetik, istilah persilangan, Hukum Mendel I & II, serta rasio keturunan."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 611,
+    "fields": {
+      "quiz": 83,
+      "text": "Sifat fisik yang dapat diamati secara langsung pada makhluk hidup, seperti warna bunga atau bentuk rambut, disebut...",
+      "topic": "Istilah Genetika",
+      "option_a": "Genotipe",
+      "option_b": "Fenotipe",
+      "option_c": "Gamet",
+      "option_d": "Alel",
+      "correct_answer": "B",
+      "difficulty_level": -1.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 612,
+    "fields": {
+      "quiz": 83,
+      "text": "Jika tanaman bergenotipe Bb (B=bulat, b=keriput) disilangkan dengan sesamanya, berapa perbandingan fenotipe bulat dibandingkan keriput pada keturunannya?",
+      "topic": "Hukum Mendel I",
+      "option_a": "1 : 1",
+      "option_b": "3 : 1",
+      "option_c": "1 : 2 : 1",
+      "option_d": "9 : 3 : 3 : 1",
+      "correct_answer": "B",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 613,
+    "fields": {
+      "quiz": 83,
+      "text": "Jumlah gamet yang terbentuk dari individu dengan genotipe AaBb adalah...",
+      "topic": "Gamet",
+      "option_a": "2",
+      "option_b": "4 (AB, Ab, aB, ab)",
+      "option_c": "6",
+      "option_d": "8",
+      "correct_answer": "B",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 614,
+    "fields": {
+      "quiz": 83,
+      "text": "Pada persilangan dihibrid heterozigot sempurna (9:3:3:1), angka 1 pada perbandingan tersebut menunjukkan individu yang memiliki sifat...",
+      "topic": "Hukum Mendel II",
+      "option_a": "Dominan - Dominan",
+      "option_b": "Dominan - Resesif",
+      "option_c": "Resesif - Resesif",
+      "option_d": "Intermediet",
+      "correct_answer": "C",
+      "difficulty_level": 0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 615,
+    "fields": {
+      "quiz": 83,
+      "text": "Penyakit keturunan yang menyebabkan darah seseorang sukar membeku saat luka disebut...",
+      "topic": "Penyakit Menurun",
+      "option_a": "Anemia",
+      "option_b": "Hemofilia",
+      "option_c": "Diabetes",
+      "option_d": "Albino",
+      "correct_answer": "B",
+      "difficulty_level": -1.0
+    }
+  }
+]

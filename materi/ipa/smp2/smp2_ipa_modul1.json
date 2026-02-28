@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 8,
+    "fields": {
+      "title": "IPA Kelas 8 (SMP 2)",
+      "description": "Materi lanjutan mencakup Gerak dan Gaya, Struktur Tumbuhan, Sistem Tubuh Manusia, hingga Cahaya dan Optik.",
+      "course_code": "IPA_SMP2",
+      "level": "Menengah",
+      "category": 6
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 71,
+    "fields": {
+      "course": 8,
+      "title": "Modul 1: Gerak Benda dan Makhluk Hidup",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 551,
+    "fields": {
+      "module": 71,
+      "title": "Konsep Gerak: Jarak vs Perpindahan",
+      "content": "Sebuah benda dikatakan bergerak jika posisinya berubah terhadap titik acuan. Namun, ada dua istilah yang sering tertukar: Jarak dan Perpindahan.\n\n1. **Jarak**: Panjang seluruh lintasan yang ditempuh (Besaran Skalar). Contoh: Jika kamu berjalan 5 meter ke timur lalu 3 meter ke barat, jarakmu adalah 8 meter.\n2. **Perpindahan**: Perubahan posisi dari titik awal ke titik akhir (Besaran Vektor). Contoh: Pada kasus tadi, perpindahanmu hanya 2 meter ke arah timur.\n\nKelajuan ($v$) dihitung berdasarkan jarak ($s/t$), sedangkan Kecepatan ($\\vec{v}$) dihitung berdasarkan perpindahan ($\\Delta x/t$). Jika kecepatan benda berubah, maka benda tersebut mengalami **Percepatan** ($a$).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 552,
+    "fields": {
+      "module": 71,
+      "title": "Hukum Newton tentang Gerak",
+      "content": "Sir Isaac Newton merumuskan tiga hukum dasar yang menjelaskan mengapa benda bergerak:\n\n1. **Hukum I Newton (Inersia/Kelembamam)**: Benda cenderung mempertahankan posisinya. Jika diam akan tetap diam, jika bergerak akan tetap bergerak lurus beraturan kecuali ada gaya luar. Contoh: Tubuh kita terdorong ke depan saat mobil direm mendadak.\n2. **Hukum II Newton**: Percepatan benda sebanding dengan gaya yang diberikan dan berbanding terbalik dengan massanya. Rumus: $F = m \\cdot a$.\n3. **Hukum III Newton (Aksi-Reaksi)**: Jika kamu memberikan gaya pada benda, benda tersebut akan memberikan gaya yang sama besar namun berlawanan arah. Contoh: Tanganmu terasa sakit saat memukul meja.\n\n",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 553,
+    "fields": {
+      "module": 71,
+      "title": "Sistem Gerak Manusia: Tulang dan Sendi",
+      "content": "Manusia bisa bergerak karena adanya kerja sama antara alat gerak pasif (tulang) dan alat gerak aktif (otot).\n\n1. **Tulang (Rangka)**: Berfungsi melindungi organ dalam, memberi bentuk tubuh, dan tempat melekatnya otot. Berdasarkan bentuknya ada tulang pipa, pendek, pipih, dan tidak beraturan.\n2. **Sendi**: Penghubung antartulang yang memungkinkan pergerakan. \n   - **Sendi Peluru**: Gerak ke segala arah (bahu).\n   - **Sendi Engsel**: Gerak satu arah (siku/lutut).\n   - **Sendi Putar**: Gerak berputar (leher).\n   - **Sendi Pelana**: Gerak dua arah (ibu jari).\n\n",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 554,
+    "fields": {
+      "module": 71,
+      "title": "Video: Otot dan Gangguan Sistem Gerak",
+      "content": "Dalam video ini, kita akan mempelajari bagaimana otot berkontraksi dan berelaksasi. Kamu akan melihat perbedaan antara otot lurik (otot rangka), otot polos (organ dalam), dan otot jantung. Selain itu, kita juga akan membahas gangguan pada sistem gerak seperti Riketsia (kekurangan vitamin D), Osteoporosis (pengeroposan tulang), hingga Lordosis dan Skoliosis (kelainan tulang belakang akibat posisi duduk yang salah).",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 555,
+    "fields": {
+      "module": 71,
+      "title": "Kuis: Mekanika dan Gerak",
+      "content": "Sudah siap menguji pemahamanmu? Kuis ini menggabungkan logika Fisika tentang gaya dan Newton, serta hafalan struktur anatomi tubuh manusia. Pastikan kamu memahami rumus $F=m \\cdot a$ sebelum memulai. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 71,
+    "fields": {
+      "lesson": 555,
+      "title": "Evaluasi Gerak Benda dan Makhluk Hidup",
+      "description": "Uji kompetensi tentang jarak/perpindahan, Hukum Newton, serta anatomi rangka dan otot manusia."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 551,
+    "fields": {
+      "quiz": 71,
+      "text": "Seorang anak berlari mengelilingi lapangan bola sebanyak satu kali putaran penuh dan kembali ke titik awal. Pernyataan yang benar adalah...",
+      "topic": "Konsep Gerak",
+      "option_a": "Jaraknya nol, perpindahannya ada",
+      "option_b": "Jaraknya ada, perpindahannya nol",
+      "option_c": "Jarak dan perpindahannya sama",
+      "option_d": "Jarak dan perpindahannya nol",
+      "correct_answer": "B",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 552,
+    "fields": {
+      "quiz": 71,
+      "text": "Sebuah benda bermassa 5 kg didorong dengan gaya 20 N. Berapakah percepatan yang dialami benda tersebut?",
+      "topic": "Hukum II Newton",
+      "option_a": "100 m/s2",
+      "option_b": "15 m/s2",
+      "option_c": "4 m/s2",
+      "option_d": "25 m/s2",
+      "correct_answer": "C",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 553,
+    "fields": {
+      "quiz": 71,
+      "text": "Jenis sendi yang memungkinkan gerakan ke segala arah, seperti pada hubungan tulang lengan atas dengan gelang bahu adalah...",
+      "topic": "Sistem Gerak",
+      "option_a": "Sendi Engsel",
+      "option_b": "Sendi Putar",
+      "option_c": "Sendi Peluru",
+      "option_d": "Sendi Pelana",
+      "correct_answer": "C",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 554,
+    "fields": {
+      "quiz": 71,
+      "text": "Sifat kerja otot bisep dan trisep pada lengan atas saat kita menekuk tangan adalah...",
+      "topic": "Otot",
+      "option_a": "Sinergis (keduanya kontraksi)",
+      "option_b": "Antagonis (bisep kontraksi, trisep relaksasi)",
+      "option_c": "Otomatis",
+      "option_d": "Statistik",
+      "correct_answer": "B",
+      "difficulty_level": 0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 555,
+    "fields": {
+      "quiz": 71,
+      "text": "Kelainan tulang belakang yang membengkok ke arah depan sehingga dada terlihat membusung disebut...",
+      "topic": "Gangguan Gerak",
+      "option_a": "Skoliosis",
+      "option_b": "Kifosis",
+      "option_c": "Lordosis",
+      "option_d": "Fraktura",
+      "correct_answer": "C",
+      "difficulty_level": -0.5
+    }
+  }
+]

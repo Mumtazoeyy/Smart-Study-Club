@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 9,
+    "fields": {
+      "course": 2,
+      "title": "Modul 4: Indahnya Puisi Modern",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 41,
+    "fields": {
+      "module": 9,
+      "title": "Mengenal Puisi Modern: Kebebasan Berekspresi",
+      "content": "Berbeda dengan pantun atau gurindam yang memiliki aturan ketat, puisi modern atau sering disebut puisi bebas memberikan kemerdekaan bagi penulisnya untuk berekspresi. Puisi modern tidak lagi terikat pada jumlah baris, suku kata, atau rima yang kaku.\n\nDalam puisi modern, kekuatan utama terletak pada Diksi (pemilihan kata) dan kedalaman makna. Penulis puisi modern berusaha memadatkan bahasa agar setiap kata yang tertulis memiliki kekuatan emosional yang besar. Puisi ini adalah cerminan perasaan, kegelisahan, atau kekaguman penulis terhadap dunia di sekitarnya.\n\nCiri khas puisi modern:\n1. Tidak terikat bait dan rima yang baku.\n2. Menggunakan gaya bahasa yang lebih dinamis dan relevan dengan zaman.\n3. Lebih mengutamakan ekspresi jiwa daripada formalitas aturan.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 42,
+    "fields": {
+      "module": 9,
+      "title": "Unsur Fisik: Wajah Sebuah Puisi",
+      "content": "Unsur fisik adalah elemen puisi yang dapat kita amati secara langsung melalui mata kita. Inilah yang membuat sebuah puisi terlihat indah secara tekstual:\n\n1. Diksi: Pemilihan kata yang dilakukan penyair. Kata-kata yang dipilih biasanya memiliki nilai rasa yang tinggi, bukan sekadar kata biasa.\n2. Imaji (Citraan): Susunan kata yang dapat menimbulkan imajinasi atau khayalan pada pembaca. Seolah-olah pembaca dapat melihat (imaji visual), mendengar (imaji auditif), atau merasakan (imaji taktil) apa yang ditulis penyair.\n3. Kata Konkret: Kata yang dapat ditangkap oleh indra untuk memancing imaji. Misal, kata 'rawa-rawa' untuk menggambarkan kesunyian atau kegelapan.\n4. Majas (Gaya Bahasa): Bahasa kiasan yang digunakan untuk menghidupkan efek tertentu. Contoh: Metafora atau Personifikasi.\n5. Tipografi: Perwajahan puisi, seperti pengaturan baris, tepi kanan-kiri, atau penulisan kata yang tidak mengikuti aturan tanda baca umum untuk nilai estetika.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 43,
+    "fields": {
+      "module": 9,
+      "title": "Video: Seni Deklamasi dan Pembacaan Puisi",
+      "content": "Panduan Menyimak Video:\n\nPuisi diciptakan untuk didengar. Video ini akan menunjukkan bagaimana sebuah teks mati bisa menjadi hidup melalui seni deklamasi. Perhatikan setiap gerakan dan perubahan suara dari pembaca puisi.\n\nMateri yang terkandung dalam video:\n1. Artikulasi dan Lafal: Kejelasan dalam mengucapkan setiap suku kata agar makna tidak hilang.\n2. Intonasi: Tinggi rendahnya nada suara untuk menunjukkan penekanan pada kata-kata penting.\n3. Ekspresi dan Mimik: Perubahan wajah yang mengikuti emosi puisi, apakah sedih, marah, atau bahagia.\n4. Gestur: Gerakan tubuh yang mendukung penyampaian isi puisi kepada audiens.\n\nTugas: Simak video ini dan cobalah menirukan satu bait puisi tersebut dengan ekspresi yang menurutmu paling tepat!",
+      "video_url": "https://www.youtube.com/embed/XpS1t7nL8I4",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 44,
+    "fields": {
+      "module": 9,
+      "title": "Unsur Batin: Hakikat dan Pesan Penyair",
+      "content": "Unsur batin adalah jiwa dari sebuah puisi. Kita tidak bisa melihatnya secara langsung, melainkan harus merasakannya melalui perenungan isi puisi:\n\n1. Tema: Landasan utama atau pokok persoalan yang ingin disampaikan penyair. Misalnya tema tentang Tuhan, cinta, lingkungan, atau keadilan sosial.\n2. Rasa (Feeling): Sikap penyair terhadap pokok permasalahan. Perasaan ini akan terbaca melalui diksi yang digunakan, apakah penyair merasa iba, marah, atau rindu.\n3. Nada (Tone): Sikap penyair terhadap pembaca. Apakah penyair ingin menggurui, menyindir, atau mengajak pembaca untuk merenung bersama.\n4. Amanat: Pesan atau tujuan yang ingin disampaikan penyair kepada pembaca setelah mereka selesai menikmati puisi tersebut.\n\nMemahami unsur batin membantu kita menangkap 'pesan rahasia' yang disisipkan penyair di antara baris-baris kalimatnya.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 45,
+    "fields": {
+      "module": 9,
+      "title": "Kuis Kompetensi Modul 4",
+      "content": "Selamat! Kamu telah mendalami estetika puisi modern dari luar maupun dalam. Sekarang, mari kita uji kemampuan apresiasimu. Perhatikan istilah-istilah seperti diksi, imaji, dan amanat karena mereka adalah kunci utama dalam memahami keindahan sebuah karya sastra. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 9,
+    "fields": {
+      "lesson": 45,
+      "title": "Evaluasi Puisi Modern",
+      "description": "Analisis kedalaman makna dan struktur puisi melalui kuis ini."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 41,
+    "fields": {
+      "quiz": 9,
+      "text": "Pilihan kata yang tepat dan selaras dalam puisi untuk memberikan efek estetis disebut...",
+      "topic": "Unsur Fisik",
+      "option_a": "Rima",
+      "option_b": "Diksi",
+      "option_c": "Majas",
+      "option_d": "Tipografi",
+      "correct_answer": "B",
+      "difficulty_level": -1.0
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 42,
+    "fields": {
+      "quiz": 9,
+      "text": "Susunan baris dan halaman dalam puisi yang membentuk wajah puisi disebut...",
+      "topic": "Unsur Fisik",
+      "option_a": "Imaji",
+      "option_b": "Diksi",
+      "option_c": "Tipografi",
+      "option_d": "Rima",
+      "correct_answer": "C",
+      "difficulty_level": -0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 43,
+    "fields": {
+      "quiz": 9,
+      "text": "Pesan yang ingin disampaikan penyair kepada pembaca disebut unsur batin...",
+      "topic": "Unsur Batin",
+      "option_a": "Tema",
+      "option_b": "Rasa",
+      "option_c": "Nada",
+      "option_d": "Amanat",
+      "correct_answer": "D",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 44,
+    "fields": {
+      "quiz": 9,
+      "text": "Penggunaan kata yang dapat merangsang panca indra (seolah mendengar atau melihat) dalam puisi disebut...",
+      "topic": "Unsur Fisik",
+      "option_a": "Imaji/Citraan",
+      "option_b": "Majas",
+      "option_c": "Amanat",
+      "option_d": "Ritme",
+      "correct_answer": "A",
+      "difficulty_level": 0.9
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 45,
+    "fields": {
+      "quiz": 9,
+      "text": "Sikap penyair terhadap pembacanya (seperti menggurui, memuji, atau menyindir) disebut...",
+      "topic": "Unsur Batin",
+      "option_a": "Tema",
+      "option_b": "Nada",
+      "option_c": "Amanat",
+      "option_d": "Rasa",
+      "correct_answer": "B",
+      "difficulty_level": 1.3
+    }
+  }
+]

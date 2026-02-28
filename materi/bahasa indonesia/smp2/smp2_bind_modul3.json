@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 8,
+    "fields": {
+      "course": 2,
+      "title": "Modul 3: Menulis Teks Eksposisi",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 36,
+    "fields": {
+      "module": 8,
+      "title": "Mengenal Teks Eksposisi: Argumen Berbasis Fakta",
+      "content": "Pernahkah kamu membaca sebuah tulisan yang mencoba menjelaskan sebuah isu penting, seperti dampak sampah plastik bagi laut, lalu tulisan tersebut memberikan alasan-alasan yang kuat? Tulisan seperti itulah yang dinamakan Teks Eksposisi.\n\nTeks Eksposisi adalah sebuah teks yang mengusung gagasan atau usulan berdasarkan sudut pandang tertentu dengan tujuan untuk memperluas pengetahuan pembaca. Teks ini tidak hanya berisi pendapat kosong, melainkan harus disertai dengan argumentasi yang sangat kuat dan fakta-fakta yang mendukung agar pembaca yakin terhadap gagasan tersebut.\n\nUnsur Utama Teks Eksposisi:\n1. Gagasan: Berisi pernyataan yang dapat berupa komentar, penilaian, atau saran penulis terhadap suatu masalah.\n2. Fakta: Berisi kenyataan atau peristiwa yang benar-benar terjadi. Fakta berfungsi untuk memperkuat gagasan agar tidak dianggap sebagai sekadar opini belaka.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 37,
+    "fields": {
+      "module": 8,
+      "title": "Bedah Struktur Teks Eksposisi",
+      "content": "Agar pesan dan argumenmu tersampaikan dengan rapi dan meyakinkan, teks eksposisi harus disusun berdasarkan urutan struktur berikut:\n\n1. Tesis (Pengenalan Isu)\nBagian ini terletak di awal teks. Isinya adalah pengenalan isu atau masalah yang akan dibahas, serta pernyataan posisi penulis terhadap masalah tersebut.\nContoh: 'Pendidikan karakter sangat penting bagi remaja untuk menghadapi tantangan global di masa depan.'\n\n2. Rangkaian Argumen\nIni adalah bagian inti. Penulis menyajikan berbagai alasan untuk mendukung tesis yang sudah disampaikan. Di bagian ini pulalah fakta-fakta seperti data statistik, hasil penelitian, atau pernyataan ahli dimasukkan untuk memperkuat pendapat penulis.\n\n3. Penegasan Ulang\nMerupakan bagian penutup atau simpulan. Penulis merangkum kembali inti dari argumennya dan seringkali memberikan saran atau rekomendasi bagi pembaca terkait isu tersebut.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 38,
+    "fields": {
+      "module": 8,
+      "title": "Video: Cara Membangun Argumen yang Logis",
+      "content": "Panduan Menyimak Video:\n\nBanyak orang memiliki pendapat, tapi tidak semua orang bisa memberikan alasan yang logis. Video ini akan melatih kamu cara memisahkan perasaan pribadi (opini subjektif) dengan argumen yang didasarkan pada data (objektif).\n\nMateri Utama dalam Video:\n1. Prinsip Logika: Cara menghubungkan satu fakta dengan fakta lain sehingga membentuk kesimpulan yang masuk akal.\n2. Mencari Fakta Pendukung: Teknik mencari data dari sumber terpercaya untuk memperkuat tulisanmu.\n3. Menghindari Bias: Bagaimana tetap bersikap objektif dalam menjelaskan sebuah masalah tanpa terlalu emosional.\n\nTugas: Simak video ini, lalu coba tuliskan satu pernyataan posisi (tesis) tentang kebersihan sekolahmu, lengkap dengan satu alasan pendukungnya!",
+      "video_url": "https://www.youtube.com/embed/v9S_m8tY1vM",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 39,
+    "fields": {
+      "module": 8,
+      "title": "Pola Pengembangan dan Ciri Kebahasaan",
+      "content": "Teks eksposisi memiliki beberapa cara atau pola dalam mengembangkan ide-idenya, yaitu:\n\n1. Pola Umum-Khusus (Deduktif): Ide pokok diletakkan di awal paragraf, kemudian diikuti oleh penjelasan-penjelasan rinci.\n2. Pola Khusus-Umum (Induktif): Penjelasan rinci diletakkan di awal, lalu diakhiri dengan simpulan atau ide pokok.\n3. Pola Ilustrasi: Menggunakan contoh nyata untuk menjelaskan sebuah gagasan abstrak agar lebih mudah dipahami.\n\nCiri Kebahasaan yang Harus Kamu Perhatikan:\n- Menggunakan Kata Teknis: Sesuai dengan topik yang dibahas (misal topik lingkungan menggunakan kata 'polusi', 'ekosistem').\n- Menggunakan Konjungsi Kausalitas: Kata hubung sebab-akibat seperti 'sebab', 'karena', 'oleh karena itu', 'sehingga'.\n- Menggunakan Kata Persuasif: Kata-kata yang bersifat mengajak atau mendesak seperti 'hendaknya', 'sebaiknya', 'perlu', 'harus'.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 40,
+    "fields": {
+      "module": 8,
+      "title": "Kuis Kompetensi Modul 3",
+      "content": "Hebat! Kamu sudah belajar cara berpikir kritis dan sistematis melalui teks eksposisi. Sekarang, mari uji pemahamanmu mengenai struktur, fungsi fakta, dan pola pengembangan paragraf. Ingat, dalam eksposisi, fakta adalah kunci untuk meyakinkan pembaca!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 8,
+    "fields": {
+      "lesson": 40,
+      "title": "Evaluasi Teks Eksposisi",
+      "description": "Selesaikan kuis ini untuk melatih kemampuan berpikir kritis Anda."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 36,
+    "fields": {
+      "quiz": 8,
+      "text": "Bagian teks eksposisi yang berisi pengenalan isu, masalah, atau pandangan penulis secara umum disebut...",
+      "topic": "Struktur",
+      "option_a": "Rangkaian Argumen",
+      "option_b": "Tesis",
+      "option_c": "Penegasan Ulang",
+      "option_d": "Fakta",
+      "correct_answer": "B",
+      "difficulty_level": -1.1
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 37,
+    "fields": {
+      "quiz": 8,
+      "text": "Apa fungsi utama dari fakta dalam teks eksposisi?",
+      "topic": "Unsur Teks",
+      "option_a": "Untuk menghibur pembaca",
+      "option_b": "Untuk memperkuat argumen penulis",
+      "option_c": "Untuk memperpanjang tulisan",
+      "option_d": "Untuk mengaburkan opini",
+      "correct_answer": "B",
+      "difficulty_level": -0.3
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 38,
+    "fields": {
+      "quiz": 8,
+      "text": "Paragraf yang dimulai dengan pernyataan umum kemudian diikuti penjelas khusus disebut paragraf...",
+      "topic": "Jenis Paragraf",
+      "option_a": "Induktif",
+      "option_b": "Deduktif",
+      "option_c": "Campuran",
+      "option_d": "Deskriptif",
+      "correct_answer": "B",
+      "difficulty_level": 0.4
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 39,
+    "fields": {
+      "quiz": 8,
+      "text": "Kata penghubung (konjungsi) yang menunjukkan hubungan sebab-akibat disebut konjungsi...",
+      "topic": "Kebahasaan",
+      "option_a": "Temporal",
+      "option_b": "Kausalitas",
+      "option_c": "Pertentangan",
+      "option_d": "Gabungan",
+      "correct_answer": "B",
+      "difficulty_level": 0.7
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 40,
+    "fields": {
+      "quiz": 8,
+      "text": "Di mana letak ringkasan atau simpulan dari keseluruhan isi teks eksposisi?",
+      "topic": "Struktur",
+      "option_a": "Judul",
+      "option_b": "Tesis",
+      "option_c": "Rangkaian Argumen",
+      "option_d": "Penegasan Ulang",
+      "correct_answer": "D",
+      "difficulty_level": 1.2
+    }
+  }
+]

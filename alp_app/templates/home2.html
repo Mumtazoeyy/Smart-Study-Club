@@ -1,0 +1,179 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'fontawesome-free-7.1.0-web/css/all.min.css' %}">
+
+<style>
+    /* --- CSS DASAR (TIDAK BERUBAH) --- */
+    .stat-card-industrial {
+        background-color: rgba(255, 255, 255, 0.05); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 0px; 
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .stat-card-industrial:hover {
+        transform: translateY(-5px);
+        /* Efek hitam dihapus, tetap menjaga transparansi asli */
+        border-color: rgba(234, 179, 8, 0.5); /* Border berubah sedikit ke arah kuning */
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Efek teks putih menyala dihapus agar warna asli tetap terjaga */
+    .stat-card-industrial:hover .counter-value {
+        color: #111827 !important; /* Tetap gelap sesuai desain awal */
+    }
+
+    .stat-card-industrial:hover p {
+        color: #9ca3af !important; /* Tetap abu-abu */
+    }
+
+    /* Efek icon box putih dihapus agar tetap kuning-hitam industrial */
+    .stat-card-industrial:hover .stat-icon-box {
+        background-color: #111827 !important;
+        color: #eab308 !important;
+    }
+
+    .stat-line-glow {
+        height: 1.5px;
+        width: 1.5rem;
+        background-color: #eab308;
+        transition: all 0.5s ease;
+    }
+    
+    .stat-card-industrial:hover .stat-line-glow {
+        width: 100%;
+        background-color: #eab308; /* Tetap kuning, tidak berubah jadi putih */
+    }
+
+    /* --- SETUP 2x2 DI HP --- */
+    @media (max-width: 640px) {
+        .w-full.sm\:w-1\/2.lg\:w-1\/4 { 
+            width: 50% !important; 
+            padding-left: 6px !important; 
+            padding-right: 6px !important; 
+            margin-bottom: 12px !important; 
+        }
+
+        .stat-card-industrial { 
+            padding: 0.8rem !important; 
+            min-height: 85px !important; 
+        }
+
+        .stat-icon-box { 
+            padding: 0.5rem !important; 
+            margin-right: 0.5rem !important; 
+        }
+        
+        .stat-icon-box i { font-size: 1rem !important; }
+        .counter-value { font-size: 1.4rem !important; }
+        
+        .stat-card-industrial p { 
+            font-size: 8px !important; 
+            line-height: 1.2 !important;
+        }
+
+        .stat-line-glow { margin-top: 0.5rem !important; }
+    }
+</style>
+
+<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8"> 
+    <section class="statistics-section">
+        <div class="flex flex-wrap justify-center -mx-4">
+            
+            {# Stat 1 #}
+            <div class="w-full sm:w-1/2 lg:w-1/4 px-4 mb-6 lg:mb-0">
+                <a href="{% url 'leaderboard' %}" class="block">
+                    <div class="stat-card-industrial p-6 group">
+                        <div class="flex items-center">
+                            <div class="stat-icon-box flex-shrink-0 mr-4 p-3 bg-gray-900 text-[#eab308] rounded-lg transition-all duration-300">
+                                <i class="fas fa-user-graduate text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="counter-value text-3xl font-black mb-0 text-gray-900 tracking-tighter transition-all duration-300" data-target="{{ total_students|default:'0' }}">0</h3>
+                                <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-0 transition-all duration-300">Peserta Kursus</p>
+                            </div>
+                        </div>
+                        <div class="stat-line-glow mt-4"></div>
+                    </div>
+                </a>
+            </div>
+
+            {# Stat 2 #}
+            <div class="w-full sm:w-1/2 lg:w-1/4 px-4 mb-6 lg:mb-0">
+                <div class="stat-card-industrial p-6 group">
+                    <div class="flex items-center">
+                        <div class="stat-icon-box flex-shrink-0 mr-4 p-3 bg-gray-900 text-[#eab308] rounded-lg transition-all duration-300">
+                            <i class="fas fa-star text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="counter-value text-3xl font-black mb-0 text-gray-900 tracking-tighter transition-all duration-300" data-target="{{ review_count|default:'0' }}">0</h3>
+                            <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-0 transition-all duration-300">Review Bintang 5</p>
+                        </div>
+                    </div>
+                    <div class="stat-line-glow mt-4"></div>
+                </div>
+            </div>
+
+            {# Stat 3 #}
+            <div class="w-full sm:w-1/2 lg:w-1/4 px-4 mb-6 lg:mb-0">
+                <a href="{% url 'discussion_view' %}" class="block">
+                    <div class="stat-card-industrial p-6 group">
+                        <div class="flex items-center">
+                            <div class="stat-icon-box flex-shrink-0 mr-4 p-3 bg-gray-900 text-[#eab308] rounded-lg transition-all duration-300">
+                                <i class="fas fa-comments text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="counter-value text-3xl font-black mb-0 text-gray-900 tracking-tighter transition-all duration-300" data-target="{{ total_discussions|default:'0' }}">0</h3>
+                                <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-0 transition-all duration-300">Diskusi Aktif</p>
+                            </div>
+                        </div>
+                        <div class="stat-line-glow mt-4"></div>
+                    </div>
+                </a>
+            </div>
+
+            {# Stat 4 #}
+            <div class="w-full sm:w-1/2 lg:w-1/4 px-4">
+                <a href="{% url 'course_list' %}" class="block">
+                    <div class="stat-card-industrial p-6 group">
+                        <div class="flex items-center">
+                            <div class="stat-icon-box flex-shrink-0 mr-4 p-3 bg-gray-900 text-[#eab308] rounded-lg transition-all duration-300">
+                                <i class="fas fa-book-open text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="counter-value text-3xl font-black mb-0 text-gray-900 tracking-tighter transition-all duration-300" data-target="{{ total_courses|default:'0' }}">0</h3>
+                                <p class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-0 transition-all duration-300">Pilihan Kursus</p>
+                            </div>
+                        </div>
+                        <div class="stat-line-glow mt-4"></div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const counters = document.querySelectorAll('.counter-value');
+        const speed = 200; 
+        counters.forEach(counter => {
+            const animate = () => {
+                const value = +counter.getAttribute('data-target');
+                const data = +counter.innerText;
+                const time = value / speed;
+                if (data < value) {
+                    counter.innerText = Math.ceil(data + time);
+                    setTimeout(animate, 10);
+                } else {
+                    counter.innerText = value;
+                }
+            };
+            animate();
+        });
+    });
+</script>

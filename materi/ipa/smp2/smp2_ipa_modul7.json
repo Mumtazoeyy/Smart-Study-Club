@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 77,
+    "fields": {
+      "course": 8,
+      "title": "Modul 7: Sistem Pernapasan Manusia",
+      "order": 7
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 581,
+    "fields": {
+      "module": 77,
+      "title": "Organ Pernapasan dan Jalur Udara",
+      "content": "Bernapas adalah proses menghirup oksigen ($O_2$) dan menghembuskan karbon dioksida ($CO_2$). Udara melewati jalur berikut:\n\n1. **Hidung**: Udara disaring oleh rambut hidung, dilembapkan, dan suhunya disesuaikan.\n2. **Faring & Laring**: Pangkal tenggorokan yang terdapat epiglotis (katup penutup) agar makanan tidak masuk ke jalur napas.\n3. **Trakea (Tenggorokan)**: Batang tenggorokan yang tersusun dari cincin tulang rawan dan memiliki silia (rambut getar) untuk menyaring kotoran halus.\n4. **Bronkus & Bronkiolus**: Percabangan yang mengarahkan udara masuk lebih dalam ke paru-paru.\n5. **Alveolus**: Kantung udara kecil tempat terjadinya pertukaran gas $O_2$ dan $CO_2$ secara difusi.\n\n\n\nStruktur alveolus yang sangat banyak dan tipis memperluas permukaan pertukaran gas sehingga proses pernapasan menjadi sangat efisien.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 582,
+    "fields": {
+      "module": 77,
+      "title": "Mekanisme Pernapasan: Dada dan Perut",
+      "content": "Udara masuk ke paru-paru bukan karena 'ditarik', melainkan karena perubahan tekanan udara di dalam rongga dada sesuai prinsip tekanan zat yang telah kita pelajari di Modul 6.\n\n1. **Pernapasan Dada**: Melibatkan otot antartulang rusuk. Saat otot berkontraksi, rusuk naik, rongga dada membesar, tekanan paru-paru turun, dan udara masuk.\n2. **Pernapasan Perut**: Melibatkan otot **Diafragma** (sekat antara rongga dada dan perut). Saat diafragma berkontraksi (mendatar), rongga dada membesar dan udara masuk.\n\n\n\nProses menghirup udara disebut Inspirasi, sedangkan menghembuskan udara disebut Ekspirasi.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 583,
+    "fields": {
+      "module": 77,
+      "title": "Volume Pernapasan dan Kapasitas Paru-paru",
+      "content": "Paru-paru kita memiliki kapasitas penampungan udara yang berbeda-beda:\n\n- **Volume Tidal**: Udara yang masuk/keluar saat pernapasan biasa (sekitar 500 mL).\n- **Volume Cadangan Inspirasi**: Udara yang masih bisa dihirup sekuat tenaga setelah napas biasa.\n- **Volume Cadangan Ekspirasi**: Udara yang masih bisa dihembuskan sekuat tenaga setelah napas biasa.\n- **Volume Sisa (Residu)**: Udara yang selalu ada di paru-paru agar paru-paru tidak kempis (sekitar 1000 mL).\n\n\n\nKapasitas Vital paru-paru adalah jumlah total udara maksimal yang bisa dihembuskan setelah inspirasi maksimal.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 584,
+    "fields": {
+      "module": 77,
+      "title": "Video: Bahaya Merokok dan Penyakit Pernapasan",
+      "content": "Sistem pernapasan sangat rentan terhadap polusi dan zat kimia. Video ini akan menunjukkan dampak asap rokok yang mengandung tar dan nikotin terhadap silia trakea dan elastisitas alveolus. Kita juga akan membahas penyakit seperti Influenza, Asma (penyempitan saluran napas), Bronkitis, hingga Tuberkulosis (TBC) yang disebabkan oleh bakteri *Mycobacterium tuberculosis*.",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 585,
+    "fields": {
+      "module": 77,
+      "title": "Kuis: Ahli Pulmonologi",
+      "content": "Uji pengetahuanmu tentang jalur udara, mekanisme otot pernapasan, dan jenis-jenis volume udara dalam paru-paru. Fokus pada perbedaan inspirasi dan ekspirasi!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 77,
+    "fields": {
+      "lesson": 585,
+      "title": "Evaluasi Sistem Pernapasan",
+      "description": "Uji kompetensi tentang organ pernapasan, pertukaran gas di alveolus, dan mekanisme pernapasan."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 581,
+    "fields": {
+      "quiz": 77,
+      "text": "Tempat terjadinya pertukaran gas oksigen dan karbon dioksida secara difusi adalah...",
+      "topic": "Organ Pernapasan",
+      "option_a": "Bronkus",
+      "option_b": "Trakea",
+      "option_c": "Alveolus",
+      "option_d": "Laring",
+      "correct_answer": "C",
+      "difficulty_level": -1.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 582,
+    "fields": {
+      "quiz": 77,
+      "text": "Pada pernapasan perut, udara masuk ke paru-paru apabila posisi diafragma dalam keadaan...",
+      "topic": "Mekanisme Pernapasan",
+      "option_a": "Melengkung ke atas (relaksasi)",
+      "option_b": "Mendatar (kontraksi)",
+      "option_c": "Mengecil",
+      "option_d": "Tetap",
+      "correct_answer": "B",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 583,
+    "fields": {
+      "quiz": 77,
+      "text": "Udara yang masih tersisa di dalam paru-paru meskipun kita telah menghembuskan napas sekuat-kuatnya disebut...",
+      "topic": "Volume Pernapasan",
+      "option_a": "Volume Tidal",
+      "option_b": "Volume Cadangan Ekspirasi",
+      "option_c": "Volume Residu",
+      "option_d": "Kapasitas Vital",
+      "correct_answer": "C",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 584,
+    "fields": {
+      "quiz": 77,
+      "text": "Penyakit pernapasan yang ditandai dengan peradangan pada selaput pembungkus paru-paru disebut...",
+      "topic": "Gangguan Pernapasan",
+      "option_a": "Bronkitis",
+      "option_b": "Pleuritis",
+      "option_c": "Faringitis",
+      "option_d": "Sinusitis",
+      "correct_answer": "B",
+      "difficulty_level": 1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 585,
+    "fields": {
+      "quiz": 77,
+      "text": "Fungsi lendir dan rambut hidung pada rongga hidung adalah untuk...",
+      "topic": "Fungsi Organ",
+      "option_a": "Menghasilkan oksigen",
+      "option_b": "Menyerap karbon dioksida",
+      "option_c": "Menyaring debu dan mengatur kelembapan udara",
+      "option_d": "Membantu pertukaran gas",
+      "correct_answer": "C",
+      "difficulty_level": -1.5
+    }
+  }
+]

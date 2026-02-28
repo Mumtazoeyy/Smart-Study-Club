@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 84,
+    "fields": {
+      "course": 9,
+      "title": "Modul 4: Listrik Statis dalam Kehidupan",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 616,
+    "fields": {
+      "module": 84,
+      "title": "Konsep Muatan Listrik dan Atom",
+      "content": "Semua benda tersusun atas atom. Di dalam atom terdapat partikel subatomik: **Proton** (positif), **Elektron** (negatif), dan **Neutron** (netral). Listrik statis terjadi karena adanya perpindahan elektron dari satu benda ke benda lain.\n\n- **Benda Netral**: Jumlah proton dan elektron sama.\n- **Benda Positif**: Kehilangan atau kekurangan elektron.\n- **Benda Negatif**: Kelebihan atau menerima elektron.\n\nContoh fenomena: Saat kamu menggosokkan sisir plastik ke rambut kering, elektron dari rambut berpindah ke sisir, sehingga sisir menjadi bermuatan negatif dan mampu menarik potongan kertas kecil. Interaksi antara dua muatan adalah: muatan sejenis akan tolak-menolak, dan muatan berbeda jenis akan tarik-menarik.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 617,
+    "fields": {
+      "module": 84,
+      "title": "Hukum Coulomb dan Medan Listrik",
+      "content": "Charles Augustin de Coulomb menemukan bahwa ada gaya yang bekerja antara dua benda bermuatan listrik. **Hukum Coulomb** menyatakan bahwa besar gaya tarik atau gaya tolak antara dua muatan listrik sebanding dengan besar masing-masing muatan dan berbanding terbalik dengan kuadrat jarak antara kedua muatan tersebut.\n\n**Rumus Hukum Coulomb:**\n$$F = k \\cdot \\frac{q_1 \\cdot q_2}{r^2}$$\n\nDimana:\n- $F$ = Gaya Coulomb (Newton)\n- $k$ = Konstanta ($9 \\times 10^9 Nm^2/C^2$)\n- $q$ = Muatan listrik (Coulomb)\n- $r$ = Jarak antar muatan (meter)\n\nSelain itu, ada konsep **Medan Listrik**, yaitu daerah di sekitar benda bermuatan yang masih dipengaruhi oleh gaya listrik. Garis gaya listrik selalu keluar dari muatan positif dan masuk ke muatan negatif.\n\n[Image illustrating the electric field lines around positive and negative charges]",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 618,
+    "fields": {
+      "module": 84,
+      "title": "Kelistrikan pada Sistem Saraf Manusia",
+      "content": "Listrik statis tidak hanya ada pada benda mati. Tubuh manusia menggunakan impuls listrik untuk mengirim informasi melalui sel saraf (neuron). \n\nImpuls listrik ini terjadi karena adanya perbedaan muatan di dalam dan di luar sel saraf yang melibatkan ion-ion seperti Na+, K+, dan Cl-. Bagian-bagian neuron yang berperan penting adalah:\n- **Dendrit**: Menerima impuls.\n- **Akson**: Meneruskan impuls.\n- **Selubung Mielin**: Mempercepat jalannya impuls.\n\n\n\nFenomena kelistrikan juga ditemukan pada hewan tertentu untuk pertahanan atau mencari mangsa, seperti Belut Listrik yang mampu menghasilkan tegangan hingga ratusan volt.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 619,
+    "fields": {
+      "module": 84,
+      "title": "Video: Fenomena Petir dan Penangkal Petir",
+      "content": "Pernahkah kamu bertanya-tanya mengapa petir terjadi? Petir adalah loncatan elektron dalam jumlah raksasa antara awan ke awan atau awan ke bumi. Video ini akan menjelaskan mekanisme terjadinya petir, bahayanya, serta bagaimana alat penangkal petir bekerja untuk mengalirkan muatan listrik raksasa tersebut langsung ke dalam tanah (grounding).",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 620,
+    "fields": {
+      "module": 84,
+      "title": "Kuis: Eksplorasi Listrik Statis",
+      "content": "Siap menguji logikamu? Kuis ini akan menguji pemahamanmu tentang interaksi muatan, perhitungan gaya Coulomb, hingga konsep kelistrikan pada tubuh manusia. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 84,
+    "fields": {
+      "lesson": 620,
+      "title": "Evaluasi Listrik Statis",
+      "description": "Uji kompetensi tentang muatan listrik, Hukum Coulomb, medan listrik, dan sel saraf."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 616,
+    "fields": {
+      "quiz": 84,
+      "text": "Jika dua buah benda bermuatan listrik yang sejenis didekatkan, maka yang terjadi adalah...",
+      "topic": "Interaksi Muatan",
+      "option_a": "Tarik-menarik",
+      "option_b": "Tolak-menolak",
+      "option_c": "Tidak terjadi apa-apa",
+      "option_d": "Muatan menghilang",
+      "correct_answer": "B",
+      "difficulty_level": -1.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 617,
+    "fields": {
+      "quiz": 84,
+      "text": "Berdasarkan Hukum Coulomb, jika jarak antara dua muatan listrik diperbesar menjadi dua kali semula, maka gaya Coulombnya menjadi...",
+      "topic": "Hukum Coulomb",
+      "option_a": "2 kali semula",
+      "option_b": "4 kali semula",
+      "option_c": "1/2 kali semula",
+      "option_d": "1/4 kali semula",
+      "correct_answer": "D",
+      "difficulty_level": 0.9
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 618,
+    "fields": {
+      "quiz": 84,
+      "text": "Bagian sel saraf yang berfungsi untuk mempercepat jalannya impuls listrik adalah...",
+      "topic": "Sel Saraf",
+      "option_a": "Dendrit",
+      "option_b": "Badan Sel",
+      "option_c": "Selubung Mielin",
+      "option_d": "Nukleus",
+      "correct_answer": "C",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 619,
+    "fields": {
+      "quiz": 84,
+      "text": "Satuan dari muatan listrik dalam sistem internasional (SI) adalah...",
+      "topic": "Dasar Listrik",
+      "option_a": "Ampere",
+      "option_b": "Volt",
+      "option_c": "Coulomb",
+      "option_d": "Ohm",
+      "correct_answer": "C",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 620,
+    "fields": {
+      "quiz": 84,
+      "text": "Loncatan muatan listrik yang terjadi antara awan dan bumi akibat perbedaan potensial yang sangat besar disebut...",
+      "topic": "Fenomena Listrik",
+      "option_a": "Arus listrik",
+      "option_b": "Petir",
+      "option_c": "Hambatan",
+      "option_d": "Magnet",
+      "correct_answer": "B",
+      "difficulty_level": -1.0
+    }
+  }
+]

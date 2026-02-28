@@ -1,0 +1,208 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% load lesson_tags %} 
+
+{% block title %}Hasil Evaluasi: {{ quiz.title }}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'fontawesome-free-7.1.0-web/css/all.min.css' %}">
+
+<style>
+    /* Reset & Background Industrial Dot (Gaya home5.html) */
+    footer, #section5 { display: none !important; }
+    
+    body { 
+        background-color: #ffffff; 
+        background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
+        background-size: 16px 16px;
+    }
+
+    /* Card Transparan Glassmorphism */
+    .card-result-glass {
+        background-color: rgba(255, 255, 255, 0.05); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        transition: all 0.4s ease;
+    }
+
+    /* Tombol: Layout Statis (Tanpa Angkat) */
+    .btn-action-glass {
+        background-color: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+        transition: background-color 0.3s ease;
+    }
+
+    /* Efek Hover: Hanya ganti background tipis, TANPA ganti warna border tepi */
+    .btn-action-glass:hover {
+        background-color: rgba(0, 0, 0, 0.02);
+    }
+
+    /* Garis Kuning Memanjang (Satu-satunya indikator hover) */
+    .btn-line-anim {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2.5px;
+        background-color: #eab308;
+        width: 0; 
+        transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-action-glass:hover .btn-line-anim {
+        width: 100%; 
+    }
+
+    .btn-text {
+        transition: color 0.3s ease;
+    }
+    
+    .btn-action-glass:hover .btn-text {
+        color: #000;
+    }
+</style>
+
+<main class="pt-2 pb-20 min-h-screen flex items-start justify-center">
+    <div class="max-w-6xl mx-auto px-6 w-full">
+        
+        <div class="card-result-glass p-8 md:p-12">
+
+            {# --- NOTIFIKASI SERTIFIKAT: POSISI DI ATAS KONTEN PENILAIAN (FULL WIDTH) --- #}
+            {% if is_passed and total >= 20 %}
+            <div class="certificate-announcement p-6 rounded-3xl mb-10 flex flex-col md:flex-row items-center gap-6 border-2 border-dashed border-[#eab308] bg-yellow-50/30">
+                <div class="h-16 w-16 rounded-2xl bg-[#eab308] flex items-center justify-center text-white flex-shrink-0 animate-bounce shadow-lg shadow-yellow-200">
+                    <i class="fas fa-award text-3xl"></i>
+                </div>
+                <div class="text-center md:text-left">
+                    <h4 class="text-sm font-black uppercase tracking-[0.3em] text-gray-900">Achievement Unlocked: Certified!</h4>
+                    <p class="text-xs text-gray-600 leading-relaxed mt-1">
+                        Luar biasa! Kamu telah menyelesaikan evaluasi akhir dengan hasil memuaskan. Sertifikat resmi kamu sudah diterbitkan dan dapat diunduh melalui 
+                        <a href="{% url '#' %}" class="text-[#eab308] font-black underline hover:text-black transition-colors">Halaman Dashboard Profil</a>.
+                    </p>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                {# SISI KIRI: STATUS & SKOR #}
+                <div class="lg:col-span-5 border-r-0 lg:border-r border-gray-100 pr-0 lg:pr-12 text-center lg:text-left">
+                    <div class="flex items-center justify-center lg:justify-start gap-3 mb-6">
+                        <div class="h-4 w-1.5 bg-[#eab308]"></div>
+                        <span class="text-gray-400 font-black text-[10px] tracking-[0.4em] uppercase">Misi Selesai</span>
+                    </div>
+
+                    <h1 class="text-4xl md:text-5xl font-black text-gray-900 tracking-tighter mb-8 uppercase">
+                        HASIL: 
+                        <span class="italic {% if percentage >= 70 %}text-[#eab308]{% else %}text-orange-500{% endif %}">
+                            {% if percentage >= 70 %}LULUS{% else %}REMEDIAL{% endif %}
+                        </span>
+                    </h1>
+
+                    <div class="flex items-end justify-center lg:justify-start gap-4 mb-2">
+                        <span class="text-8xl md:text-9xl font-black text-gray-900 tracking-tighter">{{ percentage|floatformat:0 }}</span>
+                        <span class="text-3xl font-black text-[#eab308] mb-6">%</span>
+                    </div>
+                    <p class="text-[10px] font-black uppercase tracking-[0.5em] text-gray-400">Tingkat Akurasi Jawaban</p>
+                </div>
+
+                {# SISI KANAN: DETAIL & SEMUA TOMBOL #}
+                <div class="lg:col-span-7 space-y-8">
+                    
+                    {# Info Konten #}
+                    <div>
+                        <h2 class="text-xl font-black text-gray-900 uppercase tracking-tight mb-2">{{ quiz.title }}</h2>
+                        <p class="text-gray-500 text-sm leading-relaxed italic">
+                            {% if percentage >= 70 %}
+                                "Selamat! Anda telah menguasai materi ini dengan baik. Silakan lanjut ke langkah berikutnya."
+                            {% else %}
+                                "Pemahaman Anda masih perlu ditingkatkan. Gunakan fitur remedial atau review materi untuk belajar kembali."
+                            {% endif %}
+                        </p>
+                    </div>
+
+                    {# Statistik Jawaban #}
+                    <div class="flex flex-wrap gap-8 py-6 border-y border-gray-100">
+                        <div>
+                            <p class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1">Benar</p>
+                            <p class="text-2xl font-black text-gray-900">{{ score }} <span class="text-gray-300 text-sm">/ {{ total }}</span></p>
+                        </div>
+                        {% if wrong_topics %}
+                        <div>
+                            <p class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1">Topik Fokus</p>
+                            <div class="flex gap-2">
+                                {% for topic in wrong_topics %}
+                                <span class="text-[10px] font-bold text-gray-800 uppercase italic">{{ topic }}{% if not forloop.last %},{% endif %}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    {# Tombol-Tombol Aksi (Design Tetap Sama, Logika Diperbarui) #}
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        
+                        {# 1. Lanjut Materi atau Remedial #}
+                        {% if is_passed %}
+                            {# Jika Lulus: Munculkan tombol Lanjut #}
+                            {# Catatan: Gunakan default '#' agar tag <a> tetap ter-render dan tidak hilang #}
+                            <a href="{% if next_lesson %}{% url 'lesson_content' next_lesson.pk %}{% else %}{% url 'course_detail' quiz.lesson.module.course.pk %}{% endif %}" class="btn-action-glass md:col-span-2 py-5 px-6 flex items-center justify-between">
+                                <span class="btn-text text-[11px] font-black uppercase tracking-widest">
+                                    {% if next_lesson %}
+                                        Lanjutkan Materi Berikutnya
+                                    {% else %}
+                                        Selesaikan Kursus (Kembali ke Silabus)
+                                    {% endif %}
+                                </span>
+                                <i class="fas {% if next_lesson %}fa-arrow-right{% else %}fa-check-double{% endif %} text-[#eab308] text-xs"></i>
+                                <div class="btn-line-anim"></div>
+                            </a>
+                        {% else %}
+                            {# Jika Tidak Lulus: Munculkan tombol Remedial #}
+                            <a href="{% url 'remedial_quiz' quiz.lesson.module.course.pk %}" class="btn-action-glass md:col-span-2 py-5 px-6 flex items-center justify-between">
+                                <span class="btn-text text-[11px] font-black uppercase tracking-widest">Mulai Latihan Remedial</span>
+                                <i class="fas fa-bolt text-indigo-500 text-xs"></i>
+                                <div class="btn-line-anim" style="background-color: #6366f1;"></div>
+                            </a>
+                        {% endif %}
+
+                        {# 2. Review Materi #}
+                        <a href="{% url 'lesson_content' materi_awal.pk %}" class="btn-action-glass py-5 px-6 flex items-center gap-3">
+                            <i class="fas fa-book-open text-gray-400 text-xs"></i>
+                            <span class="btn-text text-[10px] font-black uppercase tracking-widest">Review Materi</span>
+                            <div class="btn-line-anim"></div>
+                        </a>
+
+                        {# 3. Coba Lagi #}
+                        <a href="{% url 'quiz_detail' quiz.pk %}?reset=1" class="btn-action-glass py-5 px-6 flex items-center gap-3">
+                            <i class="fas fa-redo-alt text-gray-400 text-xs"></i>
+                            <span class="btn-text text-[10px] font-black uppercase tracking-widest">Coba Kuis Lagi</span>
+                            <div class="btn-line-anim"></div>
+                        </a>
+
+                        {# 4. Dashboard #}
+                        <a href="{% url 'course_detail' quiz.lesson.module.course.pk %}" class="btn-action-glass md:col-span-2 py-4 px-6 flex justify-center border-dashed">
+                            <span class="btn-text text-[10px] font-black uppercase tracking-widest text-gray-400">Kembali ke Silabus Kelas</span>
+                            <div class="btn-line-anim"></div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        {# Footer Identitas #}
+        <div class="mt-8 flex justify-between items-center text-[8px] text-gray-300 tracking-[0.6em] uppercase font-black px-2">
+            <div class="flex items-center gap-2">
+                <span class="h-1.5 w-1.5 bg-gray-200"></span>
+                <span>SSC SMART STUDY CLUB</span>
+            </div>
+            <span>ID_EVAL: {{ quiz.pk }}2026 | THETA: {{ theta_akhir|floatformat:2|default:"0.00" }}</span>
+        </div>
+
+    </div>
+</main>
+{% endblock %}

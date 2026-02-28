@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 73,
+    "fields": {
+      "course": 8,
+      "title": "Modul 3: Struktur dan Fungsi Tumbuhan",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 561,
+    "fields": {
+      "module": 73,
+      "title": "Organ Vegetatif Tumbuhan: Akar, Batang, dan Daun",
+      "content": "Tumbuhan memiliki organ utama yang mendukung kelangsungan hidupnya yang disebut organ vegetatif.\n\n1. **Akar**: Berfungsi menambatkan tumbuhan ke tanah, menyerap air dan mineral, serta pada beberapa tumbuhan menjadi tempat penyimpan cadangan makanan (seperti singkong). Ada dua sistem perakaran: Akar Serabut (Monokotil) dan Akar Tunggang (Dikotil).\n2. **Batang**: Berfungsi sebagai penyokong tubuh tumbuhan, jalan pengangkutan air dari akar ke daun, serta jalur distribusi hasil fotosintesis. Batang dikotil memiliki kambium sehingga bisa membesar, sedangkan monokotil tidak.\n3. **Daun**: Organ utama tempat terjadinya **Fotosintesis**. Daun mengandung klorofil yang menangkap energi cahaya matahari. Struktur daun terdiri dari epidermis, jaringan palisade (tempat utama fotosintesis), jaringan bunga karang, dan stomata sebagai alat pernapasan.\n\n[Image comparing monocot and dicot root and stem structures with leaf anatomy]",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 562,
+    "fields": {
+      "module": 73,
+      "title": "Organ Generatif: Bunga, Buah, dan Biji",
+      "content": "Organ generatif berfungsi untuk perkembangbiakan atau reproduksi.\n\n1. **Bunga**: Memiliki alat kelamin berupa Benang Sari (jantan) dan Putik (betina). Bunga yang memiliki keduanya disebut bunga sempurna. Warna mahkota bunga yang mencolok bertujuan untuk menarik serangga (polinator) agar membantu penyerbukan.\n2. **Buah dan Biji**: Setelah terjadi pembuahan, bakal buah akan berkembang menjadi buah yang melindungi biji. Buah juga berfungsi sebagai daya tarik bagi hewan untuk membantu penyebaran biji melalui sistem pencernaannya.\n\n\n\nTahukah kamu bahwa struktur buah yang kita makan sebenarnya adalah cadangan makanan untuk embrio di dalam biji?",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 563,
+    "fields": {
+      "module": 73,
+      "title": "Jaringan Pengangkut: Xilem dan Floem",
+      "content": "Sistem transportasi pada tumbuhan mirip dengan sistem pembuluh darah pada manusia. Jaringan pengangkut utama adalah:\n\n1. **Xilem (Pembuluh Kayu)**: Mengangkut air dan mineral dari akar menuju ke daun. Xilem tersusun atas sel-sel mati yang dindingnya sangat kuat karena mengandung lignin.\n2. **Floem (Pembuluh Tapis)**: Mengangkut hasil fotosintesis (gula/zat makanan) dari daun ke seluruh bagian tumbuhan. Floem tersusun atas sel-sel hidup.\n\n\n\nPada batang dikotil, xilem dan floem dipisahkan oleh kambium. Pertumbuhan kambium ke arah dalam membentuk kayu (xilem) dan ke arah luar membentuk kulit kayu (floem).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 564,
+    "fields": {
+      "module": 73,
+      "title": "Video: Teknologi yang Terinspirasi dari Tumbuhan",
+      "content": "Manusia banyak belajar dari struktur tumbuhan untuk menciptakan teknologi canggih (Biomimikri). Dalam video ini, kamu akan melihat bagaimana:\n- **Panel Surya**: Terinspirasi dari mekanisme fotosintesis daun dalam menangkap cahaya.\n- **Lapisan Anti Air (Hydrophobic)**: Terinspirasi dari daun talas (lapisan kutikula).\n- **Sensor Cahaya**: Terinspirasi dari mekanisme buka-tutup stomata.\n- **Paving Block**: Terinspirasi dari bentuk susunan jaringan sel pada tumbuhan yang sangat rapat dan kokoh.\n\nSimak penjelasannya agar kamu tahu bahwa alam adalah laboratorium teknologi terbaik!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 565,
+    "fields": {
+      "module": 73,
+      "title": "Kuis: Pakar Botani",
+      "content": "Mari uji pemahamanmu tentang dunia tumbuhan! Kuis ini akan menguji pengetahuanmu mulai dari perbedaan struktur dikotil-monokotil, fungsi jaringan pengangkut, hingga teknologi yang terinspirasi dari struktur tumbuhan. Baca soal dengan teliti!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 73,
+    "fields": {
+      "lesson": 565,
+      "title": "Evaluasi Struktur dan Fungsi Tumbuhan",
+      "description": "Uji pemahaman tentang organ vegetatif, generatif, jaringan pengangkut, dan teknologi biomimikri."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 561,
+    "fields": {
+      "quiz": 73,
+      "text": "Bagian daun yang berfungsi sebagai tempat utama terjadinya proses fotosintesis karena mengandung banyak klorofil adalah...",
+      "topic": "Jaringan Daun",
+      "option_a": "Epidermis",
+      "option_b": "Jaringan Palisade (Tiang)",
+      "option_c": "Stomata",
+      "option_d": "Xilem",
+      "correct_answer": "B",
+      "difficulty_level": -0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 562,
+    "fields": {
+      "quiz": 73,
+      "text": "Jaringan yang berfungsi mengangkut air dan garam mineral dari akar ke seluruh bagian tumbuhan adalah...",
+      "topic": "Jaringan Pengangkut",
+      "option_a": "Floem",
+      "option_b": "Xilem",
+      "option_c": "Kambium",
+      "option_d": "Korteks",
+      "correct_answer": "B",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 563,
+    "fields": {
+      "quiz": 73,
+      "text": "Teknologi pembuatan panel surya (solar cell) terinspirasi dari mekanisme kerja...",
+      "topic": "Biomimikri",
+      "option_a": "Penyerapan air oleh akar",
+      "option_b": "Fotosintesis pada daun",
+      "option_c": "Pengangkutan nutrisi oleh floem",
+      "option_d": "Pernapasan melalui stomata",
+      "correct_answer": "B",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 564,
+    "fields": {
+      "quiz": 73,
+      "text": "Ciri khas batang tumbuhan dikotil yang tidak dimiliki oleh batang monokotil adalah adanya...",
+      "topic": "Struktur Batang",
+      "option_a": "Xilem",
+      "option_b": "Epidermis",
+      "option_c": "Kambium",
+      "option_d": "Buku-buku batang",
+      "correct_answer": "C",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 565,
+    "fields": {
+      "quiz": 73,
+      "text": "Alat kelamin betina pada bunga disebut...",
+      "topic": "Organ Generatif",
+      "option_a": "Benang sari",
+      "option_b": "Mahkota bunga",
+      "option_c": "Putik",
+      "option_d": "Kelopak bunga",
+      "correct_answer": "C",
+      "difficulty_level": -1.8
+    }
+  }
+]

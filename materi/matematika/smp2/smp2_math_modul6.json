@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 5,
+    "fields": {
+      "title": "Matematika Kelas 8 (SMP 2)",
+      "description": "Kurikulum Matematika tingkat menengah yang mencakup Pola Bilangan, Koordinat Kartesius, Relasi dan Fungsi, Persamaan Garis Lurus, serta Teorema Pythagoras.",
+      "course_code": "MAT8-05",
+      "level": "Menengah",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 46,
+    "fields": {
+      "course": 5,
+      "title": "Modul 6: Teorema Pythagoras",
+      "order": 6
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 326,
+    "fields": {
+      "module": 46,
+      "title": "Mengenal Segitiga Siku-Siku dan Rumus Pythagoras",
+      "content": "Pernahkah kamu memperhatikan tukang bangunan saat memastikan sudut pondasi rumah agar benar-benar lurus? Mereka sering menggunakan prinsip 3-4-5. Prinsip ini berasal dari **Teorema Pythagoras**.\n\nTeorema ini hanya berlaku pada **Segitiga Siku-Siku** (segitiga yang salah satu sudutnya $90^\\circ$). Dalam segitiga ini, ada sisi tegak, sisi mendatar, dan sisi miring yang disebut **Hipotenusa**. Hipotenusa adalah sisi terpanjang dan selalu berada di depan sudut siku-siku.\n\n\n\n**Rumus Utama:**\nPada segitiga siku-siku dengan sisi $a, b$ dan sisi miring $c$, berlaku:\n$$a^2 + b^2 = c^2$$\n\nArtinya, jika kamu ingin mencari sisi miring, kamu tinggal menjumlahkan kuadrat sisi-sisi lainnya. Sebaliknya, jika ingin mencari sisi tegak, kamu harus mengurangkan kuadrat sisi miring dengan sisi lainnya.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 327,
+    "fields": {
+      "module": 46,
+      "title": "Tripel Pythagoras: Angka Ajaib",
+      "content": "Dalam mengerjakan soal Pythagoras, seringkali kita bertemu dengan kombinasi angka yang sama berulang kali. Kelompok tiga angka yang memenuhi rumus $a^2 + b^2 = c^2$ disebut **Tripel Pythagoras**.\n\nMenghafal beberapa Tripel Pythagoras dasar akan membuatmu mengerjakan soal ujian jauh lebih cepat tanpa perlu menghitung kuadrat dan akar lagi. Berikut adalah kelompok yang paling sering muncul:\n1. **3, 4, 5** (dan kelipatannya seperti 6, 8, 10)\n2. **5, 12, 13**\n3. **8, 15, 17**\n4. **7, 24, 25**\n\n[Image table of common Pythagorean triples like 3-4-5, 5-12-13, and 8-15-17]\n\nContoh: Jika sebuah segitiga memiliki sisi 6 cm dan 8 cm, tanpa menghitung pun kamu akan tahu sisi miringnya adalah 10 cm, karena itu adalah kelipatan dari Tripel 3, 4, 5.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 328,
+    "fields": {
+      "module": 46,
+      "title": "Video: Aplikasi Pythagoras dalam Kehidupan",
+      "content": "Panduan Menyimak Video:\n\nTeorema Pythagoras bukan hanya soal angka di atas kertas. Video ini akan menunjukkan bagaimana menghitung panjang tangga yang bersandar di tembok, atau menghitung jarak terdekat (diagonal) kapal yang berlayar ke utara lalu ke timur.\n\n\n\nMateri Utama Video:\n1. Menentukan jenis segitiga (Lancip, Tumpul, atau Siku-siku) berdasarkan perbandingan sisi-sisinya.\n2. Cara menghitung diagonal bidang pada bangun ruang menggunakan Pythagoras.\n3. Contoh soal cerita tentang tiang bendera dan kawat penyangganya.\n\nTugas: Simak video ini dan perhatikan bagaimana cara menarik akar kuadrat ($\\sqrt{n}$) dengan cepat jika hasilnya adalah angka besar!",
+      "video_url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 329,
+    "fields": {
+      "module": 46,
+      "title": "Segitiga Khusus (Sudut Istimewa)",
+      "content": "Ada dua jenis segitiga siku-siku yang 'spesial' karena perbandingan sisi-sisinya selalu tetap berdasarkan sudutnya:\n\n1. **Segitiga Siku-Siku Sama Kaki** (Sudut $45^\\circ - 45^\\circ - 90^\\circ$):\n   Perbandingan sisinya adalah $1 : 1 : \\sqrt{2}$.\n\n2. **Segitiga Sudut $30^\\circ - 60^\\circ - 90^\\circ$**:\n   Perbandingan sisinya adalah $1 : \\sqrt{3} : 2$.\n\n\n\nSisi terpendek (1) selalu berada di depan sudut terkecil ($30^\\circ$), dan sisi terpanjang (2) adalah hipotenusanya. Memahami perbandingan ini sangat membantu saat kamu belajar Fisika di kelas 9 nanti.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 330,
+    "fields": {
+      "module": 46,
+      "title": "Kuis: Uji Logika Pythagoras",
+      "content": "Selamat! Kamu telah menguasai Teorema Pythagoras. Kamu sudah tahu kapan harus menambah dan kapan harus mengurang, serta mengenal angka-angka ajaib Tripel Pythagoras. Sekarang, siapkan alat tulis untuk menghitung kuadrat dan akar. Fokuslah pada posisi sisi miringnya. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 46,
+    "fields": {
+      "lesson": 330,
+      "title": "Evaluasi Teorema Pythagoras",
+      "description": "Uji kemampuan menghitung sisi segitiga, menentukan jenis segitiga, dan penerapan soal cerita."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 326,
+    "fields": {
+      "quiz": 46,
+      "text": "Pada segitiga siku-siku, panjang sisi tegaknya 6 cm dan 8 cm. Panjang sisi miringnya adalah...",
+      "topic": "Hitung Dasar",
+      "option_a": "10 cm",
+      "option_b": "12 cm",
+      "option_c": "14 cm",
+      "option_d": "20 cm",
+      "correct_answer": "A",
+      "difficulty_level": -1.0
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 327,
+    "fields": {
+      "quiz": 46,
+      "text": "Kelompok angka berikut yang merupakan Tripel Pythagoras adalah...",
+      "topic": "Tripel Pythagoras",
+      "option_a": "3, 4, 6",
+      "option_b": "5, 12, 15",
+      "option_c": "7, 24, 25",
+      "option_d": "8, 12, 17",
+      "correct_answer": "C",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 328,
+    "fields": {
+      "quiz": 46,
+      "text": "Sebuah tangga sepanjang 5 meter bersandar pada tembok. Jika jarak kaki tangga ke tembok adalah 3 meter, tinggi tembok yang dicapai tangga adalah...",
+      "topic": "Soal Cerita",
+      "option_a": "2 meter",
+      "option_b": "4 meter",
+      "option_c": "5 meter",
+      "option_d": "6 meter",
+      "correct_answer": "B",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 329,
+    "fields": {
+      "quiz": 46,
+      "text": "Jika pada segitiga $ABC$ berlaku $c^2 < a^2 + b^2$, maka jenis segitiga tersebut adalah...",
+      "topic": "Jenis Segitiga",
+      "option_a": "Siku-siku",
+      "option_b": "Tumpul",
+      "option_c": "Lancip",
+      "option_d": "Sama kaki",
+      "correct_answer": "C",
+      "difficulty_level": 1.1
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 330,
+    "fields": {
+      "quiz": 46,
+      "text": "Pada segitiga siku-siku sama kaki, jika panjang sisi miringnya $10\\sqrt{2}$ cm, maka panjang sisi lainnya adalah...",
+      "topic": "Sudut Istimewa",
+      "option_a": "5 cm",
+      "option_b": "10 cm",
+      "option_c": "20 cm",
+      "option_d": "15 cm",
+      "correct_answer": "B",
+      "difficulty_level": 1.4
+    }
+  }
+]

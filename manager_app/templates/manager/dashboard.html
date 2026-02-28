@@ -1,0 +1,234 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+    body { font-family: 'Poppins', sans-serif; background-color: #ffffff; color: #111827; font-size: 14px; }
+    .industrial-card { background: #ffffff; border: 2px solid #111827; box-shadow: 4px 4px 0px #f1f5f9; transition: all 0.2s ease; border-radius: 8px; }
+    .industrial-card:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px #2563eb; }
+    .text-kecil { font-size: 0.75rem; }
+    .btn-biru { background: #111827; color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-size: 11px; padding: 12px 20px; border-radius: 6px; border: 2px solid #111827; box-shadow: 3px 3px 0px #cbd5e1; display: inline-block; transition: 0.2s; text-align: center; }
+    .btn-biru:hover { background: #2563eb; transform: translate(-1px, -1px); box-shadow: 4px 4px 0px #111827; }
+</style>
+
+<div class="container mx-auto px-6 min-h-screen flex flex-col items-center justify-start pt-2 pb-12">
+    
+    <div class="w-full flex flex-col md:flex-row justify-between items-end mb-4 border-b-2 border-gray-900 pb-4">
+        <div>
+            <div class="flex items-center gap-2 mb-1">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+                </span>
+                <span class="text-[9px] font-bold tracking-[0.2em] uppercase text-gray-400">Panel Admin SSC</span>
+            </div>
+            <h1 class="text-2xl font-black uppercase tracking-tight">
+                Pusat <span class="text-blue-600">Kontrol</span>
+            </h1>
+        </div>
+        
+        <div class="flex items-center gap-4 mb-1">
+            <div class="text-right hidden md:block">
+                <p class="text-[9px] text-gray-400 uppercase font-bold tracking-widest leading-none">Kondisi Sistem</p>
+                <p class="text-[11px] text-gray-900 font-black italic uppercase">
+                    {% if total_masalah >= 7 %}
+                        🚨 CRITICAL OVERLOAD
+                    {% elif total_masalah >= 4 %}
+                        ⚠️ PERLU ATENSI
+                    {% else %}
+                        ✅ SISTEM OPTIMAL
+                    {% endif %}
+                </p>
+            </div>
+            <div class="relative w-7 h-7 flex items-center justify-center">
+                <span class="absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping 
+                    {% if total_masalah >= 7 %}bg-red-400
+                    {% elif total_masalah >= 4 %}bg-yellow-400
+                    {% else %}bg-green-400{% endif %}">
+                </span>
+
+                <div class="relative w-6 h-6 border-2 border-gray-900 rounded-full shadow-[2px_2px_0px_#cbd5e1] flex items-center justify-center
+                    {% if total_masalah >= 7 %}bg-red-500
+                    {% elif total_masalah >= 4 %}bg-yellow-500
+                    {% else %}bg-green-500{% endif %}">
+                    <div class="w-1.5 h-1.5 bg-white rounded-full opacity-80"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full grid grid-cols-1 md:grid-cols-4 gap-3 mb-4">
+        <a href="/admin/auth/user/" class="block hover:no-underline group h-full">
+            <div class="industrial-card p-3 group-hover:bg-gray-50 transition-colors h-full flex flex-col justify-between min-h-[85px]">
+                <div>
+                    <p class="text-[9px] font-bold text-gray-400 uppercase mb-0.5 tracking-wider">Total Siswa Aktif</p>
+                    <p class="text-xl font-black text-gray-900 leading-none">{{ total_siswa }}</p>
+                </div>
+                <div class="h-1.5 mt-2 opacity-0"></div>
+            </div>
+        </a>
+
+        <a href="/admin/alp_app/course/" class="block hover:no-underline group h-full">
+            <div class="industrial-card p-3 group-hover:bg-blue-50 transition-colors h-full flex flex-col justify-between min-h-[85px]">
+                <div>
+                    <p class="text-[9px] font-bold text-gray-400 uppercase mb-0.5 tracking-wider">Materi Aktif</p>
+                    <p class="text-xl font-black text-blue-600 leading-none">{{ total_materi_aktif }}</p>
+                </div>
+                <div class="h-1.5 mt-2 opacity-0"></div>
+            </div>
+        </a>
+
+        <a href="#" class="block hover:no-underline group h-full">
+            <div class="industrial-card p-3 group-hover:bg-green-50 transition-colors h-full flex flex-col justify-between min-h-[85px]">
+                <div>
+                    <p class="text-[9px] font-bold text-gray-400 uppercase mb-1 tracking-wider">Efektivitas Materi</p>
+                    <div class="flex items-center justify-between mb-1.5">
+                        <p class="text-xl font-black text-green-600 leading-none">{{ efektivitas }}%</p>
+                        <span class="text-[8px] font-black text-gray-400 uppercase tracking-widest">
+                            {% if efektivitas > 80 %}Sangat Bagus{% else %}Bagus{% endif %}
+                        </span>
+                    </div>
+                </div>
+                <div class="w-full bg-gray-100 h-1.5 border border-gray-900 overflow-hidden mt-1">
+                    <div class="bg-green-500 h-full transition-all duration-1000" style="width: {{ efektivitas }}%"></div>
+                </div>
+            </div>
+        </a>
+
+        <a href="/admin/alp_app/supportreport/" class="block hover:no-underline group h-full">
+            <div class="industrial-card p-3 border-red-500 shadow-[4px_4px_0px_#fef2f2] group-hover:bg-red-50 transition-colors h-full flex flex-col justify-between min-h-[85px]">
+                <div>
+                    <p class="text-[9px] font-bold text-red-400 uppercase mb-1 tracking-wider">Laporan Support</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <p class="text-xl font-black text-red-600 leading-none">{{ total_masalah|default:"0" }}</p>
+                            {% if total_masalah > 0 %}
+                            <span class="text-[7px] bg-red-100 text-red-600 px-1 rounded font-black animate-pulse uppercase">Cek Support</span>
+                            {% endif %}
+                        </div>
+                        <span class="text-[8px] font-black text-gray-400 uppercase tracking-widest">Urgent</span>
+                    </div>
+                </div>
+                <div class="h-1.5 mt-2 opacity-0"></div>
+            </div>
+        </a>
+    </div>
+
+    <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <div class="lg:col-span-8 bg-[#111827] p-6 border-2 border-gray-800 rounded-xl">
+            <div class="flex justify-between items-center mb-4 border-b border-gray-800 pb-2">
+                <span class="text-kecil font-bold text-gray-500 uppercase italic font-mono tracking-tighter">System_Log_v1.0.exe</span>
+                <div class="flex gap-1">
+                    <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                    <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
+                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                </div>
+            </div>
+            <div class="font-mono text-[11px] space-y-2 text-gray-400">
+                <p><span class="text-blue-500">[{{ "now"|date:"H:i" }}]</span> >> Monitoring sistem aktif...</p>
+                {% if total_masalah > 0 %}
+                <p><span class="text-red-500">[WARNING]</span> >> Terdapat {{ total_masalah }} laporan support butuh tindakan segera!</p>
+                {% endif %}
+                <p><span class="text-blue-500">[{{ "now"|date:"H:i" }}]</span> >> Database <span class="text-yellow-400">ssc_db</span> terhubung.</p>
+                <p><span class="text-green-500">[STATUS]</span> >> Dashboard Master dimuat oleh {{ user.username }}.</p>
+                <p class="text-blue-600 animate-pulse mt-4">_ Menunggu aktivitas berikutnya...</p>
+            </div>
+        </div>
+
+        <div class="lg:col-span-4 flex flex-col gap-4">
+            <div class="industrial-card p-5 bg-gray-50">
+                <h4 class="text-[10px] font-black uppercase mb-4 border-b-2 border-gray-900 pb-2 flex items-center gap-2">
+                    <span class="w-2 h-2 bg-gray-900 rotate-45"></span>
+                    Panel Inisialisasi
+                </h4>
+                
+                <div class="flex flex-col gap-4">
+                    <a href="{% url 'admin:alp_app_course_add' %}" class="btn-biru group relative overflow-hidden">
+                        <div class="flex flex-col items-start text-left">
+                            <span class="text-[9px] opacity-70 mb-1 group-hover:text-yellow-400">Cepat Tambahkan</span>
+                            <span class="text-sm italic font-black">Buat Materi Baru</span>
+                        </div>
+                        <i class="fas fa-plus-square absolute right-4 top-1/2 -translate-y-1/2 opacity-20 group-hover:opacity-100 transition-all"></i>
+                    </a>
+
+                    <a href="{% url 'import_materi' %}" class="w-full py-4 bg-white border-2 border-gray-900 shadow-[4px_4px_0px_#cbd5e1] hover:shadow-[2px_2px_0px_#111827] hover:translate-x-[2px] hover:translate-y-[2px] transition-all group block no-underline">
+                        <div class="flex items-center justify-center gap-3">
+                            <i class="fas fa-file-export text-blue-600 group-hover:rotate-12 transition-transform"></i>
+                            <span class="text-[11px] font-black uppercase tracking-widest text-gray-900">Import Data Materi</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-12 industrial-card p-0 overflow-hidden">
+            <div class="bg-gray-100 p-4 border-b-2 border-gray-900 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-chart-line text-blue-600"></i>
+                    <h3 class="text-kecil font-black uppercase tracking-widest text-gray-900">Materi Terpopuler (Berdasarkan Enrollment)</h3>
+                </div>
+                <span class="text-[9px] font-black bg-blue-600 text-white px-2 py-0.5 rounded italic">DATABASE CONNECTED</span>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-white text-[10px] font-black uppercase text-gray-400 border-b-2 border-gray-100">
+                        <tr>
+                            <th class="p-4">Nama Kelas</th>
+                            <th>Kategori</th>
+                            <th class="text-center">Modul</th>
+                            <th class="text-center">Materi</th>
+                            <th>Rating & Minat</th>
+                            <th class="text-right p-4">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody class="font-bold text-gray-700 text-xs">
+                        {% for c in materi_populer %}
+                        <tr class="border-b border-gray-50 hover:bg-blue-50 transition-all group">
+                            <td class="p-4 uppercase italic tracking-tighter text-gray-900">
+                                {{ c.title }}
+                            </td>
+                            <td>
+                                <span class="text-[9px] border border-gray-900 px-2 py-0.5 font-black uppercase bg-white">
+                                    {{ c.category.name|default:"UMUM" }}
+                                </span>
+                            </td>
+                            <td class="text-center font-black text-blue-600">{{ c.jml_modul }}</td>
+                            <td class="text-center font-black text-gray-900">{{ c.jml_lesson }}</td>
+                            <td class="w-64">
+                                <div class="flex items-center gap-3">
+                                    <div class="flex items-center gap-1 text-yellow-500">
+                                        <i class="fas fa-star text-[11px]"></i>
+                                        <span class="text-gray-900 text-[11px] font-black uppercase tracking-tighter">
+                                            {{ c.rating_rata|default:"0.0"|floatformat:1 }}
+                                        </span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span class="text-gray-400 text-[11px] font-black uppercase tracking-tighter">
+                                            ({{ c.total_user }} User)
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="p-4 text-right">
+                                <a href="{% url 'admin:alp_app_course_change' c.id %}" class="text-[10px] font-black text-white bg-gray-900 px-4 py-1.5 hover:bg-blue-600 transition-all uppercase inline-block">Kelola</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6" class="p-10 text-center text-gray-400 uppercase italic text-[10px] tracking-widest">
+                                Tidak ada data materi yang ditemukan dalam database.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

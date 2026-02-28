@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 72,
+    "fields": {
+      "course": 8,
+      "title": "Modul 2: Usaha dan Pesawat Sederhana",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 556,
+    "fields": {
+      "module": 72,
+      "title": "Konsep Usaha dan Daya",
+      "content": "Dalam fisika, **Usaha (W)** memiliki definisi yang sangat spesifik. Usaha hanya terjadi jika ada gaya yang menyebabkan benda berpindah posisi. Jika kamu mendorong tembok sekuat tenaga namun tembok tidak bergerak, maka usahamu dianggap nol.\n\nRumus Usaha:\n$$W = F \\cdot \\Delta s$$\nDimana:\n- $W$ = Usaha (Joule)\n- $F$ = Gaya (Newton)\n- $\\Delta s$ = Perpindahan (Meter)\n\nSelain itu, kita mengenal **Daya (P)**, yaitu laju seberapa cepat usaha dilakukan dalam satuan waktu. Seseorang yang memindahkan balok dalam 5 detik memiliki daya yang lebih besar daripada orang yang memindahkannya dalam 10 detik, meskipun usahanya sama. Rumusnya: $P = W/t$.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 557,
+    "fields": {
+      "module": 72,
+      "title": "Pesawat Sederhana: Tuas (Pengungkit)",
+      "content": "Pesawat sederhana bukan berarti pesawat terbang, melainkan alat mekanik sederhana yang membantu mempermudah pekerjaan manusia dengan cara melipatgandakan gaya atau mengubah arah gaya.\n\nJenis pertama adalah **Tuas (Pengungkit)**. Tuas dibagi menjadi tiga golongan berdasarkan posisi Titik Tumpu (T), Titik Beban (B), dan Titik Kuasa (K):\n1. **Golongan I**: Titik Tumpu di tengah (Contoh: Gunting, tang, jungkat-jungkit).\n2. **Golongan II**: Titik Beban di tengah (Contoh: Gerobak roda satu, pembuka botol, pemotong kertas).\n3. **Golongan III**: Titik Kuasa di tengah (Contoh: Pinset, stapler, lengan manusia saat mengangkat beban).\n\n\n\nKeuntungan menggunakan pesawat sederhana disebut **Keuntungan Mekanis (KM)**. Semakin panjang lengan kuasa dibandingkan lengan beban, semakin ringan gaya yang perlu kita keluarkan.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 558,
+    "fields": {
+      "module": 72,
+      "title": "Katrol dan Bidang Miring",
+      "content": "Selain tuas, ada dua jenis pesawat sederhana lainnya yang sangat umum:\n\n1. **Katrol**: Roda beralur yang dihubungkan dengan tali. \n   - **Katrol Tetap**: Hanya mengubah arah gaya (KM = 1).\n   - **Katrol Bebas**: Mengurangi gaya yang dikeluarkan (KM = 2).\n   - **Katrol Majemuk**: Gabungan beberapa katrol (KM tergantung jumlah tali yang menyangga beban).\n\n2. **Bidang Miring**: Permukaan miring yang digunakan untuk memindahkan benda ke tempat tinggi. Semakin landai bidangnya, semakin kecil gaya yang dibutuhkan, namun jarak tempuhnya semakin jauh. Contoh: Sekrup, tangga, pisau, dan jalan di pegunungan yang dibuat berkelok-kelok.\n\n[Image illustrating fixed vs movable pulleys and how an inclined plane works with screw example]\n\nTahukah kamu? Gigi manusia (gigi taring) juga bekerja berdasarkan prinsip bidang miring untuk memotong makanan!",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 559,
+    "fields": {
+      "module": 72,
+      "title": "Video: Pesawat Sederhana pada Tubuh Manusia",
+      "content": "Percaya atau tidak, tubuh manusia adalah kumpulan pesawat sederhana yang sangat canggih. Dalam video ini, kamu akan melihat bagaimana sistem leher kita bekerja seperti tuas golongan I, tumit kaki saat berjinjit bekerja seperti tuas golongan II, dan lengan bawah saat mengangkat beban bekerja seperti tuas golongan III. Simak penjelasannya agar kamu bisa memahami keterkaitan antara anatomi tubuh dan prinsip mekanika fisika!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 560,
+    "fields": {
+      "module": 72,
+      "title": "Kuis: Ahli Mekanika Pesawat",
+      "content": "Saatnya menguji logikamu! Kuis ini akan menguji kemampuanmu dalam menghitung nilai usaha dan menentukan jenis pesawat sederhana pada alat-alat di sekitarmu. Jangan terkecoh dengan posisi titik tumpu dan beban. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 72,
+    "fields": {
+      "lesson": 560,
+      "title": "Evaluasi Usaha dan Pesawat Sederhana",
+      "description": "Uji kompetensi perhitungan usaha, daya, serta analisis jenis-jenis tuas, katrol, dan bidang miring."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 556,
+    "fields": {
+      "quiz": 72,
+      "text": "Seorang siswa mendorong meja dengan gaya 50 N sehingga meja berpindah sejauh 2 meter. Berapakah usaha yang dilakukan siswa tersebut?",
+      "topic": "Usaha",
+      "option_a": "25 Joule",
+      "option_b": "52 Joule",
+      "option_c": "100 Joule",
+      "option_d": "0 Joule",
+      "correct_answer": "C",
+      "difficulty_level": -1.0
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 557,
+    "fields": {
+      "quiz": 72,
+      "text": "Alat berikut ini yang menggunakan prinsip tuas golongan kedua (beban di antara tumpu dan kuasa) adalah...",
+      "topic": "Jenis Tuas",
+      "option_a": "Gunting",
+      "option_b": "Gerobak roda satu",
+      "option_c": "Pinset",
+      "option_d": "Tang",
+      "correct_answer": "B",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 558,
+    "fields": {
+      "quiz": 72,
+      "text": "Keuntungan mekanis dari sebuah katrol tetap adalah...",
+      "topic": "Katrol",
+      "option_a": "1",
+      "option_b": "2",
+      "option_c": "3",
+      "option_d": "4",
+      "correct_answer": "A",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 559,
+    "fields": {
+      "quiz": 72,
+      "text": "Baut dan sekrup merupakan contoh penerapan pesawat sederhana jenis...",
+      "topic": "Bidang Miring",
+      "option_a": "Tuas",
+      "option_b": "Roda berporos",
+      "option_c": "Bidang miring",
+      "option_d": "Katrol",
+      "correct_answer": "C",
+      "difficulty_level": -0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 560,
+    "fields": {
+      "quiz": 72,
+      "text": "Prinsip pesawat sederhana pada lengan manusia saat sedang mengangkat beban pada telapak tangan adalah...",
+      "topic": "Mekanika Tubuh",
+      "option_a": "Tuas golongan I",
+      "option_b": "Tuas golongan II",
+      "option_c": "Tuas golongan III",
+      "option_d": "Bidang miring",
+      "correct_answer": "C",
+      "difficulty_level": 1.2
+    }
+  }
+]

@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 4,
+    "fields": {
+      "course": 1,
+      "title": "Modul 4: Aksi Nyata Berbagi (Teks Berita)",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 16,
+    "fields": {
+      "module": 4,
+      "title": "Unsur Berita: Mengenal ADIKSIMBA",
+      "content": "Setiap hari kita mengonsumsi berita, baik dari televisi, koran, maupun media sosial. Namun, tahukah kamu apa yang membuat sebuah informasi layak disebut berita? Jawabannya adalah kelengkapan unsurnya.\n\nDalam dunia jurnalistik Indonesia, kita mengenal istilah ADIKSIMBA. Ini adalah singkatan untuk memastikan sebuah berita mengandung informasi yang utuh:\n\n1. Apa: Menjelaskan peristiwa apa yang terjadi.\n2. Di mana: Menjelaskan lokasi atau tempat kejadian perkara.\n3. Kapan: Menjelaskan waktu terjadinya peristiwa tersebut.\n4. Siapa: Menjelaskan orang atau pihak yang terlibat dalam kejadian.\n5. Mengapa: Menjelaskan alasan atau latar belakang mengapa peristiwa itu bisa terjadi.\n6. Bagaimana: Menjelaskan kronologi atau proses berlangsungnya peristiwa.\n\nSebuah berita yang baik harus mampu menjawab keenam pertanyaan tersebut agar pembaca tidak merasa bingung atau mendapatkan informasi yang setengah-setengah.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 17,
+    "fields": {
+      "module": 4,
+      "title": "Struktur Teks Berita: Piramida Terbalik",
+      "content": "Pernahkah kamu memperhatikan bahwa informasi paling penting dalam berita selalu diletakkan di bagian awal? Teknik penulisan ini disebut dengan struktur Piramida Terbalik.\n\nKenapa harus terbalik? Karena pembaca berita biasanya memiliki waktu yang terbatas, sehingga jurnalis meletakkan fakta utama di paling atas. Berikut urutannya:\n\n1. Kepala Berita (Lead)\nIni adalah bagian paling krusial. Biasanya terletak di paragraf pertama dan mengandung inti dari ADIKSIMBA. Jika pembaca hanya membaca bagian ini, mereka sudah tahu garis besar kejadiannya.\n\n2. Tubuh Berita\nBerisi penjelasan lebih rinci dari kepala berita. Di sini, unsur 'Mengapa' dan 'Bagaimana' dijabarkan secara mendalam, termasuk kutipan dari saksi atau pihak berwenang.\n\n3. Ekor Berita\nBerisi informasi tambahan yang sifatnya tidak terlalu penting. Jika bagian ini dipotong karena keterbatasan halaman, inti berita tetap tersampaikan dengan baik.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 18,
+    "fields": {
+      "module": 4,
+      "title": "Video: Menjadi Pembaca Kritis (Fakta vs Opini)",
+      "content": "Panduan Menyimak Video:\n\nDi era digital, banyak informasi palsu atau hoaks yang beredar. Video ini akan melatih kamu untuk membedakan mana yang merupakan Fakta dan mana yang merupakan Opini di dalam sebuah berita.\n\nMateri Utama dalam Video:\n1. Definisi Fakta: Informasi yang berdasarkan kenyataan, dapat dibuktikan, dan biasanya mengandung data angka atau waktu yang pasti.\n2. Definisi Opini: Pendapat atau pemikiran seseorang yang sifatnya subjektif dan belum tentu terjadi atau benar bagi semua orang.\n3. Cara Identifikasi: Mengamati kata-kata sifat yang menunjukkan perasaan (seperti: menurut saya, sepertinya, sangat bagus) sebagai ciri khas opini.\n\nTugas: Setelah menonton, coba temukan satu kalimat fakta dan satu kalimat opini dalam sebuah berita yang kamu baca hari ini!",
+      "video_url": "https://www.youtube.com/embed/v9S_m8tY1vM",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 19,
+    "fields": {
+      "module": 4,
+      "title": "Bahasa Jurnalistik: Singkat, Padat, dan Jelas",
+      "content": "Bahasa yang digunakan dalam teks berita berbeda dengan bahasa dalam novel atau puisi. Berita menggunakan bahasa jurnalistik yang memiliki ciri khas sebagai berikut:\n\n1. Baku dan Objektif\nMengikuti aturan tata bahasa resmi (PUEBI) dan tidak memihak salah satu pihak. Penulis berita tidak boleh memasukkan perasaan pribadinya.\n\n2. Komunikatif dan Sederhana\nMenggunakan kata-kata yang mudah dipahami oleh semua kalangan, mulai dari anak sekolah hingga orang tua.\n\n3. Ekonomis Kata\nHindari penggunaan kata yang bertele-tele. Setiap kalimat harus langsung menuju ke poin utama (Singkat dan Padat).\n\n4. Menghindari Makna Ganda\nSetiap kalimat harus jelas (lugas) agar tidak menimbulkan salah tafsir bagi pembacanya.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 20,
+    "fields": {
+      "module": 4,
+      "title": "Kuis Kompetensi Modul 4",
+      "content": "Luar biasa! Kamu telah mempelajari bagaimana sebuah berita disusun dan bagaimana cara membedakan fakta dengan opini. Sekarang, saatnya menguji ketajaman analisismu melalui kuis teks berita ini. Baca setiap pertanyaan dengan saksama dan perhatikan unsur ADIKSIMBA di dalamnya!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 4,
+    "fields": {
+      "lesson": 20,
+      "title": "Evaluasi Teks Berita",
+      "description": "Jadilah pembaca berita yang kritis dengan menyelesaikan kuis kompetensi ini."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 16,
+    "fields": {
+      "quiz": 4,
+      "text": "Unsur berita 'Mengapa' (Why) bertujuan untuk menjelaskan...",
+      "topic": "Unsur Berita",
+      "option_a": "Waktu kejadian",
+      "option_b": "Tempat kejadian",
+      "option_c": "Alasan atau latar belakang terjadinya peristiwa",
+      "option_d": "Orang yang terlibat dalam peristiwa",
+      "correct_answer": "C",
+      "difficulty_level": -1.0
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 17,
+    "fields": {
+      "quiz": 4,
+      "text": "Bagian awal berita yang memuat informasi paling penting disebut...",
+      "topic": "Struktur",
+      "option_a": "Teras Berita (Lead)",
+      "option_b": "Tubuh Berita",
+      "option_c": "Ekor Berita",
+      "option_d": "Judul Berita",
+      "correct_answer": "A",
+      "difficulty_level": -0.4
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 18,
+    "fields": {
+      "quiz": 4,
+      "text": "Sifat berita yang berarti peristiwa tersebut benar-benar terjadi adalah...",
+      "topic": "Ciri Berita",
+      "option_a": "Aktual",
+      "option_b": "Faktual",
+      "option_c": "Opini",
+      "option_d": "Subjektif",
+      "correct_answer": "B",
+      "difficulty_level": 0.3
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 19,
+    "fields": {
+      "quiz": 4,
+      "text": "Penyusunan berita dengan mendahulukan informasi terpenting disebut metode...",
+      "topic": "Struktur",
+      "option_a": "Narasi Kronologis",
+      "option_b": "Piramida Terbalik",
+      "option_c": "Deskripsi Objektif",
+      "option_d": "Argumentasi Logis",
+      "correct_answer": "B",
+      "difficulty_level": 0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 20,
+    "fields": {
+      "quiz": 4,
+      "text": "Manakah yang merupakan contoh kalimat fakta dalam berita?",
+      "topic": "Fakta & Opini",
+      "option_a": "Sepertinya warga merasa senang dengan bantuan itu.",
+      "option_b": "Bantuan diberikan secara simbolis oleh Wali Kota pada pukul 10.00 WIB.",
+      "option_c": "Mungkin kerugian akibat banjir mencapai jutaan rupiah.",
+      "option_d": "Warga sebaiknya lebih waspada saat musim hujan tiba.",
+      "correct_answer": "B",
+      "difficulty_level": 1.1
+    }
+  }
+]

@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 6,
+    "fields": {
+      "title": "Matematika Kelas 9 (SMP 3)",
+      "description": "Persiapan tingkat akhir yang berfokus pada Perpangkatan, Persamaan Kuadrat, Transformasi Geometri, hingga Kesebangunan.",
+      "course_code": "MAT9-06",
+      "level": "Lanjut",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 53,
+    "fields": {
+      "course": 6,
+      "title": "Modul 3: Transformasi Geometri",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 411,
+    "fields": {
+      "module": 53,
+      "title": "Refleksi (Pencerminan): Melihat di Balik Cermin",
+      "content": "Pernahkah kamu bercermin di pagi hari? Apa yang kamu lihat adalah bayanganmu dengan jarak yang sama ke cermin. Dalam matematika, **Refleksi** adalah memindahkan titik dengan sifat pencerminan.\n\nSifat utama Refleksi:\n1. Jarak benda ke cermin sama dengan jarak bayangan ke cermin.\n2. Bentuk dan ukuran bayangan sama persis dengan benda aslinya.\n\n\n\nAturan Dasar Refleksi Titik (x, y):\n- Dicerminkan terhadap Sumbu X: $(x, -y)$\n- Dicerminkan terhadap Sumbu Y: $(-x, y)$\n- Dicerminkan terhadap Titik Asal (0,0): $(-x, -y)$\n- Dicerminkan terhadap garis $y = x$: $(y, x)$",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 412,
+    "fields": {
+      "module": 53,
+      "title": "Translasi (Pergeseran): Geser Kanan-Kiri, Atas-Bawah",
+      "content": "**Translasi** adalah memindahkan semua titik suatu bangun sejauh jarak tertentu dalam arah yang sama. Bayangkan kamu menggeser meja di kelas; mejanya tidak berubah bentuk atau arah, hanya posisinya yang berpindah.\n\nTranslasi biasanya disimbolkan dengan vektor $T = (a, b)$:\n- $a$ menunjukkan pergeseran horizontal (positif ke kanan, negatif ke kiri).\n- $b$ menunjukkan pergeseran vertikal (positif ke atas, negatif ke bawah).\n\n\n\nRumus Sederhana:\nJika titik $A(x, y)$ ditranslasikan oleh $T(a, b)$, maka bayangannya $A'$ adalah:\n$x' = x + a$\n$y' = y + b$\nContoh: Titik (2, 3) digeser oleh T(4, -1) menjadi (2+4, 3-1) = (6, 2).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 413,
+    "fields": {
+      "module": 53,
+      "title": "Video: Rotasi dan Dilatasi",
+      "content": "Panduan Menyimak Video:\n\nDalam video ini, kita akan membahas dua transformasi yang mengubah arah dan ukuran objek:\n\n1. **Rotasi (Perputaran)**: Memutar titik terhadap pusat tertentu. Perhatikan arah putarannya: jika positif berarti berlawanan arah jarum jam, jika negatif berarti searah jarum jam.\n2. **Dilatasi (Perkalian)**: Mengubah ukuran objek (memperbesar atau memperkecil) tanpa mengubah bentuknya. Ini menggunakan Faktor Skala ($k$).\n\n\n\nTugas: Simak video ini dan perhatikan bagaimana sebuah segitiga bisa menjadi dua kali lebih besar jika didilatasi dengan $k = 2$, dan perhatikan posisi titik puncaknya!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 414,
+    "fields": {
+      "module": 53,
+      "title": "Kombinasi Transformasi",
+      "content": "Apa yang terjadi jika sebuah titik dicerminkan lalu kemudian digeser? Ini disebut **Komposisi Transformasi**. \n\nCara menyelesaikannya adalah dengan melakukannya secara bertahap:\n1. Cari bayangan pertama (hasil transformasi pertama).\n2. Gunakan hasil tersebut sebagai titik asal untuk transformasi kedua.\n\nContoh: Titik (1, 2) dicerminkan terhadap sumbu X menjadi (1, -2). Lalu ditranslasi T(3, 3). Maka hasil akhirnya adalah (1+3, -2+3) = (4, 1).\n\n\n\nKemampuan ini sering digunakan dalam animasi komputer dan desain grafis untuk menggerakkan objek di layar!",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 415,
+    "fields": {
+      "module": 53,
+      "title": "Kuis: Master Transformasi Geometri",
+      "content": "Waktunya menguji imajinasi spasialmu! Transformasi geometri menuntut ketelitian dalam menghitung koordinat baru. Siapkan penggaris dan kertas berpetak jika perlu untuk membantumu memvisualisasikan perpindahan titik. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 53,
+    "fields": {
+      "lesson": 415,
+      "title": "Evaluasi Transformasi Geometri",
+      "description": "Uji pemahaman mengenai refleksi, translasi, rotasi, dan dilatasi pada bidang koordinat."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 411,
+    "fields": {
+      "quiz": 53,
+      "text": "Bayangan titik A(3, -5) jika dicerminkan terhadap sumbu X adalah...",
+      "topic": "Refleksi",
+      "option_a": "(3, 5)",
+      "option_b": "(-3, -5)",
+      "option_c": "(-3, 5)",
+      "option_d": "(5, 3)",
+      "correct_answer": "A",
+      "difficulty_level": -1.0
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 412,
+    "fields": {
+      "quiz": 53,
+      "text": "Titik P(2, 1) ditranslasikan oleh T(3, -4). Koordinat bayangan titik P adalah...",
+      "topic": "Translasi",
+      "option_a": "(5, -3)",
+      "option_b": "(5, 5)",
+      "option_c": "(-1, 5)",
+      "option_d": "(1, -3)",
+      "correct_answer": "A",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 413,
+    "fields": {
+      "quiz": 53,
+      "text": "Bayangan titik B(-2, 4) oleh dilatasi dengan pusat (0,0) dan faktor skala k = 3 adalah...",
+      "topic": "Dilatasi",
+      "option_a": "(-6, 12)",
+      "option_b": "(6, -12)",
+      "option_c": "(-2/3, 4/3)",
+      "option_d": "(-5, 7)",
+      "correct_answer": "A",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 414,
+    "fields": {
+      "quiz": 53,
+      "text": "Jika titik (x, y) dicerminkan terhadap garis y = x, maka koordinat bayangannya menjadi...",
+      "topic": "Refleksi",
+      "option_a": "(-x, -y)",
+      "option_b": "(y, x)",
+      "option_c": "(-y, -x)",
+      "option_d": "(x, -y)",
+      "correct_answer": "B",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 415,
+    "fields": {
+      "quiz": 53,
+      "text": "Rotasi sejauh 90 derajat berlawanan arah jarum jam dengan pusat (0,0) akan mengubah titik (x, y) menjadi...",
+      "topic": "Rotasi",
+      "option_a": "(y, -x)",
+      "option_b": "(-y, x)",
+      "option_c": "(-x, -y)",
+      "option_d": "(y, x)",
+      "correct_answer": "B",
+      "difficulty_level": 1.1
+    }
+  }
+]

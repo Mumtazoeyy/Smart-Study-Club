@@ -1,0 +1,294 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block title %}Daftar Kelas - Smart Study Club{% endblock %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link rel="stylesheet" href="{% static 'fontawesome-free-7.1.0-web/css/all.min.css' %}">
+
+<style>
+    /* Card Kursus - Glassmorphism Industrial Theme (Sesuai home3) */
+    .course-card-industrial {
+        background-color: rgba(255, 255, 255, 0.05); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 0px; 
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .course-card-industrial:hover {
+        transform: translateY(-5px);
+        border-color: rgba(0, 0, 0, 0.3);
+        background-color: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+    }
+
+    /* Form Filter Styling */
+    .industrial-filter-box {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(8px);
+        border: 2px solid #111827;
+        box-shadow: 6px 6px 0px #111827;
+        width: 100%;
+    }
+
+    .cyber-input {
+        background: #ffffff !important;
+        border: 2px solid #111827 !important;
+        color: #111827 !important;
+        border-radius: 0px !important; 
+        font-weight: 700 !important;
+        transition: all 0.2s ease;
+    }
+    .cyber-input:focus {
+        box-shadow: 4px 4px 0px #eab308 !important;
+        transform: translate(-2px, -2px);
+        outline: none;
+    }
+</style>
+
+<div class="min-h-screen">
+    <div class="container mx-auto px-6 min-h-screen flex flex-col items-center justify-start pt-2 pb-12">
+        
+        {# --- HEADER SECTION KATALOG --- #}
+        <div class="w-full mb-12" data-aos="fade-right">
+            <div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                
+                {# Sisi Kiri: Judul & Sub-judul #}
+                <div class="flex flex-col gap-1">
+                    <div class="flex items-center gap-3">
+                        <div class="h-5 w-1.5 bg-[#eab308]"></div>
+                        <h2 class="text-2xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase text-left leading-none">
+                            Katalog <span class="text-gray-400">Materi Kelas</span>
+                        </h2>
+                    </div>
+                    <div class="ml-[1.15rem]">
+                        <p class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-[0.2em] text-left">
+                            E-Learning <span class="mx-2 text-gray-200">|</span> 
+                            Eksplorasi Ilmu Pengetahuan Industrial
+                        </p>
+                    </div>
+                </div>
+
+                {# Sisi Kanan: Statistik Jumlah Course #}
+                <div class="text-right border-r-4 border-[#eab308] pr-6 flex flex-col justify-start h-fit md:-mt-1">
+                    <span class="block text-[9px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">Total Materi</span>
+                    <span class="text-3xl font-black text-gray-900 italic leading-none">
+                        {# Gunakan class_list (untuk ClassListView) atau object_list sebagai fallback #}
+                        {% if total_courses %}
+                            {{ total_courses }}
+                        {% elif class_list %}
+                            {{ class_list.count }}
+                        {% elif object_list %}
+                            {{ object_list.count }}
+                        {% else %}
+                            0
+                        {% endif %}
+                        KELAS TERSEDIA
+                    </span>
+                </div>
+            </div>
+        </div>
+
+       {# Filter Section #}
+        <section class="w-full mb-2" data-aos="fade-up">
+            {# Form Filter - Full Static Glass #}
+            <form method="GET" action="{% url 'course_list' %}" class="bg-white/10 backdrop-blur-md border border-gray-200/50 p-6 md:p-8 mb-4 transform-none">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                    
+                    {# Kotak Search #}
+                    <div class="md:col-span-4 relative group overflow-hidden">
+                        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#eab308] transition-colors"></i>
+                        <input type="text" name="q" placeholder="CARI MATERI..." value="{{ request.GET.q|default:'' }}"
+                            class="w-full pl-12 pr-4 py-3 text-[10px] tracking-widest uppercase bg-transparent border border-gray-900 text-gray-900 placeholder-gray-400 focus:outline-none transition-none shadow-none transform-none">
+                        <div class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#eab308] transition-all duration-300 group-hover:w-full group-focus-within:w-full"></div>
+                    </div>
+
+                    {# Kotak Kategori #}
+                    <div class="md:col-span-3 relative group overflow-hidden">
+                        <select name="category" class="w-full px-4 py-3 text-[10px] tracking-widest uppercase cursor-pointer bg-transparent border border-gray-900 text-gray-900 focus:outline-none transition-none shadow-none transform-none">
+                            <option value="">Semua Kategori</option>
+                            {% for cat in categories %}
+                                <option value="{{ cat.id }}" {% if request.GET.category == cat.id|stringformat:"i" %}selected{% endif %}>{{ cat.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#eab308] transition-all duration-300 group-hover:w-full"></div>
+                    </div>
+
+                    {# Kotak Level #}
+                    <div class="md:col-span-3 relative group overflow-hidden">
+                        <select name="level" class="w-full px-4 py-3 text-[10px] tracking-widest uppercase cursor-pointer bg-transparent border border-gray-900 text-gray-900 focus:outline-none transition-none shadow-none transform-none">
+                            <option value="">Semua Level</option>
+                            <option value="Dasar" {% if request.GET.level == 'Dasar' %}selected{% endif %}>Dasar</option>
+                            <option value="Menengah" {% if request.GET.level == 'Menengah' %}selected{% endif %}>Menengah</option>
+                            <option value="Lanjut" {% if request.GET.level == 'Lanjut' %}selected{% endif %}>Lanjut</option>
+                        </select>
+                        <div class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#eab308] transition-all duration-300 group-hover:w-full"></div>
+                    </div>
+
+                    {# Tombol Filter #}
+                    <div class="md:col-span-2">
+                        <button type="submit" class="w-full py-3 bg-gray-900 text-white font-black text-[10px] tracking-widest uppercase border-b-2 border-transparent hover:border-[#eab308] transition-all transform-none active:transform-none">
+                            <i class="fas fa-filter mr-2"></i> Filter
+                        </button>
+                    </div>
+                </div>
+
+                {# --- ACTIVE FILTERS SECTION (SEKARANG DI DALAM KOTAK FORM) --- #}
+                {% if request.GET.q or request.GET.category or request.GET.level %}
+                <div class="flex flex-wrap items-center gap-3 pt-6 mt-6 border-t border-gray-900/10">
+                    <span class="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] mr-2">Filter Aktif:</span>
+                    
+                    {% if request.GET.q %}
+                    <a href="?{% if request.GET.category %}category={{ request.GET.category }}&{% endif %}{% if request.GET.level %}level={{ request.GET.level }}{% endif %}" 
+                    class="group relative bg-white/10 backdrop-blur-md border border-gray-900/10 px-4 py-2 flex items-center gap-3 transition-none overflow-hidden transform-none active:transform-none shadow-none">
+                        <span class="text-gray-900 text-[9px] font-black uppercase tracking-widest italic">Search: {{ request.GET.q }}</span>
+                        <i class="fas fa-times text-[9px] text-gray-400 group-hover:text-red-500"></i>
+                        <div class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#eab308] transition-all duration-300 group-hover:w-full"></div>
+                    </a>
+                    {% endif %}
+
+                    {% if request.GET.category %}
+                    <a href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}{% if request.GET.level %}level={{ request.GET.level }}{% endif %}" 
+                    class="group relative bg-white/10 backdrop-blur-md border border-gray-900/10 px-4 py-2 flex items-center gap-3 transition-none overflow-hidden transform-none active:transform-none shadow-none">
+                        <span class="text-gray-900 text-[9px] font-black uppercase tracking-widest italic">
+                            kategori: {% for cat in categories %}{% if request.GET.category == cat.id|stringformat:"i" %}{{ cat.name }}{% endif %}{% endfor %}
+                        </span>
+                        <i class="fas fa-times text-[9px] text-gray-400 group-hover:text-red-500"></i>
+                        <div class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#eab308] transition-all duration-300 group-hover:w-full"></div>
+                    </a>
+                    {% endif %}
+
+                    {% if request.GET.level %}
+                    <a href="?{% if request.GET.q %}q={{ request.GET.q }}&{% endif %}{% if request.GET.category %}category={{ request.GET.category }}{% endif %}" 
+                    class="group relative bg-white/10 backdrop-blur-md border border-gray-900/10 px-4 py-2 flex items-center gap-3 transition-none overflow-hidden transform-none active:transform-none shadow-none">
+                        <span class="text-gray-900 text-[9px] font-black uppercase tracking-widest italic">Level: {{ request.GET.level }}</span>
+                        <i class="fas fa-times text-[9px] text-gray-400 group-hover:text-red-500"></i>
+                        <div class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#eab308] transition-all duration-300 group-hover:w-full"></div>
+                    </a>
+                    {% endif %}
+
+                    <a href="{% url 'course_list' %}" class="group relative bg-white/10 backdrop-blur-md border border-red-500/10 px-4 py-2 flex items-center gap-2 transition-none overflow-hidden transform-none active:transform-none shadow-none">
+                        <i class="fas fa-undo text-[9px] text-red-500"></i>
+                        <span class="text-red-500 text-[9px] font-black uppercase tracking-widest">Reset Filter</span>
+                        <div class="absolute bottom-0 left-0 w-0 h-[2px] bg-red-500 transition-all duration-300 group-hover:w-full"></div>
+                    </a>
+                </div>
+                {% endif %}
+            </form>
+        </section>
+
+        {# Course Grid Section - Mobile 2x2 (grid-cols-2) #}
+        <section class="w-full">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+
+                {% for course in class_list %} 
+                <div class="group" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00"> 
+                    <div class="course-card-industrial">
+                        
+                        {# Aksen Siku Pojok #}
+                        <div class="absolute top-0 right-0 w-10 h-10 bg-gray-200/20 -mr-5 -mt-5 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500 z-30"></div>
+
+                        {# Thumbnail Area #}
+                        <div class="w-full h-32 md:h-44 bg-gray-100 flex items-center justify-center relative overflow-hidden border-b border-gray-200/50">
+                            {% if course.thumbnail %}
+                                <img src="{{ course.thumbnail.url }}" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" alt="{{ course.title }}">
+                            {% else %}
+                                <div class="h-full w-full flex items-center justify-center bg-gray-50 text-gray-200">
+                                    <i class="fas fa-image text-2xl md:text-4xl"></i>
+                                </div>
+                            {% endif %}
+                            
+                            {# Category Badge Left Top #}
+                            <div class="absolute top-2 left-2 md:top-3 md:left-3 z-20">
+                                <span class="bg-gray-900/40 text-[#eab308] text-[7px] md:text-[8px] font-black px-1.5 py-0.5 md:px-2 md:py-1 rounded uppercase border border-[#eab308]/30 backdrop-blur-md">
+                                    {{ course.category.name|default:"CORE" }}
+                                </span>
+                            </div>
+
+                            {# Level Badge Right Top - PENAMBAHAN BARU #}
+                            <div class="absolute top-2 right-2 md:top-3 md:right-3 z-40">
+                                <span class="px-1.5 py-0.5 md:px-2 md:py-1 text-[7px] md:text-[8px] font-black uppercase border backdrop-blur-md
+                                    {% if course.level == 'Dasar' %} 
+                                        text-blue-500 border-blue-500/50 bg-blue-500/10
+                                    {% elif course.level == 'Menengah' %} 
+                                        text-yellow-500 border-yellow-500/50 bg-yellow-500/10
+                                    {% else %} 
+                                        text-red-500 border-red-500/50 bg-red-500/10
+                                    {% endif %}">
+                                    {{ course.level|default:"UMUM" }}
+                                </span>
+                            </div>
+
+                            {# Course Code Bottom Right #}
+                            <span class="absolute bottom-2 right-2 md:bottom-3 md:right-3 bg-gray-900/40 text-[#eab308] text-[7px] md:text-[8px] font-black px-1.5 py-0.5 md:px-2 md:py-1 rounded uppercase border border-[#eab308]/30 backdrop-blur-md z-20">
+                                {{ course.course_code }}
+                            </span>
+                        </div>
+                        
+                        {# Content Area #}
+                        <div class="p-3 md:p-6 flex flex-col flex-grow relative">
+                            <div class="flex items-center gap-1 md:gap-2 mb-2 md:mb-3">
+                                 <span class="text-[8px] md:text-[9px] text-gray-400 font-bold uppercase tracking-widest">{{ course.lessons.count|default:"0" }} Materi</span>
+                            </div>
+
+                            <h5 class="text-sm md:text-lg font-black mb-2 text-gray-900 leading-tight uppercase tracking-tighter group-hover:text-gray-600 transition-colors line-clamp-2">
+                                {{ course.title }}
+                            </h5>
+                            
+                            <p class="hidden md:block text-gray-500 text-xs font-medium mb-4 line-clamp-2 flex-grow leading-relaxed">
+                                {{ course.description|truncatewords:12 }}
+                            </p>
+                            
+                            {# Button Industrial #}
+                            <a href="{% url 'course_detail' course.pk %}" class="inline-flex items-center justify-center w-full bg-gray-900 hover:bg-[#eab308] text-white hover:text-gray-900 font-black py-2 md:py-3 px-2 md:px-4 transition-all duration-300 text-[8px] md:text-[10px] uppercase tracking-widest active:scale-95">
+                                Lihat <span class="hidden md:inline ml-1">Kelas</span> <i class="fas fa-arrow-right ml-1 md:ml-2 text-[8px] md:text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+
+                            {# Garis Dinamis Bawah #}
+                            <div class="h-[1.5px] w-4 bg-gray-900 mt-3 md:mt-4 transition-all duration-500 group-hover:w-full"></div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-span-full py-24 text-center">
+                    <div class="border-2 border-dashed border-gray-300 p-12 inline-block">
+                        <i class="fas fa-search-minus text-4xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-900 font-black uppercase tracking-tighter">Data Tidak Tersedia</p>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </section>
+
+        {# Footer Info Area #}
+        <div class="w-full mt-24 pt-8 border-t-2 border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2 text-[9px] font-black text-gray-400 uppercase tracking-widest">
+                <span class="w-2 h-2 bg-yellow-400"></span>
+                System Status: Operational
+            </div>
+            <div class="text-[9px] font-black text-gray-900 uppercase tracking-widest">
+                SSC Industrial Version 1.0.4
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    AOS.init({ 
+        once: true,
+        duration: 800,
+        easing: 'ease-out-back'
+    });
+</script>
+{% endblock %}

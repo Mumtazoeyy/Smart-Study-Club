@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 5,
+    "fields": {
+      "title": "Matematika Kelas 8 (SMP 2)",
+      "description": "Kurikulum Matematika tingkat menengah yang mencakup Pola Bilangan, Koordinat Kartesius, Relasi dan Fungsi, Persamaan Garis Lurus, serta Teorema Pythagoras.",
+      "course_code": "MAT8-05",
+      "level": "Menengah",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 43,
+    "fields": {
+      "course": 5,
+      "title": "Modul 3: Relasi dan Fungsi",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 311,
+    "fields": {
+      "module": 43,
+      "title": "Memahami Konsep Relasi",
+      "content": "Dalam kehidupan sehari-hari, kita sering menjumpai hubungan antar kelompok. Misalnya, kelompok siswa dengan golongan darahnya, atau kelompok anak dengan makanan favoritnya. Di dalam matematika, hubungan ini disebut sebagai **Relasi**.\n\nRelasi dari himpunan A ke himpunan B adalah suatu aturan yang memasangkan anggota-anggota himpunan A dengan anggota-anggota himpunan B. \n\nAda tiga cara populer untuk menyajikan sebuah relasi:\n1. **Diagram Panah**: Menggunakan tanda panah untuk menghubungkan anggota dua himpunan.\n2. **Himpunan Pasangan Berurutan**: Menuliskan pasangan dalam bentuk $(x, y)$.\n3. **Diagram Kartesius**: Menandai titik-titik hubungan pada sumbu X dan Y.\n\n\n\nUniknya, dalam relasi biasa, anggota himpunan A bebas memilih pasangan di B. Boleh punya satu pasangan, banyak pasangan, atau bahkan tidak punya pasangan sama sekali. Ibaratnya, relasi adalah 'pertemanan' biasa.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 312,
+    "fields": {
+      "module": 43,
+      "title": "Apa itu Fungsi (Pemetaan)?",
+      "content": "**Fungsi** atau **Pemetaan** adalah jenis relasi yang jauh lebih disiplin dan memiliki aturan ketat. \n\nSuatu relasi disebut Fungsi jika: **Setiap anggota himpunan A (Domain) memiliki tepat SATU pasangan di himpunan B (Kodomain).**\n\nIbaratnya seperti 'Nomor Induk Siswa'. Setiap siswa (A) pasti punya nomor induk, dan tidak mungkin satu siswa punya dua nomor induk yang berbeda. \n\nAda tiga istilah penting yang harus kamu hafal:\n- **Domain**: Daerah asal (Himpunan A).\n- **Kodomain**: Daerah kawan (Himpunan B).\n- **Range**: Daerah hasil (Anggota B yang benar-benar terpilih sebagai pasangan).\n\n\n\nIngat rumus 'Satu dan Semua': Semua anggota A harus punya pasangan, dan pasangannya hanya boleh satu!",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 313,
+    "fields": {
+      "module": 43,
+      "title": "Video: Notasi dan Nilai Fungsi",
+      "content": "Panduan Menyimak Video:\n\nDalam matematika, fungsi sering dilambangkan dengan huruf kecil seperti $f, g,$ atau $h$. Notasi umumnya adalah $f: x \\to y$, yang dibaca 'fungsi $f$ memetakan $x$ ke $y$'.\n\nBentuk yang paling sering kamu temui adalah rumus fungsi, contohnya: $f(x) = 2x + 3$.\n\n\n\nDalam video ini, kamu akan belajar cara mencari 'bayangan' atau nilai fungsi. \nContoh: Jika $f(x) = 2x + 3$, berapakah nilai fungsi untuk $x = 5$?\nCaranya cukup ganti $x$ dengan angka 5:\n$f(5) = 2(5) + 3 = 10 + 3 = 13$.\n\nTugas: Simak video ini dan perhatikan bagaimana cara menentukan rumus fungsi jika nilai bayangannya sudah diketahui!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 314,
+    "fields": {
+      "module": 43,
+      "title": "Korespondensi Satu-Satu",
+      "content": "Ini adalah tingkatan tertinggi dan paling elite dalam relasi. **Korespondensi Satu-Satu** terjadi jika setiap anggota A berpasangan dengan tepat satu anggota B, DAN sebaliknya, setiap anggota B berpasangan dengan tepat satu anggota A.\n\nSyarat utamanya adalah jumlah anggota himpunan A dan B harus sama persis ($n(A) = n(B)$).\n\nContoh nyata:\n- Negara dengan Ibu Kotanya. (Satu negara punya satu ibu kota, dan satu kota hanya menjadi ibu kota bagi satu negara).\n- Siswa dengan nomor tempat duduk ujiannya.\n\n\n\nJika kamu menemukan ada anggota yang 'jomblo' di B atau ada anggota B yang 'selingkuh' (punya 2 pasangan), maka itu bukan korespondensi satu-satu.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 315,
+    "fields": {
+      "module": 43,
+      "title": "Kuis: Uji Logika Hubungan Himpunan",
+      "content": "Kamu sudah belajar cara membedakan relasi biasa, fungsi, hingga korespondensi satu-satu. Materi ini melatihmu untuk melihat pola hubungan yang logis antar data. Sekarang, siapkan dirimu untuk kuis. Teliti gambar diagram panahnya dan jangan sampai tertukar antara Domain dan Kodomain. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 43,
+    "fields": {
+      "lesson": 315,
+      "title": "Evaluasi Relasi dan Fungsi",
+      "description": "Uji kemampuan menentukan jenis relasi, menghitung nilai fungsi, dan memahami range."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 311,
+    "fields": {
+      "quiz": 43,
+      "text": "Sebuah relasi disebut Fungsi apabila...",
+      "topic": "Syarat Fungsi",
+      "option_a": "Setiap anggota B punya pasangan di A",
+      "option_b": "Setiap anggota A punya tepat satu pasangan di B",
+      "option_c": "Anggota A boleh tidak punya pasangan",
+      "option_d": "Anggota A boleh punya pasangan lebih dari satu",
+      "correct_answer": "B",
+      "difficulty_level": -1.0
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 312,
+    "fields": {
+      "quiz": 43,
+      "text": "Diketahui $f(x) = 3x - 5$. Nilai dari $f(4)$ adalah...",
+      "topic": "Nilai Fungsi",
+      "option_a": "7",
+      "option_b": "12",
+      "option_c": "17",
+      "option_d": "2",
+      "correct_answer": "A",
+      "difficulty_level": -0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 313,
+    "fields": {
+      "quiz": 43,
+      "text": "Jika $A = \\{1, 2, 3\\}$ dan $B = \\{a, b, c\\}$, manakah himpunan pasangan berurutan yang merupakan korespondensi satu-satu?",
+      "topic": "Korespondensi",
+      "option_a": "{(1,a), (2,a), (3,a)}",
+      "option_b": "{(1,a), (2,b), (3,b)}",
+      "option_c": "{(1,a), (2,b), (3,c)}",
+      "option_d": "{(1,a), (2,b)}",
+      "correct_answer": "C",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 314,
+    "fields": {
+      "quiz": 43,
+      "text": "Daerah hasil dari sebuah fungsi disebut dengan istilah...",
+      "topic": "Istilah Fungsi",
+      "option_a": "Domain",
+      "option_b": "Kodomain",
+      "option_c": "Faktorisasi",
+      "option_d": "Range",
+      "correct_answer": "D",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 315,
+    "fields": {
+      "quiz": 43,
+      "text": "Pada fungsi $f: x \\to 5x - 2$, bayangan dari -2 adalah...",
+      "topic": "Nilai Fungsi",
+      "option_a": "8",
+      "option_b": "-12",
+      "option_c": "-8",
+      "option_d": "12",
+      "correct_answer": "B",
+      "difficulty_level": 0.7
+    }
+  }
+]

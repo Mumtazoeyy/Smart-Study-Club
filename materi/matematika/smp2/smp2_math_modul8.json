@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 5,
+    "fields": {
+      "title": "Matematika Kelas 8 (SMP 2)",
+      "description": "Kurikulum Matematika tingkat menengah yang mencakup Pola Bilangan, Koordinat Kartesius, Relasi dan Fungsi, Persamaan Garis Lurus, serta Teorema Pythagoras.",
+      "course_code": "MAT8-05",
+      "level": "Menengah",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 48,
+    "fields": {
+      "course": 5,
+      "title": "Modul 8: Bangun Ruang Sisi Datar",
+      "order": 8
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 336,
+    "fields": {
+      "module": 48,
+      "title": "Kubus dan Balok: Kotak di Sekitar Kita",
+      "content": "Bangun ruang sisi datar yang paling sering kita temui adalah kubus dan balok. Perbedaan utamanya terletak pada sisi-sisinya.\n\n1. **Kubus**: Memiliki 6 sisi yang semuanya berbentuk persegi sama besar. Semua rusuknya sama panjang ($s$).\n   - Luas Permukaan: $6 \\times s^2$\n   - Volume: $s^3$\n\n2. **Balok**: Memiliki 3 pasang sisi yang berhadapan sama besar. Memiliki dimensi panjang ($p$), lebar ($l$), dan tinggi ($t$).\n   - Luas Permukaan: $2 \\times (pl + pt + lt)$\n   - Volume: $p \\times l \\times t$\n\n\n\nUnsur penting lainnya adalah **Diagonal Ruang**. Pada kubus, panjang diagonal ruangnya adalah $s\\sqrt{3}$. Ini adalah jarak terjauh dari satu pojok ke pojok di seberangnya melewati bagian dalam kotak.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 337,
+    "fields": {
+      "module": 48,
+      "title": "Prisma: Bangun dengan Alas dan Tutup Identik",
+      "content": "Prisma adalah bangun ruang yang memiliki alas dan tutup berbentuk sama (kongruen) serta sejajar. Nama prisma diambil dari bentuk alasnya. Jika alasnya segitiga, disebut prisma segitiga.\n\n**Rumus Umum Prisma:**\n- Luas Permukaan: $(2 \\times \\text{Luas Alas}) + (\\text{Keliling Alas} \\times \\text{tinggi})$\n- Volume: $\\text{Luas Alas} \\times \\text{tinggi}$\n\n[Image showing various prisms: triangular, pentagonal, and hexagonal prisms with highlighted base areas]\n\nIngat, balok dan kubus sebenarnya juga termasuk keluarga prisma (prisma segi empat). Kunci utama mengerjakan soal prisma adalah kamu harus mahir menghitung luas bangun datar (segitiga, trapesium, dll) untuk mencari luas alasnya.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 338,
+    "fields": {
+      "module": 48,
+      "title": "Video: Menghitung Volume dan Luas Limas",
+      "content": "Panduan Menyimak Video:\n\nLimas berbeda dengan prisma. Limas hanya memiliki alas dan satu titik puncak di bagian atas (seperti piramida). \n\nHal penting yang sering salah dalam perhitungan limas adalah membedakan antara **tinggi limas** (dari puncak ke tengah alas) dengan **tinggi segitiga tegak** (digunakan untuk menghitung luas permukaan).\n\n\n\n**Rumus Penting Limas:**\n- Luas Permukaan: $\\text{Luas Alas} + \\text{Jumlah Luas Seluruh Segitiga Tegak}$\n- Volume: $\\frac{1}{3} \\times \\text{Luas Alas} \\times \\text{tinggi}$\n\nTugas: Simak video ini dan perhatikan bagaimana Teorema Pythagoras digunakan kembali untuk mencari tinggi segitiga tegak jika hanya diketahui tinggi limasnya!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 339,
+    "fields": {
+      "module": 48,
+      "title": "Jaring-Jaring Bangun Ruang",
+      "content": "Jaring-jaring adalah pembelahan sebuah bangun ruang yang jika direntangkan akan membentuk rangkaian bangun datar. \n\nBayangkan kamu membongkar sebuah kotak kado tanpa merobek kertasnya. Bentuk kertas yang terbentang itulah jaring-jaring. Memahami jaring-jaring membantu kita membayangkan struktur benda dan sangat berguna dalam membuat desain kemasan (packaging).\n\n\n\nSoal ujian seringkali meminta kita menentukan sisi mana yang menjadi alas jika salah satu sisi ditentukan sebagai tutup.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 340,
+    "fields": {
+      "module": 48,
+      "title": "Kuis: Arsitek Bangun Ruang",
+      "content": "Hebat! Kamu sudah mempelajari seluruh keluarga bangun ruang sisi datar. Kamu sekarang tahu perbedaan cara menghitung volume 'kotak' (prisma) dan volume 'tenda' (limas). Sekarang, saatnya uji ketelitianmu dalam menghitung luas permukaan. Jangan sampai ada sisi yang terlewat! Selamat mengerjakan kuis!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 48,
+    "fields": {
+      "lesson": 340,
+      "title": "Evaluasi Bangun Ruang Sisi Datar",
+      "description": "Uji pemahaman tentang volume dan luas permukaan kubus, balok, prisma, dan limas."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 336,
+    "fields": {
+      "quiz": 48,
+      "text": "Sebuah kubus memiliki panjang rusuk 5 cm. Volume kubus tersebut adalah...",
+      "topic": "Volume Kubus",
+      "option_a": "25 cm3",
+      "option_b": "125 cm3",
+      "option_c": "150 cm3",
+      "option_d": "100 cm3",
+      "correct_answer": "B",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 337,
+    "fields": {
+      "quiz": 48,
+      "text": "Luas permukaan balok dengan ukuran 10 cm x 5 cm x 4 cm adalah...",
+      "topic": "Luas Balok",
+      "option_a": "110 cm2",
+      "option_b": "200 cm2",
+      "option_c": "220 cm2",
+      "option_d": "190 cm2",
+      "correct_answer": "C",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 338,
+    "fields": {
+      "quiz": 48,
+      "text": "Banyaknya titik sudut pada prisma segi enam adalah...",
+      "topic": "Unsur Bangun Ruang",
+      "option_a": "6",
+      "option_b": "12",
+      "option_c": "18",
+      "option_d": "8",
+      "correct_answer": "B",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 339,
+    "fields": {
+      "quiz": 48,
+      "text": "Sebuah limas memiliki alas berbentuk persegi dengan sisi 6 cm. Jika tinggi limas 4 cm, maka volumenya adalah...",
+      "topic": "Volume Limas",
+      "option_a": "144 cm3",
+      "option_b": "72 cm3",
+      "option_c": "48 cm3",
+      "option_d": "24 cm3",
+      "correct_answer": "C",
+      "difficulty_level": 0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 340,
+    "fields": {
+      "quiz": 48,
+      "text": "Rumus volume prisma secara umum adalah...",
+      "topic": "Rumus Prisma",
+      "option_a": "1/2 x luas alas x tinggi",
+      "option_b": "Luas alas x tinggi",
+      "option_c": "1/3 x luas alas x tinggi",
+      "option_d": "2 x luas alas x tinggi",
+      "correct_answer": "B",
+      "difficulty_level": -1.8
+    }
+  }
+]

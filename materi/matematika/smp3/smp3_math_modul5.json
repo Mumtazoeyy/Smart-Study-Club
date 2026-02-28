@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 6,
+    "fields": {
+      "title": "Matematika Kelas 9 (SMP 3)",
+      "description": "Persiapan tingkat akhir yang berfokus pada Perpangkatan, Persamaan Kuadrat, Transformasi Geometri, hingga Kesebangunan.",
+      "course_code": "MAT9-06",
+      "level": "Lanjut",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 55,
+    "fields": {
+      "course": 6,
+      "title": "Modul 5: Bangun Ruang Sisi Lengkung",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 421,
+    "fields": {
+      "module": 55,
+      "title": "Tabung: Si Silinder yang Serbaguna",
+      "content": "Tabung adalah bangun ruang yang dibatasi oleh dua buah lingkaran yang kongruen dan sejajar (sebagai alas dan tutup) serta sebuah persegi panjang yang mengelilingi kedua lingkaran tersebut (sebagai selimut).\n\n\n\nUnsur-unsur Tabung:\n1. Jari-jari (r) dan Diameter (d).\n2. Tinggi tabung (h).\n3. Selimut tabung.\n\nRumus Penting:\n- Luas Selimut: $2 \\pi r h$\n- Luas Permukaan: $2 \\pi r (r + h)$\n- Volume: $\\pi r^2 h$\n\nContoh nyata tabung adalah pipa air, kaleng makanan, dan baterai. Kunci menghitung tabung adalah memahami bahwa alasnya adalah lingkaran, jadi kamu harus selalu ingat rumus luas lingkaran.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 422,
+    "fields": {
+      "module": 55,
+      "title": "Kerucut: Limas dengan Alas Lingkaran",
+      "content": "Kerucut memiliki satu titik puncak dan alas berbentuk lingkaran. Sisi lengkungnya jika dibelah akan membentuk juring lingkaran.\n\nAda unsur unik pada kerucut yang disebut **Garis Pelukis (s)**. Garis ini adalah jarak dari titik puncak ke tepi lingkaran alas.\n\n\n\nHubungan r, h, dan s menggunakan Pythagoras: $s^2 = r^2 + h^2$\n\nRumus Penting:\n- Luas Selimut: $\\pi r s$\n- Luas Permukaan: $\\pi r (r + s)$\n- Volume: $1/3 \\pi r^2 h$\n\nVolume kerucut adalah sepertiga dari volume tabung jika keduanya memiliki jari-jari dan tinggi yang sama. Ingatlah topi petani atau cone es krim saat membayangkan bangun ini.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 423,
+    "fields": {
+      "module": 55,
+      "title": "Video: Keajaiban Bola dan Luas Permukaannya",
+      "content": "Panduan Menyimak Video:\n\nBola adalah bangun ruang sisi lengkung yang paling unik karena tidak memiliki rusuk maupun titik sudut. Jarak dari pusat bola ke seluruh permukaan selalu sama, yaitu jari-jari (r).\n\n\n\nMateri Utama Video:\n1. Mengapa luas permukaan bola sama dengan luas 4 lingkaran dengan jari-jari yang sama? ($L = 4 \\pi r^2$)\n2. Cara menghitung Volume Bola ($V = 4/3 \\pi r^3$).\n3. Cara menghitung volume belahan bola (setengah bola).\n\nTugas: Simak video ini dan perhatikan bagaimana volume bola bisa dihubungkan dengan volume kerucut jika jari-jari dan tinggi kerucut disesuaikan!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 424,
+    "fields": {
+      "module": 55,
+      "title": "Aplikasi Perbandingan Volume dan Luas",
+      "content": "Dalam soal ujian tingkat akhir, seringkali kamu diminta membandingkan volume antar bangun ruang sisi lengkung atau menghitung perubahan volume jika jari-jarinya diubah.\n\nContoh Kasus:\nJika jari-jari sebuah bola diperbesar menjadi 2 kali lipat, berapakah perbandingan volumenya?\nLogika: Karena volume menggunakan $r^3$, maka perbandingannya adalah $1^3 : 2^3 = 1 : 8$. Volumenya menjadi 8 kali lebih besar!\n\n[Image illustrating the volume change of a sphere when its radius is doubled]\n\nMemahami perbandingan ini sangat penting bagi arsitek atau desainer produk untuk menghitung efisiensi bahan baku kemasan.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 425,
+    "fields": {
+      "module": 55,
+      "title": "Kuis: Master Bangun Sisi Lengkung",
+      "content": "Selamat! Ini adalah kuis terakhir dari seluruh perjalanan Matematika SMP kamu. Kamu sudah menguasai tabung, kerucut, dan bola. Pastikan kamu teliti menggunakan nilai $\\pi$ (22/7 atau 3,14) dan jangan sampai tertukar antara jari-jari dan diameter. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 55,
+    "fields": {
+      "lesson": 425,
+      "title": "Evaluasi Akhir Bangun Sisi Lengkung",
+      "description": "Uji kompetensi menghitung luas permukaan dan volume tabung, kerucut, serta bola."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 421,
+    "fields": {
+      "quiz": 55,
+      "text": "Sebuah tabung memiliki jari-jari 7 cm dan tinggi 10 cm. Volume tabung tersebut adalah...",
+      "topic": "Volume Tabung",
+      "option_a": "1.540 cm3",
+      "option_b": "770 cm3",
+      "option_c": "440 cm3",
+      "option_d": "3.080 cm3",
+      "correct_answer": "A",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 422,
+    "fields": {
+      "quiz": 55,
+      "text": "Luas permukaan bola dengan jari-jari 10 cm adalah... (pi = 3,14)",
+      "topic": "Luas Bola",
+      "option_a": "314 cm2",
+      "option_b": "628 cm2",
+      "option_c": "1.256 cm2",
+      "option_d": "3.140 cm2",
+      "correct_answer": "C",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 423,
+    "fields": {
+      "quiz": 55,
+      "text": "Garis pelukis (s) pada kerucut dengan jari-jari 3 cm dan tinggi 4 cm adalah...",
+      "topic": "Unsur Kerucut",
+      "option_a": "7 cm",
+      "option_b": "5 cm",
+      "option_c": "25 cm",
+      "option_d": "6 cm",
+      "correct_answer": "B",
+      "difficulty_level": -0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 424,
+    "fields": {
+      "quiz": 55,
+      "text": "Volume kerucut yang memiliki jari-jari dan tinggi yang sama dengan sebuah tabung adalah ... bagian dari volume tabung tersebut.",
+      "topic": "Perbandingan",
+      "option_a": "1/2",
+      "option_b": "1/4",
+      "option_c": "1/3",
+      "option_d": "2/3",
+      "correct_answer": "C",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 425,
+    "fields": {
+      "quiz": 55,
+      "text": "Sebuah kaleng berbentuk tabung tanpa tutup memiliki jari-jari r dan tinggi h. Luas permukaannya adalah...",
+      "topic": "Luas Permukaan",
+      "option_a": "2 pi r h",
+      "option_b": "pi r^2 + 2 pi r h",
+      "option_c": "2 pi r^2 + 2 pi r h",
+      "option_d": "pi r^2 + pi r s",
+      "correct_answer": "B",
+      "difficulty_level": 1.1
+    }
+  }
+]

@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 5,
+    "fields": {
+      "title": "Matematika Kelas 8 (SMP 2)",
+      "description": "Kurikulum Matematika tingkat menengah yang mencakup Pola Bilangan, Koordinat Kartesius, Relasi dan Fungsi, Persamaan Garis Lurus, serta Teorema Pythagoras.",
+      "course_code": "MAT8-05",
+      "level": "Menengah",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 50,
+    "fields": {
+      "course": 5,
+      "title": "Modul 10: Peluang",
+      "order": 10
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 346,
+    "fields": {
+      "module": 50,
+      "title": "Ruang Sampel dan Titik Sampel",
+      "content": "Pernahkah kamu menebak hasil lemparan koin sebelum pertandingan sepak bola dimulai? Hasilnya pasti kalau tidak 'Angka', ya 'Gambar'. Dalam matematika, semua kemungkinan hasil yang bisa terjadi disebut sebagai **Ruang Sampel ($S$)**.\n\nBeberapa istilah dasar yang wajib kamu tahu:\n1. **Percobaan**: Kegiatan yang memberikan hasil yang bisa diamati (contoh: melempar dadu).\n2. **Ruang Sampel ($S$)**: Himpunan semua hasil yang mungkin dari suatu percobaan.\n3. **Titik Sampel**: Anggota-anggota dari ruang sampel.\n4. **Kejadian ($A$)**: Hasil tertentu yang kita harapkan terjadi.\n\nContoh:\nPada pelemparan satu buah dadu:\n- Ruang Sampel $S = {1, 2, 3, 4, 5, 6}$\n- Banyaknya titik sampel $n(S) = 6$\n- Kejadian muncul mata dadu ganjil $A = {1, 3, 5}$, maka $n(A) = 3$.\n\n\n\nMemahami ruang sampel adalah langkah awal yang paling penting, karena jika salah menghitung jumlah kemungkinan total, maka hasil perhitungan peluangmu juga akan salah.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 347,
+    "fields": {
+      "module": 50,
+      "title": "Peluang Teoretik: Menghitung Kemungkinan",
+      "content": "Peluang teoretik adalah nilai yang menunjukkan seberapa besar kemungkinan suatu kejadian terjadi berdasarkan teori matematika. Nilai peluang selalu berada di rentang antara **0 sampai 1**.\n\n- Jika Peluang = 0, artinya kejadian tersebut **Mustahil** terjadi (Contoh: matahari terbit dari barat).\n- Jika Peluang = 1, artinya kejadian tersebut **Pasti** terjadi (Contoh: setiap makhluk hidup akan mati).\n\n**Rumus Utama Peluang:**\n$P(A) = \\frac{n(A)}{n(S)}$\n\n\n\nDimana:\n- $P(A)$ adalah peluang kejadian A.\n- $n(A)$ adalah banyaknya anggota kejadian A yang kita harapkan.\n- $n(S)$ adalah banyaknya seluruh titik sampel yang ada.\n\nContoh: Berapa peluang munculnya mata dadu genap? \n$n(A) = 3$ (yaitu 2, 4, 6) dan $n(S) = 6$. \n$P(A) = \\frac{3}{6} = \\frac{1}{2}$ atau 0,5 (50%).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 348,
+    "fields": {
+      "module": 50,
+      "title": "Video: Peluang Empirik (Frekuensi Relatif)",
+      "content": "Panduan Menyimak Video:\n\nJika Peluang Teoretik didasarkan pada hitungan rumus, maka **Peluang Empirik** didasarkan pada hasil percobaan yang benar-benar dilakukan secara nyata.\n\nMisalnya, kamu melempar koin 100 kali. Secara teori, angka harusnya muncul 50 kali. Tapi dalam kenyataannya, mungkin angka hanya muncul 48 kali. Perbandingan antara 48/100 inilah yang disebut peluang empirik.\n\n[Image comparing theoretical probability vs experimental/empirical probability through a coin toss table]\n\nMateri Utama Video:\n1. Perbedaan antara peluang teoretik dan empirik.\n2. Cara menghitung frekuensi harapan (berapa kali kita mengharapkan suatu kejadian muncul jika percobaan diulang berkali-kali).\n3. Contoh soal peluang pada pengambilan kartu Bridge (Remi).\n\nTugas: Simak video ini dan catatlah jumlah seluruh kartu dalam satu set kartu Bridge (tanpa joker) sebagai nilai $n(S)$-nya!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 349,
+    "fields": {
+      "module": 50,
+      "title": "Peluang Kejadian Majemuk Sederhana",
+      "content": "Terkadang kita dihadapkan pada dua pilihan atau kejadian sekaligus. Ada dua konsep dasar yang perlu kamu ketahui:\n\n1. **Komplemen Suatu Kejadian**: Peluang kejadian yang 'bukan A'.\n   $P(A^c) = 1 - P(A)$\n   Contoh: Jika peluang hujan hari ini 0,3, maka peluang tidak hujan adalah $1 - 0,3 = 0,7$.\n\n2. **Frekuensi Harapan**: Seberapa sering kita mengharapkan kejadian A muncul jika kita melakukan percobaan sebanyak $N$ kali.\n   $Fh = P(A) \\times N$\n\n\n\nKonsep peluang ini sangat penting dalam asuransi, ramalan cuaca, hingga pengambilan keputusan dalam bisnis.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 350,
+    "fields": {
+      "module": 50,
+      "title": "Kuis: Master Peluang",
+      "content": "Selamat! Kamu telah menyelesaikan seluruh modul Matematika untuk Kelas 8. Peluang adalah bab penutup yang melatih insting logikamu dalam menebak kemungkinan secara ilmiah. Sekarang, siapkan dirimu. Fokuslah pada penentuan $n(S)$ yang tepat agar tidak terjebak. Selamat mengerjakan kuis terakhir ini!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 50,
+    "fields": {
+      "lesson": 350,
+      "title": "Evaluasi Materi Peluang",
+      "description": "Uji kemampuan menghitung ruang sampel, peluang teoretik, peluang empirik, dan frekuensi harapan."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 346,
+    "fields": {
+      "quiz": 50,
+      "text": "Banyaknya ruang sampel pada pelemparan dua buah koin secara bersamaan adalah...",
+      "topic": "Ruang Sampel",
+      "option_a": "2",
+      "option_b": "4",
+      "option_c": "6",
+      "option_d": "8",
+      "correct_answer": "B",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 347,
+    "fields": {
+      "quiz": 50,
+      "text": "Peluang munculnya mata dadu prima pada pelemparan satu buah dadu adalah...",
+      "topic": "Peluang Teoretik",
+      "option_a": "1/2",
+      "option_b": "1/3",
+      "option_c": "1/6",
+      "option_d": "2/3",
+      "correct_answer": "A",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 348,
+    "fields": {
+      "quiz": 50,
+      "text": "Sebuah dadu dilempar sebanyak 120 kali. Frekuensi harapan munculnya mata dadu 6 adalah...",
+      "topic": "Frekuensi Harapan",
+      "option_a": "10 kali",
+      "option_b": "20 kali",
+      "option_c": "30 kali",
+      "option_d": "60 kali",
+      "correct_answer": "B",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 349,
+    "fields": {
+      "quiz": 50,
+      "text": "Dalam sebuah kotak terdapat 5 bola merah, 3 bola biru, dan 2 bola kuning. Peluang terambilnya bola biru adalah...",
+      "topic": "Peluang Teoretik",
+      "option_a": "3/5",
+      "option_b": "1/3",
+      "option_c": "3/10",
+      "option_d": "2/10",
+      "correct_answer": "C",
+      "difficulty_level": -0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 350,
+    "fields": {
+      "quiz": 50,
+      "text": "Peluang seorang peserta ujian lulus adalah 0,85. Peluang peserta tersebut TIDAK lulus adalah...",
+      "topic": "Komplemen",
+      "option_a": "0,15",
+      "option_b": "0,25",
+      "option_c": "0,05",
+      "option_d": "1,85",
+      "correct_answer": "A",
+      "difficulty_level": -1.2
+    }
+  }
+]

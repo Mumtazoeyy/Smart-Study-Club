@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | System Error SSC Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .body-bg {
+            background: linear-gradient(to bottom, #f8fafc, #e2e8f0, #94a3b8, #475569);
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="body-bg min-h-screen flex items-center justify-center">
+
+    <div class="container mx-auto px-6 flex flex-col items-center justify-center text-center">
+        
+        {# Efek Glitch Text untuk 404 #}
+        <div class="relative">
+            <h1 class="text-[120px] md:text-[200px] font-black text-gray-900 leading-none tracking-tighter opacity-10 select-none">
+                404
+            </h1>
+            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <h2 class="text-4xl md:text-6xl font-black text-gray-900 uppercase italic">
+                    ERROR <span class="bg-[#eab308] px-4 -skew-x-12 inline-block">SYSTEM</span>
+                </h2>
+                <p class="mt-4 text-xs font-black text-gray-400 tracking-[0.5em] uppercase">Protocol: Page_Not_Found</p>
+            </div>
+        </div>
+
+        {# Deskripsi Industrial #}
+        <div class="max-w-md mt-12 border-t-4 border-gray-900 pt-8">
+            <p class="font-bold text-gray-600 uppercase text-sm leading-relaxed">
+                Maaf, koordinat yang Anda tuju tidak ditemukan dalam database SSC Hub. Jalur akses mungkin telah didegradasi atau dipindahkan ke server lain.
+            </p>
+            
+            <div class="mt-10 flex flex-col md:flex-row gap-4 justify-center">
+                <a href="/" class="px-8 py-4 bg-gray-900 text-white font-black uppercase text-xs tracking-[0.2em] hover:bg-[#eab308] hover:text-gray-900 transition-all shadow-[6px_6px_0px_#111827] flex items-center justify-center gap-2 active:translate-y-1 active:shadow-none">
+                    <i class="fas fa-home"></i> Return to Base
+                </a>
+                <a href="/support/" class="px-8 py-4 border-2 border-gray-900 text-gray-900 font-black uppercase text-xs tracking-[0.2em] hover:bg-white transition-all flex items-center justify-center gap-2">
+                    <i class="fas fa-tools"></i> Report Issue
+                </a>
+            </div>
+        </div>
+
+        {# Footer Tag Error #}
+        <div class="mt-20 opacity-30">
+            <div class="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-gray-400">
+                <span class="h-1 w-12 bg-gray-400"></span>
+                <span>SSC_ERROR_LOG_V4_OFFLINE</span>
+                <span class="h-1 w-12 bg-gray-400"></span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

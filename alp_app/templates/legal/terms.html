@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Terms & Conditions | SSC{% endblock title %}
+
+{% block content %}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+    /* Mengambil style dari Privacy Protocol agar konsisten */
+    .industrial-dot-bg {
+        background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
+        background-size: 16px 16px;
+        background-attachment: fixed;
+    }
+
+    .protocol-card-glass {
+        background-color: rgba(255, 255, 255, 0.05); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .protocol-card-glass:hover {
+        border-color: rgba(0, 0, 0, 0.3);
+        transform: translateY(-2px);
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Card Solid Biru Gelap untuk Legal Notice */
+    .protocol-card-solid-blue {
+        background-color: #0f172a;
+        border: 1px solid #1e293b;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .protocol-card-solid-blue:hover {
+        border-color: #eab308;
+        transform: translateY(-2px);
+    }
+
+    /* FITUR GARIS MEMANJANG */
+    .expanding-line-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+        margin-top: 1.5rem;
+    }
+
+    .expanding-line {
+        height: 1.5px;
+        flex-grow: 0;
+        width: 20px;
+        background-color: #eab308;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .protocol-card-glass:hover .expanding-line,
+    .protocol-card-solid-blue:hover .expanding-line {
+        flex-grow: 1;
+    }
+</style>
+
+<div class="industrial-dot-bg min-h-screen">
+    <div class="container mx-auto px-6 pt-2 pb-24">
+        
+        {# Header Section: Industrial Center Design (Sama dengan About/Privacy) #}
+        <div class="w-full flex flex-col items-center gap-1 mb-16" data-aos="fade-down">
+            <div class="flex items-center gap-3">
+                <div class="h-6 md:h-8 w-1.5 bg-[#eab308]"></div>
+                <h1 class="text-3xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase text-center">
+                    Terms <span class="text-gray-400">& Conditions</span>
+                </h1>
+                <div class="h-6 md:h-8 w-1.5 bg-[#eab308]"></div>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <p class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-[0.2em] text-center">
+                    <span class="text-gray-900">Service Level Agreement</span> 
+                    <span class="mx-3 text-gray-200">|</span> 
+                    System Protocol 2026
+                </p>
+                <div class="mt-2 flex items-center gap-1">
+                    <div class="h-[2px] w-8 bg-gray-900"></div>
+                    <div class="h-[2px] w-2 bg-[#eab308]"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            {# Left Column: Legal Notice (Solid Blue Style) #}
+            <div class="lg:col-span-4" data-aos="fade-right">
+                <div class="sticky top-24">
+                    <section class="protocol-card-solid-blue p-8 group">
+                        <h3 class="text-xl font-black text-white uppercase italic mb-6 border-l-4 border-red-600 pl-4 flex items-center gap-2">
+                            <i class="fas fa-exclamation-triangle text-red-600 text-sm"></i>
+                            Legal Notice
+                        </h3>
+                        <p class="text-[12px] font-bold text-gray-300 leading-relaxed uppercase">
+                            Pelanggaran terhadap persyaratan ini dapat berakibat pada terminasi akun seketika tanpa pengembalian dana dan/atau tuntutan hukum sesuai UU ITE RI.
+                        </p>
+                        
+                        <div class="expanding-line-container">
+                            <span class="text-[9px] font-black uppercase text-gray-500 whitespace-nowrap">Status: Strict</span>
+                            <div class="expanding-line"></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            {# Right Column: Main Content (Glass Style) #}
+            <div class="lg:col-span-8 space-y-10">
+                
+                {# Section 01 #}
+                <section class="protocol-card-glass p-8 group" data-aos="fade-up">
+                    <div class="flex items-baseline gap-4 mb-6">
+                        <span class="text-3xl font-black text-gray-200 group-hover:text-[#eab308] transition-colors">01</span>
+                        <h3 class="text-xl font-black text-gray-900 uppercase italic border-l-4 border-[#eab308] pl-4">Lisensi & HKI</h3>
+                    </div>
+                    <div class="text-sm font-medium text-gray-700 space-y-4">
+                        <p>Seluruh konten termasuk video materi, modul PDF, dan desain adalah properti eksklusif SSC. Dilarang keras melakukan:</p>
+                        <ul class="space-y-2 uppercase text-[11px] font-bold">
+                            <li class="flex items-center gap-2"><span class="h-1 w-3 bg-[#eab308]"></span> Recording/Mirroring konten.</li>
+                            <li class="flex items-center gap-2"><span class="h-1 w-3 bg-[#eab308]"></span> Scraping database otomatis.</li>
+                            <li class="flex items-center gap-2"><span class="h-1 w-3 bg-[#eab308]"></span> Redistribusi ke pihak ketiga.</li>
+                        </ul>
+                    </div>
+                    <div class="expanding-line-container">
+                        <span class="text-[9px] font-black uppercase text-gray-400">Copyright Protocol</span>
+                        <div class="expanding-line"></div>
+                    </div>
+                </section>
+
+                {# Section 02 #}
+                <section class="protocol-card-glass p-8 group" data-aos="fade-up">
+                    <div class="flex items-baseline gap-4 mb-6">
+                        <span class="text-3xl font-black text-gray-200 group-hover:text-[#eab308] transition-colors">02</span>
+                        <h3 class="text-xl font-black text-gray-900 uppercase italic border-l-4 border-[#eab308] pl-4">Integritas Akun</h3>
+                    </div>
+                    <p class="text-sm font-medium text-gray-700 leading-relaxed">
+                        Satu akun terikat pada satu identitas. Sistem dilengkapi deteksi <strong>IP Multi-Login</strong>. Aktivitas login simultan yang tidak wajar akan memicu <strong>Automatic Lockdown</strong>.
+                    </p>
+                    <div class="expanding-line-container">
+                        <span class="text-[9px] font-black uppercase text-gray-400">Access Protocol</span>
+                        <div class="expanding-line"></div>
+                    </div>
+                </section>
+
+                {# Section 03 #}
+                <section class="protocol-card-glass p-8 group" data-aos="fade-up">
+                    <div class="flex items-baseline gap-4 mb-6">
+                        <span class="text-3xl font-black text-gray-200 group-hover:text-[#eab308] transition-colors">03</span>
+                        <h3 class="text-xl font-black text-gray-900 uppercase italic border-l-4 border-[#eab308] pl-4">Sertifikasi</h3>
+                    </div>
+                    <p class="text-sm font-medium text-gray-700 leading-relaxed">
+                        Sertifikat hanya diterbitkan jika memenuhi <strong>Passing Grade</strong>. Kecurangan ujian (terdeteksi AI Proctoring) berakibat pembatalan nilai otomatis.
+                    </p>
+                    <div class="expanding-line-container">
+                        <span class="text-[9px] font-black uppercase text-gray-400">Academic Integrity</span>
+                        <div class="expanding-line"></div>
+                    </div>
+                </section>
+
+                {# Section 04 #}
+                <section class="protocol-card-glass p-8 group" data-aos="fade-up">
+                    <div class="flex items-baseline gap-4 mb-6">
+                        <span class="text-3xl font-black text-gray-200 group-hover:text-[#eab308] transition-colors">04</span>
+                        <h3 class="text-xl font-black text-gray-900 uppercase italic border-l-4 border-[#eab308] pl-4">Disclaimer</h3>
+                    </div>
+                    <p class="text-sm font-medium text-gray-700 leading-relaxed">
+                        SSC tidak menjamin layanan bebas gangguan teknis atau serangan siber. Kami tidak bertanggung jawab atas kerugian akibat kelalaian keamanan perangkat pengguna.
+                    </p>
+                    <div class="expanding-line-container">
+                        <span class="text-[9px] font-black uppercase text-gray-400">Liability Limitation</span>
+                        <div class="expanding-line"></div>
+                    </div>
+                </section>
+
+                {# Footer Section #}
+                <section class="pt-12 border-t-2 border-gray-900" data-aos="fade-up">
+                    <div class="bg-gray-900 p-8 text-center shadow-[8px_8px_0px_#eab308]">
+                        <h4 class="text-lg font-black text-[#eab308] uppercase tracking-[0.2em] mb-4">Pernyataan Kepatuhan</h4>
+                        <p class="text-gray-400 text-[10px] font-bold uppercase italic leading-relaxed">
+                            Dengan melanjutkan akses ke SSC Hub, Anda secara hukum menyetujui seluruh protokol di atas.
+                        </p>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+</script>
+{% endblock %}

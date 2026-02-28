@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 7,
+    "fields": {
+      "course": 2,
+      "title": "Modul 2: Membuat Iklan, Slogan, dan Poster",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 31,
+    "fields": {
+      "module": 7,
+      "title": "Membedah Dunia Iklan, Slogan, dan Poster",
+      "content": "Dalam kehidupan sehari-hari, kita terus-menerus terpapar oleh informasi yang membujuk kita untuk membeli barang, mengikuti sebuah ideologi, atau melakukan aksi sosial. Media pembujuk ini dikenal sebagai teks persuasif yang terbagi menjadi tiga jenis utama:\n\n1. Iklan: Merupakan teks persuasif yang paling lengkap karena memadukan unsur gambar dengan kata-kata, gerak, dan suara. Iklan biasanya ditemukan di media massa seperti televisi, radio, dan internet. Tujuannya adalah untuk memperkenalkan produk atau jasa kepada khalayak luas.\n\n2. Slogan: Fokus pada kekuatan kata-kata. Slogan adalah perkataan atau kalimat pendek yang menarik, mencolok, dan mudah diingat. Slogan sering digunakan sebagai moto atau semboyan suatu organisasi atau produk untuk membangun citra tertentu.\n\n3. Poster: Fokus pada kekuatan visual. Poster adalah plakat (kata-kata dan gambar) yang dipajang di tempat-tempat umum. Poster menggunakan ukuran kertas atau media yang besar agar mudah terlihat oleh orang yang lewat, dengan tujuan memberikan informasi atau ajakan tertentu.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 32,
+    "fields": {
+      "module": 7,
+      "title": "Unsur Pembentuk dan Fungsi Teks Persuasif",
+      "content": "Sebuah teks persuasi tidak muncul begitu saja, ada elemen-elemen yang harus dipenuhi agar pesan sampai kepada target audiens dengan efektif:\n\nElemen Utama Iklan:\n- Sumber: Pihak yang memasang iklan atau penyandang dana.\n- Pesan: Informasi yang ingin disampaikan kepada publik.\n- Media: Sarana yang digunakan, baik cetak, elektronik, maupun media luar ruang.\n- Penerima: Kelompok masyarakat yang menjadi sasaran iklan.\n- Efek: Perubahan yang diharapkan terjadi pada penerima (menjadi tahu, tertarik, atau membeli).\n- Umpan Balik: Reaksi yang diberikan oleh penerima pesan.\n\nFungsi Iklan:\nIklan berfungsi sebagai alat informasional (memberitahu ciri produk) dan alat transformasional (mengubah sikap konsumen agar sesuai dengan citra produk tersebut).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 33,
+    "fields": {
+      "module": 7,
+      "title": "Video: Strategi Kreatif Membuat Slogan",
+      "content": "Panduan Menyimak Video:\n\nMembuat kalimat pendek yang membekas di ingatan orang (memorable) tidaklah mudah. Video ini akan memandu kamu melalui proses kreatif di balik terciptanya slogan-slogan populer dunia.\n\nMateri Utama dalam Video:\n1. Prinsip Ringkas: Bagaimana memangkas kalimat panjang menjadi hanya 3-5 kata tanpa menghilangkan maknanya.\n2. Kekuatan Rima: Penggunaan persamaan bunyi di akhir kata agar slogan terasa puitis dan enak didengar.\n3. Relevansi Emosional: Menghubungkan kata-kata dengan perasaan atau kebutuhan mendasar audiens.\n\nTugas: Simak video ini dan catatlah 5 slogan iklan yang menurutmu paling unik, lalu jelaskan mengapa slogan tersebut mudah kamu ingat!",
+      "video_url": "https://www.youtube.com/embed/zS9YcR_kM2Q",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 34,
+    "fields": {
+      "module": 7,
+      "title": "Kaidah Kebahasaan Teks Iklan dan Poster",
+      "content": "Agar pesan yang disampaikan memiliki daya tarik yang kuat, penggunaan bahasa harus sangat diperhatikan. Berikut adalah ciri kebahasaan teks persuasi:\n\n1. Persuasif: Menggunakan kata-kata ajakan agar konsumen percaya dan mengikuti instruksi.\n2. Imperatif: Menggunakan kalimat perintah yang halus, seperti: temukan, nikmati, hadirilah, atau jangan lewatkan.\n3. Berima: Sering ditemukan pada slogan agar memiliki efek musikalitas saat diucapkan.\n4. Ringkas dan Padat: Menghindari kata yang bertele-tele karena ruang iklan atau poster biasanya terbatas dan mahal.\n5. Berkesan Positif: Menggunakan kata-kata yang membangun citra baik (optimis) tentang produk atau jasa yang ditawarkan.\n\nPenggunaan subjek 'Kami' (pihak pengiklan) dan 'Anda/Kamu' (audiens) sangat sering digunakan untuk membangun komunikasi yang personal dan akrab.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 35,
+    "fields": {
+      "module": 7,
+      "title": "Kuis Kompetensi Modul 2",
+      "content": "Hebat! Kamu telah mempelajari bagaimana media visual dan teks bekerja sama untuk membujuk audiens. Sekarang, saatnya menguji kemampuanmu dalam membedakan antara iklan, slogan, dan poster, serta menganalisis unsur-unsur di dalamnya. Baca dengan teliti setiap studi kasus yang diberikan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 7,
+    "fields": {
+      "lesson": 35,
+      "title": "Evaluasi Iklan, Slogan, dan Poster",
+      "description": "Analisis unsur visual dan verbal dalam teks persuasi melalui kuis ini."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 31,
+    "fields": {
+      "quiz": 7,
+      "text": "Teks persuasi yang mengutamakan kata-kata singkat, menarik, dan mudah diingat untuk menjelaskan ideologi atau organisasi disebut...",
+      "topic": "Definisi",
+      "option_a": "Iklan",
+      "option_b": "Slogan",
+      "option_c": "Poster",
+      "option_d": "Berita",
+      "correct_answer": "B",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 32,
+    "fields": {
+      "quiz": 7,
+      "text": "Perbedaan utama antara poster dengan iklan adalah...",
+      "topic": "Karakteristik",
+      "option_a": "Poster hanya berisi gambar saja",
+      "option_b": "Poster dipasang di tempat umum menggunakan plakat besar",
+      "option_c": "Iklan tidak boleh menggunakan suara",
+      "option_d": "Slogan tidak boleh ada di dalam poster",
+      "correct_answer": "B",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 33,
+    "fields": {
+      "quiz": 7,
+      "text": "'Gunakan Masker, Lindungi Keluarga!' Kalimat tersebut bersifat...",
+      "topic": "Kebahasaan",
+      "option_a": "Informatif",
+      "option_b": "Naratif",
+      "option_c": "Persuasif dan Imperatif",
+      "option_d": "Deskriptif",
+      "correct_answer": "C",
+      "difficulty_level": 0.3
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 34,
+    "fields": {
+      "quiz": 7,
+      "text": "Unsur iklan yang berupa tanggapan atau reaksi dari penerima pesan disebut...",
+      "topic": "Unsur Iklan",
+      "option_a": "Media",
+      "option_b": "Efek",
+      "option_c": "Umpan Balik (Feedback)",
+      "option_d": "Sumber",
+      "correct_answer": "C",
+      "difficulty_level": 0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 35,
+    "fields": {
+      "quiz": 7,
+      "text": "Iklan yang bertujuan untuk menginformasikan layanan masyarakat dari pemerintah disebut jenis iklan...",
+      "topic": "Jenis Iklan",
+      "option_a": "Iklan Niaga",
+      "option_b": "Iklan Layanan Masyarakat",
+      "option_c": "Iklan Penawaran Barang",
+      "option_d": "Iklan Baris",
+      "correct_answer": "B",
+      "difficulty_level": 1.1
+    }
+  }
+]

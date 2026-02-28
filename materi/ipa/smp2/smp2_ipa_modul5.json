@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 75,
+    "fields": {
+      "course": 8,
+      "title": "Modul 5: Sistem Peredaran Darah Manusia",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 571,
+    "fields": {
+      "module": 75,
+      "title": "Komponen Darah dan Fungsinya",
+      "content": "Darah manusia terdiri dari bagian cair dan bagian padat (sel darah). Masing-masing memiliki peran yang spesifik untuk menjaga kelangsungan hidup:\n\n1. **Plasma Darah**: Cairan kekuningan (sekitar 55% volume darah) yang berfungsi mengangkut sari makanan, hormon, dan sisa metabolisme.\n2. **Sel Darah Merah (Eritrosit)**: Berbentuk bikonkaf dan mengandung hemoglobin untuk mengikat oksigen.\n3. **Sel Darah Putih (Leukosit)**: Berfungsi sebagai sistem pertahanan tubuh untuk melawan kuman dan virus yang masuk.\n4. **Keping Darah (Trombosit)**: Berperan penting dalam proses pembekuan darah saat terjadi luka.\n\n\n\nProses pembekuan darah melibatkan protein fibrinogen yang berubah menjadi benang-benang fibrin untuk menutup luka agar pendarahan berhenti.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 572,
+    "fields": {
+      "module": 75,
+      "title": "Jantung dan Pembuluh Darah",
+      "content": "Jantung adalah pompa otot yang kuat. Ia terbagi menjadi empat ruang: Serambi (Atrium) Kanan & Kiri, serta Bilik (Ventrikel) Kanan & Kiri. \n\nSelain jantung, terdapat tiga jenis pembuluh darah:\n- **Arteri (Pembuluh Nadi)**: Membawa darah keluar dari jantung. Tekanannya kuat dan biasanya kaya oksigen (kecuali arteri pulmonalis).\n- **Vena (Pembuluh Balik)**: Membawa darah kembali ke jantung. Memiliki katup agar darah tidak mengalir mundur.\n- **Kapiler**: Pembuluh terkecil tempat terjadinya pertukaran zat antara darah dan jaringan tubuh.\n\n\n\nDinding Bilik Kiri jantung jauh lebih tebal dibandingkan bilik kanan karena ia harus memompa darah ke seluruh bagian tubuh yang jauh.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 573,
+    "fields": {
+      "module": 75,
+      "title": "Mekanisme Peredaran Darah Besar dan Kecil",
+      "content": "Sistem peredaran darah manusia disebut peredaran darah ganda karena darah melewati jantung sebanyak dua kali dalam satu siklus lengkap.\n\n1. **Peredaran Darah Kecil (Pulmonal)**: Jantung (Bilik Kanan) -> Paru-paru -> Jantung (Serambi Kiri). Tujuannya adalah membuang CO2 dan mengambil O2.\n2. **Peredaran Darah Besar (Sistemik)**: Jantung (Bilik Kiri) -> Seluruh Tubuh -> Jantung (Serambi Kanan). Tujuannya adalah mengedarkan oksigen dan nutrisi ke sel-sel tubuh.\n\n\n\nGangguan pada sistem ini meliputi Anemia (kurang darah), Hipertensi (tekanan darah tinggi), hingga Jantung Koroner yang disebabkan oleh penyumbatan lemak di pembuluh darah jantung.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 574,
+    "fields": {
+      "module": 75,
+      "title": "Video: Detak Jantung dan Tekanan Darah",
+      "content": "Bagaimana cara kerja tensimeter? Dan mengapa jantung kita berdetak lebih cepat saat olahraga? Video ini akan menjelaskan mekanisme kontraksi jantung (Sistol) dan relaksasi jantung (Diastol). Kamu juga akan mempelajari golongan darah (A, B, AB, O) dan prinsip transfusi darah agar tidak terjadi penggumpalan.",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 575,
+    "fields": {
+      "module": 75,
+      "title": "Kuis: Ahli Kardiologi",
+      "content": "Siapkan pemahamanmu tentang rute aliran darah dan fungsi masing-masing komponen darah. Kuis ini akan menguji ketelitianmu dalam membedakan peredaran darah besar dan kecil!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 75,
+    "fields": {
+      "lesson": 575,
+      "title": "Evaluasi Sistem Peredaran Darah",
+      "description": "Uji kompetensi tentang komponen darah, anatomi jantung, dan rute peredaran darah manusia."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 571,
+    "fields": {
+      "quiz": 75,
+      "text": "Bagian darah yang berfungsi untuk mengangkut oksigen karena mengandung hemoglobin adalah...",
+      "topic": "Sel Darah",
+      "option_a": "Plasma darah",
+      "option_b": "Eritrosit",
+      "option_c": "Leukosit",
+      "option_d": "Trombosit",
+      "correct_answer": "B",
+      "difficulty_level": -1.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 572,
+    "fields": {
+      "quiz": 75,
+      "text": "Ruang jantung yang berfungsi memompa darah kaya oksigen ke seluruh tubuh adalah...",
+      "topic": "Anatomi Jantung",
+      "option_a": "Serambi Kanan",
+      "option_b": "Bilik Kanan",
+      "option_c": "Serambi Kiri",
+      "option_d": "Bilik Kiri",
+      "correct_answer": "D",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 573,
+    "fields": {
+      "quiz": 75,
+      "text": "Urutan peredaran darah kecil yang benar adalah...",
+      "topic": "Rute Darah",
+      "option_a": "Bilik Kiri -> Seluruh Tubuh -> Serambi Kanan",
+      "option_b": "Bilik Kanan -> Paru-paru -> Serambi Kiri",
+      "option_c": "Serambi Kiri -> Paru-paru -> Bilik Kanan",
+      "option_d": "Bilik Kiri -> Paru-paru -> Serambi Kanan",
+      "correct_answer": "B",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 574,
+    "fields": {
+      "quiz": 75,
+      "text": "Pembuluh darah yang memiliki dinding tebal, elastis, dan membawa darah keluar dari jantung disebut...",
+      "topic": "Pembuluh Darah",
+      "option_a": "Arteri",
+      "option_b": "Vena",
+      "option_c": "Kapiler",
+      "option_d": "Venula",
+      "correct_answer": "A",
+      "difficulty_level": -1.0
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 575,
+    "fields": {
+      "quiz": 75,
+      "text": "Gangguan sistem peredaran darah yang ditandai dengan tekanan darah di atas normal disebut...",
+      "topic": "Penyakit Darah",
+      "option_a": "Anemia",
+      "option_b": "Hipotensi",
+      "option_c": "Hipertensi",
+      "option_d": "Leukimia",
+      "correct_answer": "C",
+      "difficulty_level": -1.5
+    }
+  }
+]

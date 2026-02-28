@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 3,
+    "fields": {
+      "title": "Bahasa Indonesia Kelas 9 (SMP 3)",
+      "description": "Persiapan tingkat akhir yang berfokus pada Teks Laporan Percobaan, Pidato Persuasif, Literasi Cerpen, dan Teks Diskusi.",
+      "course_code": "BIN9-03",
+      "level": "Lanjut",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 11,
+    "fields": {
+      "course": 3,
+      "title": "Modul 1: Melaporkan Hasil Percobaan",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 51,
+    "fields": {
+      "module": 11,
+      "title": "Ciri dan Fungsi Teks Laporan Percobaan",
+      "content": "Pernahkah kamu melakukan praktikum di laboratorium sekolah, seperti menguji kandungan vitamin C pada buah atau membuat magnet sederhana? Hasil dari kegiatan tersebut tidak boleh hanya diingat, tetapi harus didokumentasikan dalam bentuk Teks Laporan Percobaan.\n\nTeks laporan percobaan adalah teks yang menyajikan informasi mengenai hasil suatu percobaan yang dilakukan dengan tujuan untuk menguji atau membuktikan suatu teori. Berbeda dengan teks laporan hasil observasi yang hanya mengamati, dalam laporan percobaan ada tindakan aktif atau perlakuan khusus yang dilakukan peneliti terhadap objeknya.\n\nFungsi Utama Teks Laporan Percobaan:\n1. Sumber Informasi: Menjadi catatan bagi orang lain yang ingin mengetahui hasil percobaan tersebut.\n2. Bukti Ilmiah: Menunjukkan bahwa suatu percobaan benar-benar telah dilakukan secara bertanggung jawab.\n3. Dokumentasi: Menyimpan data percobaan agar tidak hilang dan dapat dipelajari kembali di masa depan.\n4. Pemecahan Masalah: Memberikan jawaban atas pertanyaan penelitian yang diajukan di awal.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 52,
+    "fields": {
+      "module": 11,
+      "title": "Membedah Struktur Teks Laporan Percobaan",
+      "content": "Sebuah laporan percobaan harus disusun secara sistematis agar peneliti lain dapat mengulangi percobaan yang sama dengan hasil yang akurat. Berikut adalah strukturnya:\n\n1. Judul\nMencerminkan isi percobaan secara singkat dan jelas.\n\n2. Tujuan\nMenjelaskan apa yang ingin dibuktikan atau dicari tahu melalui percobaan ini.\n\n3. Alat dan Bahan\nDaftar rincian material yang digunakan. Penulisan harus sangat detail, termasuk jumlah atau ukuran yang digunakan (contoh: 2 tabung reaksi, 10 gram garam).\n\n4. Langkah-langkah (Prosedur)\nUrutan tindakan yang dilakukan selama percobaan. Bagian ini harus ditulis menggunakan kalimat perintah atau kalimat aktif yang kronologis.\n\n5. Hasil Percobaan\nData yang didapat setelah percobaan selesai. Biasanya disajikan dalam bentuk uraian paragraf, tabel, atau grafik.\n\n6. Simpulan\nIntisari dari seluruh percobaan yang menjawab tujuan di bagian awal.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 53,
+    "fields": {
+      "module": 11,
+      "title": "Video: Simulasi Uji Zat Makanan",
+      "content": "Panduan Menyimak Video:\n\nDalam video ini, kita akan melihat bagaimana cara menguji kandungan karbohidrat dan protein pada berbagai jenis bahan makanan menggunakan reagen tertentu. Perhatikan setiap perubahan warna yang terjadi sebagai indikator hasil.\n\nMateri Utama dalam Video:\n1. Prosedur Keselamatan: Cara menggunakan alat laboratorium dengan aman agar tidak terjadi kecelakaan.\n2. Observasi Perubahan: Mengamati reaksi kimia yang terjadi saat bahan makanan dicampur dengan zat penguji.\n3. Pencatatan Data: Bagaimana mengubah hasil pengamatan visual menjadi data tertulis yang objektif.\n\nTugas: Simak video ini dan catatlah warna apa yang menunjukkan bahwa sebuah makanan mengandung karbohidrat tinggi!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 54,
+    "fields": {
+      "module": 11,
+      "title": "Kaidah Kebahasaan Ilmiah dalam Laporan",
+      "content": "Karena laporan percobaan bersifat ilmiah dan objektif, bahasa yang digunakan harus memenuhi kriteria berikut:\n\n1. Kalimat Kompleks dan Simpleks\nMenggunakan kalimat yang memiliki lebih dari satu struktur predikat (kompleks) untuk menjelaskan hubungan sebab-akibat, serta kalimat sederhana (simpleks) untuk instruksi yang tegas.\n\n2. Kata Bilangan (Numeralia)\nMenggunakan angka atau urutan untuk menunjukkan takaran bahan dan urutan langkah kerja secara pasti.\n\n3. Kata Hubung (Konjungsi)\nMenggunakan kata hubung urutan seperti: pertama, selanjutnya, setelah itu, kemudian. Serta konjungsi penyimpulan seperti: jadi, dengan demikian.\n\n4. Istilah Teknis\nMenggunakan kata-kata khusus di bidang sains sesuai objek percobaan. Contoh: 'filtrasi', 'oksidasi', 'mikroskopis', atau 'reaksi'.\n\n5. Sinonim dan Antonim\nDigunakan pada bagian deskripsi alat dan bahan untuk memperjelas rincian benda.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 55,
+    "fields": {
+      "module": 11,
+      "title": "Kuis Kompetensi Modul 1",
+      "content": "Hebat! Kamu sudah belajar bagaimana cara menjadi ilmuwan muda dengan menyusun laporan percobaan yang baik. Sekarang, mari uji pemahamanmu mengenai struktur, fungsi, dan kebahasaan yang digunakan. Ingatlah bahwa data dan objektivitas adalah hal yang paling utama dalam sebuah laporan percobaan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 11,
+    "fields": {
+      "lesson": 55,
+      "title": "Evaluasi Laporan Percobaan",
+      "description": "Pastikan Anda memahami alur kerja ilmiah sebelum menjawab soal kuis."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 51,
+    "fields": {
+      "quiz": 11,
+      "text": "Tujuan utama dari pembuatan teks laporan percobaan adalah...",
+      "topic": "Tujuan",
+      "option_a": "Mempromosikan alat laboratorium",
+      "option_b": "Menginformasikan hasil pengujian secara sistematis",
+      "option_c": "Menghibur pembaca dengan eksperimen lucu",
+      "option_d": "Menceritakan biografi ilmuwan",
+      "correct_answer": "B",
+      "difficulty_level": -1.3
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 52,
+    "fields": {
+      "quiz": 11,
+      "text": "Bagian teks yang berisi penjelasan tentang apa yang didapat setelah melakukan langkah-langkah kerja disebut...",
+      "topic": "Struktur",
+      "option_a": "Tujuan",
+      "option_b": "Langkah-langkah",
+      "option_c": "Hasil Percobaan",
+      "option_d": "Simpulan",
+      "correct_answer": "C",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 53,
+    "fields": {
+      "quiz": 11,
+      "text": "Kata penghubung 'kemudian', 'setelah itu', dan 'akhirnya' dalam laporan percobaan berfungsi untuk...",
+      "topic": "Kebahasaan",
+      "option_a": "Menunjukkan tempat",
+      "option_b": "Menunjukkan urutan langkah kerja",
+      "option_c": "Menunjukkan alasan",
+      "option_d": "Menunjukkan hasil",
+      "correct_answer": "B",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 54,
+    "fields": {
+      "quiz": 11,
+      "text": "Kalimat yang menggunakan satu verba utama dan satu struktur predikat disebut kalimat...",
+      "topic": "Kebahasaan",
+      "option_a": "Kompleks",
+      "option_b": "Simpleks",
+      "option_c": "Majemuk",
+      "option_d": "Pasif",
+      "correct_answer": "B",
+      "difficulty_level": 0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 55,
+    "fields": {
+      "quiz": 11,
+      "text": "Dalam menyusun laporan percobaan, penulisan simpulan harus didasarkan pada...",
+      "topic": "Struktur",
+      "option_a": "Prediksi awal",
+      "option_b": "Opini masyarakat",
+      "option_c": "Data yang diperoleh dari hasil percobaan",
+      "option_d": "Harga alat dan bahan",
+      "correct_answer": "C",
+      "difficulty_level": 1.1
+    }
+  }
+]

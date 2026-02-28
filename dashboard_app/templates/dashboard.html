@@ -1,0 +1,537 @@
+{% extends "base.html" %}
+{% load static %}
+{% load account %}
+
+{% block title %}Dashboard Belajar - Smart Study Club{% endblock title %}
+
+{% block content %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<link rel="stylesheet" href="{% static 'fontawesome-free-7.1.0-web/css/all.min.css' %}">
+
+{# BLOK ANIMASI KHUSUS DASHBOARD #}
+<style>
+   /* Efek Masuk (Fade Up) - SEKARANG HANYA UNTUK ANIMASI */
+.dashboard-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: dashboardFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    /* Border dan Shadow di sini DIHAPUS agar tidak bentrok dengan gaya transparan */
+}
+
+@keyframes dashboardFadeUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Style Glassmorphism dari home5.html - INI JADI STANDAR UTAMA */
+.card-forum-transparan {
+    background-color: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Border halus sesuai home5.html */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efek saat hover agar konsisten dengan header dan home5.html */
+.card-forum-transparan:hover {
+    border-color: rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px); /* Efek melayang halus */
+}
+</style>
+
+<div class="min-h-screen">
+    <div class="container mx-auto px-6 min-h-screen pt-4 pb-12 space-y-8">
+
+        {# HEADER SECTION - Diadaptasi menjadi Gaya Industrial Minimalis home5.html #}
+        <header class="group relative overflow-hidden card-forum-transparan p-8 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 transition-all duration-300" data-aos="fade-down">
+            
+            {# Siku Pojok: Dari abu-abu ke kuning saat hover (Khas home5.html) #}
+            <div class="absolute top-0 right-0 w-12 h-12 bg-gray-200/20 -mr-6 -mt-6 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+
+            <div class="text-center md:text-left flex-shrink-0 relative z-10">
+                {# Row Judul: Balok Kuning + Nama #}
+                <div class="flex items-center justify-center md:justify-start gap-3 mb-2">
+                    <div class="h-6 w-1.5 bg-[#eab308]"></div> {# Bar Kuning Industrial #}
+                    <h1 class="text-3xl font-black text-gray-900 uppercase tracking-tighter">
+                        Halo, <span class="text-gray-400">{% firstof profile.nama_lengkap user.username %}</span>! 🚀
+                    </h1>
+                </div>
+                
+                <div class="flex items-center justify-center md:justify-start gap-2">
+                    <p class="text-gray-500 text-[10px] font-bold uppercase tracking-[0.2em]">Status Pelajar:</p>
+                    
+                    <button onclick="openStatusModal()" class="group relative overflow-hidden cursor-pointer inline-flex items-center gap-2 px-3 py-1 bg-white/5 backdrop-blur-md border border-gray-900/20 hover:border-gray-900 transition-all duration-300 shadow-[2px_2px_0px_rgba(0,0,0,0.05)] hover:shadow-[3px_3px_0px_#eab308]">
+                        {# Gunakan pangkat.color_class #}
+                        <i class="fas fa-award text-[10px] {{ pangkat.color_class }} group-hover:text-gray-900 transition-colors duration-300"></i> 
+                        
+                        <span class="text-[9px] font-black uppercase tracking-widest text-gray-500 group-hover:text-gray-900 transition-colors duration-300">
+                            {# Gunakan pangkat.nama #}
+                            {{ pangkat.nama }}
+                        </span>
+                        <div class="h-[1px] w-0 bg-gray-900 transition-all duration-500 group-hover:w-3"></div>
+                    </button>
+                </div>
+
+                {# Gunakan pangkat.deskripsi #}
+                <p class="text-[10px] text-gray-400 font-bold uppercase mt-3 tracking-widest">{{ pangkat.deskripsi }}</p>   
+            </div>
+                    
+            <div class="flex items-center gap-6 w-full md:w-auto justify-center md:justify-end relative z-10">
+                {# Theta Info dengan Garis Dinamis #}
+                <div onclick="openThetaModal()" class="hidden sm:block w-48 text-right cursor-pointer group/theta">
+                    <div class="flex justify-between items-end mb-1.5">
+                        <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest group-hover/theta:text-gray-900 transition-colors">Ability (Theta)</span>
+                        <span class="text-[10px] font-black text-yellow-600 bg-gray-900 px-1.5 text-white">{{ profile.ability_score|default:"0.0" }} θ</span>
+                    </div>
+                    {# Progress Bar Tipis ala Industrial #}
+                    <div class="w-full bg-gray-200/50 h-1.5 border border-gray-900 overflow-hidden">
+                        <div class="progress-pulse bg-yellow-400 h-full transition-all duration-[1500ms]" 
+                            style="width: {{ ability_percentage|default:'50' }}%">
+                        </div>
+                    </div>
+                </div>
+
+                {# Frame Foto Profil #}
+                <div class="relative w-16 h-16 flex-shrink-0">
+                    {% if profile.foto %}
+                        <img src="{{ profile.foto.url }}" 
+                            class="w-full h-full object-cover border-2 border-gray-900 shadow-[4px_4px_0px_#eab308] group-hover:shadow-[2px_2px_0px_#eab308] transition-all" 
+                            alt="Foto Profil">
+                    {% else %}
+                        <div class="w-full h-full bg-gray-900 flex items-center justify-center text-2xl text-yellow-400 font-black shadow-[4px_4px_0px_#eab308]">
+                            {{ user.username|slice:":1"|upper }}
+                        </div>
+                    {% endif %}
+                    
+                    {# Status Online Indikator #}
+                    <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 border-2 border-gray-900 flex items-center justify-center">
+                        <span class="absolute inline-flex h-full w-full bg-green-400 opacity-75 animate-ping"></span>
+                        <div class="relative w-1.5 h-1.5 bg-white"></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        {# STATS SECTION - Desain Garis Memanjang (Teks -> Garis) #}
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            {# Card 1: Total Waktu Belajar #}
+            <div class="group relative overflow-hidden card-forum-transparan p-8 rounded-xl transition-all duration-300 dashboard-card delay-1 cursor-default">
+                {# Siku Pojok #}
+                <div class="absolute top-0 right-0 w-12 h-12 bg-gray-200/20 -mr-6 -mt-6 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+                
+                <div class="relative z-10">
+                    {# Balok Kuning + Label #}
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="h-5 w-1.5 bg-[#eab308]"></div>
+                        <p class="text-[10px] font-black text-gray-500 uppercase tracking-widest group-hover:text-gray-900 transition-colors">Study Time</p>
+                    </div>
+                    
+                    <h2 class="text-3xl font-black text-gray-900 mt-1 uppercase tracking-tighter">
+                        {{ total_waktu_belajar_menit|default:"0" }} <span class="text-sm font-bold text-gray-400">MIN</span>
+                    </h2>
+                    
+                    {# Garis Memanjang: Teks -> Garis #}
+                    <div class="mt-6 flex items-center gap-2 w-full">
+                        <span class="text-[9px] font-black uppercase text-gray-900 whitespace-nowrap">
+                            {{ indikator_waktu|default:"Ready for session" }}
+                        </span>
+                        <div class="h-[1.5px] w-4 bg-gray-900 transition-all duration-500 ease-in-out group-hover:flex-grow"></div>
+                    </div>
+                </div>
+            </div>
+
+            {# Card 2: Kelas Aktif #}
+            <a href="{% url 'my_courses' %}" class="group relative overflow-hidden card-forum-transparan p-8 rounded-xl transition-all duration-300 dashboard-card delay-2 block">
+                <div class="absolute top-0 right-0 w-12 h-12 bg-gray-200/20 -mr-6 -mt-6 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+                
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="h-5 w-1.5 bg-[#eab308]"></div>
+                        <p class="text-[10px] font-black text-gray-500 uppercase tracking-widest group-hover:text-gray-900 transition-colors">Active Modules</p>
+                    </div>
+
+                    <h2 class="text-3xl font-black text-gray-900 mt-1 uppercase tracking-tighter">
+                        {{ jumlah_kelas_aktif|default:"0" }} <span class="text-sm font-bold text-gray-400">UNITS</span>
+                    </h2>
+
+                    {# Garis Memanjang: Teks -> Garis #}
+                    <div class="mt-6 flex items-center gap-2 w-full">
+                        <span class="text-[9px] font-black uppercase text-gray-900 whitespace-nowrap">
+                            {{ indikator_kelas|default:"Open Catalog" }}
+                        </span>
+                        <div class="h-[1.5px] w-4 bg-gray-900 transition-all duration-500 ease-in-out group-hover:flex-grow"></div>
+                    </div>
+                </div>
+            </a>
+
+            {# Card 3: Rata-rata Kuis #}
+            <div class="group relative overflow-hidden card-forum-transparan p-8 rounded-xl transition-all duration-300 dashboard-card delay-3 cursor-default">
+                <div class="absolute top-0 right-0 w-12 h-12 bg-gray-200/20 -mr-6 -mt-6 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+                
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="h-5 w-1.5 bg-[#eab308]"></div>
+                        <p class="text-[10px] font-black text-gray-500 uppercase tracking-widest group-hover:text-gray-900 transition-colors">Average Score</p>
+                    </div>
+                    
+                    <h2 class="text-3xl font-black text-gray-900 mt-1 uppercase tracking-tighter">
+                        {{ nilai_rata_rata|default:"0" }}<span class="text-sm font-bold text-gray-400">%</span>
+                    </h2>
+                    
+                    {# Garis Memanjang: Teks -> Garis #}
+                    <div class="mt-6 flex items-center gap-2 w-full">
+                        <span class="text-[9px] font-black uppercase text-red-600 whitespace-nowrap">
+                            {{ indikator_nilai|default:"Keep pushing!" }}
+                        </span>
+                        <div class="h-[1.5px] w-4 bg-red-600/50 group-hover:bg-red-600 transition-all duration-500 ease-in-out group-hover:flex-grow"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-8">
+                {# CHART SECTION - Industrial Glassmorphism #}
+                <section class="group relative overflow-hidden card-forum-transparan p-6 rounded-xl transition-all duration-300 dashboard-card delay-4">
+                    <div class="absolute top-0 right-0 w-12 h-12 bg-gray-200/20 -mr-6 -mt-6 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="h-4 w-1 bg-[#eab308]"></div>
+                                <h3 class="text-sm font-black text-gray-900 uppercase tracking-widest">Performance Analysis</h3>
+                            </div>
+                            <span class="text-[9px] font-black bg-yellow-400 px-2 py-0.5 border border-gray-900">LIVE</span>
+                        </div>
+                        <div class="relative h-[300px]">
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+                {# RECOMMENDATION SECTION - Dark Industrial Style (Sesuai home5.html) #}
+                <section class="group relative overflow-hidden bg-[#111827] p-8 rounded-xl transition-all duration-300 dashboard-card delay-4">
+                    {# Pola Titik & Siku Kuning #}
+                    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#eab308 0.5px, transparent 0.5px); background-size: 8px 8px;"></div>
+                    <div class="absolute top-0 right-0 w-12 h-12 bg-white/5 -mr-6 -mt-6 rotate-45 group-hover:bg-yellow-500 transition-colors duration-500"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse"></div>
+                            <span class="text-[10px] font-bold tracking-widest text-yellow-400 uppercase">Smart Recommendation</span>
+                        </div>
+                        
+                        {% if rekomendasi %}
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight mb-2">{{ rekomendasi.title }}</h3>
+                            <p class="text-sm text-gray-400 font-medium mb-8 max-w-md">{{ rekomendasi.pesan }}</p>
+                            
+                            <a href="{{ rekomendasi.link }}" class="flex items-center gap-2 w-full text-yellow-400 group-hover:text-white transition-colors">
+                                <span class="text-[10px] font-black uppercase tracking-widest">Lanjutkan Belajar</span>
+                                <div class="h-[1.5px] w-4 bg-yellow-500/50 group-hover:bg-yellow-400 group-hover:flex-grow transition-all duration-500"></div>
+                            </a>
+                        {% else %}
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tight mb-2">Mulai Petualangan! 🌟</h3>
+                            <p class="text-sm text-gray-400 font-medium mb-8 max-w-md">Belum ada rekomendasi. Mulai jelajahi katalog kelas kami sekarang.</p>
+                            
+                            <a href="{% url 'course_list' %}" class="flex items-center gap-2 w-full text-yellow-400 group-hover:text-white transition-colors">
+                                <span class="text-[10px] font-black uppercase tracking-widest">Eksplor Kelas</span>
+                                <div class="h-[1.5px] w-4 bg-yellow-500/50 group-hover:bg-yellow-400 group-hover:flex-grow transition-all duration-500"></div>
+                            </a>
+                        {% endif %}
+                    </div>
+                </section>
+            </div>
+
+            {# PROGRESS SIDEBAR - Transparan dengan Aksen Garis #}
+            <div class="lg:col-span-1">
+                <section class="group relative overflow-hidden card-forum-transparan p-6 rounded-xl h-full dashboard-card delay-4">
+                    <div class="absolute top-0 right-0 w-10 h-10 bg-gray-200/20 -mr-5 -mt-5 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="h-4 w-1 bg-[#eab308]"></div>
+                            <h3 class="text-sm font-black text-gray-900 uppercase tracking-widest">Progres Kelas</h3>
+                        </div>
+
+                        <div class="space-y-8">
+                            {% for kelas in kelas_aktif %}
+                            <div class="group/item pb-2">
+                                <div class="flex justify-between items-end mb-2">
+                                    <h4 class="font-black text-gray-900 uppercase text-[10px] tracking-tight line-clamp-1 group-hover/item:text-yellow-600 transition-colors">
+                                        {{ kelas.nama }}
+                                    </h4>
+                                    <span class="text-[10px] font-black text-yellow-600">{{ kelas.progress|default:'0' }}%</span>
+                                </div>
+                                
+                                {# Progress Bar Tipis ala Industrial #}
+                                <div class="w-full bg-gray-200/50 h-1.5 border border-gray-900 overflow-hidden mb-4">
+                                    <div class="progress-pulse bg-yellow-400 h-full transition-all duration-[1500ms]" 
+                                        style="width: {{ kelas.progress|default:'0' }}%">
+                                    </div>
+                                </div>
+
+                                {# Garis Dinamis untuk Link Lanjutkan #}
+                                <a href="{{ kelas.link }}" class="flex items-center gap-2 w-full text-gray-500 hover:text-gray-900 transition-colors">
+                                    <span class="text-[9px] font-black uppercase tracking-widest">Lanjutkan</span>
+                                    <div class="h-[1px] w-0 bg-gray-900 transition-all duration-500 group-hover/item:flex-grow"></div>
+                                    <i class="fas fa-play text-[8px]"></i>
+                                </a>
+                            </div>
+                            {% empty %}
+                            <div class="text-center py-10 border border-dashed border-gray-400/30">
+                                <p class="text-gray-400 text-[10px] font-black uppercase tracking-widest">Belum ada kelas aktif.</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div id="statusModal" onclick="closeModalOutside(event, 'statusModal')" class="fixed inset-0 z-[100] hidden items-center justify-center bg-white/20 backdrop-blur-md p-4">
+        {# Card Utama: Full Transparan Glassmorphism #}
+        <div class="group relative overflow-hidden card-forum-transparan w-full max-w-md p-8 rounded-xl shadow-xl" onclick="event.stopPropagation()">
+            
+            {# Siku Pojok Industrial - Khas home5.html #}
+            <div class="absolute top-0 right-0 w-16 h-16 bg-gray-200/20 -mr-8 -mt-8 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+
+            <div class="relative z-10">
+                <div class="flex justify-between items-center mb-8">
+                    <div class="flex items-center gap-3">
+                        {# Aksen Balok Kuning #}
+                        <div class="h-6 w-1.5 bg-[#eab308]"></div>
+                        <h3 class="text-xl font-black text-gray-900 uppercase tracking-tighter italic">Hierarki Status</h3>
+                    </div>
+                    <button onclick="closeStatusModal()" class="text-gray-400 hover:text-gray-900 transition-colors">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                {# Milestone Section #}
+                <div class="mb-8 p-5 border border-gray-900/10 rounded-lg bg-white/5">
+                    <p class="text-[10px] font-black uppercase tracking-[0.15em] text-yellow-600 mb-3">{{ next_milestone.text }}</p>
+                    <div class="w-full bg-gray-200/30 border border-gray-900/20 h-1.5 overflow-hidden">
+                        <div class="bg-yellow-400 h-full progress-pulse transition-all duration-1000" style="width: {{ progress_to_next }}%"></div>
+                    </div>
+                    <div class="mt-2 flex items-center gap-2">
+                        <span class="text-[9px] font-black text-gray-900 uppercase">{{ progress_to_next }}% Completed</span>
+                        <div class="h-[1px] flex-grow bg-gray-900/10"></div>
+                    </div>
+                </div>
+
+                {# List Hierarki - 5 Kategori Lengkap #}
+                <div class="space-y-4">
+                    {# 1. Pelajar Setia #}
+                    <div class="flex items-center justify-between group/list {% if pangkat.nama == 'Pelajar Setia' %}bg-yellow-400/10 -mx-2 px-2 py-1 rounded border border-yellow-400/20{% endif %}">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">🏆</span>
+                            <p class="text-[10px] font-black uppercase tracking-widest text-purple-700">Pelajar Setia</p>
+                        </div>
+                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-tighter">>300 Min</span>
+                    </div>
+
+                    {# 2. Pelajar Teladan #}
+                    <div class="flex items-center justify-between group/list {% if pangkat.nama == 'Pelajar Teladan' %}bg-yellow-400/10 -mx-2 px-2 py-1 rounded border border-yellow-400/20{% endif %}">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">🌟</span>
+                            <p class="text-[10px] font-black uppercase tracking-widest text-green-700">Pelajar Teladan</p>
+                        </div>
+                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-tighter">60m + 80pt</span>
+                    </div>
+
+                    {# 3. Pelajar Aktif #}
+                    <div class="flex items-center justify-between group/list {% if pangkat.nama == 'Pelajar Aktif' %}bg-yellow-400/10 -mx-2 px-2 py-1 rounded border border-yellow-400/20{% endif %}">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">⚡</span>
+                            <p class="text-[10px] font-black uppercase tracking-widest text-blue-700">Pelajar Aktif</p>
+                        </div>
+                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-tighter">>60 Min</span>
+                    </div>
+
+                    {# 4. Pelajar Pemula #}
+                    <div class="flex items-center justify-between group/list {% if pangkat.nama == 'Pelajar Pemula' %}bg-yellow-400/10 -mx-2 px-2 py-1 rounded border border-yellow-400/20{% endif %}">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">📖</span>
+                            <p class="text-[10px] font-black uppercase tracking-widest text-blue-500">Pelajar Pemula</p>
+                        </div>
+                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-tighter">1-60 Min</span>
+                    </div>
+
+                    {# 5. Pelajar Baru #}
+                    <div class="flex items-center justify-between group/list {% if pangkat.nama == 'Pelajar Baru' %}bg-yellow-400/10 -mx-2 px-2 py-1 rounded border border-yellow-400/20{% else %}opacity-50{% endif %}">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">🆕</span>
+                            <p class="text-[10px] font-black uppercase tracking-widest text-gray-500">Pelajar Baru</p>
+                        </div>
+                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-tighter">New Member</span>
+                    </div>
+                </div>
+
+                {# Button Tutup - Fitur Garis Memanjang (Teks -> Garis) #}
+                <button onclick="closeStatusModal()" class="group/btn w-full mt-10 flex items-center gap-3 text-gray-900 transition-all">
+                    <span class="text-[11px] font-black uppercase tracking-[0.2em] group-hover/btn:text-yellow-600 transition-colors whitespace-nowrap">
+                        Tutup Menu
+                    </span>
+                    <div class="h-[1.5px] w-4 bg-gray-900 transition-all duration-500 ease-in-out group-hover:flex-grow"></div>
+                    <i class="fas fa-chevron-right text-[10px] group-hover/btn:translate-x-1 transition-transform"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="thetaModal" onclick="closeModalOutside(event, 'thetaModal')" class="fixed inset-0 z-[100] hidden items-center justify-center bg-white/20 backdrop-blur-md p-4">
+        {# Card Utama: Full Transparan Glassmorphism #}
+        <div class="group relative overflow-hidden card-forum-transparan w-full max-w-md p-8 rounded-xl shadow-xl" onclick="event.stopPropagation()">
+            
+            {# Siku Pojok Industrial - Khas home5.html #}
+            <div class="absolute top-0 right-0 w-16 h-16 bg-gray-200/20 -mr-8 -mt-8 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+
+            <div class="relative z-10">
+                <div class="flex justify-between items-center mb-8">
+                    <div class="flex items-center gap-3">
+                        {# Aksen Balok Kuning #}
+                        <div class="h-6 w-1.5 bg-[#eab308]"></div>
+                        <h3 class="text-xl font-black text-gray-900 uppercase tracking-tighter italic">Level Kemampuan</h3>
+                    </div>
+                    <button onclick="closeThetaModal()" class="text-gray-400 hover:text-gray-900 transition-colors">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                {# Info Status Section - Transparan Tipis #}
+                <div class="mb-8 p-5 border border-gray-900/10 rounded-lg bg-white/5">
+                    <p class="text-[10px] font-black uppercase tracking-[0.15em] text-yellow-600 mb-2">Status Anda: {{ theta_info.status }}</p>
+                    <p class="text-[11px] font-bold text-gray-600 leading-relaxed">{{ theta_info.desc }}</p>
+                    
+                    <div class="mt-4 flex items-center gap-2">
+                        <div class="h-[1px] flex-grow bg-gray-900/10"></div>
+                        <span class="text-[8px] font-black text-gray-400 uppercase tracking-widest">IRT Based Metrics</span>
+                    </div>
+                </div>
+
+                {# List Hierarki Kemampuan #}
+                <div class="space-y-4">
+                    {# Expert #}
+                    <div class="flex items-center justify-between group/list {% if theta_info.status == 'Expert' %}bg-yellow-400/10 -mx-2 px-2 py-1 rounded{% endif %}">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">🎓</span>
+                            <p class="text-[10px] font-black uppercase tracking-widest {% if theta_info.status == 'Expert' %}text-yellow-700{% else %}text-gray-700{% endif %}">Expert</p>
+                        </div>
+                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-tighter">> 1.0 θ</span>
+                    </div>
+
+                    {# Intermediate #}
+                    <div class="flex items-center justify-between group/list {% if theta_info.status == 'Intermediate' %}bg-yellow-400/10 -mx-2 px-2 py-1 rounded{% endif %}">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">⚡</span>
+                            <p class="text-[10px] font-black uppercase tracking-widest {% if theta_info.status == 'Intermediate' %}text-yellow-700{% else %}text-gray-700{% endif %}">Intermediate</p>
+                        </div>
+                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-tighter">-1.0 s/d 1.0 θ</span>
+                    </div>
+
+                    {# Beginner #}
+                    <div class="flex items-center justify-between group/list {% if theta_info.status == 'Beginner' %}bg-yellow-400/10 -mx-2 px-2 py-1 rounded{% endif %}">
+                        <div class="flex items-center gap-3">
+                            <span class="text-lg">📖</span>
+                            <p class="text-[10px] font-black uppercase tracking-widest {% if theta_info.status == 'Beginner' %}text-yellow-700{% else %}text-gray-700{% endif %}">Beginner</p>
+                        </div>
+                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-tighter">< -1.0 θ</span>
+                    </div>
+                </div>
+
+                {# Button Tutup - Fitur Garis Memanjang (Teks -> Garis) #}
+                <button onclick="closeThetaModal()" class="group/btn w-full mt-10 flex items-center gap-3 text-gray-900 transition-all">
+                    <span class="text-[11px] font-black uppercase tracking-[0.2em] group-hover/btn:text-yellow-600 transition-colors whitespace-nowrap">
+                        Tutup Menu
+                    </span>
+                    <div class="h-[1.5px] w-4 bg-gray-900 transition-all duration-500 ease-in-out group-hover:flex-grow"></div>
+                    <i class="fas fa-chevron-right text-[10px] group-hover/btn:translate-x-1 transition-transform"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Fungsi Buka/Tutup Dasar
+    function openStatusModal() { document.getElementById('statusModal').classList.replace('hidden', 'flex'); }
+    function closeStatusModal() { document.getElementById('statusModal').classList.replace('flex', 'hidden'); }
+    
+    function openThetaModal() { document.getElementById('thetaModal').classList.replace('hidden', 'flex'); }
+    function closeThetaModal() { document.getElementById('thetaModal').classList.replace('flex', 'hidden'); }
+
+    // Fungsi Klik di Luar Kotak untuk Menutup
+    function closeModalOutside(event, modalId) {
+        if (event.target.id === modalId) {
+            if (modalId === 'statusModal') closeStatusModal();
+            if (modalId === 'thetaModal') closeThetaModal();
+        }
+    }
+</script>
+
+<script>
+    const labels = JSON.parse('{{ chart_labels|safe }}' || '["W1", "W2", "W3", "W4"]');
+    const dataScores = JSON.parse('{{ chart_data_scores|safe }}' || '[0, 0, 0, 0]');
+    const dataMinutes = JSON.parse('{{ chart_data_minutes|safe }}' || '[0, 0, 0, 0]');
+
+    const ctx = document.getElementById('performanceChart').getContext('2d');
+    
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Nilai Kuis (%)',
+                    data: dataScores,
+                    borderColor: '#eab308', // Yellow-500
+                    backgroundColor: 'rgba(234, 179, 8, 0.1)', 
+                    tension: 0.2, // Lebih kaku (industrial)
+                    fill: true,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#111827',
+                    yAxisID: 'y'
+                },
+                {
+                    label: 'Waktu (Menit)',
+                    data: dataMinutes,
+                    borderColor: '#111827', // Black
+                    backgroundColor: 'transparent',
+                    tension: 0.2,
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    pointRadius: 4,
+                    pointBackgroundColor: '#eab308',
+                    yAxisID: 'y1'
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: { 
+                    beginAtZero: true, 
+                    max: 100,
+                    grid: { color: '#f1f5f9' },
+                    ticks: { font: { weight: 'bold' } }
+                },
+                y1: { 
+                    position: 'right', 
+                    beginAtZero: true,
+                    grid: { display: false }
+                }
+            },
+            plugins: {
+                legend: { 
+                    labels: { 
+                        font: { weight: 'bold', size: 10 },
+                        usePointStyle: true 
+                    } 
+                }
+            }
+        }
+    });
+</script>
+{% endblock content %}

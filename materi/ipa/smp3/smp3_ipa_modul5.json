@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 85,
+    "fields": {
+      "course": 9,
+      "title": "Modul 5: Listrik Dinamis dalam Kehidupan",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 621,
+    "fields": {
+      "module": 85,
+      "title": "Arus Listrik dan Beda Potensial",
+      "content": "Arus listrik hanya dapat mengalir pada rangkaian yang tertutup. Arus listrik mengalir dari kutub positif (potensial tinggi) ke kutub negatif (potensial rendah). Sebaliknya, elektron mengalir dari kutub negatif ke kutub positif.\n\nKuat arus listrik ($I$) adalah banyaknya muatan listrik ($q$) yang mengalir melalui penghantar setiap satuan waktu ($t$).\n\n**Rumus Kuat Arus:**\n$$I = \\frac{q}{t}$$\n\nBeda potensial atau tegangan ($V$) adalah energi yang diperlukan untuk memindahkan muatan listrik. Alat untuk mengukur kuat arus disebut **Amperemeter** (dipasang seri), sedangkan untuk mengukur tegangan disebut **Voltmeter** (dipasang paralel).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 622,
+    "fields": {
+      "module": 85,
+      "title": "Hukum Ohm dan Hambatan Listrik",
+      "content": "George Simon Ohm menemukan hubungan antara tegangan, kuat arus, dan hambatan. **Hukum Ohm** menyatakan bahwa besar kuat arus yang mengalir pada suatu penghantar sebanding dengan beda potensial dan berbanding terbalik dengan hambatannya.\n\n**Rumus Hukum Ohm:**\n$$V = I \\cdot R$$\n\nDimana:\n- $V$ = Beda Potensial (Volt)\n- $I$ = Kuat Arus (Ampere)\n- $R$ = Hambatan (Ohm/$\\mega$)\n\nHambatan kawat penghantar juga dipengaruhi oleh jenis bahan, panjang kawat, dan luas penampang kawat. Semakin panjang kawat, semakin besar hambatannya. Semakin besar luas penampangnya, semakin kecil hambatannya.\n\n",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 623,
+    "fields": {
+      "module": 85,
+      "title": "Rangkaian Listrik: Seri dan Paralel",
+      "content": "Dalam menyusun komponen listrik seperti lampu atau baterai, terdapat dua metode utama:\n\n1. **Rangkaian Seri**: Komponen disusun berurutan tanpa cabang. Jika satu lampu mati, maka seluruh rangkaian terputus. Kuat arus di setiap titik sama, namun tegangannya terbagi.\n2. **Rangkaian Paralel**: Komponen disusun sejajar atau bercabang. Jika satu lampu mati, lampu lain tetap menyala. Inilah alasan mengapa instalasi rumah menggunakan rangkaian paralel. Tegangan di setiap cabang sama, namun kuat arusnya terbagi.\n\n**Hukum I Kirchhoff**: Jumlah arus yang masuk ke suatu titik percabangan sama dengan jumlah arus yang keluar dari titik tersebut.\n$$\\sum I_{masuk} = \\sum I_{keluar}$$\n\n[Image comparing series and parallel circuits with light bulbs and battery]",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 624,
+    "fields": {
+      "module": 85,
+      "title": "Energi dan Daya Listrik di Rumah Tangga",
+      "content": "Peralatan elektronik mengubah energi listrik menjadi energi lain (panas, cahaya, gerak). Besar energi listrik ($W$) tergantung pada tegangan, arus, dan waktu penggunaan.\n\n**Daya Listrik (P)** adalah laju penggunaan energi per satuan waktu. Satuan daya adalah Watt ($W$).\n\nUntuk menghitung biaya pemakaian listrik rumah tangga, kita menggunakan satuan **kWh** (kilo Watt hour). \nRumus: $Biaya = (Daya \\times waktu) \\times Tarif PLN$\n\nUpaya penghematan listrik sangat penting untuk menjaga kelestarian lingkungan dan menekan biaya, misalnya dengan menggunakan lampu LED yang berdaya rendah namun tetap terang.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 625,
+    "fields": {
+      "module": 85,
+      "title": "Kuis: Ahli Kelistrikan Dinamis",
+      "content": "Kuis ini akan menguji kemampuanmu dalam menghitung hambatan menggunakan Hukum Ohm, menganalisis rangkaian seri-paralel, hingga menghitung tagihan listrik rumah tangga. Siapkan kalkulator dan kertas coretan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 85,
+    "fields": {
+      "lesson": 625,
+      "title": "Evaluasi Listrik Dinamis",
+      "description": "Uji kompetensi tentang Hukum Ohm, rangkaian seri/paralel, Hukum Kirchhoff, dan perhitungan biaya listrik."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 621,
+    "fields": {
+      "quiz": 85,
+      "text": "Jika sebuah lampu memiliki hambatan 20 Ohm dan dihubungkan ke sumber tegangan 10 Volt, berapakah kuat arus yang mengalir?",
+      "topic": "Hukum Ohm",
+      "option_a": "0,5 Ampere",
+      "option_b": "2 Ampere",
+      "option_c": "200 Ampere",
+      "option_d": "30 Ampere",
+      "correct_answer": "A",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 622,
+    "fields": {
+      "quiz": 85,
+      "text": "Keuntungan menggunakan rangkaian paralel pada instalasi listrik di rumah adalah...",
+      "topic": "Rangkaian Listrik",
+      "option_a": "Membutuhkan kabel yang lebih sedikit",
+      "option_b": "Jika satu lampu mati, lampu lain tetap menyala",
+      "option_c": "Arus listrik yang mengalir lebih kecil",
+      "option_d": "Hambatan total menjadi lebih besar",
+      "correct_answer": "B",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 623,
+    "fields": {
+      "quiz": 85,
+      "text": "Bunyi Hukum I Kirchhoff berkaitan dengan aliran arus pada titik percabangan adalah...",
+      "topic": "Hukum Kirchhoff",
+      "option_a": "Arus yang masuk lebih kecil dari arus yang keluar",
+      "option_b": "Arus yang masuk sama dengan arus yang keluar",
+      "option_c": "Tegangan di setiap titik percabangan selalu sama",
+      "option_d": "Hambatan tidak berpengaruh pada percabangan",
+      "correct_answer": "B",
+      "difficulty_level": -0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 624,
+    "fields": {
+      "quiz": 85,
+      "text": "Sebuah setrika listrik dengan daya 300 Watt digunakan selama 2 jam setiap hari. Berapa energi listrik (kWh) yang digunakan dalam satu hari?",
+      "topic": "Energi Listrik",
+      "option_a": "600 kWh",
+      "option_b": "0,6 kWh",
+      "option_c": "150 kWh",
+      "option_d": "300 kWh",
+      "correct_answer": "B",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 625,
+    "fields": {
+      "quiz": 85,
+      "text": "Alat yang digunakan untuk memutus atau menyambungkan arus listrik pada rangkaian adalah...",
+      "topic": "Komponen Listrik",
+      "option_a": "Saklar",
+      "option_b": "Sekring",
+      "option_c": "Resistor",
+      "option_d": "Baterai",
+      "correct_answer": "A",
+      "difficulty_level": -1.8
+    }
+  }
+]

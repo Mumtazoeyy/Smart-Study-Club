@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 67,
+    "fields": {
+      "course": 7,
+      "title": "Modul 7: Interaksi Makhluk Hidup dengan Lingkungan",
+      "order": 7
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 531,
+    "fields": {
+      "module": 67,
+      "title": "Satuan Ekosistem dan Komponen Lingkungan",
+      "content": "Lingkungan bukan sekadar tempat tinggal, melainkan sistem kompleks yang terdiri dari faktor biotik dan abiotik. Untuk memahaminya, kita harus melihat satuan makhluk hidup dari yang terkecil:\n\n1. **Individu**: Satu makhluk hidup tunggal (seekor semut).\n2. **Populasi**: Kumpulan individu sejenis di tempat yang sama (sekelompok semut di pohon).\n3. **Komunitas**: Seluruh populasi makhluk hidup yang hidup bersama di suatu daerah.\n4. **Ekosistem**: Kesatuan interaksi antara komunitas dengan lingkungan abiotiknya.\n5. **Biosfer**: Tingkatan tertinggi yang mencakup seluruh bumi.\n\n\n\nKehidupan di dalamnya sangat bergantung pada **Komponen Abiotik** seperti intensitas cahaya matahari untuk fotosintesis, ketersediaan air sebagai pelarut zat kimia dalam tubuh, serta suhu dan keasaman tanah (pH) yang menentukan jenis organisme yang mampu bertahan hidup di sana.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 532,
+    "fields": {
+      "module": 67,
+      "title": "Dinamika Aliran Energi: Rantai dan Jaring Makanan",
+      "content": "Energi di bumi berasal dari matahari, namun hanya tumbuhan (produsen) yang mampu menangkapnya. Aliran energi ini bersifat satu arah dan tidak dapat balik. \n\n**Rantai Makanan** adalah peristiwa makan dan dimakan yang sederhana. Namun di alam nyata, satu jenis produsen bisa dimakan banyak jenis konsumen. Inilah yang membentuk **Jaring-Jaring Makanan**. Semakin kompleks jaring-jaring makanan suatu ekosistem, maka ekosistem tersebut semakin stabil terhadap gangguan.\n\n\n\nAda juga **Piramida Ekologi** yang menggambarkan penurunan energi, massa, atau jumlah individu di setiap tingkat trofik. Hanya sekitar 10% energi yang diteruskan ke tingkat berikutnya, sementara 90% lainnya hilang sebagai panas atau digunakan untuk aktivitas hidup. Inilah alasan mengapa predator puncak (seperti harimau) jumlahnya selalu jauh lebih sedikit dibanding tumbuhan.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 533,
+    "fields": {
+      "module": 67,
+      "title": "Pola Interaksi: Simbiosis, Kompetisi, dan Predasi",
+      "content": "Makhluk hidup berinteraksi untuk bertahan hidup. Pola interaksi ini terbagi menjadi beberapa jenis:\n\n1. **Simbiosis**: Hubungan erat antara dua organisme berbeda spesies.\n   - **Mutualisme**: Menguntungkan kedua pihak (Bakteri Rhizobium pada akar kacang).\n   - **Komensalisme**: Satu untung, satu tidak terpengaruh (Tanaman anggrek pada pohon inang).\n   - **Parasitisme**: Satu untung, satu dirugikan (Cacing pita dalam usus manusia).\n\n2. **Predasi**: Interaksi di mana satu hewan (predator) memangsa hewan lain (prey). Ini berfungsi sebagai pengontrol populasi di alam.\n\n3. **Kompetisi**: Persaingan antar makhluk hidup untuk mendapatkan sumber daya yang sama, seperti makanan, wilayah, atau pasangan. Kompetisi bisa terjadi antar spesies yang sama (intraspesifik) atau berbeda spesies (interspesifik).\n\n[Image illustrating examples of mutualism, commensalism, parasitism, predation, and competition in nature]",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 534,
+    "fields": {
+      "module": 67,
+      "title": "Video: Perubahan Lingkungan dan Keseimbangan Alam",
+      "content": "Ekosistem bersifat dinamis, namun memiliki kemampuan untuk menyeimbangkan diri (Homeostatis). Namun, aktivitas manusia atau bencana alam dapat merusak keseimbangan ini secara permanen. Dalam video ini, kita akan melihat bagaimana hilangnya satu spesies kunci (keystone species) dapat menyebabkan seluruh jaring-jaring makanan runtuh. Kita juga akan membahas bagaimana suksesi (proses pemulihan lahan) terjadi setelah kerusakan ekosistem.",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 535,
+    "fields": {
+      "module": 67,
+      "title": "Kuis: Analisis Ekosistem Terapan",
+      "content": "Kuis ini akan menguji kemampuan analisismu, bukan sekadar hafalan. Kamu akan dihadapkan pada skenario perubahan lingkungan dan diminta memprediksi dampaknya terhadap populasi makhluk hidup lainnya. Fokuslah pada alur energi dan hubungan antar spesies. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 67,
+    "fields": {
+      "lesson": 535,
+      "title": "Evaluasi Mendalam Ekosistem",
+      "description": "Uji analisis jaring-jaring makanan, aliran energi, pola interaksi, dan dinamika populasi."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 531,
+    "fields": {
+      "quiz": 67,
+      "text": "Seorang ilmuwan mengamati kumpulan ikan nila, air, batu, dan tumbuhan eceng gondok di sebuah kolam. Satuan organisasi kehidupan yang sedang diamati tersebut adalah...",
+      "topic": "Satuan Ekosistem",
+      "option_a": "Populasi",
+      "option_b": "Komunitas",
+      "option_c": "Ekosistem",
+      "option_d": "Biosfer",
+      "correct_answer": "C",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 532,
+    "fields": {
+      "quiz": 67,
+      "text": "Mengapa dalam piramida makanan tingkat trofik tertinggi (predator puncak) selalu memiliki jumlah individu yang paling sedikit?",
+      "topic": "Piramida Energi",
+      "option_a": "Karena mereka memiliki ukuran tubuh yang besar",
+      "option_b": "Karena energi yang tersedia berkurang drastis di setiap tingkatan trofik",
+      "option_c": "Karena mereka sering diburu oleh manusia",
+      "option_d": "Karena mereka tidak memerlukan banyak energi untuk hidup",
+      "correct_answer": "B",
+      "difficulty_level": 0.9
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 533,
+    "fields": {
+      "quiz": 67,
+      "text": "Jika di sebuah sawah populasi ular musnah karena diburu, dampak yang paling cepat dirasakan pada jaring-jaring makanan tersebut adalah...",
+      "topic": "Dinamika Populasi",
+      "option_a": "Populasi tikus meningkat tajam",
+      "option_b": "Tanaman padi akan semakin subur",
+      "option_c": "Populasi elang akan bertambah banyak",
+      "option_d": "Populasi katak akan menurun",
+      "correct_answer": "A",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 534,
+    "fields": {
+      "quiz": 67,
+      "text": "Hubungan antara ikan hiu dengan ikan remora yang menempel padanya tanpa merugikan hiu disebut...",
+      "topic": "Simbiosis",
+      "option_a": "Komensalisme",
+      "option_b": "Mutualisme",
+      "option_c": "Parasitisme",
+      "option_d": "Predasi",
+      "correct_answer": "A",
+      "difficulty_level": -1.0
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 535,
+    "fields": {
+      "quiz": 67,
+      "text": "Manakah yang merupakan urutan aliran energi yang benar dalam suatu ekosistem?",
+      "topic": "Aliran Energi",
+      "option_a": "Matahari - Konsumen - Produsen - Pengurai",
+      "option_b": "Matahari - Produsen - Konsumen - Pengurai",
+      "option_c": "Produsen - Matahari - Konsumen - Pengurai",
+      "option_d": "Pengurai - Konsumen - Produsen - Matahari",
+      "correct_answer": "B",
+      "difficulty_level": -1.5
+    }
+  }
+]

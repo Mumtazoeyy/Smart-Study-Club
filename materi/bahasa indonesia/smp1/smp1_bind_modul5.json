@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 5,
+    "fields": {
+      "course": 1,
+      "title": "Modul 5: Membuka Gerbang Dunia (Literasi Buku)",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 21,
+    "fields": {
+      "module": 5,
+      "title": "Buku Fiksi vs Buku Nonfiksi: Mengenal Perbedaannya",
+      "content": "Dunia literasi dibagi menjadi dua wilayah besar, yaitu dunia imajinasi (fiksi) dan dunia kenyataan (nonfiksi). Memahami perbedaan keduanya akan membantu kamu memilih bacaan yang sesuai dengan kebutuhanmu.\n\n1. Buku Fiksi\nBuku fiksi adalah karya yang lahir dari khayalan atau imajinasi penulis. Ceritanya tidak harus terjadi di dunia nyata. Tujuannya adalah untuk menghibur dan mengajak pembaca merasakan pengalaman emosional tertentu.\nContoh: Novel, Kumpulan Cerpen, Dongeng, dan Komik.\n\n2. Buku Nonfiksi\nBuku nonfiksi adalah buku yang berisi informasi, data, dan fakta yang dapat dipertanggungjawabkan kebenarannya. Penulisannya biasanya melalui proses penelitian atau pengamatan. Tujuannya adalah untuk memberikan pengetahuan atau wawasan baru.\nContoh: Buku Pelajaran, Biografi Tokoh, Ensiklopedia, dan Jurnal Penelitian.\n\nPerbedaan Bahasa:\nBuku fiksi banyak menggunakan bahasa konotatif (makna kiasan), sedangkan buku nonfiksi wajib menggunakan bahasa denotatif (makna sebenarnya) agar tidak terjadi salah paham bagi pembaca.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 22,
+    "fields": {
+      "module": 5,
+      "title": "Unsur-unsur Fisik dan Anatomi Buku",
+      "content": "Pernahkah kamu memperhatikan bagian-bagian buku selain isinya? Mengenal anatomi buku membantu kita mencari informasi dengan lebih cepat dan sistematis. Berikut adalah unsur fisik yang umumnya ada pada buku:\n\n1. Sampul (Cover): Bagian terluar yang berisi judul, nama penulis, dan penerbit. Sampul depan biasanya didesain menarik untuk menggambarkan isi buku.\n2. Daftar Isi: Peta bagi pembaca untuk mengetahui urutan bab dan letak halaman tertentu secara cepat.\n3. Glosarium: Daftar istilah penting atau sulit yang dilengkapi dengan definisinya. Sangat membantu saat kita membaca buku nonfiksi yang penuh istilah teknis.\n4. Indeks: Daftar kata atau istilah penting yang disusun berdasarkan abjad beserta halaman tempat kata tersebut muncul.\n5. Profil Penulis: Mengenal siapa yang menulis buku tersebut, latar belakang pendidikannya, atau karya-karya lain yang pernah ia buat.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 23,
+    "fields": {
+      "module": 5,
+      "title": "Video: Teknik Merangkum dengan Peta Pikiran",
+      "content": "Panduan Menyimak Video:\n\nSeringkali kita merasa lelah saat harus merangkum buku yang tebal. Video ini akan mengajarkan solusi kreatifnya, yaitu menggunakan Peta Pikiran (Mind Map).\n\nMateri yang terkandung dalam video:\n1. Konsep Peta Pikiran: Mengapa otak kita lebih mudah mengingat gambar dan percabangan daripada tulisan panjang yang monoton.\n2. Cara Membuat: Dimulai dari menuliskan topik utama di tengah kertas, lalu menarik cabang-cabang untuk setiap subbab atau ide pendukung.\n3. Penggunaan Kata Kunci: Teknik menuliskan hanya poin-poin penting saja tanpa harus menyalin seluruh kalimat buku.\n\nTugas: Sambil menonton, siapkan kertas kosong dan coba buat satu cabang peta pikiran tentang hobi atau mata pelajaran favoritmu!",
+      "video_url": "https://www.youtube.com/embed/zS9YcR_kM2Q",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 24,
+    "fields": {
+      "module": 5,
+      "title": "Menilai Isi Buku (Resensi Sederhana)",
+      "content": "Membaca buku bukan hanya sekadar menghabiskan halaman, tapi juga belajar memberikan penilaian. Menilai isi buku sering disebut dengan membuat Resensi. Sebagai pelajar, kamu bisa memulai dengan menilai beberapa aspek sederhana:\n\nAspek Penilaian Buku:\n1. Tampilan Fisik: Apakah sampulnya menarik? Apakah jenis hurufnya nyaman dibaca?\n2. Gaya Bahasa: Apakah bahasanya mudah dipahami atau terlalu banyak istilah yang sulit?\n3. Isi Materi: Jika nonfiksi, apakah informasinya bermanfaat? Jika fiksi, apakah ceritanya seru dan memiliki pesan moral?\n\nManfaat Merensi Buku:\n- Melatih kemampuan berpikir kritis.\n- Membantu orang lain mendapatkan gambaran sebelum membeli atau membaca buku tersebut.\n- Menjadi bentuk apresiasi kita terhadap karya penulis.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 25,
+    "fields": {
+      "module": 5,
+      "title": "Kuis Kompetensi Modul 5",
+      "content": "Selamat! Kamu telah mencapai modul terakhir di tingkat SMP 1. Pengetahuanmu tentang literasi fiksi dan nonfiksi sangat penting sebagai modal belajar di jenjang selanjutnya. Sekarang, mari uji pemahamanmu dengan kuis penutup ini. Perhatikan setiap detail mengenai unsur buku dan karakteristik bahasa yang digunakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 5,
+    "fields": {
+      "lesson": 25,
+      "title": "Evaluasi Literasi Buku",
+      "description": "Selesaikan kuis terakhir ini untuk menamatkan materi Bahasa Indonesia Kelas 7."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 21,
+    "fields": {
+      "quiz": 5,
+      "text": "Buku yang ditulis berdasarkan data, fakta, dan pengamatan objektif disebut buku...",
+      "topic": "Jenis Buku",
+      "option_a": "Fiksi",
+      "option_b": "Dongeng",
+      "option_c": "Nonfiksi",
+      "option_d": "Novel",
+      "correct_answer": "C",
+      "difficulty_level": -1.4
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 22,
+    "fields": {
+      "quiz": 5,
+      "text": "Daftar kata-kata penting beserta penjelasannya yang terdapat pada bagian akhir buku disebut...",
+      "topic": "Unsur Buku",
+      "option_a": "Indeks",
+      "option_b": "Glosarium",
+      "option_c": "Daftar Isi",
+      "option_d": "Kata Pengantar",
+      "correct_answer": "B",
+      "difficulty_level": -0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 23,
+    "fields": {
+      "quiz": 5,
+      "text": "Salah satu ciri bahasa dalam buku fiksi adalah bersifat konotatif, yang artinya...",
+      "topic": "Kebahasaan",
+      "option_a": "Berdasarkan makna sebenarnya",
+      "option_b": "Menggunakan banyak angka",
+      "option_c": "Mengandung makna kiasan atau tambahan",
+      "option_d": "Bahasa formal dan kaku",
+      "correct_answer": "C",
+      "difficulty_level": 0.6
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 24,
+    "fields": {
+      "quiz": 5,
+      "text": "Manakah di bawah ini yang termasuk contoh buku fiksi?",
+      "topic": "Jenis Buku",
+      "option_a": "Buku Pelajaran Biologi",
+      "option_b": "Kumpulan Cerita Pendek (Cerpen)",
+      "option_c": "Kamus Besar Bahasa Indonesia",
+      "option_d": "Ensiklopedia Hewan",
+      "correct_answer": "B",
+      "difficulty_level": 0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 25,
+    "fields": {
+      "quiz": 5,
+      "text": "Bagian buku yang berfungsi untuk memberikan informasi cepat mengenai urutan bab dan halaman adalah...",
+      "topic": "Unsur Buku",
+      "option_a": "Daftar Pustaka",
+      "option_b": "Daftar Isi",
+      "option_c": "Lampiran",
+      "option_d": "Glosarium",
+      "correct_answer": "B",
+      "difficulty_level": 1.2
+    }
+  }
+]

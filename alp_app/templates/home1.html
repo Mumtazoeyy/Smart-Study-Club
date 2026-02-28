@@ -1,0 +1,181 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'fontawesome-free-7.1.0-web/css/all.min.css' %}">
+
+<style>
+    /* --- CSS DASAR --- */
+    .hero-box-industrial {
+        background-color: rgba(255, 255, 255, 0.05); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.1); 
+        border-radius: 0px; 
+        min-height: 500px; 
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-line-glow {
+        height: 2px;
+        width: 3rem;
+        background-color: #eab308;
+        margin-bottom: 1.5rem;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        z-index: 20;
+    }
+
+    .hero-box-industrial:hover .hero-line-glow {
+        width: 100%;
+        background-color: #111827;
+    }
+
+    .hero-glow-text {
+        background-color: #eab308;
+        color: #111827;
+        padding: 4px 16px;
+        display: inline-block;
+        transform: skewX(-6deg);
+        line-height: 1.2;
+    }
+
+    /* FIX ANIMASI */
+    @keyframes float {
+        0% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-15px) rotate(0.5deg); }
+        100% { transform: translateY(0px) rotate(0deg); }
+    }
+    .img-float { animation: float 6s ease-in-out infinite; }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-content { animation: fadeInUp 0.8s ease-out forwards; }
+
+    /* --- FIX RESPONSIVE HP --- */
+    @media (max-width: 640px) {
+        .hero-box-industrial { min-height: 240px !important; padding: 1rem !important; }
+        
+        .hero-title-res { 
+            font-size: 5.5vw !important; 
+            margin-bottom: 0.5rem !important;
+            line-height: 1.0 !important; 
+        }
+        .hero-line-glow { margin-bottom: 0.5rem !important; width: 1.5rem !important; }
+        
+        .mobile-desc { font-size: 2.2vw !important; margin-bottom: 0.8rem !important; max-width: 55% !important; }
+
+        /* FORM LEBIH KECIL SECARA VERTIKAL */
+        .form-scaling { 
+            max-width: 55vw !important; 
+            height: 26px !important;    
+        }
+        .form-scaling input { 
+            padding: 0 0.4rem !important; 
+            font-size: 2vw !important; 
+            height: 100% !important;
+        }
+        .form-scaling button { 
+            padding: 0 0.5rem !important; 
+            font-size: 1.6vw !important; 
+            height: 100% !important;
+            letter-spacing: normal !important;
+        }
+        .form-scaling i { font-size: 1.6vw !important; margin-right: 2px !important; }
+
+        .mobile-stats-wrapper { margin-top: 0.8rem !important; gap: 0.3rem !important; }
+        .mobile-stat-box { 
+            padding: 0.2rem 0.4rem !important; 
+            font-size: 1.8vw !important; 
+            gap: 2px !important; 
+        }
+        .mobile-stat-box i { font-size: 1.8vw !important; }
+
+        .mobile-img-show { 
+            display: block !important; 
+            width: 42% !important;
+            height: 110% !important; 
+            top: -5% !important; 
+        }
+    }
+</style>
+
+<div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8"> 
+    <section class="hero-box-industrial p-6 md:p-12 shadow-sm">
+        
+        <div class="flex flex-row items-center w-full relative z-10 animate-content">
+            <div class="w-[60%] lg:w-7/12">
+                <div class="hero-line-glow"></div>
+                
+                <div class="flex items-center gap-2 mb-2 md:mb-4">
+                    <span class="text-gray-900 font-black uppercase tracking-[0.3em] text-[8px] md:text-[10px]">Smart Study Center</span>
+                </div>
+
+                <h1 class="hero-title-res text-4xl md:text-6xl font-black mb-6 tracking-tighter uppercase leading-none text-gray-900">
+                    Wujudkan Potensi__<br>
+                    <div class="hidden md:flex items-center mt-1 md:mt-2">
+                        <span class="mr-2 text-gray-900">___</span>
+                        <span class="hero-glow-text shadow-sm">Maksimal Anda.</span>
+                    </div>
+
+                    <div class="flex md:hidden items-center mt-1">
+                        <span class="hero-glow-text shadow-sm">Maksimal Anda.</span>
+                    </div>
+                </h1>
+
+                <p class="mobile-desc text-sm md:text-base mb-8 font-bold text-gray-500 leading-relaxed max-w-md">
+                    Mulai perjalanan Anda menuju penguasaan keterampilan baru bersama <span class="text-gray-900 border-b-2 border-[#eab308]">Smart Study Club</span>.
+                </p>
+                
+                <form action="{% url 'class_list' %}" method="GET" 
+                    class="form-scaling group relative flex w-full max-w-xl bg-white/40 backdrop-blur-md border border-gray-200 overflow-hidden shadow-sm transition-all duration-300">
+                    
+                    <input type="text" name="q" 
+                        class="flex-grow p-0 md:p-4 text-xs md:text-sm font-bold focus:outline-none placeholder-gray-500 bg-transparent text-gray-800" 
+                        placeholder="Cari materi..."
+                        value="{{ request.GET.q|default:'' }}">
+                    
+                    <button type="submit" 
+                        class="bg-gray-900/90 text-white hover:bg-[#eab308] hover:text-gray-900 px-4 md:px-8 font-black uppercase tracking-widest text-[10px] transition-all duration-300 flex items-center group/btn relative z-10">
+                        <i class="fas fa-search mr-1 md:mr-2"></i>
+                        CARI
+                    </button>
+                    <div class="absolute bottom-0 left-0 h-[2px] w-4 bg-[#eab308] transition-all duration-500 group-hover:w-full"></div>
+                </form>
+
+                <div class="mobile-stats-wrapper flex flex-wrap mt-10 gap-3 md:gap-4">
+                    <div class="mobile-stat-box group relative bg-white/50 backdrop-blur-sm border border-gray-200 px-4 py-2 flex items-center gap-2 text-[10px] font-black uppercase text-gray-700 shadow-sm overflow-hidden transition-all duration-300">
+                        <i class="fas fa-th-large text-[#eab308]"></i>
+                        {{ total_categories|default:0 }} Tipe Pelajaran
+                        <div class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#eab308] transition-all duration-300 group-hover:w-full"></div>
+                    </div>
+
+                    <div class="mobile-stat-box group relative bg-white/50 backdrop-blur-sm border border-gray-200 px-4 py-2 flex items-center gap-2 text-[10px] font-black uppercase text-gray-700 shadow-sm overflow-hidden transition-all duration-300">
+                        <i class="fas fa-book-open text-[#eab308]"></i>
+                        {{ total_lessons|default:0 }} Materi
+                        <div class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#eab308] transition-all duration-300 group-hover:w-full"></div>
+                    </div>
+
+                    <div class="mobile-stat-box group relative bg-white/50 backdrop-blur-sm border border-gray-200 px-4 py-2 flex items-center gap-2 text-[10px] font-black uppercase text-gray-700 shadow-sm overflow-hidden transition-all duration-300">
+                        <i class="fas fa-vial text-[#eab308]"></i>
+                        {{ total_quizzes|default:0 }} Kuis
+                        <div class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#eab308] transition-all duration-300 group-hover:w-full"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-[40%] lg:w-5/12"></div>
+        </div>
+
+        <div class="mobile-img-show absolute img-float" style="right: 0; top: -5%; width: 42%; height: 110%; z-index: 1;">
+            <img src="{% static 'img/2.jpg' %}" 
+                class="h-full w-full object-cover grayscale opacity-90 hover:grayscale-0 transition-all duration-700"
+                style="clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);">
+            <div class="absolute inset-0 bg-gradient-to-r from-white/30 via-transparent to-transparent pointer-events-none"></div>
+        </div>
+
+    </section>
+</div>

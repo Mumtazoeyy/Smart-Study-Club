@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 74,
+    "fields": {
+      "course": 8,
+      "title": "Modul 4: Sistem Pencernaan Manusia",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 566,
+    "fields": {
+      "module": 74,
+      "title": "Nutrisi: Zat Makanan yang Diperlukan Tubuh",
+      "content": "Makanan yang kita konsumsi mengandung enam jenis nutrisi utama yang memiliki peran berbeda:\n\n1. **Karbohidrat**: Sumber energi utama bagi tubuh (nasi, jagung, roti).\n2. **Lemak**: Cadangan energi dan pelarut vitamin A, D, E, K.\n3. **Protein**: Zat pembangun untuk pertumbuhan dan pengganti sel yang rusak (daging, telur, tempe).\n4. **Vitamin**: Mengatur fungsi tubuh dan mencegah penyakit.\n5. **Mineral**: Penting untuk proses metabolisme dan struktur tulang/gigi (kalsium, zat besi, fosfor).\n6. **Air**: Pelarut zat makanan dan pengatur suhu tubuh.\n\n\n\nKekurangan salah satu zat di atas dalam jangka panjang dapat menyebabkan penyakit defisiensi atau gizi buruk.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 567,
+    "fields": {
+      "module": 74,
+      "title": "Organ Pencernaan: Perjalanan Makanan",
+      "content": "Pencemaran dibagi menjadi dua jenis: **Mekanik** (dengan gigi dan otot lambung) serta **Kimiawi** (dengan bantuan enzim).\n\n1. **Mulut**: Terjadi pencernaan mekanik oleh gigi dan kimiawi oleh enzim ptialin (mengubah amilum menjadi glukosa).\n2. **Kerongkongan**: Terjadi gerak **Peristaltik**, yaitu gerakan meremas dan mendorong makanan menuju lambung.\n3. **Lambung**: Makanan diaduk dan dicerna kimiawi oleh enzim Pepsin (protein jadi pepton), Renin (menggumpalkan susu), dan Asam Klorida (HCl) untuk membunuh kuman.\n4. **Usus Halus**: Terdiri dari usus 12 jari (duodenum), usus tengah (jejunum), dan usus penyerapan (ileum). Di sini nutrisi diserap ke pembuluh darah.\n5. **Usus Besar**: Tempat penyerapan air dan pembusukan sisa makanan oleh bakteri E. coli.\n\n\n\nOrgan pendukung seperti Hati (menghasilkan empedu) dan Pankreas (menghasilkan enzim lipase, amilase, tripsin) sangat berperan penting dalam proses di usus halus.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 568,
+    "fields": {
+      "module": 74,
+      "title": "Zat Aditif dan Zat Adiktif",
+      "content": "Dalam makanan modern, seringkali ditambahkan zat-zat tertentu:\n\n1. **Zat Aditif**: Bahan yang ditambahkan untuk memperbaiki warna, rasa, tekstur, atau keawetan. Ada yang alami (kunyit, gula) dan buatan (MSG, pewarna tartrazin, pengawet benzoat).\n2. **Zat Adiktif**: Zat yang dapat menyebabkan ketergantungan atau kecanduan. Meliputi narkotika, psikotropika, dan zat psiko-aktif lainnya (kafein dalam kopi, nikotin dalam rokok).\n\n[Image showing examples of natural vs synthetic food additives]\n\nPenggunaan zat aditif buatan secara berlebihan dapat berdampak buruk pada kesehatan ginjal dan hati dalam jangka panjang.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 569,
+    "fields": {
+      "module": 74,
+      "title": "Video: Menjaga Kesehatan Sistem Pencernaan",
+      "content": "Banyak penyakit yang mengintai saluran pencernaan kita, seperti Mag (radang lambung), Diare, Konstipasi (sembelit), hingga Obesitas. Video ini akan menjelaskan mekanisme terjadinya penyakit tersebut dan bagaimana cara mencegahnya dengan pola makan serat tinggi serta menjaga kebersihan makanan. Simak juga penjelasan mengenai bahaya narkoba bagi sistem saraf dan tubuh dalam video ini!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 570,
+    "fields": {
+      "module": 74,
+      "title": "Kuis: Pakar Nutrisi dan Pencernaan",
+      "content": "Waktunya menguji pengetahuanmu tentang apa yang terjadi di dalam perutmu! Kuis ini akan menguji pemahamanmu tentang fungsi enzim, organ pencernaan, hingga dampak zat aditif bagi kesehatan.",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 74,
+    "fields": {
+      "lesson": 570,
+      "title": "Evaluasi Sistem Pencernaan dan Zat Aditif",
+      "description": "Uji kompetensi tentang nutrisi, urutan organ pencernaan, fungsi enzim, dan identifikasi zat aditif."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 566,
+    "fields": {
+      "quiz": 74,
+      "text": "Enzim ptialin di dalam mulut berfungsi untuk mengubah amilum (karbohidrat) menjadi...",
+      "topic": "Enzim Pencernaan",
+      "option_a": "Asam lemak",
+      "option_b": "Asam amino",
+      "option_c": "Glukosa/Maltosa",
+      "option_d": "Gliserol",
+      "correct_answer": "C",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 567,
+    "fields": {
+      "quiz": 74,
+      "text": "Gerakan meremas dan mendorong makanan pada kerongkongan disebut gerak...",
+      "topic": "Organ Pencernaan",
+      "option_a": "Pencernaan kimiawi",
+      "option_b": "Absorpsi",
+      "option_c": "Peristaltik",
+      "option_d": "Defekasi",
+      "correct_answer": "C",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 568,
+    "fields": {
+      "quiz": 74,
+      "text": "Organ yang berfungsi menyerap sari-sari makanan ke dalam pembuluh darah adalah...",
+      "topic": "Organ Pencernaan",
+      "option_a": "Lambung",
+      "option_b": "Usus Besar",
+      "option_c": "Usus Halus",
+      "option_d": "Hati",
+      "correct_answer": "C",
+      "difficulty_level": -0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 569,
+    "fields": {
+      "quiz": 74,
+      "text": "Zat aditif alami yang memberikan warna kuning pada nasi kuning adalah...",
+      "topic": "Zat Aditif",
+      "option_a": "Pandas",
+      "option_b": "Kunyit",
+      "option_c": "Gula Merah",
+      "option_d": "Benzoat",
+      "correct_answer": "B",
+      "difficulty_level": -1.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 570,
+    "fields": {
+      "quiz": 74,
+      "text": "Penderita penyakit Maag disarankan untuk menjaga pola makan karena terjadi peradangan pada...",
+      "topic": "Gangguan Pencernaan",
+      "option_a": "Dinding Usus Besar",
+      "option_b": "Lapisan Lambung",
+      "option_c": "Rongga Mulut",
+      "option_d": "Katup Kerongkongan",
+      "correct_answer": "B",
+      "difficulty_level": 0.5
+    }
+  }
+]

@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 5,
+    "fields": {
+      "title": "Matematika Kelas 8 (SMP 2)",
+      "description": "Kurikulum Matematika tingkat menengah yang mencakup Pola Bilangan, Koordinat Kartesius, Relasi dan Fungsi, Persamaan Garis Lurus, serta Teorema Pythagoras.",
+      "course_code": "MAT8-05",
+      "level": "Menengah",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 47,
+    "fields": {
+      "course": 5,
+      "title": "Modul 7: Lingkaran",
+      "order": 7
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 331,
+    "fields": {
+      "module": 47,
+      "title": "Unsur-Unsur Lingkaran",
+      "content": "Lingkaran bukan sekadar garis melengkung yang bertemu ujungnya. Ada banyak komponen penting di dalamnya yang harus kamu kenali sebelum menghitung luas dan keliling.\n\nBerikut adalah unsur-unsur utama lingkaran:\n1. **Titik Pusat**: Titik yang berada tepat di tengah lingkaran.\n2. **Jari-jari (r)**: Garis dari titik pusat ke tepi lingkaran.\n3. **Diameter (d)**: Garis lurus yang menghubungkan dua titik di tepi lingkaran dan melewati titik pusat ($d = 2r$).\n4. **Busur**: Garis lengkung yang merupakan bagian dari keliling lingkaran.\n5. **Tali Busur**: Garis lurus yang menghubungkan dua titik pada keliling lingkaran (tidak harus lewat pusat).\n6. **Juring**: Daerah yang dibatasi oleh dua jari-jari dan satu busur (seperti potongan pizza).\n7. **Tembereng**: Daerah yang dibatasi oleh tali busur dan busur lingkaran.\n8. **Apotema**: Garis terpendek antara titik pusat dengan tali busur.\n\n\n\nMemahami unsur-unsur ini sangat penting karena soal-soal tingkat lanjut akan sering menggunakan istilah 'Juring' atau 'Tali Busur' daripada sekadar jari-jari.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 332,
+    "fields": {
+      "module": 47,
+      "title": "Keliling dan Luas Lingkaran",
+      "content": "Untuk menghitung lingkaran, kita menggunakan konstanta spesial yaitu $\\pi$ (phi). \nNilai $\\pi$ adalah $\\frac{22}{7}$ (gunakan jika jari-jari kelipatan 7) atau $3,14$ (gunakan jika jari-jari bukan kelipatan 7).\n\n**Rumus Keliling (K):**\n$K = 2 \\cdot \\pi \\cdot r$  atau  $K = \\pi \\cdot d$\n\n**Rumus Luas (L):**\n$L = \\pi \\cdot r^2$\n\n[Image showing the formulas for Area and Circumference with a visual aid of a circle's radius and diameter]\n\nTips: Dalam soal cerita, Keliling sering dikaitkan dengan jarak tempuh roda yang berputar atau panjang pagar yang mengelilingi taman. Sedangkan Luas dikaitkan dengan luas lapangan atau banyaknya rumput yang dibutuhkan untuk menutupi taman.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 333,
+    "fields": {
+      "module": 47,
+      "title": "Video: Hubungan Sudut Pusat, Panjang Busur, dan Luas Juring",
+      "content": "Panduan Menyimak Video:\n\nBagaimana jika kita hanya ingin menghitung sebagian dari lingkaran? Misalnya hanya satu potongan pizza? Di sinilah kita menggunakan perbandingan sudut pusat.\n\nKonsep Utama:\n- Perbandingan sudut pusat terhadap $360^\\circ$ sama dengan perbandingan luas juring terhadap luas total.\n- Perbandingan sudut pusat terhadap $360^\\circ$ sama dengan perbandingan panjang busur terhadap keliling total.\n\n[Image showing the proportional relationship between central angles, arcs, and sectors]\n\nTugas: Simak video ini untuk melihat bagaimana cara mencari luas Tembereng (Luas Juring dikurangi Luas Segitiga). Ini adalah soal yang paling sering menjebak di ujian!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 334,
+    "fields": {
+      "module": 47,
+      "title": "Garis Singgung Persekutuan Dua Lingkaran",
+      "content": "Materi ini membahas garis yang menyinggung dua lingkaran sekaligus. Ada dua jenis utama:\n\n1. **Garis Singgung Persekutuan Luar (GSPL)**:\n   Garis berada di sisi luar kedua lingkaran.\n2. **Garis Singgung Persekutuan Dalam (GSPD)**:\n   Garis menyilang di antara kedua lingkaran.\n\n[Image illustrating the difference between outer and inner common tangents of two circles]\n\nRumus umumnya menggunakan prinsip Pythagoras:\n$d^2 = p^2 - (R \\pm r)^2$\nDimana:\n- $d$ = Panjang garis singgung.\n- $p$ = Jarak antara dua titik pusat lingkaran.\n- $R$ dan $r$ = Jari-jari lingkaran besar dan kecil.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 335,
+    "fields": {
+      "module": 47,
+      "title": "Kuis: Eksplorasi Lingkaran",
+      "content": "Kamu sudah mempelajari anatomi lingkaran, rumus dasar, hingga garis singgung dua lingkaran. Lingkaran adalah salah satu bentuk paling sempurna di alam semesta, dan memahaminya akan membantumu di materi bangun ruang nanti. Siapkan coretan dan gunakan nilai $\\pi$ yang tepat. Selamat bekerja!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 47,
+    "fields": {
+      "lesson": 335,
+      "title": "Evaluasi Materi Lingkaran",
+      "description": "Uji pemahaman mengenai unsur lingkaran, luas/keliling, juring, dan garis singgung persekutuan."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 331,
+    "fields": {
+      "quiz": 47,
+      "text": "Daerah di dalam lingkaran yang dibatasi oleh dua jari-jari dan sebuah busur disebut...",
+      "topic": "Unsur Lingkaran",
+      "option_a": "Tembereng",
+      "option_b": "Juring",
+      "option_c": "Apotema",
+      "option_d": "Busur",
+      "correct_answer": "B",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 332,
+    "fields": {
+      "quiz": 47,
+      "text": "Sebuah lingkaran memiliki jari-jari 7 cm. Keliling lingkaran tersebut adalah...",
+      "topic": "Keliling",
+      "option_a": "22 cm",
+      "option_b": "44 cm",
+      "option_c": "154 cm",
+      "option_d": "88 cm",
+      "correct_answer": "B",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 333,
+    "fields": {
+      "quiz": 47,
+      "text": "Jika sudut pusat sebuah juring adalah 90 derajat, maka luas juring tersebut adalah ... bagian dari luas lingkaran.",
+      "topic": "Juring",
+      "option_a": "1/2",
+      "option_b": "1/3",
+      "option_c": "1/4",
+      "option_d": "1/8",
+      "correct_answer": "C",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 334,
+    "fields": {
+      "quiz": 47,
+      "text": "Garis lurus yang menghubungkan dua titik pada keliling lingkaran tanpa melewati titik pusat disebut...",
+      "topic": "Unsur Lingkaran",
+      "option_a": "Diameter",
+      "option_b": "Jari-jari",
+      "option_c": "Tali Busur",
+      "option_d": "Apotema",
+      "correct_answer": "C",
+      "difficulty_level": -0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 335,
+    "fields": {
+      "quiz": 47,
+      "text": "Luas lingkaran dengan diameter 20 cm adalah... (gunakan pi = 3,14)",
+      "topic": "Luas",
+      "option_a": "314 cm2",
+      "option_b": "628 cm2",
+      "option_c": "1256 cm2",
+      "option_d": "31,4 cm2",
+      "correct_answer": "A",
+      "difficulty_level": 0.5
+    }
+  }
+]

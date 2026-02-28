@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 7,
+    "fields": {
+      "title": "IPA Kelas 7 (SMP 1)",
+      "description": "Eksplorasi dasar sains mencakup Metode Ilmiah, Klasifikasi Makhluk Hidup, Zat dan Perubahannya, hingga Suhu dan Kalor.",
+      "course_code": "SCI7-07",
+      "level": "Dasar",
+      "category": 6
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 61,
+    "fields": {
+      "course": 7,
+      "title": "Modul 1: Objek IPA dan Pengamatannya",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 501,
+    "fields": {
+      "module": 61,
+      "title": "Penyelidikan Ilmiah IPA",
+      "content": "Pernahkah kamu bertanya-tanya mengapa langit berwarna biru atau bagaimana tanaman bisa tumbuh tinggi? Para ilmuwan menjawab pertanyaan tersebut melalui **Penyelidikan Ilmiah**.\n\nAda tiga proses utama yang harus dikuasai oleh seorang pengamat IPA:\n1. **Pengamatan**: Melibatkan panca indra (melihat, mendengar, membau) atau alat ukur untuk mengumpulkan data.\n2. **Membuat Inferensi**: Menjelaskan pola atau hubungan antar data yang diamati dan membuat perkiraan (hipotesis).\n3. **Mengomunikasikan**: Menyampaikan hasil penyelidikan baik lisan maupun tulisan dalam bentuk tabel, grafik, atau bagan.\n\n\n\nObjek yang dipelajari dalam IPA adalah seluruh benda di alam dengan segala interaksinya, mulai dari benda yang sangat kecil (atom, bakteri) hingga benda yang sangat besar (galaksi, tata surya).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 502,
+    "fields": {
+      "module": 61,
+      "title": "Pengukuran sebagai Bagian dari Pengamatan",
+      "content": "Dalam IPA, hasil pengamatan yang objektif memerlukan data angka. Oleh karena itu, kita perlu melakukan **Pengukuran**. Mengukur adalah membandingkan suatu besaran dengan besaran lain yang sejenis yang digunakan sebagai satuan.\n\nAda dua jenis satuan:\n- **Satuan Baku**: Satuan yang hasilnya selalu sama di mana pun (contoh: meter, kilogram, sekon).\n- **Satuan Tak Baku**: Satuan yang hasilnya berbeda-beda (contoh: jengkal, depa, langkah).\n\n[Image showing the measurement of length using a standard ruler versus a hand span (jengkal)]\n\nSains mewajibkan penggunaan **Sistem Internasional (SI)** agar hasil penelitian ilmuwan di Indonesia bisa dipahami dengan benar oleh ilmuwan di Amerika atau negara lainnya.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 503,
+    "fields": {
+      "module": 61,
+      "title": "Video: Besaran Pokok dan Besaran Turunan",
+      "content": "Panduan Menyimak Video:\n\nBesaran adalah segala sesuatu yang dapat diukur dan dinyatakan dengan angka. Dalam video ini, kamu akan mempelajari perbedaan antara dua kelompok besaran:\n\n1. **Besaran Pokok**: Besaran dasar yang satuannya sudah ditetapkan terlebih dahulu (ada 7 besaran: Panjang, Massa, Waktu, Suhu, Kuat Arus, Intensitas Cahaya, dan Jumlah Zat).\n2. **Besaran Turunan**: Besaran yang diturunkan dari besaran pokok (contoh: Luas, Volume, Kecepatan, dan Massa Jenis).\n\n[Image table of the 7 SI base units (Besaran Pokok) including length, mass, time, temperature, electric current, luminous intensity, and amount of substance]\n\nTugas: Simak video ini dan catatlah singkatan 'JiWaKu SuMPah' (Jumlah zat, Intensitas cahaya, Waktu, Kuat arus, Suhu, Massa, Panjang) untuk membantumu menghafal 7 besaran pokok!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 504,
+    "fields": {
+      "module": 61,
+      "title": "Mengenal Alat Ukur dalam Sains",
+      "content": "Seorang ilmuwan harus memilih alat ukur yang tepat sesuai dengan benda yang diamati. Ketelitian alat ukur sangat menentukan hasil penelitian.\n\n1. **Alat Ukur Panjang**: Mistar, Jangka Sorong (untuk diameter botol), dan Mikrometer Sekrup (untuk ketebalan kertas).\n2. **Alat Ukur Massa**: Neraca O'hauss atau neraca digital.\n3. **Alat Ukur Waktu**: Stopwatch.\n4. **Alat Ukur Suhu**: Termometer.\n\n\n\nIngat, saat membaca alat ukur panjang, mata harus tegak lurus dengan skala untuk menghindari **Kesalahan Paralaks** (salah baca karena sudut pandang miring).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 505,
+    "fields": {
+      "module": 61,
+      "title": "Kuis: Penyelidik IPA Pemula",
+      "content": "Selamat! Kamu sudah mempelajari bagaimana ilmuwan bekerja dan bagaimana cara mengukur dunia di sekitarmu secara akurat. Sekarang, mari uji pemahamanmu tentang metode ilmiah dan besaran-besaran dalam fisika. Siapkan ketelitianmu dan selamat mengerjakan kuis!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 61,
+    "fields": {
+      "lesson": 505,
+      "title": "Evaluasi Objek IPA dan Pengamatan",
+      "description": "Uji pemahaman tentang metode ilmiah, besaran pokok, besaran turunan, dan penggunaan alat ukur."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 501,
+    "fields": {
+      "quiz": 61,
+      "text": "Langkah awal yang dilakukan dalam penyelidikan ilmiah adalah...",
+      "topic": "Metode Ilmiah",
+      "option_a": "Membuat inferensi",
+      "option_b": "Mengomunikasikan hasil",
+      "option_c": "Melakukan pengamatan",
+      "option_d": "Menyusun laporan",
+      "correct_answer": "C",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 502,
+    "fields": {
+      "quiz": 61,
+      "text": "Di bawah ini yang termasuk kelompok besaran pokok adalah...",
+      "topic": "Besaran Pokok",
+      "option_a": "Panjang, Massa, Volume",
+      "option_b": "Massa, Suhu, Waktu",
+      "option_c": "Kecepatan, Gaya, Luas",
+      "option_d": "Kuat Arus, Panjang, Luas",
+      "correct_answer": "B",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 503,
+    "fields": {
+      "quiz": 61,
+      "text": "Satuan Sistem Internasional (SI) untuk besaran suhu adalah...",
+      "topic": "Satuan Baku",
+      "option_a": "Celcius",
+      "option_b": "Fahrenheit",
+      "option_c": "Kelvin",
+      "option_d": "Reamur",
+      "correct_answer": "C",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 504,
+    "fields": {
+      "quiz": 61,
+      "text": "Alat yang paling tepat untuk mengukur diameter bagian dalam sebuah pipa adalah...",
+      "topic": "Alat Ukur",
+      "option_a": "Mistar",
+      "option_b": "Mikrometer sekrup",
+      "option_c": "Jangka sorong",
+      "option_d": "Meteran gulung",
+      "correct_answer": "C",
+      "difficulty_level": 0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 505,
+    "fields": {
+      "quiz": 61,
+      "text": "Volume termasuk besaran turunan karena diturunkan dari besaran pokok...",
+      "topic": "Besaran Turunan",
+      "option_a": "Massa",
+      "option_b": "Waktu",
+      "option_c": "Panjang",
+      "option_d": "Suhu",
+      "correct_answer": "C",
+      "difficulty_level": 0.5
+    }
+  }
+]

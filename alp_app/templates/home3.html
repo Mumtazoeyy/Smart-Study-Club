@@ -1,0 +1,163 @@
+{% load static %}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'fontawesome-free-7.1.0-web/css/all.min.css' %}">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<style>
+    /* Card Kursus - Glassmorphism Industrial Theme 6 */
+    .course-card-industrial {
+        background-color: rgba(255, 255, 255, 0.05); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 0px; 
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .course-card-industrial:hover {
+        transform: translateY(-5px);
+        border-color: rgba(0, 0, 0, 0.3);
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    /* --- TAMBAHAN UNTUK FORCED 2x2 DI HP --- */
+    @media (max-width: 640px) {
+        /* Paksa Grid jadi 2 kolom */
+        .grid.grid-cols-1 {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 0.75rem !important; /* Perkecil jarak antar card */
+        }
+
+        /* Kecilkan Padding Card */
+        .course-card-industrial .p-6 {
+            padding: 0.75rem !important;
+        }
+
+        /* Kecilkan Thumbnail */
+        .course-card-industrial .h-44 {
+            height: 100px !important;
+        }
+
+        /* Sesuaikan Ukuran Teks agar muat */
+        .course-card-industrial h5 {
+            font-size: 0.8rem !important;
+            margin-bottom: 0.25rem !important;
+        }
+
+        .course-card-industrial p.text-gray-500 {
+            font-size: 0.6rem !important;
+            margin-bottom: 0.5rem !important;
+            line-height: 1.2 !important;
+        }
+
+        /* Metadata & Badge */
+        .course-card-industrial .text-\[9px\], 
+        .course-card-industrial .text-\[10px\] {
+            font-size: 7px !important;
+        }
+
+        /* Tombol Pelajari */
+        .course-card-industrial a.inline-flex {
+            padding: 0.5rem !important;
+            font-size: 8px !important;
+            border-radius: 6px !important;
+        }
+
+        /* Hilangkan elemen dekorasi yang makan tempat di HP jika perlu */
+        .course-card-industrial .pt-4.border-t {
+            padding-top: 0.5rem !important;
+            margin-bottom: 0.5rem !important;
+        }
+    }
+</style>
+
+<div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8 overflow-hidden"> 
+    
+    {# Header Section #}
+    <div class="flex flex-col gap-1 mb-8" data-aos="fade-right">
+        <div class="flex items-center gap-3">
+            <div class="h-5 w-1.5 bg-[#eab308]"></div>
+            <h2 class="text-xl md:text-2xl font-black text-gray-900 tracking-tight uppercase">
+                Kursus <span class="text-gray-400">Paling Populer</span>
+            </h2>
+        </div>
+        <div class="ml-[1.15rem]">
+            <p class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-[0.2em]">
+                Rekomendasi <span class="mx-2 text-gray-200">|</span> 
+                {{ total_courses|default:"10" }} Materi Tersedia
+            </p>
+        </div>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {% for course in courses|slice:":4" %}
+        <div class="group" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00"> 
+            <div class="course-card-industrial">
+                
+                {# Aksen Siku Pojok #}
+                <div class="absolute top-0 right-0 w-10 h-10 bg-gray-200/20 -mr-5 -mt-5 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500 z-30"></div>
+
+                {# Thumbnail Area #}
+                <div class="w-full h-44 bg-gray-100 flex items-center justify-center relative overflow-hidden border-b border-gray-200/50">
+                    {% if course.thumbnail %}
+                        <img src="{{ course.thumbnail.url }}" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" alt="{{ course.title }}">
+                    {% else %}
+                        <img src="{% static 'img/logo.jpeg' %}" class="h-32 w-auto object-contain p-2 opacity-50" alt="SSC Logo">
+                    {% endif %}
+                    
+                    <div class="absolute top-3 left-3 z-20">
+                        <span class="bg-gray-900 text-[#eab308] text-[8px] font-black px-2 py-1 rounded uppercase border border-[#eab308]">
+                            <i class="fas fa-fire mr-1"></i> Populer
+                        </span>
+                    </div>
+
+                    <span class="absolute bottom-3 right-3 bg-[#eab308] text-gray-900 text-[9px] font-black uppercase px-2 py-0.5 rounded shadow-sm z-20">
+                        {{ course.course_code }}
+                    </span>
+                </div>
+                
+                {# Content Area #}
+                <div class="p-6 flex flex-col flex-grow relative">
+                    <div class="flex items-center gap-2 mb-3">
+                         <span class="text-[#eab308] text-[9px] font-black uppercase tracking-widest">{{ course.level|default:"Umum" }}</span>
+                         <span class="text-gray-300">|</span>
+                         <span class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">{{ course.lessons.count }} Materi</span>
+                    </div>
+
+                    <h5 class="text-lg font-black mb-2 text-gray-900 leading-tight uppercase tracking-tighter group-hover:text-gray-600 transition-colors">
+                        {{ course.title }}
+                    </h5>
+                    
+                    <p class="text-gray-500 text-xs font-medium mb-4 line-clamp-2 flex-grow leading-relaxed">
+                        {{ course.description|truncatewords:12 }}
+                    </p>
+                    
+                    {# Metadata #}
+                    <div class="flex justify-between items-center mb-5 text-[10px] pt-4 border-t border-gray-200/50">
+                        <span class="text-gray-900 font-black uppercase tracking-tighter flex items-center">
+                            <i class="fas fa-user-graduate mr-1.5 text-gray-400"></i> {{ course.num_students }} Siswa
+                        </span>
+                    </div>
+
+                    {# Button Industrial #}
+                    <a href="{% url 'course_detail' course.pk %}" class="inline-flex items-center justify-center w-full bg-gray-900 hover:bg-[#eab308] text-white hover:text-gray-900 font-black py-3 px-4 rounded-xl transition-all duration-300 text-xs uppercase tracking-widest active:scale-95">
+                        Pelajari <i class="fas fa-arrow-right ml-2 text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+
+                    {# Garis Dinamis Bawah #}
+                    <div class="h-[1.5px] w-4 bg-gray-900 mt-4 transition-all duration-500 group-hover:w-full"></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    AOS.init({ once: true });
+</script>

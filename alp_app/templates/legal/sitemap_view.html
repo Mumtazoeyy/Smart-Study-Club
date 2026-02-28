@@ -1,0 +1,281 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sitemap / Index | SSC{% endblock title %}
+
+{% block content %}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+    .industrial-dot-bg {
+        background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
+        background-size: 16px 16px;
+        background-attachment: fixed;
+    }
+
+    .protocol-card-glass {
+        background-color: rgba(255, 255, 255, 0.05); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .protocol-card-glass:hover {
+        border-color: rgba(0, 0, 0, 0.3);
+        transform: translateY(-2px);
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .protocol-card-admin {
+        background-color: rgba(15, 23, 42, 0.02);
+        border: 2px dashed rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .protocol-card-admin:hover {
+        border-color: #eab308;
+        background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    .expanding-line-container {
+        display: flex;
+        align-items: center; gap: 0.5rem; width: 100%;
+        margin-top: auto; padding-top: 2rem;
+    }
+
+    .expanding-line {
+        height: 1.5px; flex-grow: 0; width: 20px;
+        background-color: #eab308;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .protocol-card-glass:hover .expanding-line, 
+    .protocol-card-admin:hover .expanding-line { flex-grow: 1; }
+    
+    .node-link { @apply transition-colors flex items-center gap-2 py-1; }
+    .node-link:hover { color: #eab308; }
+</style>
+
+<div class="industrial-dot-bg min-h-screen">
+    <div class="container mx-auto px-6 pt-2 pb-24">
+        
+        {# Header Section #}
+        <div class="w-full flex flex-col items-center gap-1 mb-16" data-aos="fade-down">
+            <div class="flex items-center gap-3">
+                <div class="h-6 md:h-8 w-1.5 bg-[#eab308]"></div>
+                <h1 class="text-3xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase text-center">
+                    System <span class="text-gray-400">Node Mapper</span>
+                </h1>
+                <div class="h-6 md:h-8 w-1.5 bg-[#eab308]"></div>
+            </div>
+            <p class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-[0.2em]">Global Index / All Access Points</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            {# --- 1. USER & PROFILE INTERFACE --- #}
+            <div data-aos="fade-up" data-aos-delay="100">
+                <section class="protocol-card-glass p-8 group">
+                    <div class="flex-grow">
+                        <h3 class="font-black uppercase mb-6 text-gray-400 tracking-[0.2em] text-[10px] border-l-2 border-[#eab308] pl-3">User Node</h3>
+                        <ul class="space-y-3 font-bold uppercase text-[11px] italic text-gray-700">
+                            <li><a href="{% url 'home_master' %}" class="node-link">→ Home Page</a></li>
+                            <li><a href="{% url 'dashboard' %}" onclick="loginRequiredAction(event)" class="node-link">→ User Dashboard</a></li>
+                            <li><a href="{% url 'profile_settings' %}" onclick="loginRequiredAction(event)" class="node-link">→ Profile Setting</a></li>
+                            <li><a href="{% url 'password_change' %}" onclick="loginRequiredAction(event)" class="node-link">→ Change Password</a></li>
+                            <li><a href="{% url 'history_full_view' %}" onclick="loginRequiredAction(event)" class="node-link">→ Full History</a></li>
+                            <li><a href="{% url 'login_view' %}" class="node-link">→ Login Portal</a></li>
+                            <li><a href="{% url 'signup_view' %}" class="node-link">→ Signup Access</a></li>
+                        </ul>
+                    </div>
+                    <div class="expanding-line-container">
+                        <span class="text-[9px] font-black uppercase text-gray-400 whitespace-nowrap">Identity Protocol</span>
+                        <div class="expanding-line"></div>
+                    </div>
+                </section>
+            </div>
+
+            {# --- 2. LEARNING & CONTENT NODE (Updated with Class Detail) --- #}
+            <div data-aos="fade-up" data-aos-delay="200">
+                <section class="protocol-card-glass p-8 group">
+                    <div class="flex-grow">
+                        <h3 class="font-black uppercase mb-6 text-gray-400 tracking-[0.2em] text-[10px] border-l-2 border-[#eab308] pl-3">Learning Node</h3>
+                        <ul class="space-y-3 font-bold uppercase text-[11px] italic text-gray-700">
+                            {# Katalog Utama #}
+                            <li><a href="{% url 'class_list' %}" class="node-link">→ Library / Class list</a></li>
+                            
+                            {# Area Detail & Lesson #}
+                            <li class="pt-2 border-t border-gray-100 mt-2">
+                                <span class="text-[9px] text-gray-400 block mb-2 uppercase tracking-widest">Module Access:</span>
+                                <ul class="space-y-2 pl-2 border-l border-gray-200">
+                                    <li class="flex items-center gap-2 text-gray-400">
+                                        <span class="text-[10px]">→</span> 
+                                        <span>Class Detail View</span> 
+                                        <span class="text-[8px] bg-gray-100 px-1 font-bold">REQ_ID</span>
+                                    </li>
+                                    <li class="flex items-center gap-2 text-gray-400">
+                                        <span class="text-[10px]">→</span> 
+                                        <span>Lesson Content</span> 
+                                        <span class="text-[8px] bg-gray-100 px-1 font-bold">REQ_ID</span>
+                                    </li>
+                                    <li class="flex items-center gap-2 text-gray-400">
+                                        <span class="text-[10px]">→</span> 
+                                        <span>Quiz & Exam Node</span> 
+                                        <span class="text-[8px] bg-gray-100 px-1 font-bold">REQ_ID</span>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="pt-4"><a href="{% url 'my_courses' %}" onclick="loginRequiredAction(event)"class="node-link">→ My Enrolled Courses</a></li>
+                            <li><a href="{% url 'discussion_view' %}" onclick="loginRequiredAction(event)" class="node-link">→ Forum Discussion</a></li>
+                            <li><a href="{% url 'feedback_view' %}" onclick="loginRequiredAction(event)" class="node-link">→ User Feedback</a></li>
+                        </ul>
+                    </div>
+                    <div class="expanding-line-container">
+                        <span class="text-[9px] font-black uppercase text-gray-400 whitespace-nowrap">Education Protocol</span>
+                        <div class="expanding-line"></div>
+                    </div>
+                </section>
+            </div>
+
+            {# --- 3. LEGAL & SYSTEM NODE --- #}
+            <div data-aos="fade-up" data-aos-delay="300">
+                <section class="protocol-card-glass p-8 group">
+                    <div class="flex-grow">
+                        <h3 class="font-black uppercase mb-6 text-gray-400 tracking-[0.2em] text-[10px] border-l-2 border-[#eab308] pl-3">System Node</h3>
+                        <ul class="space-y-3 font-bold uppercase text-[11px] italic text-gray-700">
+                            <li><a href="{% url 'terms' %}" class="node-link">→ Terms & Conditions</a></li>
+                            <li><a href="{% url 'privacy' %}" class="node-link">→ Privacy Policy</a></li>
+                            <li><a href="{% url 'about' %}" class="node-link">→ About SSC Hub</a></li>
+                            <li><a href="{% url 'support' %}" class="node-link">→ Support Center</a></li>
+                            <li><a href="{% url 'sitemap' %}" class="node-link">→ Index Sitemap</a></li>
+                            <li><a href="{% url 'test_500' %}" class="text-red-500 node-link">→ Trigger Error 500</a></li>
+                            <li><a href="/force-404/" class="text-red-500 node-link">→ Trigger Error 404</a></li>
+                        </ul>
+                    </div>
+                    <div class="expanding-line-container">
+                        <span class="text-[9px] font-black uppercase text-gray-400 whitespace-nowrap">Core Protocol</span>
+                        <div class="expanding-line"></div>
+                    </div>
+                </section>
+            </div>
+
+            {# --- 4. CONDITIONAL NODE (ADMIN OR STATUS) --- #}
+            {% if user.is_staff %}
+                {# Kotak Admin (Manager Node) #}
+                <div data-aos="fade-up" data-aos-delay="400">
+                    <section class="protocol-card-admin p-8 group">
+                        <div class="flex-grow">
+                            <h3 class="font-black uppercase mb-6 text-red-600 tracking-[0.2em] text-[10px] border-l-2 border-red-600 pl-3">Manager Node</h3>
+                            <ul class="space-y-3 font-bold uppercase text-[11px] italic text-gray-900">
+                                <li><a href="/admin/" target="_blank" class="node-link hover:text-red-600">→ Django Site Admin</a></li>
+                                <li><a href="{% url 'manager_dashboard' %}" class="node-link hover:text-red-600">→ Manager Dashboard</a></li>
+                                <li><a href="{% url 'import_materi' %}" class="node-link hover:text-red-600">→ Import Materials</a></li>
+                            </ul>
+                        </div>
+                        <div class="expanding-line-container">
+                            <div class="h-2 w-2 rounded-full bg-red-600 animate-pulse"></div>
+                            <span class="text-[9px] font-black uppercase text-red-600 whitespace-nowrap">Admin Restricted</span>
+                            <div class="expanding-line"></div>
+                        </div>
+                    </section>
+                </div>
+            {% else %}
+                {# Kotak Pengganti Untuk User Biasa (Metrics Node) #}
+                <div data-aos="fade-up" data-aos-delay="400">
+                    <section class="protocol-card-glass p-8 group border-blue-200">
+                        <div class="flex-grow">
+                            <h3 class="font-black uppercase mb-6 text-blue-600 tracking-[0.2em] text-[10px] border-l-2 border-blue-600 pl-3">Session Metrics</h3>
+                            <ul class="space-y-4 font-bold uppercase text-[11px] italic text-gray-700">
+                                <li class="flex justify-between items-center border-b border-gray-100 pb-2">
+                                    <span>User Status</span>
+                                    <span class="text-green-600">● Active</span>
+                                </li>
+                                <li class="flex justify-between items-center border-b border-gray-100 pb-2">
+                                    <span>Access Level</span>
+                                    <span class="text-gray-900 text-[10px]">Standard_Member</span>
+                                </li>
+                                <li class="flex justify-between items-center border-b border-gray-100 pb-2">
+                                    <span>Encrypted Session</span>
+                                    <span class="text-gray-400">AES-256</span>
+                                </li>
+                                <li class="mt-2 text-[9px] text-gray-400 normal-case leading-relaxed">
+                                    Informasi ini dihasilkan secara otomatis berdasarkan protokol keamanan sesi Anda saat ini.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="expanding-line-container">
+                            <span class="text-[9px] font-black uppercase text-blue-600 whitespace-nowrap">Live Session</span>
+                            <div class="expanding-line !bg-blue-600"></div>
+                        </div>
+                    </section>
+                </div>
+            {% endif %}
+
+        </div>
+
+        {# Footer Info #}
+        <div class="mt-24 pt-8 border-t-2 border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4" data-aos="fade-up">
+            <div class="flex items-center gap-6">
+                <span class="text-gray-400 font-bold uppercase text-[10px] tracking-widest italic">Node Status: Online</span>
+                <span class="text-gray-400 font-bold uppercase text-[10px] tracking-widest italic">Core: SSC-V4.0.2</span>
+            </div>
+            <div class="flex items-center gap-4 font-black text-[10px]">
+                <span class="text-gray-900 bg-[#eab308] px-3 py-1">COORD_MAP_0991</span>
+                <span class="text-gray-400 uppercase">End of Directory</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // 1. Cari semua link yang punya class 'auth-link'
+        const protectedLinks = document.querySelectorAll('.auth-link');
+
+        protectedLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                {% if not user.is_authenticated %}
+                    event.preventDefault(); // Stop link agar tidak jalan
+                    
+                    // Ambil pesan kustom dari atribut data-pesan (opsional)
+                    const pesan = this.getAttribute('data-pesan') || "Silakan login untuk mengakses fitur ini.";
+
+                    Swal.fire({
+                        title: 'AKSES TERBATAS',
+                        text: pesan,
+                        icon: 'warning',
+                        iconColor: '#fbbf24',
+                        showCancelButton: true,
+                        confirmButtonText: 'SIGN IN SEKARANG',
+                        cancelButtonText: 'NANTI SAJA',
+                        background: 'rgba(17, 24, 39, 0.8)', 
+                        backdrop: `rgba(0,0,0,0.6) blur(4px)`,
+                        color: '#ffffff',
+                        customClass: {
+                            popup: 'border border-gray-700 backdrop-blur-xl rounded-none',
+                            title: 'font-black tracking-tighter uppercase text-2xl',
+                            confirmButton: 'bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-none transition-all uppercase tracking-widest text-xs ml-2',
+                            cancelButton: 'bg-transparent border border-gray-600 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-none transition-all uppercase tracking-widest text-xs'
+                        },
+                        buttonsStyling: false,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "{% url 'account_login' %}";
+                        }
+                    });
+                {% endif %}
+            });
+        });
+    });
+</script>
+{% endblock %}

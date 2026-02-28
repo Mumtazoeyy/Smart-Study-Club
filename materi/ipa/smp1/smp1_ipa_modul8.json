@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 68,
+    "fields": {
+      "course": 7,
+      "title": "Modul 8: Pencemaran Lingkungan",
+      "order": 8
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 536,
+    "fields": {
+      "module": 68,
+      "title": "Definisi Pencemaran dan Polutan",
+      "content": "Pencemaran lingkungan adalah masuknya atau dimasukkannya makhluk hidup, zat, energi, dan/atau komponen lain ke dalam lingkungan hidup oleh kegiatan manusia sehingga kualitasnya turun sampai ke tingkat tertentu yang menyebabkan lingkungan tidak dapat berfungsi sesuai peruntukannya.\n\nZat yang menyebabkan pencemaran disebut **Polutan**. Suatu zat dikatakan polutan jika:\n1. Jumlahnya melebihi batas normal.\n2. Berada pada waktu yang tidak tepat.\n3. Berada pada tempat yang tidak semestinya.\n\nSifat polutan bisa berupa kimiawi (logam berat), fisik (sampah plastik), atau biologis (bakteri E. coli). Perhatikan berbagai sumber polutan di sekitar kita pada gambar.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 537,
+    "fields": {
+      "module": 68,
+      "title": "Pencemaran Air dan Eutrofikasi",
+      "content": "Pencemaran air terjadi ketika limbah industri, rumah tangga, atau pertanian masuk ke badan air. Salah satu fenomena yang paling berbahaya adalah **Eutrofikasi**, yaitu ledakan pertumbuhan eceng gondok atau alga akibat limbah pupuk/fosfat berlebih.\n\nAkibat Eutrofikasi:\n- Permukaan air tertutup tumbuhan, menghalangi cahaya matahari.\n- Kadar oksigen terlarut (DO) menurun drastis saat tumbuhan tersebut mati dan membusuk.\n- Ikan dan organisme air lainnya mati masal karena kekurangan oksigen.\n\n\n\nCara menanggulangi pencemaran air dapat dilakukan dengan pembuatan kolam stabilisasi atau Instalasi Pengolahan Air Limbah (IPAL).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 538,
+    "fields": {
+      "module": 68,
+      "title": "Pencemaran Udara dan Efek Rumah Kaca",
+      "content": "Pencemaran udara disebabkan oleh gas-gas berbahaya seperti Karbon Monoksida (CO), Nitrogen Oksida (NOx), dan Karbon Dioksida ($CO_2$) hasil pembakaran bahan bakar fosil.\n\nAda dua dampak global utama yang harus dipahami:\n1. **Efek Rumah Kaca**: Meningkatnya kadar $CO_2$ di atmosfer yang memerangkap panas matahari, menyebabkan Pemanasan Global.\n2. **Hujan Asam**: Disebabkan oleh gas SOx dan NOx yang bereaksi dengan air hujan, sehingga merusak tanaman dan bangunan logam.\n\n\n\nSelain itu, penipisan lapisan ozon akibat gas CFC (pada kulkas/AC lama) menyebabkan radiasi sinar UV yang berbahaya sampai ke bumi.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 539,
+    "fields": {
+      "module": 68,
+      "title": "Video: Pencemaran Tanah dan Solusi 3R",
+      "content": "Pencemaran tanah seringkali tidak terlihat secara langsung tetapi sangat mematikan karena dapat masuk ke rantai makanan melalui tanaman. Video ini akan membahas tentang dampak pembuangan limbah plastik dan kimia ke tanah, serta cara mengatasinya dengan prinsip **3R**:\n- **Reduce**: Mengurangi pemakaian barang sekali pakai.\n- **Reuse**: Menggunakan kembali barang yang masih layak.\n- **Recycle**: Mendaur ulang sampah menjadi barang baru.\n\nSimak juga penjelasan mengenai bioremediasi (penggunaan bakteri untuk membersihkan tanah dari polutan minyak) dalam video ini!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 540,
+    "fields": {
+      "module": 68,
+      "title": "Kuis: Analis Dampak Lingkungan",
+      "content": "Selamat! Kamu telah mempelajari tantangan terbesar bagi bumi kita saat ini. Kuis ini akan menguji kemampuanmu dalam mengidentifikasi jenis pencemaran dan mencari solusi praktis untuk menjaga lingkungan. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 68,
+    "fields": {
+      "lesson": 540,
+      "title": "Evaluasi Pencemaran Lingkungan",
+      "description": "Uji pengetahuan tentang polutan, eutrofikasi, efek rumah kaca, dan prinsip pengelolaan sampah."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 536,
+    "fields": {
+      "quiz": 68,
+      "text": "Fenomena ledakan pertumbuhan tanaman air akibat penumpukan limbah pupuk di sungai disebut...",
+      "topic": "Pencemaran Air",
+      "option_a": "Bioremediasi",
+      "option_b": "Eutrofikasi",
+      "option_c": "Kondensasi",
+      "option_d": "Oksidasi",
+      "correct_answer": "B",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 537,
+    "fields": {
+      "quiz": 68,
+      "text": "Gas hasil pembakaran mesin kendaraan yang sangat berbahaya karena dapat berikatan dengan hemoglobin darah adalah...",
+      "topic": "Pencemaran Udara",
+      "option_a": "Oksigen (O2)",
+      "option_b": "Karbon Monoksida (CO)",
+      "option_c": "Nitrogen (N2)",
+      "option_d": "Uap Air (H2O)",
+      "correct_answer": "B",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 538,
+    "fields": {
+      "quiz": 68,
+      "text": "Mengolah kembali botol plastik bekas menjadi kerajinan tangan atau pot tanaman merupakan penerapan prinsip...",
+      "topic": "Pengelolaan Sampah",
+      "option_a": "Reduce",
+      "option_b": "Replace",
+      "option_c": "Recycle",
+      "option_d": "Reuse",
+      "correct_answer": "C",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 539,
+    "fields": {
+      "quiz": 68,
+      "text": "Dampak utama dari meningkatnya kadar gas Karbon Dioksida (CO2) di atmosfer bumi adalah...",
+      "topic": "Pemanasan Global",
+      "option_a": "Hujan asam yang merusak logam",
+      "option_b": "Penipisan lapisan ozon",
+      "option_c": "Pemanasan global akibat efek rumah kaca",
+      "option_d": "Meningkatnya populasi ikan di laut",
+      "correct_answer": "C",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 540,
+    "fields": {
+      "quiz": 68,
+      "text": "Metode pembersihan tanah yang tercemar menggunakan organisme (seperti bakteri atau jamur) disebut...",
+      "topic": "Solusi Pencemaran",
+      "option_a": "Abrasi",
+      "option_b": "Erosi",
+      "option_c": "Bioremediasi",
+      "option_d": "Evaporasi",
+      "correct_answer": "C",
+      "difficulty_level": 0.8
+    }
+  }
+]

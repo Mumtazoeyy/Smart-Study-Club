@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 10,
+    "fields": {
+      "course": 2,
+      "title": "Modul 5: Menulis Karya Ilmiah Sederhana",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 46,
+    "fields": {
+      "module": 10,
+      "title": "Karakteristik dan Hakikat Karya Ilmiah",
+      "content": "Pernahkah kamu bertanya-tanya mengapa sebuah fenomena alam terjadi, lalu kamu mencoba mencari jawabannya melalui percobaan dan membaca banyak buku? Hasil dari pencarian jawaban yang disusun secara teratur itulah yang disebut Karya Ilmiah.\n\nKarya ilmiah adalah tulisan yang memaparkan hasil penelitian atau pengkajian yang dilakukan oleh seseorang atau tim dengan memenuhi kaidah dan etika keilmuan. Berbeda dengan novel yang bersifat fiksi, karya ilmiah harus berpijak pada fakta.\n\nSifat Utama Karya Ilmiah:\n1. Logis: Segala keterangan yang disajikan dapat diterima oleh akal sehat.\n2. Objektif: Berdasarkan kondisi sebenarnya, bukan berdasarkan perasaan atau keinginan penulis.\n3. Sistematis: Disusun menurut pola yang teratur dan mengikuti standar penulisan tertentu.\n4. Faktual: Data yang digunakan adalah nyata dan dapat dibuktikan kebenarannya.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 47,
+    "fields": {
+      "module": 10,
+      "title": "Sistematika Penulisan: Membangun Kerangka Riset",
+      "content": "Agar hasil penelitianmu dapat dipahami dengan baik oleh orang lain, kamu harus menyusunnya ke dalam urutan yang benar. Berikut adalah sistematika umum dalam karya ilmiah sederhana:\n\n1. Bagian Pendahuluan\n- Latar Belakang: Menjelaskan alasan mengapa kamu memilih topik tersebut.\n- Rumusan Masalah: Pertanyaan-pertanyaan yang ingin kamu jawab dalam penelitian.\n- Tujuan Penelitian: Manfaat atau target yang ingin dicapai.\n\n2. Bagian Isi (Pembahasan)\nDi sinilah inti dari penelitianmu berada. Kamu akan menyajikan data yang ditemukan di lapangan atau melalui eksperimen, kemudian menganalisisnya menggunakan teori yang sudah ada.\n\n3. Bagian Penutup\n- Simpulan: Jawaban ringkas dari rumusan masalah berdasarkan hasil analisis.\n- Saran: Rekomendasi penulis untuk pembaca atau peneliti selanjutnya.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 48,
+    "fields": {
+      "module": 10,
+      "title": "Video: Etika Penulisan dan Daftar Pustaka",
+      "content": "Panduan Menyimak Video:\n\nDalam dunia ilmu pengetahuan, kejujuran adalah hal paling utama. Video ini akan menjelaskan pentingnya menghargai karya orang lain melalui penulisan Daftar Pustaka dan kutipan yang benar.\n\nMateri yang terkandung dalam video:\n1. Bahaya Plagiarisme: Menjelaskan mengapa mengambil karya orang lain tanpa izin adalah tindakan yang salah dan melanggar hukum.\n2. Teknik Pengutipan: Cara menyisipkan pendapat ahli ke dalam tulisan kita tanpa dianggap mencuri ide.\n3. Cara Menulis Daftar Pustaka: Rumus sederhana menulis sumber dari buku (Nama Penulis. Tahun. Judul Buku. Kota: Penerbit).\n\nTugas: Simak video ini dan cobalah menyusun satu daftar pustaka menggunakan buku pelajaran Bahasa Indonesia yang sedang kamu pegang saat ini!",
+      "video_url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 49,
+    "fields": {
+      "module": 10,
+      "title": "Ciri Kebahasaan: Ragam Bahasa Ilmiah",
+      "content": "Bahasa yang digunakan dalam karya ilmiah haruslah mencerminkan ketegasan dan kepastian. Berikut adalah aturan kebahasaannya:\n\n1. Menggunakan Bahasa Baku\nSetiap kata harus mengikuti aturan PUEBI (Pedoman Umum Ejaan Bahasa Indonesia). Hindari penggunaan bahasa gaul atau bahasa percakapan sehari-hari.\n\n2. Menggunakan Istilah Teknis\nSesuaikan istilah dengan bidang ilmu yang dibahas. Jika meneliti tentang kesehatan, gunakan istilah seperti 'higienis', 'nutrisi', atau 'imunitas'.\n\n3. Reproduktif\nArtinya, maksud yang disampaikan penulis harus diterima oleh pembaca dengan makna yang sama persis, tidak boleh bermakna ganda (ambigu).\n\n4. Denotatif\nMenggunakan kata yang memiliki makna sebenarnya, bukan kiasan. Hal ini penting agar informasi yang disampaikan bersifat akurat.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 50,
+    "fields": {
+      "module": 10,
+      "title": "Kuis Kompetensi Modul 5",
+      "content": "Luar biasa! Kamu telah menamatkan seluruh materi di tingkat SMP 2. Memahami karya ilmiah akan sangat membantumu dalam tugas-tugas sekolah di masa depan. Sekarang, uji pemahamanmu mengenai karakteristik, struktur, dan etika penulisan karya ilmiah. Pastikan kamu teliti dalam menjawab setiap soal!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 10,
+    "fields": {
+      "lesson": 50,
+      "title": "Evaluasi Karya Ilmiah",
+      "description": "Selesaikan kuis terakhir ini untuk menuntaskan materi Bahasa Indonesia Kelas 8."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 46,
+    "fields": {
+      "quiz": 10,
+      "text": "Tujuan utama penulisan karya ilmiah adalah untuk...",
+      "topic": "Tujuan",
+      "option_a": "Menceritakan pengalaman pribadi secara dramatis",
+      "option_b": "Mempromosikan produk komersial",
+      "option_c": "Memecahkan masalah melalui pengamatan dan penelitian",
+      "option_d": "Menghibur pembaca dengan khayalan",
+      "correct_answer": "C",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 47,
+    "fields": {
+      "quiz": 10,
+      "text": "Bagian karya ilmiah yang menjelaskan alasan mengapa suatu topik perlu diteliti disebut...",
+      "topic": "Struktur",
+      "option_a": "Metodologi",
+      "option_b": "Latar Belakang Masalah",
+      "option_c": "Daftar Pustaka",
+      "option_d": "Simpulan",
+      "correct_answer": "B",
+      "difficulty_level": -0.3
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 48,
+    "fields": {
+      "quiz": 10,
+      "text": "Tindakan mengambil ide atau tulisan orang lain tanpa menyebutkan sumbernya disebut...",
+      "topic": "Etika Penulisan",
+      "option_a": "Referensi",
+      "option_b": "Kutipan",
+      "option_c": "Plagiarisme",
+      "option_d": "Apresiasi",
+      "correct_answer": "C",
+      "difficulty_level": 0.4
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 49,
+    "fields": {
+      "quiz": 10,
+      "text": "Bagian yang berisi daftar semua sumber referensi yang digunakan dalam penulisan karya ilmiah disebut...",
+      "topic": "Struktur",
+      "option_a": "Glosarium",
+      "option_b": "Indeks",
+      "option_c": "Daftar Pustaka",
+      "option_d": "Lampiran",
+      "correct_answer": "C",
+      "difficulty_level": 0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 50,
+    "fields": {
+      "quiz": 10,
+      "text": "Data dalam karya ilmiah harus bersifat objektif, artinya...",
+      "topic": "Karakteristik",
+      "option_a": "Berdasarkan perasaan penulis",
+      "option_b": "Berdasarkan kenyataan tanpa dipengaruhi prasangka pribadi",
+      "option_c": "Menggunakan bahasa yang berbunga-bunga",
+      "option_d": "Hanya mengambil data yang disukai saja",
+      "correct_answer": "B",
+      "difficulty_level": 1.1
+    }
+  }
+]

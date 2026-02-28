@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 2,
+    "fields": {
+      "title": "Bahasa Indonesia Kelas 8 (SMP 2)",
+      "description": "Kursus ini berfokus pada pengembangan literasi kritis melalui Teks LHO, Iklan, Eksposisi, Puisi Modern, dan Karya Ilmiah.",
+      "course_code": "BIN8-02",
+      "level": "Menengah",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 6,
+    "fields": {
+      "course": 2,
+      "title": "Modul 1: Menyingkap Ilmu dalam Laporan Hasil Observasi (LHO)",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 26,
+    "fields": {
+      "module": 6,
+      "title": "Pengertian dan Sifat Objektif Teks LHO",
+      "content": "Pernahkah kamu mengamati cara kerja semut atau meneliti pertumbuhan tanaman di halaman rumahmu? Jika kamu menuliskannya berdasarkan fakta yang kamu lihat, maka kamu sedang membuat Laporan Hasil Observasi.\n\nTeks Laporan Hasil Observasi (LHO) adalah teks yang berfungsi untuk memberikan informasi tentang suatu objek atau situasi, setelah diadakannya investigasi atau pengamatan secara sistematis. Objek yang diamati bisa berupa hewan, tumbuhan, fenomena alam, objek buatan manusia, atau peristiwa sosial.\n\nSifat Utama Teks LHO:\n1. Objektif: Informasi yang disajikan harus sesuai dengan keadaan nyata yang diamati tanpa adanya pengaruh pendapat pribadi atau perasaan penulis.\n2. Faktual: Harus berdasarkan fakta yang benar-benar terjadi dan dapat dibuktikan kebenarannya, bukan hasil imajinasi.\n3. Sistematik: Disusun secara berurutan sesuai dengan struktur yang baku agar mudah dipahami oleh pembaca.\n4. Umum (Universal): Objek yang dibahas adalah objek secara umum, bukan spesifik (misal: membahas 'Kucing' sebagai spesies, bukan hanya kucing peliharaanmu).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 27,
+    "fields": {
+      "module": 6,
+      "title": "Membedah Struktur Teks LHO",
+      "content": "Agar laporanmu terlihat profesional dan ilmiah, teks LHO harus memiliki susunan yang jelas. Berikut adalah struktur pembangun teks LHO:\n\n1. Pernyataan Umum (Klasifikasi)\nBagian ini berisi pembukaan atau pengantar tentang objek yang diamati. Isinya mencakup definisi umum dan pengelompokan objek tersebut.\nContoh: 'Sampah merupakan material sisa yang tidak diinginkan setelah berakhirnya suatu proses. Secara umum, sampah dibagi menjadi dua jenis, yaitu organik dan anorganik.'\n\n2. Deskripsi Bagian\nBagian ini berisi rincian detail mengenai objek yang diamati. Penulis menjelaskan ciri-ciri, bagian-bagian, atau perilaku objek secara mendalam.\n\n3. Deskripsi Manfaat\nBagian penutup yang menjelaskan manfaat atau kegunaan dari objek yang diamati tersebut bagi kehidupan manusia atau lingkungan sekitar.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 28,
+    "fields": {
+      "module": 6,
+      "title": "Video: Teknik Observasi Lapangan yang Efektif",
+      "content": "Panduan Menyimak Video:\n\nDalam video ini, kamu akan belajar bagaimana cara menjadi pengamat yang teliti. Pengamatan bukan sekadar melihat, tapi memperhatikan detail yang sering terlewatkan.\n\nMateri yang terkandung dalam video:\n1. Persiapan Alat: Menyiapkan buku catatan, kamera, atau alat rekam untuk memastikan data tidak hilang.\n2. Pencatatan Fakta: Teknik menuliskan data angka (kuantitatif) dan deskripsi kualitas (kualitatif) secara langsung di lokasi.\n3. Etika Observasi: Cara mengamati tanpa mengganggu objek atau lingkungan sekitar agar data yang didapat tetap natural.\n\nTugas: Sambil menonton, tuliskan 3 langkah penting yang harus dilakukan sebelum memulai pengamatan di lapangan!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 29,
+    "fields": {
+      "module": 6,
+      "title": "Kebahasaan: Kata Teknis dan Verba Relasional",
+      "content": "Karena teks LHO bersifat ilmiah, bahasa yang digunakan pun memiliki ciri khas tertentu:\n\n1. Kata Teknis (Istilah Ilmiah)\nMenggunakan kata-kata yang khusus digunakan dalam bidang ilmu tertentu.\nContoh: Dalam laporan tentang tanaman, kita menggunakan istilah 'fotosintesis', 'herbivora', atau 'stomata'.\n\n2. Verba Relasional (Kata Kerja Definisi)\nMenggunakan kata kerja yang berfungsi untuk menyatakan definisi atau pengelompokan.\nContoh: adalah, ialah, merupakan, termasuk, digolongkan, meliputi.\n\n3. Verba Aktif (Kata Kerja Tindakan)\nDigunakan untuk menjelaskan perilaku atau kebiasaan objek.\nContoh: bertelur, memangsa, tumbuh, bermigrasi.\n\n4. Kata Keadaan (Adjektiva)\nDigunakan untuk memberikan deskripsi fisik yang akurat.\nContoh: tinggi, panjang, berwarna kehitaman, berbentuk oval.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 30,
+    "fields": {
+      "module": 6,
+      "title": "Kuis Kompetensi Modul 1",
+      "content": "Selamat! Kamu telah mendalami bagaimana cara melaporkan ilmu pengetahuan melalui teks LHO. Sekarang saatnya menguji ketajaman analisismu. Perhatikan perbedaan antara data fakta dan opini, serta pahami struktur pembangun laporan agar kamu bisa menjawab dengan tepat!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 6,
+    "fields": {
+      "lesson": 30,
+      "title": "Evaluasi Laporan Hasil Observasi",
+      "description": "Pastikan Anda dapat membedakan data objektif dan opini sebelum memulai."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 26,
+    "fields": {
+      "quiz": 6,
+      "text": "Teks laporan hasil observasi harus disajikan secara ... yang berarti sesuai dengan keadaan nyata tanpa dipengaruhi pendapat pribadi.",
+      "topic": "Sifat Teks",
+      "option_a": "Subjektif",
+      "option_b": "Objektif",
+      "option_c": "Imajinatif",
+      "option_d": "Fiktif",
+      "correct_answer": "B",
+      "difficulty_level": -1.3
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 27,
+    "fields": {
+      "quiz": 6,
+      "text": "Bagian teks LHO yang berisi pembukaan atau keterangan umum mengenai objek yang dikaji disebut...",
+      "topic": "Struktur",
+      "option_a": "Deskripsi Bagian",
+      "option_b": "Deskripsi Manfaat",
+      "option_c": "Pernyataan Umum",
+      "option_d": "Simpulan",
+      "correct_answer": "C",
+      "difficulty_level": -0.4
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 28,
+    "fields": {
+      "quiz": 6,
+      "text": "Istilah khusus atau kata ilmiah yang digunakan dalam bidang ilmu tertentu dalam teks LHO disebut...",
+      "topic": "Kebahasaan",
+      "option_a": "Kata Sifat",
+      "option_b": "Kata Populer",
+      "option_c": "Kata Teknis",
+      "option_d": "Kata Ganti",
+      "correct_answer": "C",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 29,
+    "fields": {
+      "quiz": 6,
+      "text": "Manakah di bawah ini yang merupakan deskripsi manfaat dalam teks LHO tentang sampah?",
+      "topic": "Struktur",
+      "option_a": "Sampah dibagi menjadi organik dan anorganik.",
+      "option_b": "Sampah adalah sisa buangan hasil aktivitas manusia.",
+      "option_c": "Pengolahan sampah yang tepat dapat mencegah banjir dan sarang penyakit.",
+      "option_d": "Masyarakat membuang sampah di tempat penampungan sementara.",
+      "correct_answer": "C",
+      "difficulty_level": 0.9
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 30,
+    "fields": {
+      "quiz": 6,
+      "text": "Fungsi utama dari teks laporan hasil observasi adalah untuk...",
+      "topic": "Tujuan",
+      "option_a": "Menghibur pembaca dengan cerita seru",
+      "option_b": "Membujuk orang agar setuju dengan pendapat kita",
+      "option_c": "Memberikan informasi faktual tentang suatu objek berdasarkan pengamatan",
+      "option_d": "Menceritakan masa lalu suatu benda",
+      "correct_answer": "C",
+      "difficulty_level": 1.3
+    }
+  }
+]

@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 6,
+    "fields": {
+      "title": "Matematika Kelas 9 (SMP 3)",
+      "description": "Persiapan tingkat akhir yang berfokus pada Perpangkatan, Persamaan Kuadrat, Transformasi Geometri, hingga Kesebangunan.",
+      "course_code": "MAT9-06",
+      "level": "Lanjut",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 52,
+    "fields": {
+      "course": 6,
+      "title": "Modul 2: Persamaan dan Fungsi Kuadrat",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 406,
+    "fields": {
+      "module": 52,
+      "title": "Mengenal Persamaan Kuadrat dan Akar-akarnya",
+      "content": "Jika pada kelas 7 kamu belajar persamaan linear seperti $2x + 4 = 10$, di kelas 9 ini kita naik level ke **Persamaan Kuadrat**. Ciri utamanya adalah variabel tertingginya berpangkat dua.\n\nBentuk Umum:\n$ax^2 + bx + c = 0$\nDimana $a \\neq 0$.\n\nMenyelesaikan persamaan kuadrat artinya mencari nilai $x$ (disebut akar-akar) yang membuat persamaan tersebut menjadi benar. Ada tiga cara utama untuk mencari akar-akar ini:\n1. **Faktorisasi**: Mengubah bentuk penjumlahan menjadi perkalian dua kurung.\n2. **Kuadrat Sempurna**: Mengubah bentuk menjadi $(x+p)^2 = q$.\n3. **Rumus ABC**: Cara paling ampuh jika angka-angkanya sulit difaktorkan.\n\n\n\nIngat, karena pangkatnya dua, maka biasanya akan ada dua jawaban nilai $x$ yang mungkin ($x_1$ dan $x_2$).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 407,
+    "fields": {
+      "module": 52,
+      "title": "Teknik Faktorisasi: Mencari Pasangan Angka",
+      "content": "Faktorisasi adalah metode tercepat jika kamu mahir dalam logika perkalian angka. \n\nMisalkan kita punya persamaan: $x^2 + 5x + 6 = 0$\nKita harus mencari dua angka yang:\n- Jika **Dikali** hasilnya adalah $c$ (angka 6).\n- Jika **Ditambah** hasilnya adalah $b$ (angka 5).\n\nAngka yang cocok adalah 2 dan 3. Maka bentuknya menjadi:\n$(x + 2)(x + 3) = 0$\nSehingga akarnya adalah $x = -2$ atau $x = -3$.\n\n[Image illustrating the factorization method for quadratic equations showing the relationship between numbers that multiply to c and add to b]\n\nTips: Selalu perhatikan tanda positif (+) dan negatif (-) pada angka $b$ dan $c$, karena tanda tersebut akan menentukan tanda di dalam kurung faktor.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 408,
+    "fields": {
+      "module": 52,
+      "title": "Video: Karakteristik Grafik Fungsi Kuadrat",
+      "content": "Panduan Menyimak Video:\n\nJika Persamaan Kuadrat disajikan dalam bentuk fungsi $f(x) = ax^2 + bx + c$, maka gambarnya akan membentuk kurva melengkung yang disebut **Parabola**.\n\nHal penting yang harus kamu amati dalam video:\n1. **Nilai $a$**: Jika $a$ positif, parabola terbuka ke ATAS (senyum). Jika $a$ negatif, parabola terbuka ke BAWAH (sedih).\n2. **Diskriminan ($D = b^2 - 4ac$)**: Menentukan berapa kali grafik memotong sumbu X.\n   - $D > 0$: Memotong sumbu X di dua titik.\n   - $D = 0$: Menyinggung sumbu X di satu titik.\n   - $D < 0$: Tidak memotong sumbu X.\n\n\n\nTugas: Simak video ini dan perhatikan bagaimana cara mencari 'Titik Puncak' atau titik balik dari sebuah parabola!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 409,
+    "fields": {
+      "module": 52,
+      "title": "Menyusun Persamaan Kuadrat Baru",
+      "content": "Terkadang soal ujian membalik logikanya: Kamu diberikan akar-akarnya ($x_1$ dan $x_2$), lalu diminta mencari apa persamaannya.\n\nRumus Menyusun Persamaan:\n$(x - x_1)(x - x_2) = 0$\natau\n$x^2 - (x_1 + x_2)x + (x_1 \\cdot x_2) = 0$\n\nContoh: Susunlah persamaan yang akarnya 2 dan 5.\nLangkah: $x^2 - (2 + 5)x + (2 \\cdot 5) = 0$\nHasil: $x^2 - 7x + 10 = 0$\n\n[Image showing the process of forming a quadratic equation from given roots with examples]\n\nKemampuan ini sangat berguna dalam analisis data sains untuk memprediksi lintasan benda jatuh atau gerakan peluru dalam fisika.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 410,
+    "fields": {
+      "module": 52,
+      "title": "Kuis: Ahli Persamaan Kuadrat",
+      "content": "Selamat! Kamu telah menyelesaikan salah satu materi paling 'berbobot' di kelas 9. Kamu sudah belajar cara mencari akar, mengenal rumus ABC, hingga memahami sifat grafik parabola. Sekarang, siapkan kertas coretanmu. Fokuslah pada ketelitian tanda (+) dan (-) agar hasil faktorisasi atau rumus ABC-mu tepat. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 52,
+    "fields": {
+      "lesson": 410,
+      "title": "Evaluasi Persamaan dan Fungsi Kuadrat",
+      "description": "Uji kemampuan faktorisasi, penggunaan rumus ABC, analisis diskriminan, dan karakteristik grafik fungsi kuadrat."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 406,
+    "fields": {
+      "quiz": 52,
+      "text": "Akar-akar dari persamaan kuadrat $x^2 - 5x + 6 = 0$ adalah...",
+      "topic": "Faktorisasi",
+      "option_a": "x = 2 atau x = 3",
+      "option_b": "x = -2 atau x = -3",
+      "option_c": "x = 1 atau x = 6",
+      "option_d": "x = -1 atau x = -6",
+      "correct_answer": "A",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 407,
+    "fields": {
+      "quiz": 52,
+      "text": "Jika nilai Diskriminan ($D$) suatu persamaan kuadrat adalah 0, maka grafik fungsinya akan...",
+      "topic": "Diskriminan",
+      "option_a": "Memotong sumbu X di dua titik",
+      "option_b": "Tidak memotong sumbu X",
+      "option_c": "Menyinggung sumbu X di satu titik",
+      "option_d": "Memotong sumbu Y di dua titik",
+      "correct_answer": "C",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 408,
+    "fields": {
+      "quiz": 52,
+      "text": "Pada fungsi $f(x) = -2x^2 + 4x + 5$, arah grafik parabolanya adalah...",
+      "topic": "Grafik Fungsi",
+      "option_a": "Terbuka ke atas",
+      "option_b": "Terbuka ke bawah",
+      "option_c": "Terbuka ke kanan",
+      "option_d": "Terbuka ke kiri",
+      "correct_answer": "B",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 409,
+    "fields": {
+      "quiz": 52,
+      "text": "Nilai dari $x_1 + x_2$ pada persamaan $x^2 + 8x - 10 = 0$ adalah...",
+      "topic": "Sifat Akar",
+      "option_a": "8",
+      "option_b": "-8",
+      "option_c": "10",
+      "option_d": "-10",
+      "correct_answer": "B",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 410,
+    "fields": {
+      "quiz": 52,
+      "text": "Persamaan kuadrat yang memiliki akar-akar -3 dan 4 adalah...",
+      "topic": "Menyusun Persamaan",
+      "option_a": "x^2 - x - 12 = 0",
+      "option_b": "x^2 + x - 12 = 0",
+      "option_c": "x^2 - 7x + 12 = 0",
+      "option_d": "x^2 + 7x + 12 = 0",
+      "correct_answer": "A",
+      "difficulty_level": 1.1
+    }
+  }
+]

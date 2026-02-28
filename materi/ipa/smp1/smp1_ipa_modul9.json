@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 69,
+    "fields": {
+      "course": 7,
+      "title": "Modul 9: Struktur Bumi dan Dinamikanya",
+      "order": 9
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 541,
+    "fields": {
+      "module": 69,
+      "title": "Lapisan Penyusun Bumi",
+      "content": "Bumi tempat kita tinggal tidaklah padat sepenuhnya hingga ke inti. Jika bumi dibelah, ia memiliki lapisan-lapisan yang mirip dengan struktur telur rebus. \n\n1. **Kerak Bumi (Crust)**: Lapisan terluar tempat kita berpijak. Terbagi menjadi kerak samudera (tipis dan padat) serta kerak benua (tebal dan kurang padat). Tebalnya hanya sekitar 5-70 km.\n2. **Mantel Bumi (Mantle)**: Lapisan bebatuan cair yang sangat panas dan kental. Mantel menyumbang 80% volume bumi dan menjadi tempat terjadinya arus konveksi yang menggerakkan lempeng.\n3. **Inti Luar (Outer Core)**: Lapisan logam cair (besi dan nikel) yang sangat panas. Perputaran di lapisan ini menciptakan medan magnet bumi.\n4. **Inti Dalam (Inner Core)**: Bagian paling pusat. Meskipun suhunya mencapai 5.000 derajat Celcius, inti ini berbentuk padat karena tekanan yang sangat luar biasa.\n\n\n\nMemahami struktur ini penting untuk mengetahui dari mana energi gempa bumi dan gunung berapi berasal.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 542,
+    "fields": {
+      "module": 69,
+      "title": "Litosfer dan Teori Tektonik Lempeng",
+      "content": "Kerak bumi dan bagian atas mantel membentuk lapisan padat yang disebut **Litosfer**. Namun, litosfer tidak utuh, melainkan pecah menjadi potongan-potongan besar yang disebut **Lempeng Tektonik**.\n\nLempeng-lempeng ini terus bergerak beberapa sentimeter setiap tahun karena didorong oleh arus panas dari dalam mantel. Ada tiga jenis pergerakan utama:\n1. **Konvergen (Tabrakan)**: Dua lempeng saling mendekat. Ini membentuk pegunungan tinggi (seperti Himalaya) atau palung laut dalam.\n2. **Divergen (Pemisahan)**: Dua lempeng saling menjauh. Ini menciptakan kerak baru di dasar samudera.\n3. **Transform (Geseran)**: Dua lempeng saling bergeser secara mendatar. Ini sering menimbulkan gempa bumi yang sangat kuat, seperti sesar San Andreas.\n\\n\nIndonesia berada di titik pertemuan tiga lempeng besar: Indo-Australia, Eurasia, dan Pasifik. Itulah sebabnya negara kita sangat sering mengalami gempa bumi.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 543,
+    "fields": {
+      "module": 69,
+      "title": "Gempa Bumi dan Gunung Berapi",
+      "content": "Gempa bumi terjadi ketika energi yang tersimpan akibat gesekan lempeng tiba-tiba terlepas. Titik di bawah tanah tempat gempa berasal disebut **Hiposentrum**, sedangkan titik di permukaan bumi tepat di atasnya disebut **Episentrum**.\n\nSelain gempa, pergerakan lempeng juga memicu terbentuknya gunung berapi. Magma (batuan cair di dalam bumi) naik ke permukaan melalui retakan kerak bumi. Saat magma keluar ke permukaan, namanya berubah menjadi **Lava**.\n\n\n\nKita juga harus waspada terhadap gempa di dasar laut yang dapat memicu **Tsunami**, yaitu gelombang raksasa yang terjadi karena pergeseran vertikal dasar laut secara mendadak.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 544,
+    "fields": {
+      "module": 69,
+      "title": "Video: Mitigasi Bencana Alam",
+      "content": "Hidup di wilayah 'Ring of Fire' (Cincin Api Pasifik) berarti kita harus siap menghadapi bencana kapan saja. Dalam video ini, kamu akan mempelajari langkah-langkah mitigasi:\n1. Apa yang harus dilakukan saat gempa terjadi (Drop, Cover, and Hold on).\n2. Cara membaca rambu evakuasi tsunami.\n3. Persiapan 'Tas Siaga Bencana' yang berisi kebutuhan pokok.\n\nEdukasi adalah kunci untuk mengurangi jumlah korban jiwa saat bencana terjadi.",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 545,
+    "fields": {
+      "module": 69,
+      "title": "Kuis: Geolog Muda",
+      "content": "Kamu sudah mempelajari rahasia di bawah perut bumi dan dinamika lempeng yang luar biasa. Kuis ini akan menguji pemahamanmu tentang lapisan bumi, jenis pergerakan lempeng, dan istilah-istilah dalam kebencanaan. Fokus dan teliti sebelum memilih jawaban!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 69,
+    "fields": {
+      "lesson": 545,
+      "title": "Evaluasi Struktur Bumi",
+      "description": "Uji pemahaman tentang lapisan bumi, tektonik lempeng, serta fenomena gempa dan gunung berapi."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 541,
+    "fields": {
+      "quiz": 69,
+      "text": "Lapisan bumi yang paling tipis dan merupakan tempat tinggal seluruh makhluk hidup adalah...",
+      "topic": "Lapisan Bumi",
+      "option_a": "Mantel Bumi",
+      "option_b": "Inti Luar",
+      "option_c": "Kerak Bumi",
+      "option_d": "Inti Dalam",
+      "correct_answer": "C",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 542,
+    "fields": {
+      "quiz": 69,
+      "text": "Mengapa inti dalam bumi tetap berbentuk padat meskipun suhunya sangat panas?",
+      "topic": "Lapisan Bumi",
+      "option_a": "Karena terbuat dari es abadi",
+      "option_b": "Karena adanya tekanan yang sangat tinggi dari lapisan di atasnya",
+      "option_c": "Karena suhunya tidak sepanas inti luar",
+      "option_d": "Karena tidak mendapatkan oksigen",
+      "correct_answer": "B",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 543,
+    "fields": {
+      "quiz": 69,
+      "text": "Pergerakan dua lempeng yang saling menjauh sehingga membentuk kerak samudera baru disebut pergerakan...",
+      "topic": "Tektonik Lempeng",
+      "option_a": "Konvergen",
+      "option_b": "Divergen",
+      "option_c": "Transform",
+      "option_d": "Subduksi",
+      "correct_answer": "B",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 544,
+    "fields": {
+      "quiz": 69,
+      "text": "Titik di permukaan bumi yang berada tepat di atas pusat gempa bumi disebut...",
+      "topic": "Gempa Bumi",
+      "option_a": "Hiposentrum",
+      "option_b": "Episentrum",
+      "option_c": "Sesar",
+      "option_d": "Patahan",
+      "correct_answer": "B",
+      "difficulty_level": -0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 545,
+    "fields": {
+      "quiz": 69,
+      "text": "Indonesia sering mengalami gempa dan memiliki banyak gunung berapi karena berada di jalur pertemuan lempeng yang disebut...",
+      "topic": "Geologi Indonesia",
+      "option_a": "Alur Laut",
+      "option_b": "Ring of Fire (Cincin Api)",
+      "option_c": "Sabuk Khatulistiwa",
+      "option_d": "Dataran Rendah",
+      "correct_answer": "B",
+      "difficulty_level": -1.0
+    }
+  }
+]

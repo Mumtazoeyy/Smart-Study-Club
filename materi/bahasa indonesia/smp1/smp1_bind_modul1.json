@@ -1,0 +1,174 @@
+[
+  {
+    "model": "alp_app.category",
+    "pk": 1,
+    "fields": {
+      "name": "Bahasa Indonesia",
+      "slug": "bahasa-indonesia"
+    }
+  },
+  {
+    "model": "alp_app.course",
+    "pk": 1,
+    "fields": {
+      "title": "Bahasa Indonesia Kelas 7 (SMP 1)",
+      "description": "Kursus komprehensif Bahasa Indonesia untuk kelas 7 SMP mencakup Teks Deskripsi, Puisi Rakyat, Teks Prosedur, dan lainnya.",
+      "course_code": "BIN-SMP1",
+      "level": "Dasar",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 1,
+    "fields": {
+      "course": 1,
+      "title": "Modul 1: Jelajah Nusantara (Teks Deskripsi)",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 1,
+    "fields": {
+      "module": 1,
+      "title": "Mengenal Teks Deskripsi: Melukis dengan Kata",
+      "content": "Apa itu Teks Deskripsi?\n\nBayangkan kamu sedang menceritakan indahnya pantai di sore hari kepada temanmu yang belum pernah ke sana. Kamu akan menjelaskan warna langitnya, suara ombaknya, hingga dinginnya air laut. Itulah inti dari Teks Deskripsi.\n\nTeks deskripsi adalah jenis teks yang memaparkan atau menggambarkan suatu objek (benda, tempat, atau manusia) secara jelas dan terperinci. Tujuannya adalah agar pembaca seolah-olah dapat melihat, mendengar, merasakan, atau mencium sendiri objek yang sedang dijelaskan tersebut.\n\nCiri-Ciri Utama:\n1. Melibatkan Panca Indra: Penulisan fokus pada apa yang ditangkap oleh mata, telinga, kulit, dan hidung.\n2. Objek Spesifik: Objek yang dijelaskan bersifat khusus (misal: bukan 'Kucing' secara umum, tapi 'Kucing kesayanganku yang bernama Meong').\n3. Rincian Detail: Menjelaskan warna, bentuk, ukuran, hingga ciri fisik dan psikis objek secara mendalam.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 2,
+    "fields": {
+      "module": 1,
+      "title": "Gaya Bahasa: Menghidupkan Tulisan dengan Majas",
+      "content": "Menggunakan Majas Personifikasi\n\nDalam teks deskripsi, kita sering menggunakan Majas Personifikasi. Ini adalah gaya bahasa yang memberikan sifat-sifat manusia kepada benda mati.\n\nContoh: 'Ombak berkejar-kejaran di tepi pantai' atau 'Angin malam memeluk tubuhku'. Dengan majas ini, tulisanmu akan terasa lebih hidup dan tidak kaku.\n\nKekuatan Kata Sifat (Adjektiva)\n\nUntuk mendeskripsikan sesuatu, kamu butuh kata sifat yang kuat dan spesifik. Jangan hanya menggunakan kata 'Bagus', tapi gunakanlah kata yang lebih menggambarkan rasa seperti:\n\n* Pemandangan: Elok, molek, menakjubkan, memanjakan mata.\n* Suasana: Sepi, mencekam, tenteram, gaduh.\n* Ciri Fisik: Tinggi menjulang, kuning langsat, ramping, kokoh.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 3,
+    "fields": {
+      "module": 1,
+      "title": "Video: Menjelajahi Keajaiban Borobudur",
+      "content": "Panduan Menyimak Video\n\nDalam video ini, kamu akan diajak berkeliling secara visual ke Candi Borobudur. Perhatikan bagaimana narator menjelaskan setiap detail candi.\n\nMateri yang terkandung dalam video:\n1. Aspek Visual: Penjelasan mengenai ribuan relief yang terpahat di dinding candi dan ratusan stupa yang tersusun rapi.\n2. Deskripsi Lokasi: Gambaran suasana pagi hari di Borobudur yang diselimuti kabut tipis dan udara pegunungan yang segar.\n3. Detail Arsitektur: Bagaimana batuan andesit disusun tanpa semen namun tetap kokoh berdiri selama ribuan tahun.\n\nTugas: Catatlah 3 kata sifat yang digunakan narator untuk menggambarkan kemegahan candi tersebut!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 4,
+    "fields": {
+      "module": 1,
+      "title": "Bedah Struktur: Membangun Teks Deskripsi yang Utuh",
+      "content": "Agar teksmu tersusun rapi, ikutilah 3 struktur utama ini:\n\n1. Identifikasi atau Gambaran Umum\nBagian awal yang berisi pengenalan nama objek, lokasi, sejarah lahirnya, atau makna nama objek tersebut.\nContoh: 'Candi Borobudur adalah candi Buddha terbesar di dunia yang terletak di Magelang, Jawa Tengah.'\n\n2. Deskripsi Bagian\nBerisi rincian detail objek. Penulis membagi objek menjadi beberapa bagian. Jika mendeskripsikan sekolah, bagian ini akan menjelaskan gerbang, ruang kelas, hingga taman sekolah.\n\n3. Simpulan atau Kesan\nBagian penutup yang berisi kesan pribadi penulis terhadap objek tersebut. Apakah kamu kagum? Bangga? Atau merasa nyaman berada di sana?",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 5,
+    "fields": {
+      "module": 1,
+      "title": "Kuis Kompetensi Modul 1",
+      "content": "Saatnya menguji pemahamanmu! Kuis ini akan mengukur sejauh mana kamu memahami struktur teks, penggunaan majas, dan cara mendeskripsikan objek secara detail. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 1,
+    "fields": {
+      "lesson": 5,
+      "title": "Evaluasi Teks Deskripsi",
+      "description": "Kerjakan soal berikut untuk melanjutkan ke bab berikutnya."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 1,
+    "fields": {
+      "quiz": 1,
+      "text": "Manakah yang merupakan tujuan utama dari teks deskripsi?",
+      "topic": "Ciri Teks",
+      "option_a": "Menjelaskan urutan kejadian",
+      "option_b": "Menggambarkan objek agar pembaca seolah melihat sendiri",
+      "option_c": "Meyakinkan pembaca untuk membeli barang",
+      "option_d": "Memberikan informasi berupa data angka",
+      "correct_answer": "B",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 2,
+    "fields": {
+      "quiz": 1,
+      "text": "'Nyiur melambai di tepi pantai.' Kalimat tersebut menggunakan majas...",
+      "topic": "Majas",
+      "option_a": "Hiperbola",
+      "option_b": "Metafora",
+      "option_c": "Personifikasi",
+      "option_d": "Litotes",
+      "correct_answer": "C",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 3,
+    "fields": {
+      "quiz": 1,
+      "text": "Bagian teks deskripsi yang berisi rincian spesifik objek disebut...",
+      "topic": "Struktur",
+      "option_a": "Identifikasi",
+      "option_b": "Deskripsi Bagian",
+      "option_c": "Koda",
+      "option_d": "Orientasi",
+      "correct_answer": "B",
+      "difficulty_level": 0.0
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 4,
+    "fields": {
+      "quiz": 1,
+      "text": "Manakah kelompok kata sifat di bawah ini?",
+      "topic": "Kosakata",
+      "option_a": "Lari, Jalan, Lompat",
+      "option_b": "Meja, Kursi, Lemari",
+      "option_c": "Indah, Sejuk, Terang",
+      "option_d": "Di, Ke, Dari",
+      "correct_answer": "C",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 5,
+    "fields": {
+      "quiz": 1,
+      "text": "Deskripsi yang didasarkan pada perasaan atau pendapat pribadi penulis disebut deskripsi...",
+      "topic": "Ciri Teks",
+      "option_a": "Objektif",
+      "option_b": "Subjektif",
+      "option_c": "Teknis",
+      "option_d": "Ilmiah",
+      "correct_answer": "B",
+      "difficulty_level": 1.0
+    }
+  }
+]

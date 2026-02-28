@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 5,
+    "fields": {
+      "title": "Matematika Kelas 8 (SMP 2)",
+      "description": "Kurikulum Matematika tingkat menengah yang mencakup Pola Bilangan, Koordinat Kartesius, Relasi dan Fungsi, Persamaan Garis Lurus, serta Teorema Pythagoras.",
+      "course_code": "MAT8-05",
+      "level": "Menengah",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 44,
+    "fields": {
+      "course": 5,
+      "title": "Modul 4: Persamaan Garis Lurus",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 316,
+    "fields": {
+      "module": 44,
+      "title": "Mengenal Bentuk Umum Persamaan Garis Lurus",
+      "content": "Pernahkah kamu melihat jalan yang menanjak atau menurun? Dalam matematika, kemiringan seperti itu bisa kita nyatakan dalam sebuah rumus. Persamaan Garis Lurus adalah persamaan yang jika digambarkan pada koordinat Kartesius akan membentuk sebuah garis lurus.\n\nAda dua bentuk umum yang harus kamu kenali:\n1. **Bentuk Eksplisit**: $y = mx + c$\n2. **Bentuk Implisit**: $ax + by + c = 0$\n\n\n\nDi dalam rumus $y = mx + c$, huruf **$m$** mewakili Gradien (kemiringan garis) dan **$c$** adalah konstanta yang menunjukkan di titik mana garis tersebut memotong sumbu Y. Ciri utama PGL adalah variabel $x$ dan $y$ nya selalu berpangkat satu. Jika ada $x^2$, maka garisnya pasti melengkung, bukan lurus!",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 317,
+    "fields": {
+      "module": 44,
+      "title": "Gradien: Mengukur Kemiringan Garis",
+      "content": "**Gradien ($m$)** adalah nilai yang menunjukkan kemiringan suatu garis. Semakin besar nilai gradiennya, maka garis tersebut akan semakin curam.\n\nCara mencari Gradien tergantung pada apa yang diketahui:\n1. **Melalui dua titik $(x_1, y_1)$ dan $(x_2, y_2)$**:\n   $m = \\frac{y_2 - y_1}{x_2 - x_1}$\n\n2. **Dari persamaan $ax + by + c = 0$**:\n   $m = -\\frac{a}{b}$\n\n\n\n**Sifat Gradien:**\n- Jika garis miring ke kanan, gradien bernilai **Positif**.\n- Jika garis miring ke kiri, gradien bernilai **Negatif**.\n- Dua garis yang **Sejajar** memiliki gradien yang sama ($m_1 = m_2$).\n- Dua garis yang **Tegak Lurus** jika dikalikan gradiennya hasilnya $-1$ ($m_1 \\times m_2 = -1$).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 318,
+    "fields": {
+      "module": 44,
+      "title": "Video: Cara Menentukan Persamaan Garis",
+      "content": "Panduan Menyimak Video:\n\nDalam video ini, kamu akan belajar cara menyusun persamaan garis sendiri. Ada dua rumus utama yang sering digunakan para ahli matematika:\n\n1. **Jika diketahui Gradien ($m$) dan satu titik $(x_1, y_1)$**:\n   $y - y_1 = m(x - x_1)$\n\n2. **Jika diketahui dua titik $(x_1, y_1)$ dan $(x_2, y_2)$**:\n   $\\frac{y - y_1}{y_2 - y_1} = \\frac{x - x_1}{x_2 - x_1}$\n\n\n\nTugas: Simak video ini dan perhatikan langkah-langkah 'pindah ruas' untuk mengubah bentuk persamaan dari $y - y_1 = m(x - x_1)$ menjadi bentuk rapi $y = mx + c$!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 319,
+    "fields": {
+      "module": 44,
+      "title": "Menggambar Garis dari Persamaan",
+      "content": "Bagaimana cara mengubah rumus menjadi gambar? Caranya sangat mudah, kamu hanya butuh dua titik bantu.\n\n**Metode Titik Potong:**\n1. Cari titik potong sumbu X (anggap $y = 0$).\n2. Cari titik potong sumbu Y (anggap $x = 0$).\n3. Hubungkan kedua titik tersebut dengan penggaris.\n\nContoh: Gambar garis $2x + y = 4$\n- Jika $x = 0$, maka $y = 4$. Titik pertama: (0, 4).\n- Jika $y = 0$, maka $2x = 4 \\to x = 2$. Titik kedua: (2, 0).\n\n[Image illustrating the intercept method for graphing a linear equation by finding the points on the X and Y axes]\n\nDengan menghubungkan (0, 4) dan (2, 0), kamu sudah berhasil menggambar persamaan garis tersebut di koordinat Kartesius.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 320,
+    "fields": {
+      "module": 44,
+      "title": "Kuis: Uji Analisis Persamaan Garis",
+      "content": "Kamu sudah belajar tentang gradien, bentuk persamaan, hingga cara menggambar garis. Persamaan garis lurus adalah fondasi penting untuk materi ekonomi dan fisika nantinya. Sekarang, siapkan kertas coretanmu. Fokuslah pada rumus gradien dan tanda positif-negatif saat pindah ruas. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 44,
+    "fields": {
+      "lesson": 320,
+      "title": "Evaluasi Persamaan Garis Lurus",
+      "description": "Uji kemampuan menentukan gradien, menyusun persamaan garis, dan hubungan antar dua garis."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 316,
+    "fields": {
+      "quiz": 44,
+      "text": "Gradien dari persamaan garis $y = 5x - 3$ adalah...",
+      "topic": "Gradien",
+      "option_a": "5",
+      "option_b": "-5",
+      "option_c": "3",
+      "option_d": "-3",
+      "correct_answer": "A",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 317,
+    "fields": {
+      "quiz": 44,
+      "text": "Gradien garis yang melalui titik $(2, 3)$ dan $(4, 7)$ adalah...",
+      "topic": "Gradien Dua Titik",
+      "option_a": "1",
+      "option_b": "2",
+      "option_c": "3",
+      "option_d": "4",
+      "correct_answer": "B",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 318,
+    "fields": {
+      "quiz": 44,
+      "text": "Persamaan garis yang melalui titik $(0, 3)$ dengan gradien 2 adalah...",
+      "topic": "Menyusun Persamaan",
+      "option_a": "y = 2x + 3",
+      "option_b": "y = 3x + 2",
+      "option_c": "y = 2x - 3",
+      "option_d": "y = -2x + 3",
+      "correct_answer": "A",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 319,
+    "fields": {
+      "quiz": 44,
+      "text": "Jika dua garis memiliki gradien $m_1 = 3$ dan $m_2 = 3$, maka hubungan kedua garis tersebut adalah...",
+      "topic": "Hubungan Garis",
+      "option_a": "Tegak Lurus",
+      "option_b": "Berpotongan",
+      "option_c": "Sejajar",
+      "option_d": "Berhimpit",
+      "correct_answer": "C",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 320,
+    "fields": {
+      "quiz": 44,
+      "text": "Gradien dari garis $3x - 6y + 10 = 0$ adalah...",
+      "topic": "Gradien Implisit",
+      "option_a": "2",
+      "option_b": "-2",
+      "option_c": "1/2",
+      "option_d": "-1/2",
+      "correct_answer": "C",
+      "difficulty_level": 0.8
+    }
+  }
+]

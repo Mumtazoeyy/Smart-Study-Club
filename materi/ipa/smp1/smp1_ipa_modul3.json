@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 7,
+    "fields": {
+      "title": "IPA Kelas 7 (SMP 1)",
+      "description": "Eksplorasi dasar sains mencakup Metode Ilmiah, Klasifikasi Makhluk Hidup, Zat dan Perubahannya, hingga Suhu dan Kalor.",
+      "course_code": "SCI7-07",
+      "level": "Dasar",
+      "category": 6
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 63,
+    "fields": {
+      "course": 7,
+      "title": "Modul 3: Zat dan Perubahannya",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 511,
+    "fields": {
+      "module": 63,
+      "title": "Wujud Zat dan Model Partikel",
+      "content": "Segala sesuatu yang menempati ruang dan memiliki massa disebut **Materi** atau **Zat**. Zat di sekitar kita hadir dalam tiga wujud utama: Padat, Cair, dan Gas.\n\nPerbedaan sifat ketiga wujud zat ini dijelaskan melalui **Teori Partikel**:\n1. **Zat Padat**: Partikel sangat rapat, gaya tarik kuat, dan hanya bergetar di tempat. Itulah sebabnya bentuk dan volumenya tetap.\n2. **Zat Cair**: Partikel agak renggang, bisa bergerak bebas namun terbatas. Bentuknya mengikuti wadah, tapi volumenya tetap.\n3. **Zat Gas**: Partikel sangat renggang, bergerak sangat cepat ke segala arah. Bentuk dan volumenya selalu berubah memenuhi ruangan.\n\nFenomena bau masakan yang sampai ke hidungmu dari dapur adalah bukti bahwa partikel gas bergerak bebas secara acak, yang disebut dengan proses **Difusi**. Perhatikan ilustrasi susunan partikel pada gambar untuk melihat perbedaannya.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 512,
+    "fields": {
+      "module": 63,
+      "title": "Perubahan Wujud Zat",
+      "content": "Zat dapat berubah dari satu wujud ke wujud lain jika diberikan atau dilepaskan panas (energi kalor). Ada enam proses perubahan wujud yang harus kamu kuasai:\n\n- **Mencair**: Padat menjadi Cair.\n- **Membeku**: Cair menjadi Padat.\n- **Menguap**: Cair menjadi Gas.\n- **Mengembun**: Gas menjadi Cair.\n- **Menyublim**: Padat menjadi Gas.\n- **Mengristel/Deposis**: Gas menjadi Padat.\n\nTitik di mana zat padat mulai berubah menjadi cair disebut **Titik Lebur**, sedangkan titik di mana zat cair mulai berubah menjadi gas disebut **Titik Didih**. Skema perubahan wujud secara lengkap dapat kamu lihat pada gambar.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 513,
+    "fields": {
+      "module": 63,
+      "title": "Video: Perubahan Fisika vs Perubahan Kimia",
+      "content": "Panduan Menyimak Video:\n\nDalam video ini, kita akan mempelajari perbedaan paling mendasar dalam ilmu kimia, yaitu cara membedakan perubahan materi.\n\n1. **Perubahan Fisika**: Perubahan yang hanya mengubah bentuk atau wujud tanpa menghasilkan zat baru. Contoh: Es mencair.\n2. **Perubahan Kimia**: Perubahan yang menghasilkan zat baru dengan sifat yang berbeda dari zat asalnya. Contoh: Kertas dibakar jadi abu.\n\nTugas: Simak video ini dan perhatikan empat tanda terjadinya reaksi kimia: adanya perubahan warna, perubahan suhu, terbentuknya gas, atau terbentuknya endapan!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 514,
+    "fields": {
+      "module": 63,
+      "title": "Kerapatan Zat (Massa Jenis)",
+      "content": "Mengapa kayu bisa mengapung di air sedangkan batu tenggelam? Jawabannya bukan karena beratnya, tapi karena **Massa Jenis** (Kerapatan).\n\nMassa jenis adalah massa zat per satuan volume. Rumus massa jenis ($\\rho$) adalah:\n$$\\rho = \\frac{m}{V}$$\n\nBenda akan mengapung jika massa jenisnya lebih kecil dari air, dan akan tenggelam jika massa jenisnya lebih besar dari air. Gunakan bantuan segitiga rumus pada gambar untuk memudahkan perhitunganmu.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 515,
+    "fields": {
+      "module": 63,
+      "title": "Kuis: Ahli Materi dan Zat",
+      "content": "Kamu sudah belajar tentang wujud zat, bagaimana mereka berubah, hingga cara menghitung massa jenis. Sekarang, mari uji logikamu dalam membedakan peristiwa di sekitarmu. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 63,
+    "fields": {
+      "lesson": 515,
+      "title": "Evaluasi Zat dan Perubahannya",
+      "description": "Uji pemahaman tentang model partikel, perubahan wujud, perubahan fisika/kimia, dan massa jenis."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 511,
+    "fields": {
+      "quiz": 63,
+      "text": "Wujud zat yang memiliki bentuk tetap dan volume tetap adalah...",
+      "topic": "Wujud Zat",
+      "option_a": "Cair",
+      "option_b": "Padat",
+      "option_c": "Gas",
+      "option_d": "Plasma",
+      "correct_answer": "B",
+      "difficulty_level": -1.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 512,
+    "fields": {
+      "quiz": 63,
+      "text": "Proses perubahan wujud dari gas langsung menjadi padat disebut...",
+      "topic": "Perubahan Wujud",
+      "option_a": "Menyublim",
+      "option_b": "Menguap",
+      "option_c": "Mengristal (Deposis)",
+      "option_d": "Mengembun",
+      "correct_answer": "C",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 513,
+    "fields": {
+      "quiz": 63,
+      "text": "Berikut ini yang merupakan contoh perubahan kimia adalah...",
+      "topic": "Perubahan Kimia",
+      "option_a": "Lilin meleleh",
+      "option_b": "Beras ditumbuk jadi tepung",
+      "option_c": "Kayu dibakar menjadi abu",
+      "option_d": "Air menguap",
+      "correct_answer": "C",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 514,
+    "fields": {
+      "quiz": 63,
+      "text": "Sebuah benda memiliki massa 100 g dan volume 20 cm3. Berapakah massa jenis benda tersebut?",
+      "topic": "Massa Jenis",
+      "option_a": "5 g/cm3",
+      "option_b": "2000 g/cm3",
+      "option_c": "0,2 g/cm3",
+      "option_d": "80 g/cm3",
+      "correct_answer": "A",
+      "difficulty_level": 0.3
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 515,
+    "fields": {
+      "quiz": 63,
+      "text": "Partikel zat gas dapat bergerak sangat bebas karena...",
+      "topic": "Model Partikel",
+      "option_a": "Gaya tarik antar partikelnya sangat kuat",
+      "option_b": "Jarak antar partikelnya sangat dekat",
+      "option_c": "Gaya tarik antar partikelnya sangat lemah",
+      "option_d": "Partikelnya tidak memiliki massa",
+      "correct_answer": "C",
+      "difficulty_level": 0.2
+    }
+  }
+]

@@ -1,0 +1,164 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 4,
+    "fields": {
+      "category": 1,
+      "title": "Matematika SMP 7",
+      "description": "Kurikulum lengkap Matematika untuk kelas 7 SMP yang mencakup Bilangan, Aljabar, hingga Geometri."
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 33,
+    "fields": {
+      "course": 4,
+      "title": "Modul 3: Bentuk Aljabar",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 211,
+    "fields": {
+      "module": 33,
+      "title": "Mengenal Aljabar: Bahasa Simbol dalam Matematika",
+      "content": "Pernahkah kamu melihat soal matematika yang ada hurufnya, seperti $2x + 5$? Jangan bingung dulu! Huruf-huruf itu disebut **Aljabar**.\n\nAljabar sebenarnya adalah cara kita menuliskan matematika menggunakan simbol atau huruf untuk mewakili angka yang belum kita ketahui nilainya. Bayangkan kamu membeli 2 buah kotak misteri yang berisi kelereng dan 5 kelereng tambahan di luar kotak. Jika jumlah seluruh kelereng di dalam satu kotak kita sebut $x$, maka bentuk matematikanya adalah $2x + 5$.\n\nMari kita bedah anatomi dari bentuk $2x + 5$:\n\n1. **Variabel**: Huruf (seperti $x, y, z$) yang nilainya bisa berubah-ubah atau belum diketahui.\n2. **Koefisien**: Angka yang 'menempel' atau berada di depan variabel. Pada $2x$, angka 2 adalah koefisien.\n3. **Konstanta**: Angka sendirian yang tidak punya huruf. Pada $2x + 5$, angka 5 adalah konstanta.\n4. **Suku**: Bagian-bagian yang dipisahkan oleh tanda tambah (+) atau kurang (-). Bentuk $2x + 5$ memiliki 2 suku.\n\n\n\nIngat: Aljabar itu seperti bahasa asing. Sekali kamu paham simbolnya, soal sesulit apa pun akan terasa lebih masuk akal!",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 212,
+    "fields": {
+      "module": 33,
+      "title": "Suku Sejenis: Aturan 'Apel dengan Apel'",
+      "content": "Ini adalah rahasia paling penting dalam menghitung aljabar: Kamu hanya bisa menjumlahkan atau mengurangkan **Suku yang Sejenis**.\n\nApa itu Suku Sejenis? Suku yang memiliki variabel (huruf) dan pangkat yang sama persis. \n\nBayangkan aljabar seperti keranjang buah:\n- $3a$ berarti 3 buah Apel.\n- $2b$ berarti 2 buah Belimbing.\n- $5a$ berarti 5 buah Apel.\n\nJika kamu diminta menghitung $3a + 2b + 5a$, kamu hanya bisa menggabungkan Apel dengan Apel. Hasilnya adalah $8a + 2b$. Kamu tidak bisa menjumlahkan $8a$ dan $2b$ menjadi $10ab$, karena Apel dan Belimbing adalah jenis yang berbeda!\n\nContoh Lain:\n$5x^2$ sejenis dengan $2x^2$ (sama-sama $x$ pangkat 2).\n$5x^2$ **TIDAK** sejenis dengan $5x$ (pangkatnya berbeda).\n\n[Image illustrating like and unlike terms in algebra using different fruits as visual metaphors]\n\nKesimpulannya: Teliti huruf dan pangkatnya sebelum kamu memutuskan untuk menjumlahkan atau mengurangkan mereka.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 213,
+    "fields": {
+      "module": 33,
+      "title": "Video: Operasi Penjumlahan dan Pengurangan Aljabar",
+      "content": "Panduan Menyimak Video:\n\nMenghitung aljabar sebenarnya sangat mirip dengan menghitung angka biasa yang sudah kamu pelajari di Modul 1. Perbedaannya hanya ada 'ekor' huruf di belakang angkanya.\n\nInti Materi Video:\n1. Kumpulkan suku-suku yang sejenis agar berdekatan.\n2. Hitung koefisiennya (angkanya saja) menggunakan aturan bilangan bulat.\n3. Tuliskan kembali variabelnya di belakang hasil hitungan.\n\nContoh: Sederhanakan $4x + 9 - 2x - 3$\nLangkah 1: Dekatkan yang sejenis $\\to 4x - 2x + 9 - 3$\nLangkah 2: Hitung $\\to (4-2)x + (9-3)$\nLangkah 3: Hasil Akhir $\\to 2x + 6$\n\nTugas: Simak video ini dan perhatikan bagaimana tanda negatif $(-)$ di depan kurung bisa mengubah semua tanda di dalam kurung tersebut. Ini adalah jebakan yang sering muncul di ujian!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 214,
+    "fields": {
+      "module": 33,
+      "title": "Perkalian Aljabar: Sifat Pelangi",
+      "content": "Jika penjumlahan harus sejenis, perkalian lebih 'bebas'. Kamu bisa mengalikan suku apa saja, bahkan yang berbeda huruf sekalipun.\n\nMetode yang paling sering digunakan adalah **Sifat Distributif** atau sering disebut 'Sifat Pelangi' karena arah perkaliannya yang melengkung.\n\nRumus Dasar:\n$a(b + c) = ab + ac$\n\nContoh 1 (Suku tunggal dengan dua suku):\n$3(x + 4) = (3 \\times x) + (3 \\times 4) = 3x + 12$\n\nContoh 2 (Dua suku dengan dua suku):\n$(x + 2)(x + 3) = x(x+3) + 2(x+3)$\n$= x^2 + 3x + 2x + 6$\n$= x^2 + 5x + 6$ (Ingat, $3x$ dan $2x$ dijumlahkan karena sejenis).\n\n\n\nIngat aturan pangkat: $x$ dikali $x$ hasilnya adalah $x^2$. Jangan sampai tertukar dengan $x + x$ yang hasilnya $2x$!",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 215,
+    "fields": {
+      "module": 33,
+      "title": "Kuis: Uji Logika Aljabarmu",
+      "content": "Selamat! Kamu telah mempelajari dasar-dasar bahasa simbol matematika. Kemampuan aljabar ini akan sangat berguna saat kamu belajar fisika, ekonomi, dan teknik nantinya. Sekarang, mari kita uji sejauh mana kamu memahami konsep suku sejenis dan operasi distributif. Fokus dan teliti pada setiap variabelnya!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 33,
+    "fields": {
+      "lesson": 215,
+      "title": "Kuis Aljabar SMP 7",
+      "description": "Evaluasi pemahaman variabel, konstanta, dan penyederhanaan bentuk aljabar."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 211,
+    "fields": {
+      "quiz": 33,
+      "text": "Pada bentuk aljabar $3x^2 - 5x + 7$, manakah yang disebut sebagai konstanta?",
+      "topic": "Unsur Aljabar",
+      "option_a": "3",
+      "option_b": "-5",
+      "option_c": "7",
+      "option_d": "x",
+      "correct_answer": "C",
+      "difficulty_level": -1.0
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 212,
+    "fields": {
+      "quiz": 33,
+      "text": "Sederhanakanlah bentuk berikut: $7a + 5b - 2a + b$.",
+      "topic": "Penyederhanaan Suku",
+      "option_a": "5a + 6b",
+      "option_b": "9a + 6b",
+      "option_c": "5a + 4b",
+      "option_d": "11ab",
+      "correct_answer": "A",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 213,
+    "fields": {
+      "quiz": 33,
+      "text": "Hasil perkalian dari $4(2x - 3)$ adalah...",
+      "topic": "Perkalian Aljabar",
+      "option_a": "8x - 3",
+      "option_b": "8x - 12",
+      "option_c": "6x - 7",
+      "option_d": "8x + 12",
+      "correct_answer": "B",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 214,
+    "fields": {
+      "quiz": 33,
+      "text": "Manakah di bawah ini yang merupakan pasangan suku sejenis?",
+      "topic": "Suku Sejenis",
+      "option_a": "$3x$ dan $3y$",
+      "option_b": "$2a^2$ dan $2a$",
+      "option_c": "$-5xy$ dan $2xy$",
+      "option_d": "$x^2$ dan $y^2$",
+      "correct_answer": "C",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 215,
+    "fields": {
+      "quiz": 33,
+      "text": "Hasil pengurangan $5x - 3$ oleh $2x + 4$ adalah...",
+      "topic": "Pengurangan Aljabar",
+      "option_a": "3x - 7",
+      "option_b": "3x + 1",
+      "option_c": "7x + 1",
+      "option_d": "3x - 1",
+      "correct_answer": "A",
+      "difficulty_level": 1.1
+    }
+  }
+]

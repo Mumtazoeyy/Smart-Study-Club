@@ -1,0 +1,193 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %}Riwayat Belajar | Smart Study Club{% endblock title %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'fontawesome-free-7.1.0-web/css/all.min.css' %}">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<style>
+    .card-forum-transparan {
+        background-color: rgba(255, 255, 255, 0.4); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-forum-transparan:hover {
+        background-color: rgba(255, 255, 255, 0.6);
+        border-color: rgba(234, 179, 8, 0.3);
+    }
+</style>
+
+<div class="min-h-screen">
+    <div class="container mx-auto px-6 pt-2 pb-12 space-y-10">
+                
+        {# Header Section - Industrial Style #}
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6" data-aos="fade-down">
+            <div>
+                <div class="flex items-center gap-3">
+                    <div class="h-8 w-1.5 bg-[#eab308]"></div>
+                    <h1 class="text-4xl font-black text-gray-900 uppercase tracking-tighter italic">Riwayat Belajar</h1>
+                </div>
+                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mt-2 ml-4">System Activity Log / Smart Study Club</p>
+            </div>
+            
+            {% if all_history %}
+            <a href="{% url 'clear_all_history' %}" 
+               onclick="return confirm('Apakah Anda yakin ingin menghapus seluruh riwayat?')"
+               class="group flex items-center gap-3 bg-white border border-red-200 px-6 py-3 rounded-xl hover:bg-red-50 transition-all shadow-sm">
+                <span class="text-[10px] font-black uppercase tracking-widest text-red-600">Format Log</span>
+                <i class="fas fa-eraser text-red-600 group-hover:rotate-12 transition-transform"></i>
+            </a>
+            {% endif %}
+        </div>
+
+        {# Timeline List Container #}
+        <div class="space-y-4" data-aos="fade-up">
+            {% for item in all_history %}
+            <div class="group relative overflow-hidden card-forum-transparan p-6 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+                {# Siku Kuning Industrial #}
+                <div class="absolute top-0 right-0 w-12 h-12 bg-gray-100/50 -mr-6 -mt-6 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+
+                <div class="flex items-center gap-6 w-full">
+                    {# Icon Badge #}
+                    <div class="relative flex-shrink-0">
+                        <div class="w-14 h-14 rounded-xl flex items-center justify-center border border-gray-100 shadow-inner
+                            {% if 'Kuis' in item.activity_name %}bg-yellow-400/10 text-yellow-600{% else %}bg-gray-900/5 text-gray-900{% endif %}">
+                            {% if "Kuis" in item.activity_name %}
+                                <i class="fas fa-medal text-xl"></i>
+                            {% else %}
+                                <i class="fas fa-terminal text-lg"></i>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="flex-grow">
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-[9px] font-black px-2 py-0.5 rounded bg-gray-100 text-gray-500 uppercase tracking-widest">
+                                {{ item.timestamp|date:"H:i" }} WIB
+                            </span>
+                            <div class="h-[1px] w-4 bg-gray-200"></div>
+                            <span class="text-[9px] font-bold text-gray-400 uppercase">{{ item.timestamp|date:"d F Y" }}</span>
+                        </div>
+                        <h4 class="text-lg font-black text-gray-900 uppercase tracking-tight group-hover:text-yellow-600 transition-colors italic">
+                            {{ item.activity_name }}
+                        </h4>
+                    </div>
+                </div>
+
+                {# Action Area with Garis Memanjang #}
+                <div class="flex items-center gap-4 w-full md:w-auto">
+                    <a href="{{ item.link }}" class="group/btn flex items-center gap-3 min-w-[120px]">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-gray-900 whitespace-nowrap">Lihat Detail</span>
+                        <div class="h-[1.5px] w-4 bg-gray-900/20 group-hover/btn:w-12 group-hover/btn:bg-yellow-500 transition-all duration-500"></div>
+                        <i class="fas fa-chevron-right text-[10px] text-gray-400 group-hover/btn:text-yellow-600"></i>
+                    </a>
+                    
+                    <a href="javascript:void(0)" 
+                    onclick="confirmDelete(event, '{% url 'delete_history_item' item.pk %}')"
+                    class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-red-50 text-gray-300 hover:text-red-500 transition-all">
+                        <i class="fas fa-trash-alt text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            {% empty %}
+            <div class="card-forum-transparan py-24 rounded-2xl flex flex-col items-center justify-center border-dashed">
+                <div class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mb-6 text-gray-200">
+                    <i class="fas fa-database text-3xl"></i>
+                </div>
+                <p class="text-[11px] font-black text-gray-400 uppercase tracking-[0.4em]">Log System Empty</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        {# Pagination Industrial #}
+        {% if all_history.has_other_pages %}
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-8 pt-6 border-t border-gray-200/50">
+            <div class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">
+                Showing Page <span class="text-gray-900">{{ all_history.number }}</span> of {{ all_history.paginator.num_pages }}
+            </div>
+            
+            <nav class="flex items-center gap-2">
+                {% if all_history.has_previous %}
+                    <a href="?page={{ all_history.previous_page_number }}" class="w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-lg hover:border-yellow-500 transition-all text-gray-400 hover:text-yellow-600">
+                        <i class="fas fa-chevron-left text-[10px]"></i>
+                    </a>
+                {% endif %}
+
+                <div class="flex items-center bg-white border border-gray-200 rounded-lg p-1">
+                    {% for num in all_history.paginator.page_range %}
+                        {% if all_history.number == num %}
+                            <span class="w-8 h-8 flex items-center justify-center bg-gray-900 text-white text-[10px] font-black rounded-md">{{ num }}</span>
+                        {% elif num > all_history.number|add:'-3' and num < all_history.number|add:'3' %}
+                            <a href="?page={{ num }}" class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-900 text-[10px] font-black transition-colors">{{ num }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                {% if all_history.has_next %}
+                    <a href="?page={{ all_history.next_page_number }}" class="w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-lg hover:border-yellow-500 transition-all text-gray-400 hover:text-yellow-600">
+                        <i class="fas fa-chevron-right text-[10px]"></i>
+                    </a>
+                {% endif %}
+            </nav>
+        </div>
+        {% endif %}
+
+        {# Status Footer #}
+        <div class="pt-10 flex flex-col items-center gap-4">
+            <div class="flex items-center gap-4 w-full max-w-xs opacity-20">
+                <div class="h-[1px] flex-grow bg-gray-900"></div>
+                <i class="fas fa-microchip text-xs"></i>
+                <div class="h-[1px] flex-grow bg-gray-900"></div>
+            </div>
+            <p class="text-[9px] font-black tracking-[0.5em] text-gray-400 uppercase animate-pulse">System Secured & Encrypted</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        AOS.init({ 
+            once: true, 
+            duration: 800, 
+            easing: 'ease-out-back'
+        });
+    });
+
+    function confirmDelete(event, url) {
+        event.preventDefault(); // Mencegah link langsung terbuka
+
+        Swal.fire({
+            title: 'HAPUS RIWAYAT?',
+            text: "Data yang dihapus tidak dapat dipulihkan kembali dari sistem.",
+            icon: 'warning',
+            iconColor: '#ef4444', // Warna merah untuk aksi berbahaya
+            showCancelButton: true,
+            confirmButtonText: 'YA, HAPUS SEKARANG',
+            cancelButtonText: 'BATALKAN',
+            
+            // Konfigurasi Tampilan Industrial
+            background: 'rgba(17, 24, 39, 0.9)', 
+            backdrop: `rgba(0,0,0,0.7) blur(8px)`, 
+            color: '#ffffff',
+            
+            customClass: {
+                popup: 'border-2 border-red-900/50 backdrop-blur-xl rounded-none shadow-[10px_10px_0px_rgba(239,68,68,0.2)]', 
+                title: 'font-black tracking-tighter uppercase text-2xl text-red-500', 
+                confirmButton: 'bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-none transition-all uppercase tracking-widest text-[10px] mx-2',
+                cancelButton: 'bg-transparent border border-gray-600 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-none transition-all uppercase tracking-widest text-[10px] mx-2'
+            },
+            buttonsStyling: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Jika dikonfirmasi, pindah ke URL hapus
+                window.location.href = url;
+            }
+        });
+    }
+</script>
+{% endblock content %}

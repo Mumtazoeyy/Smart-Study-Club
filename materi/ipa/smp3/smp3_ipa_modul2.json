@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 82,
+    "fields": {
+      "course": 9,
+      "title": "Modul 2: Perkembangbiakan Tumbuhan dan Hewan",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 606,
+    "fields": {
+      "module": 82,
+      "title": "Perkembangbiakan Angiospermae (Tumbuhan Biji Tertutup)",
+      "content": "Tumbuhan Angiospermae berkembang biak dengan dua cara utama:\n\n1. **Vegetatif (Aseksual)**: Tanpa pertemuan sel kelamin. \n   - **Alami**: Rhizoma (jahe), Stolon (stroberi), Umbi Lapis (bawang), Tunas (pisang).\n   - **Buatan**: Cangkok, Merunduk, Stek, dan Kultur Jaringan.\n2. **Generatif (Seksual)**: Melalui penyerbukan (polinasi) di mana serbuk sari jatuh ke kepala putik. Penyerbukan dapat dibantu oleh angin (Anemogami), serangga (Entomogami), atau air (Hidrogami).\n\n\n\nSetelah penyerbukan, terjadi pembuahan ganda yang menghasilkan zigot dan cadangan makanan (endosperma).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 607,
+    "fields": {
+      "module": 82,
+      "title": "Perkembangbiakan Hewan: Invertebrata dan Vertebrata",
+      "content": "Hewan juga memiliki strategi reproduksi yang beragam:\n\n1. **Aseksual**: Membelah diri (Amoeba), Fragmentasi (Planaria), dan Tunas (Hydra).\n2. **Seksual**: \n   - **Vivipar**: Melahirkan (Mamalia).\n   - **Ovipar**: Bertelur (Burung, Reptil).\n   - **Ovovivipar**: Bertelur dan melahirkan di mana telur menetas di dalam tubuh induk (beberapa jenis hiu dan ular).\n\n\n\nSelain itu, beberapa hewan mengalami **Metamorfosis**, yaitu perubahan bentuk tubuh selama pertumbuhan, baik metamorfosis sempurna (seperti kupu-kupu) maupun tidak sempurna (seperti belalang).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 608,
+    "fields": {
+      "module": 82,
+      "title": "Teknologi Reproduksi: Hidroponik hingga Inseminasi",
+      "content": "Manusia mengembangkan teknologi untuk membantu perkembangbiakan makhluk hidup demi kepentingan pangan:\n\n- **Hidroponik**: Menanam tumbuhan tanpa tanah, menggunakan larutan nutrisi dalam air.\n- **Vertikultur**: Metode budidaya tanaman secara bertingkat untuk menyiasati lahan sempit.\n- **Inseminasi Buatan (Kawin Suntik)**: Memasukkan sperma hewan jantan ke dalam saluran reproduksi betina dengan bantuan manusia agar mendapatkan keturunan unggul.\n- **Kloning**: Menghasilkan individu yang identik secara genetik dengan induknya.\n\n",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 609,
+    "fields": {
+      "module": 82,
+      "title": "Video: Siklus Hidup dan Metamorfosis Sempurna",
+      "content": "Video ini akan memperlihatkan proses luar biasa metamorfosis sempurna pada kupu-kupu, mulai dari telur, larva (ulat), pupa (kepompong), hingga menjadi imago (kupu-kupu dewasa). Kamu juga akan melihat perbedaan strategi reproduksi antara hewan air dan hewan darat.",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 610,
+    "fields": {
+      "module": 82,
+      "title": "Kuis: Ahli Flora dan Fauna",
+      "content": "Kuis ini akan menguji pengetahuanmu tentang berbagai cara perkembangbiakan tumbuhan dan hewan, termasuk teknologi modern di bidang pertanian dan peternakan.",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 82,
+    "fields": {
+      "lesson": 610,
+      "title": "Evaluasi Perkembangbiakan Makhluk Hidup",
+      "description": "Uji kompetensi tentang perkembangbiakan vegetatif/generatif, aseksual pada hewan, dan teknologi reproduksi."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 606,
+    "fields": {
+      "quiz": 82,
+      "text": "Perkembangbiakan vegetatif alami pada tanaman jahe dan kunyit dilakukan dengan menggunakan...",
+      "topic": "Vegetatif Tumbuhan",
+      "option_a": "Stolon",
+      "option_b": "Rhizoma (Akar Tinggal)",
+      "option_c": "Umbi Batang",
+      "option_d": "Tunas Adventif",
+      "correct_answer": "B",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 607,
+    "fields": {
+      "quiz": 82,
+      "text": "Hewan yang memiliki kemampuan fragmentasi (memotong tubuh dan bagian tubuhnya tumbuh menjadi individu baru) adalah...",
+      "topic": "Aseksual Hewan",
+      "option_a": "Hydra",
+      "option_b": "Amoeba",
+      "option_c": "Cacing Planaria",
+      "option_d": "Kecoa",
+      "correct_answer": "C",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 608,
+    "fields": {
+      "quiz": 82,
+      "text": "Teknik menanam tumbuhan dengan menggunakan larutan nutrisi dan mineral dalam air tanpa menggunakan tanah disebut...",
+      "topic": "Teknologi Reproduksi",
+      "option_a": "Kultur Jaringan",
+      "option_b": "Hidroponik",
+      "option_c": "Inseminasi Buatan",
+      "option_d": "Vertikultur",
+      "correct_answer": "B",
+      "difficulty_level": -1.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 609,
+    "fields": {
+      "quiz": 82,
+      "text": "Urutan metamorfosis sempurna yang benar adalah...",
+      "topic": "Metamorfosis",
+      "option_a": "Telur - Nimfa - Dewasa",
+      "option_b": "Telur - Larva - Pupa - Dewasa",
+      "option_c": "Telur - Pupa - Larva - Dewasa",
+      "option_d": "Larva - Telur - Pupa - Dewasa",
+      "correct_answer": "B",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 610,
+    "fields": {
+      "quiz": 82,
+      "text": "Hewan ovovivipar adalah hewan yang berkembang biak dengan cara...",
+      "topic": "Seksual Hewan",
+      "option_a": "Bertelur",
+      "option_b": "Melahirkan",
+      "option_c": "Bertelur dan melahirkan",
+      "option_d": "Membelah diri",
+      "correct_answer": "C",
+      "difficulty_level": 0.2
+    }
+  }
+]

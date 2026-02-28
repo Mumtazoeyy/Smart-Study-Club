@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 7,
+    "fields": {
+      "title": "IPA Kelas 7 (SMP 1)",
+      "description": "Eksplorasi dasar sains mencakup Metode Ilmiah, Klasifikasi Makhluk Hidup, Zat dan Perubahannya, hingga Suhu dan Kalor.",
+      "course_code": "SCI7-07",
+      "level": "Dasar",
+      "category": 6
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 65,
+    "fields": {
+      "course": 7,
+      "title": "Modul 5: Energi dalam Sistem Kehidupan",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 521,
+    "fields": {
+      "module": 65,
+      "title": "Konsep Energi dan Sumber Energi",
+      "content": "Energi adalah kemampuan untuk melakukan usaha (kerja) atau melakukan suatu perubahan. Energi tidak dapat diciptakan dan tidak dapat dimusnahkan, ia hanya bisa berubah bentuk. \n\nAda dua jenis energi utama yang sering kita bahas:\n1. **Energi Potensial**: Energi yang dimiliki benda karena kedudukannya (ketinggian). Rumus: $E_p = m \\cdot g \\cdot h$.\n2. **Energi Kinetik**: Energi yang dimiliki benda karena geraknya. Rumus: $E_k = 1/2 \\cdot m \\cdot v^2$.\n\n\n\nSumber energi terbagi menjadi dua:\n- **Tak Terbarukan**: Akan habis jika digunakan terus-menerus (minyak bumi, batu bara).\n- **Terbarukan**: Selalu tersedia di alam (matahari, angin, air).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 522,
+    "fields": {
+      "module": 65,
+      "title": "Makanan sebagai Sumber Energi",
+      "content": "Tubuh kita ibarat mesin yang butuh bahan bakar. Bahan bakar kita adalah makanan. Zat makanan yang berperan sebagai sumber energi adalah:\n\n1. **Karbohidrat**: Sumber energi utama (nasi, gandum, jagung).\n2. **Lemak**: Cadangan energi terbesar (mentega, kacang-kacangan).\n3. **Protein**: Untuk pertumbuhan dan perbaikan sel (daging, telur, tahu).\n\n\n\nDi dalam tubuh, zat-zat ini akan dipecah melalui proses metabolisme untuk menghasilkan energi yang kita gunakan untuk bergerak, berpikir, dan bernapas.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 523,
+    "fields": {
+      "module": 65,
+      "title": "Video: Transformasi Energi dalam Sel",
+      "content": "Panduan Menyimak Video:\n\nBagaimana energi dari luar masuk ke dalam sel? Ada dua organel sel yang sangat penting dalam transformasi energi:\n\n1. **Kloroplas**: Hanya ada pada tumbuhan. Mengubah energi cahaya menjadi energi kimia (fotosintesis).\n2. **Mitokondria**: Ada pada hewan dan tumbuhan. Mengubah energi kimia makanan menjadi energi gerak/panas (respirasi sel).\n\n\n\nTugas: Simak video ini dan perhatikan bagaimana Mitokondria sering disebut sebagai 'The Powerhouse of Cell' karena fungsinya sebagai pusat pembangkit energi!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 524,
+    "fields": {
+      "module": 65,
+      "title": "Fotosintesis: Dapur Tumbuhan",
+      "content": "Fotosintesis adalah proses pembentukan makanan oleh tumbuhan hijau dengan bantuan cahaya matahari. \n\n**Bahan baku**: Air ($H_2O$) dan Karbon Dioksida ($CO_2$).\n**Hasil**: Glukosa (Energi) dan Oksigen ($O_2$).\n\n\n\nPersamaan Kimia Sederhana:\n$$6CO_2 + 6H_2O + \\text{Cahaya} \\to C_6H_{12}O_6 + 6O_2$$\n\nTanpa fotosintesis, tidak akan ada kehidupan di bumi karena tumbuhan adalah produsen utama oksigen dan sumber energi bagi makhluk hidup lainnya.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 525,
+    "fields": {
+      "module": 65,
+      "title": "Kuis: Energi Kehidupan",
+      "content": "Selamat! Kamu telah menyelesaikan seluruh rangkaian materi IPA Semester 1. Kamu sekarang paham bahwa energi matahari mengalir ke tumbuhan, lalu ke tubuh kita, dan kembali ke lingkungan. Siapkan dirimu untuk kuis terakhir ini dan fokuslah pada konsep perubahan bentuk energi. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 65,
+    "fields": {
+      "lesson": 525,
+      "title": "Evaluasi Energi Sistem Kehidupan",
+      "description": "Uji pemahaman tentang bentuk energi, zat makanan, fotosintesis, dan organel sel."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 521,
+    "fields": {
+      "quiz": 65,
+      "text": "Energi yang dimiliki oleh sebuah buah kelapa yang masih menggantung di pohonnya disebut energi...",
+      "topic": "Bentuk Energi",
+      "option_a": "Kinetik",
+      "option_b": "Potensial",
+      "option_c": "Listrik",
+      "option_d": "Kimia",
+      "correct_answer": "B",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 522,
+    "fields": {
+      "quiz": 65,
+      "text": "Zat makanan yang berfungsi sebagai cadangan energi bagi tubuh adalah...",
+      "topic": "Zat Makanan",
+      "option_a": "Karbohidrat",
+      "option_b": "Lemak",
+      "option_c": "Protein",
+      "option_d": "Vitamin",
+      "correct_answer": "B",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 523,
+    "fields": {
+      "quiz": 65,
+      "text": "Organel sel yang berfungsi sebagai tempat berlangsungnya fotosintesis adalah...",
+      "topic": "Sel",
+      "option_a": "Inti sel",
+      "option_b": "Mitokondria",
+      "option_c": "Kloroplas",
+      "option_d": "Ribosom",
+      "correct_answer": "C",
+      "difficulty_level": 0.3
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 524,
+    "fields": {
+      "quiz": 65,
+      "text": "Hasil utama dari proses fotosintesis yang sangat dibutuhkan oleh hewan dan manusia adalah...",
+      "topic": "Fotosintesis",
+      "option_a": "Air",
+      "option_b": "Karbon dioksida",
+      "option_c": "Oksigen",
+      "option_d": "Cahaya",
+      "correct_answer": "C",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 525,
+    "fields": {
+      "quiz": 65,
+      "text": "Seseorang yang sedang berlari memiliki energi kinetik. Energi tersebut berasal dari perubahan energi...",
+      "topic": "Perubahan Energi",
+      "option_a": "Energi panas menjadi gerak",
+      "option_b": "Energi kimia makanan menjadi gerak",
+      "option_c": "Energi cahaya menjadi gerak",
+      "option_d": "Energi listrik menjadi gerak",
+      "correct_answer": "B",
+      "difficulty_level": 0.8
+    }
+  }
+]

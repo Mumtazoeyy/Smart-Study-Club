@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 2,
+    "fields": {
+      "course": 1,
+      "title": "Modul 2: Berkelana di Dunia Imajinasi (Puisi Rakyat & Fantasi)",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 6,
+    "fields": {
+      "module": 2,
+      "title": "Mengenal Puisi Rakyat: Warisan Leluhur",
+      "content": "Puisi rakyat adalah jenis puisi lama yang lahir dari tradisi lisan masyarakat. Berbeda dengan puisi modern, puisi rakyat terikat oleh aturan-aturan yang ketat, seperti jumlah kata dalam satu baris, jumlah baris dalam satu bait, hingga rima (persamaan bunyi).\n\nJenis-jenis Puisi Rakyat yang Populer:\n\n1. Pantun: Puisi yang terdiri dari empat baris dalam satu bait. Baris pertama dan kedua adalah sampiran (pengantar), sedangkan baris ketiga dan keempat adalah isi (pesan utama). Rimanya harus a-b-a-b.\n\n2. Gurindam: Puisi pendek yang hanya terdiri dari dua baris. Baris pertama berisi masalah atau syarat, dan baris kedua berisi jawaban atau konsekuensi. Gurindam biasanya sarat dengan nasihat agama dan moral.\n\n3. Syair: Puisi yang berasal dari Arab, terdiri dari empat baris yang semuanya adalah isi. Rima syair adalah a-a-a-a, dan biasanya menceritakan kisah yang panjang atau filosofi kehidupan.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 7,
+    "fields": {
+      "module": 2,
+      "title": "Bedah Pantun: Struktur dan Keindahan Bunyi",
+      "content": "Pantun bukan sekadar kumpulan kalimat, melainkan seni menyusun bunyi agar terdengar merdu dan bermakna. Untuk membuat pantun yang baik, kamu harus memperhatikan aturan berikut:\n\nAturan Baku Pantun:\n- Satu bait wajib terdiri dari empat baris.\n- Setiap baris idealnya terdiri dari 8 hingga 12 suku kata.\n- Rima Akhir: Bunyi akhir baris 1 harus sama dengan baris 3, dan baris 2 harus sama dengan baris 4 (pola a-b-a-b).\n\nApa itu Sampiran?\nSampiran adalah dua baris awal yang berfungsi sebagai pengantar bunyi. Biasanya sampiran tidak memiliki hubungan makna dengan bagian isi, melainkan hanya sebagai penyiap rima agar telinga pendengar siap menerima pesan di baris berikutnya.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 8,
+    "fields": {
+      "module": 2,
+      "title": "Video: Keajaiban dalam Cerita Fantasi",
+      "content": "Panduan Menyimak Video:\n\nDalam video ini, kita akan mempelajari dunia imajinasi melalui cerita fantasi. Perhatikan bagaimana penulis membangun sebuah dunia yang berbeda dari kenyataan.\n\nMateri Utama dalam Video:\n1. Unsur Keajaiban: Penjelasan mengapa dalam cerita fantasi tokohnya bisa memiliki kekuatan super, benda-benda bisa berbicara, atau adanya naga dan penyihir.\n2. Latar Lintas Waktu: Bagaimana sebuah cerita bisa berpindah dari masa sekarang ke masa depan atau masa lalu secara misterius.\n3. Tokoh Unik: Mengamati karakter tokoh yang memiliki watak tidak biasa dan menghadapi masalah-masalah yang fantastis.\n\nSetelah menonton, coba pikirkan: Jika kamu menulis cerita fantasi, kekuatan ajaib apa yang ingin kamu berikan kepada tokoh utamamu?",
+      "video_url": "https://www.youtube.com/embed/XpS1t7nL8I4",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 9,
+    "fields": {
+      "module": 2,
+      "title": "Struktur Cerita Fantasi: Dari Awal Hingga Akhir",
+      "content": "Cerita fantasi memiliki alur yang terorganisir agar pembaca tidak bingung meskipun ceritanya penuh dengan hal-hal aneh. Berikut adalah strukturnya:\n\n1. Orientasi\nBagian pengenalan. Penulis mengenalkan siapa tokohnya, di mana kejadiannya (latar tempat), dan kapan terjadinya (latar waktu).\n\n2. Komplikasi\nInti dari cerita. Di bagian ini, masalah mulai muncul. Biasanya ditandai dengan kejadian ajaib yang menimpa tokoh utama atau dimulainya sebuah petualangan besar.\n\n3. Resolusi\nBagian penyelesaian. Masalah yang ada di tahap komplikasi mulai menemukan jalan keluar. Cerita bisa berakhir bahagia (happy ending) atau sedih (sad ending).\n\nCiri Khas Bahasa:\nCerita fantasi banyak menggunakan kata ganti (Aku, Dia, Mereka), kata kiasan (metfora), dan kata sambung urutan waktu (lalu, kemudian, tiba-tiba).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 10,
+    "fields": {
+      "module": 2,
+      "title": "Kuis Kompetensi Modul 2",
+      "content": "Selamat! Kamu telah mempelajari keindahan puisi rakyat dan serunya dunia fantasi. Sekarang, uji pemahamanmu melalui kuis ini. Perhatikan baik-baik pertanyaan mengenai rima pantun dan struktur cerita fantasi agar kamu bisa mendapatkan nilai maksimal!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 2,
+    "fields": {
+      "lesson": 10,
+      "title": "Evaluasi Puisi Rakyat & Fantasi",
+      "description": "Selesaikan kuis ini untuk menguasai materi dunia imajinasi."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 6,
+    "fields": {
+      "quiz": 2,
+      "text": "Larik pertama dan kedua pada pantun disebut...",
+      "topic": "Struktur Pantun",
+      "option_a": "Isi",
+      "option_b": "Sampiran",
+      "option_c": "Tema",
+      "option_d": "Rima",
+      "correct_answer": "B",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 7,
+    "fields": {
+      "quiz": 2,
+      "text": "Puisi rakyat yang terdiri atas dua baris dalam satu bait dan berisi nasihat disebut...",
+      "topic": "Jenis Puisi",
+      "option_a": "Pantun",
+      "option_b": "Syair",
+      "option_c": "Gurindam",
+      "option_d": "Karmina",
+      "correct_answer": "C",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 8,
+    "fields": {
+      "quiz": 2,
+      "text": "Manakah yang merupakan ciri utama cerita fantasi?",
+      "topic": "Ciri Fantasi",
+      "option_a": "Berdasarkan sejarah nyata",
+      "option_b": "Terdapat unsur keajaiban atau kemustahilan",
+      "option_c": "Menggunakan bahasa ilmiah",
+      "option_d": "Berisi laporan hasil observasi",
+      "correct_answer": "B",
+      "difficulty_level": 0.0
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 9,
+    "fields": {
+      "quiz": 2,
+      "text": "Bagian cerita fantasi yang berisi penyelesaian masalah disebut...",
+      "topic": "Struktur Cerita",
+      "option_a": "Orientasi",
+      "option_b": "Komplikasi",
+      "option_c": "Resolusi",
+      "option_d": "Klimaks",
+      "correct_answer": "C",
+      "difficulty_level": 0.6
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 10,
+    "fields": {
+      "quiz": 2,
+      "text": "Berapakah jumlah suku kata yang disarankan dalam satu larik pantun?",
+      "topic": "Struktur Pantun",
+      "option_a": "4-6 suku kata",
+      "option_b": "8-12 suku kata",
+      "option_c": "15-20 suku kata",
+      "option_d": "Bebas",
+      "correct_answer": "B",
+      "difficulty_level": 1.1
+    }
+  }
+]

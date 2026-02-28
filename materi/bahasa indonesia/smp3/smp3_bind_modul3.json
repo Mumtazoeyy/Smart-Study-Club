@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 13,
+    "fields": {
+      "course": 3,
+      "title": "Modul 3: Menyusun Cerita Pendek (Cerpen)",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 61,
+    "fields": {
+      "module": 13,
+      "title": "Dunia dalam Genggaman: Karakteristik Cerpen",
+      "content": "Pernahkah kamu membaca sebuah cerita yang sangat berkesan dan selesai hanya dalam waktu sepuluh menit? Itulah yang disebut Cerita Pendek atau Cerpen.\n\nCerpen adalah salah satu bentuk karya sastra prosa naratif yang bersifat fiktif. Dibandingkan dengan novel yang memiliki alur sangat kompleks, cerpen memiliki keterbatasan jumlah kata (biasanya di bawah 10.000 kata). Fokus cerpen adalah pada satu tokoh utama dalam satu situasi atau konflik yang krusial.\n\nCiri Khas Cerpen:\n1. Sekali Duduk: Ceritanya singkat sehingga bisa diselesaikan dalam satu waktu pembacaan.\n2. Konflik Tunggal: Masalah yang dihadapi tokoh tidak bercabang-cabang, melainkan fokus pada satu peristiwa penting.\n3. Kepadatan Bahasa: Setiap kalimat dalam cerpen biasanya sangat bermakna dan langsung menuju inti cerita tanpa basa-basi yang panjang.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 62,
+    "fields": {
+      "module": 13,
+      "title": "Membangun Jiwa Cerita: Unsur Intrinsik",
+      "content": "Sebuah cerpen tidak akan hidup tanpa pondasi yang kuat. Pondasi ini disebut sebagai unsur intrinsik, yaitu elemen yang membangun cerita dari dalam:\n\n1. Tema: Ide pokok atau gagasan utama yang menjadi nyawa cerita.\n2. Tokoh dan Penokohan: Tokoh adalah pelaku cerita, sedangkan penokohan adalah cara penulis menggambarkan watak tokoh tersebut (baik melalui ucapan, tindakan, maupun pikiran).\n3. Alur (Plot): Rangkaian peristiwa yang membentuk cerita, mulai dari awal hingga akhir.\n4. Latar (Setting): Tempat, waktu, dan suasana terjadinya peristiwa dalam cerita.\n5. Sudut Pandang (Point of View): Cara penulis memposisikan dirinya dalam cerita, apakah sebagai orang pertama (menggunakan kata ganti 'Aku') atau orang ketiga (menggunakan nama tokoh atau 'Dia').\n6. Amanat: Pesan moral atau nilai kehidupan yang ingin disampaikan penulis kepada pembaca.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 63,
+    "fields": {
+      "module": 13,
+      "title": "Video: Rahasia Menghidupkan Konflik Cerita",
+      "content": "Panduan Menyimak Video:\n\nCerita tanpa konflik akan terasa hambar. Video ini akan membongkar rahasia para penulis hebat dalam menciptakan ketegangan agar pembaca tidak bisa berhenti membalik halaman.\n\nMateri Utama dalam Video:\n1. Jenis Konflik: Menjelaskan perbedaan antara konflik batin (tokoh melawan dirinya sendiri) dan konflik fisik (tokoh melawan orang lain atau alam).\n2. Puncak Ketegangan: Teknik membangun 'Klimaks' atau titik tertinggi dalam sebuah masalah cerita.\n3. Dialog yang Bermakna: Cara menulis percakapan antar tokoh agar terasa nyata dan memperkuat karakter mereka.\n\nTugas: Simak video ini, lalu pikirkan satu masalah menarik yang pernah kamu alami dan bayangkan bagaimana jika masalah itu dijadikan titik puncak dalam sebuah cerpen!",
+      "video_url": "https://www.youtube.com/embed/XpS1t7nL8I4",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 64,
+    "fields": {
+      "module": 13,
+      "title": "Mengatur Ritme: Struktur Narasi Cerpen",
+      "content": "Agar cerpenmu mengalir dengan indah, kamu harus mengikuti struktur narasi yang sistematis berikut ini:\n\n1. Orientasi\nTahap pengenalan. Di sini kamu memperkenalkan tokoh-tokohmu, suasana tempat, dan waktu awal dimulainya cerita. Tujuannya agar pembaca merasa akrab dengan 'dunia' yang kamu buat.\n\n2. Rangkaian Peristiwa\nKisah mulai bergerak maju. Tokoh mulai berinteraksi dan benih-benih masalah mulai muncul ke permukaan.\n\n3. Komplikasi\nTitik puncak cerita (Klimaks). Masalah yang muncul tadi mencapai tingkat kerumitan tertinggi. Di sinilah nasib tokoh utama ditentukan.\n\n4. Resolusi\nTahap peleraian atau penyelesaian. Penulis memberikan jawaban atas konflik yang terjadi. Cerita bisa berakhir dengan kelegaan atau justru meninggalkan pertanyaan mendalam bagi pembaca.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 65,
+    "fields": {
+      "module": 13,
+      "title": "Kuis Kompetensi Modul 3",
+      "content": "Hebat! Kamu sudah belajar bagaimana cara meramu imajinasi menjadi sebuah narasi cerpen yang menarik. Sekarang, mari uji kemampuan analisismu mengenai unsur-unsur dan struktur pembangun cerita. Bacalah setiap pertanyaan dengan teliti, terutama mengenai watak tokoh dan sudut pandang penulis!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 13,
+    "fields": {
+      "lesson": 65,
+      "title": "Evaluasi Literasi Cerpen",
+      "description": "Analisis setiap detail cerita untuk menemukan makna tersirat di dalamnya."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 61,
+    "fields": {
+      "quiz": 13,
+      "text": "Cara penulis menggambarkan watak atau karakter tokoh dalam cerpen disebut...",
+      "topic": "Unsur Intrinsik",
+      "option_a": "Latar",
+      "option_b": "Alur",
+      "option_c": "Penokohan",
+      "option_d": "Sudut Pandang",
+      "correct_answer": "C",
+      "difficulty_level": -1.1
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 62,
+    "fields": {
+      "quiz": 13,
+      "text": "Bagian struktur cerpen yang berisi pengenalan tokoh dan latar cerita disebut...",
+      "topic": "Struktur Narasi",
+      "option_a": "Komplikasi",
+      "option_b": "Resolusi",
+      "option_c": "Orientasi",
+      "option_d": "Koda",
+      "correct_answer": "C",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 63,
+    "fields": {
+      "quiz": 13,
+      "text": "Jika penulis menggunakan kata ganti 'Aku' sebagai tokoh utama, maka sudut pandang yang digunakan adalah...",
+      "topic": "Sudut Pandang",
+      "option_a": "Orang ketiga serba tahu",
+      "option_b": "Orang pertama pelaku utama",
+      "option_c": "Orang kedua",
+      "option_d": "Orang ketiga pengamat",
+      "correct_answer": "B",
+      "difficulty_level": 0.3
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 64,
+    "fields": {
+      "quiz": 13,
+      "text": "Pesan moral atau nilai kehidupan yang ingin disampaikan penulis melalui cerpen disebut...",
+      "topic": "Unsur Intrinsik",
+      "option_a": "Tema",
+      "option_b": "Latar",
+      "option_c": "Amanat",
+      "option_d": "Plot",
+      "correct_answer": "C",
+      "difficulty_level": 0.7
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 65,
+    "fields": {
+      "quiz": 13,
+      "text": "Bagian cerpen yang berisi penyelesaian atau jalan keluar dari masalah yang dihadapi tokoh disebut...",
+      "topic": "Struktur Narasi",
+      "option_a": "Orientasi",
+      "option_b": "Komplikasi",
+      "option_c": "Resolusi",
+      "option_d": "Evaluasi",
+      "correct_answer": "C",
+      "difficulty_level": 1.1
+    }
+  }
+]

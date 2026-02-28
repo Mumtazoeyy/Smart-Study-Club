@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 15,
+    "fields": {
+      "course": 3,
+      "title": "Modul 5: Menyajikan Teks Diskusi",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 71,
+    "fields": {
+      "module": 15,
+      "title": "Seni Beradu Argumen: Mengenal Teks Diskusi",
+      "content": "Pernahkah kamu berada di sebuah forum di mana satu pihak sangat setuju dengan suatu aturan, sementara pihak lain sangat menolaknya? Pertukaran ide yang mencari titik temu itulah yang kita sebut sebagai Diskusi.\n\nTeks diskusi adalah teks yang menyajikan dua sudut pandang berbeda (pro dan kontra) mengenai suatu isu tertentu. Tujuannya bukan untuk menentukan siapa yang menang atau kalah, melainkan untuk memberikan wawasan yang luas kepada pembaca dan membantu mereka membuat keputusan atau kesimpulan yang bijak berdasarkan argumen yang ada.\n\nFungsi Teks Diskusi:\n1. Menguji Gagasan: Melihat apakah sebuah gagasan tahan terhadap kritik dari berbagai sisi.\n2. Melatih Berpikir Kritis: Memaksa kita untuk memahami alasan orang yang berbeda pendapat dengan kita.\n3. Mencari Solusi: Menemukan jalan tengah (win-win solution) atas sebuah perbedaan pendapat yang tajam.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 72,
+    "fields": {
+      "module": 15,
+      "title": "Membangun Struktur Diskusi yang Adil",
+      "content": "Agar sebuah diskusi tetap berjalan kondusif dan objektif, teks harus disusun dengan urutan yang sangat rapi sebagai berikut:\n\n1. Isu\nBagian pengenalan. Penulis menyajikan masalah atau fenomena yang akan didiskusikan. Isu ini biasanya bersifat kontroversial atau memiliki banyak pendapat di masyarakat.\n\n2. Argumen Mendukung (Pro)\nBerisi alasan, data, dan fakta yang mendukung isu tersebut. Penulis menjelaskan mengapa ide tersebut dianggap baik atau benar.\n\n3. Argumen Menentang (Kontra)\nBerisi alasan dan fakta yang menolak isu tersebut. Penulis menyajikan sisi seberang agar pembaca tahu potensi masalah atau kekurangan dari isu yang sedang dibahas.\n\n4. Simpulan atau Saran\nBagian penutup yang berisi jalan tengah. Penulis tidak memihak salah satu sisi, melainkan memberikan rekomendasi atau kesimpulan yang merangkum kedua argumen tersebut demi kebaikan bersama.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 73,
+    "fields": {
+      "module": 15,
+      "title": "Video: Etika dan Strategi Diskusi yang Sehat",
+      "content": "Panduan Menyimak Video:\n\nBanyak orang terjebak dalam perdebatan kusir yang tidak ada habisnya. Video ini akan mengajarkan kamu etika diskusi agar perbedaan pendapat tidak berakhir menjadi perpecahan.\n\nMateri Utama dalam Video:\n1. Mendengarkan Aktif: Teknik memahami argumen lawan sebelum kita memberikan tanggapan.\n2. Mengontrol Emosi: Pentingnya menjaga kepala tetap dingin meskipun pendapat kita sedang dikritik habis-habisan.\n3. Bahasa Tubuh yang Terbuka: Bagaimana posisi duduk dan kontak mata menunjukkan bahwa kamu menghargai lawan bicaramu.\n4. Menemukan Titik Temu: Cara mengidentifikasi hal-hal apa saja yang sebenarnya disepakati oleh kedua belah pihak.\n\nTugas: Simak video ini dan catatlah satu kalimat pembuka yang sopan untuk menyanggah pendapat orang lain tanpa membuat mereka merasa tersinggung!",
+      "video_url": "https://www.youtube.com/embed/v9S_m8tY1vM",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 74,
+    "fields": {
+      "module": 15,
+      "title": "Kebahasaan: Menghubungkan Sudut Pandang",
+      "content": "Bahasa dalam teks diskusi harus mampu menjembatani perbedaan pendapat. Berikut adalah ciri-ciri kebahasaannya:\n\n1. Konjungsi Perlawanan\nKata hubung ini wajib ada untuk menunjukkan perpindahan dari pendapat pro ke pendapat kontra. Contoh: namun, tetapi, di sisi lain, sebaliknya, walaupun demikian.\n\n2. Kata Kohesi Leksikal dan Gramatikal\nPenggunaan kata ganti dan pengulangan kata kunci agar alur pikiran penulis tetap fokus pada isu yang sedang dibahas.\n\n3. Modality (Kata Kepastian/Keraguan)\nKata-kata yang menunjukkan derajat kepastian penulis, seperti: mungkin, seharusnya, tampak, cenderung, atau pasti.\n\n4. Bahasa Evaluatif\nKata-kata yang digunakan untuk menilai kekuatan sebuah argumen secara objektif, misalnya: argumen ini sangat kuat, data ini kurang akurat, atau pandangan tersebut sangat relevan.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 75,
+    "fields": {
+      "module": 15,
+      "title": "Kuis Kompetensi Modul 5",
+      "content": "Luar biasa! Kamu telah menamatkan seluruh rangkaian materi Bahasa Indonesia dari tingkat SMP 1 hingga SMP 3. Kemampuanmu dalam berdiskusi adalah modal utama untuk menjadi pribadi yang bijaksana di masa depan. Sekarang, uji pemahaman terakhirmu mengenai struktur dan analisis teks diskusi. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 15,
+    "fields": {
+      "lesson": 75,
+      "title": "Evaluasi Teks Diskusi",
+      "description": "Tunjukkan kemampuan berpikir objektif Anda melalui kuis penutup ini."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 71,
+    "fields": {
+      "quiz": 15,
+      "text": "Bagian teks diskusi yang berisi masalah yang akan didiskusikan secara bersama-sama disebut...",
+      "topic": "Struktur",
+      "option_a": "Argumen Pro",
+      "option_b": "Isu",
+      "option_c": "Argumen Kontra",
+      "option_d": "Simpulan",
+      "correct_answer": "B",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 72,
+    "fields": {
+      "quiz": 15,
+      "text": "Argumen yang mendukung atau setuju dengan isu yang sedang dibahas disebut argumen...",
+      "topic": "Struktur",
+      "option_a": "Kontra",
+      "option_b": "Netral",
+      "option_c": "Pro",
+      "option_d": "Opini",
+      "correct_answer": "C",
+      "difficulty_level": -0.4
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 73,
+    "fields": {
+      "quiz": 15,
+      "text": "Kata hubung yang digunakan untuk menyatakan pertentangan antara dua pendapat adalah...",
+      "topic": "Kebahasaan",
+      "option_a": "Dan",
+      "option_b": "Atau",
+      "option_c": "Namun",
+      "option_d": "Sehingga",
+      "correct_answer": "C",
+      "difficulty_level": 0.3
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 74,
+    "fields": {
+      "quiz": 15,
+      "text": "Tujuan akhir dari sebuah diskusi yang baik adalah untuk...",
+      "topic": "Tujuan",
+      "option_a": "Memaksakan kehendak kita kepada orang lain",
+      "option_b": "Mencari solusi atau kesepahaman bersama",
+      "option_c": "Memperpanjang perdebatan",
+      "option_d": "Mencari siapa yang paling hebat",
+      "correct_answer": "B",
+      "difficulty_level": 0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 75,
+    "fields": {
+      "quiz": 15,
+      "text": "Bagian akhir teks diskusi yang berisi jalan tengah atau rekomendasi atas isu yang dibahas disebut...",
+      "topic": "Struktur",
+      "option_a": "Isi",
+      "option_b": "Isu",
+      "option_c": "Simpulan/Saran",
+      "option_d": "Pendahuluan",
+      "correct_answer": "C",
+      "difficulty_level": 1.2
+    }
+  }
+] 

@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 7,
+    "fields": {
+      "title": "IPA Kelas 7 (SMP 1)",
+      "description": "Eksplorasi dasar sains mencakup Metode Ilmiah, Klasifikasi Makhluk Hidup, Zat dan Perubahannya, hingga Suhu dan Kalor.",
+      "course_code": "SCI7-07",
+      "level": "Dasar",
+      "category": 6
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 62,
+    "fields": {
+      "course": 7,
+      "title": "Modul 2: Klasifikasi Makhluk Hidup",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 506,
+    "fields": {
+      "module": 62,
+      "title": "Ciri-Ciri Makhluk Hidup",
+      "content": "Bagaimana kita bisa membedakan kucing dengan robot kucing? Meskipun robot bisa bergerak, ia tidak memiliki semua ciri kehidupan. Sesuatu dikatakan makhluk hidup jika memiliki ciri-ciri berikut:\n\n1. **Bernapas**: Menghirup oksigen dan mengeluarkan karbon dioksida.\n2. **Bergerak**: Perubahan posisi, baik seluruh tubuh atau sebagian.\n3. **Peka terhadap Rangsang (Iriritabilitas)**: Reaksi terhadap perubahan lingkungan.\n4. **Memerlukan Nutrisi**: Makan dan minum untuk energi.\n5. **Tumbuh dan Berkembang**: Bertambah ukuran dan menjadi lebih dewasa.\n6. **Berkembang Biak (Reproduksi)**: Untuk melestarikan jenisnya.\n7. **Mengeluarkan Zat Sisa (Ekskresi)**: Membuang racun dari dalam tubuh.\n8. **Adaptasi**: Menyesuaikan diri dengan lingkungan.\n\n[Image showing comparison between a living cat and a non-living object with labels for each characteristic of life]\n\nSetiap makhluk hidup, sekecil apa pun itu, pasti menjalankan proses-proses di atas untuk bertahan hidup.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 507,
+    "fields": {
+      "module": 62,
+      "title": "Prinsip Dasar Klasifikasi dan Takson",
+      "content": "Klasifikasi adalah cara ilmuwan mengelompokkan makhluk hidup berdasarkan persamaan dan perbedaan ciri. Tujuannya adalah untuk memudahkan kita mengenali dan mempelajari keanekaragaman hayati.\n\nIlmu yang mempelajari klasifikasi disebut **Taksonomi**. Tingkatan kelompok makhluk hidup disebut **Takson**. Urutannya dari yang paling luas hingga yang paling spesifik adalah:\n- Kingdom (Kerajaan)\n- Filum (Hewan) / Divisi (Tumbuhan)\n- Kelas\n- Ordo (Bangsa)\n- Famili (Suku)\n- Genus (Marga)\n- Spesies (Jenis)\n\n\n\nSemakin ke bawah (menuju spesies), persamaan cirinya semakin banyak dan jumlah anggotanya semakin sedikit.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 508,
+    "fields": {
+      "module": 62,
+      "title": "Video: Mengenal Sistem 5 Kingdom",
+      "content": "Panduan Menyimak Video:\n\nSaat ini, sistem klasifikasi yang paling sering digunakan adalah sistem 5 Kingdom yang diusulkan oleh Robert H. Whittaker. Dalam video ini, kamu akan mempelajari karakteristik utama dari:\n\n1. **Monera**: Makhluk hidup sel satu tanpa inti sel (prokariotik), contohnya bakteri.\n2. **Protista**: Makhluk hidup sel satu dengan inti sel, contohnya Amoeba dan Alga.\n3. **Fungi**: Jamur, tidak bisa berfotosintesis dan menyerap nutrisi dari sisa makhluk hidup.\n4. **Plantae**: Tumbuhan hijau yang bisa membuat makanan sendiri (fotosintesis).\n5. **Animalia**: Hewan, makhluk hidup yang bergerak aktif dan memakan makhluk hidup lain.\n\n[Image collage representing the five kingdoms: a bacteria, an amoeba, a mushroom, a tree, and a tiger]\n\nTugas: Simak video ini dan perhatikan perbedaan utama antara tumbuhan (Plantae) dan jamur (Fungi) yang seringkali dianggap sama oleh orang awam!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 509,
+    "fields": {
+      "module": 62,
+      "title": "Kunci Dikotom dan Tata Nama Binomial",
+      "content": "Untuk mengidentifikasi nama suatu makhluk hidup yang belum kita kenal, kita menggunakan **Kunci Dikotom**. Ini adalah serangkaian pilihan berpasangan (A atau B) yang akan menuntun kita pada nama spesies tersebut.\n\nSelain itu, setiap makhluk hidup memiliki nama ilmiah yang berlaku di seluruh dunia menggunakan sistem **Binomial Nomenclature** (Tata Nama Ganda) oleh Carolus Linnaeus.\n\nAturan Penulisan:\n1. Terdiri dari dua kata bahasa Latin.\n2. Kata pertama adalah Genus (huruf kapital), kata kedua adalah Spesies (huruf kecil).\n3. Ditulis miring (*Italic*) atau digarisbawahi terpisah.\n\nContoh: Padi memiliki nama ilmiah *Oryza sativa*.\n\n[Image example of a dichotomous key flow chart and the scientific parts of a plant name]",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 510,
+    "fields": {
+      "module": 62,
+      "title": "Kuis: Detektif Biologi",
+      "content": "Waktunya menguji kemampuanmu dalam mengenali ciri kehidupan dan sistem klasifikasi! Ingatlah urutan takson dan karakteristik setiap kingdom untuk membantumu menjawab soal. Selamat berpetualang di dunia biologi!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 62,
+    "fields": {
+      "lesson": 510,
+      "title": "Evaluasi Klasifikasi Makhluk Hidup",
+      "description": "Uji pemahaman tentang ciri-ciri kehidupan, urutan takson, 5 Kingdom, dan tata nama ilmiah."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 506,
+    "fields": {
+      "quiz": 62,
+      "text": "Kemampuan makhluk hidup untuk menanggapi rangsang dari luar disebut...",
+      "topic": "Ciri Makhluk Hidup",
+      "option_a": "Ekskresi",
+      "option_b": "Iritabilitas",
+      "option_c": "Reproduksi",
+      "option_d": "Adaptasi",
+      "correct_answer": "B",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 507,
+    "fields": {
+      "quiz": 62,
+      "text": "Urutan tingkatan takson dari yang tertinggi sampai terendah adalah...",
+      "topic": "Taksonomi",
+      "option_a": "Kingdom - Filum - Kelas - Ordo - Famili - Genus - Spesies",
+      "option_b": "Kingdom - Ordo - Kelas - Filum - Genus - Famili - Spesies",
+      "option_c": "Spesies - Genus - Famili - Ordo - Kelas - Filum - Kingdom",
+      "option_d": "Kingdom - Filum - Kelas - Famili - Ordo - Genus - Spesies",
+      "correct_answer": "A",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 508,
+    "fields": {
+      "quiz": 62,
+      "text": "Makhluk hidup yang memiliki ciri prokariotik (tidak punya membran inti) dimasukkan ke dalam kingdom...",
+      "topic": "5 Kingdom",
+      "option_a": "Protista",
+      "option_b": "Fungi",
+      "option_c": "Monera",
+      "option_d": "Animalia",
+      "correct_answer": "C",
+      "difficulty_level": 0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 509,
+    "fields": {
+      "quiz": 62,
+      "text": "Penulisan nama ilmiah yang benar untuk tanaman jagung menurut aturan Binomial Nomenclature adalah...",
+      "topic": "Tata Nama Ilmiah",
+      "option_a": "Zea Mays",
+      "option_b": "zea mays",
+      "option_c": "Zea mays (miring)",
+      "option_d": "zea Mays",
+      "correct_answer": "C",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 510,
+    "fields": {
+      "quiz": 62,
+      "text": "Salah satu ciri utama dari kingdom Fungi (jamur) yang membedakannya dengan Plantae adalah...",
+      "topic": "Fungi",
+      "option_a": "Memiliki akar, batang, dan daun",
+      "option_b": "Tidak dapat berfotosintesis",
+      "option_c": "Berkembang biak dengan biji",
+      "option_d": "Memiliki sel prokariotik",
+      "correct_answer": "B",
+      "difficulty_level": 0.4
+    }
+  }
+]

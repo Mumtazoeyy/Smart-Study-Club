@@ -1,0 +1,246 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Privacy Protocol | SSC{% endblock title %}
+
+{% block content %}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+  .industrial-dot-bg {
+        background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
+        background-size: 16px 16px;
+        background-attachment: fixed;
+    }
+
+    /* Card sesuai home5 (Putih Transparan) */
+    .protocol-card-glass {
+        background-color: rgba(255, 255, 255, 0.05); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .protocol-card-glass:hover {
+        border-color: rgba(0, 0, 0, 0.3);
+        transform: translateY(-2px);
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* EDIT: Menjadi SOLID Biru Gelap (Tidak Transparan) */
+    .protocol-card-dark-blue {
+        background-color: #0f172a; /* Solid Slate-900 */
+        border: 1px solid #1e293b;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .protocol-card-dark-blue:hover {
+        border-color: #eab308;
+        transform: translateY(-2px);
+        background-color: #1e293b; /* Sedikit lebih terang saat hover agar ada feedback visual */
+    }
+
+    /* FITUR GARIS MEMANJANG (Hover Effect) */
+    .expanding-line-container {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+        margin-top: 1.5rem;
+    }
+
+    .expanding-line {
+        height: 1.5px;
+        flex-grow: 0;
+        width: 20px;
+        background-color: #eab308;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Memastikan efek garis memanjang bekerja di kedua jenis kartu */
+    .protocol-card-glass:hover .expanding-line,
+    .protocol-card-dark-blue:hover .expanding-line {
+        flex-grow: 1;
+    }
+
+    .status-box-dark {
+        background: #111827;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+</style>
+
+<div class="industrial-dot-bg min-h-screen">
+    <div class="container mx-auto px-6 pt-2 pb-24"> {# Header Section - Ukuran Normal #}
+        {# Header Section: Industrial Center Design #}
+        <div class="w-full flex flex-col items-center gap-1 mb-16 pt-2" data-aos="fade-down">
+            
+            {# Baris Utama: Balok Kuning + Judul #}
+            <div class="flex items-center gap-3">
+                {# Balok Kuning di Kiri #}
+                <div class="h-6 md:h-8 w-1.5 bg-[#eab308]"></div>
+                
+                {# Judul dengan perpaduan Hitam & Abu-abu #}
+                <h1 class="text-3xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase text-center">
+                    Privacy <span class="text-gray-400">Protocol & Policy</span>
+                </h1>
+
+                {# Balok Kuning di Kanan #}
+                <div class="h-6 md:h-8 w-1.5 bg-[#eab308]"></div>
+            </div>
+
+            {# Baris Sub-judul: Teks Kecil dengan Garis Pemisah #}
+            <div class="flex flex-col items-center">
+                <p class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-[0.2em] text-center">
+                    <span class="text-gray-900">Secure Data Environment</span> 
+                    <span class="mx-3 text-gray-200">|</span> 
+                    Data Protection Framework v4.0.2
+                </p>
+                
+                {# Garis aksen bawah khas industrial #}
+                <div class="mt-2 flex items-center gap-1">
+                    <div class="h-[2px] w-8 bg-gray-900"></div>
+                    <div class="h-[2px] w-2 bg-[#eab308]"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            {# Left Column: Security Status #}
+            <div class="lg:col-span-4" data-aos="fade-right">
+                <div class="sticky top-24">
+                    <section class="protocol-card-dark-blue p-8 group">
+                        <h3 class="text-xl font-black text-white uppercase italic mb-6 border-l-4 border-[#eab308] pl-4 flex items-center gap-2">
+                            <span class="h-2 w-2 bg-red-600 animate-pulse rounded-full"></span> 
+                            Security Status
+                        </h3>
+                        <p class="mb-6 text-sm font-medium text-gray-300 uppercase leading-relaxed">
+                            Seluruh data yang diproses melalui Smart Study Club Hub dienkripsi menggunakan standar industri militer untuk memastikan integritas informasi pengguna.
+                        </p>
+                        <div class="expanding-line-container">
+                            <span class="text-[9px] font-black uppercase text-gray-400 whitespace-nowrap">Active Node</span>
+                            <div class="expanding-line"></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            {# Right Column: Main Content (Isi Panjang Tidak Berubah) #}
+            <div class="lg:col-span-8 space-y-10">
+                
+                {# Section 1 #}
+                <section class="protocol-card-glass p-8 group" data-aos="fade-up">
+                    <h3 class="text-xl font-black text-gray-900 uppercase italic mb-6 border-l-4 border-[#eab308] pl-4">
+                        1. Akuisisi Informasi Pengguna
+                    </h3>
+                    <p class="mb-6 text-sm font-medium text-gray-700">Smart Study Club (SSC) mengumpulkan informasi identifikasi pribadi yang Anda berikan secara sukarela saat proses registrasi. Data ini mencakup namun tidak terbatas pada:</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 border-b border-gray-100 pb-3">
+                            <span class="font-black text-[#eab308] text-xs">PROT-01:</span> 
+                            <span class="font-bold text-gray-800 uppercase text-[11px]">Informasi Identitas (Nama Lengkap, Username, Alamat Email Aktif).</span>
+                        </li>
+                        <li class="flex items-start gap-3 border-b border-gray-100 pb-3">
+                            <span class="font-black text-[#eab308] text-xs">PROT-02:</span> 
+                            <span class="font-bold text-gray-800 uppercase text-[11px]">Data Pembelajaran (Log durasi belajar, skor kuis, dan progres materi).</span>
+                        </li>
+                        <li class="flex items-start gap-3 border-b border-gray-100 pb-3">
+                            <span class="font-black text-[#eab308] text-xs">PROT-03:</span> 
+                            <span class="font-bold text-gray-800 uppercase text-[11px]">Metadata Teknis (Alamat IP, tipe peramban, dan riwayat akses sesi).</span>
+                        </li>
+                    </ul>
+                    <div class="expanding-line-container">
+                        <span class="text-[9px] font-black uppercase text-gray-400 whitespace-nowrap">End of Block</span>
+                        <div class="expanding-line"></div>
+                    </div>
+                </section>
+
+                {# Section 2 #}
+                <section class="protocol-card-glass p-8 group" data-aos="fade-up">
+                    <h3 class="text-xl font-black text-gray-900 uppercase italic mb-6 border-l-4 border-[#eab308] pl-4">
+                        2. Pemanfaatan Data Sistem
+                    </h3>
+                    <p class="mb-6 text-sm font-medium text-gray-700">Data yang dikumpulkan dikelola secara eksklusif untuk fungsi internal platform:</p>
+                    <ul class="space-y-4">
+                        <li class="flex gap-4 items-start">
+                            <div class="mt-1.5 h-1.5 w-1.5 bg-[#eab308] rotate-45"></div>
+                            <p class="text-xs font-bold text-gray-800 uppercase">Personalisasi dashboard belajar berdasarkan minat dan performa akademik.</p>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <div class="mt-1.5 h-1.5 w-1.5 bg-[#eab308] rotate-45"></div>
+                            <p class="text-xs font-bold text-gray-800 uppercase">Otomatisasi penerbitan sertifikat digital yang memerlukan validasi identitas asli.</p>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <div class="mt-1.5 h-1.5 w-1.5 bg-[#eab308] rotate-45"></div>
+                            <p class="text-xs font-bold text-gray-800 uppercase">Analisis statistik untuk peningkatan kualitas instruksional dan materi pembelajaran.</p>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <div class="mt-1.5 h-1.5 w-1.5 bg-[#eab308] rotate-45"></div>
+                            <p class="text-xs font-bold text-gray-800 uppercase">Sistem notifikasi terkait pembaruan kurikulum dan status akun pengguna.</p>
+                        </li>
+                    </ul>
+                    <div class="expanding-line-container">
+                        <span class="text-[9px] font-black uppercase text-gray-400 whitespace-nowrap">End of Block</span>
+                        <div class="expanding-line"></div>
+                    </div>
+                </section>
+
+                {# Section 3 #}
+                <section class="protocol-card-glass p-8 group" data-aos="fade-up">
+                    <h3 class="text-xl font-black text-gray-900 uppercase italic mb-6 border-l-4 border-[#eab308] pl-4">
+                        3. Integritas & Keamanan Enkripsi
+                    </h3>
+                    <p class="text-sm font-medium text-gray-700 mb-8">Kami menerapkan lapisan keamanan berlapis untuk melindungi data dari akses tanpa izin, perubahan, atau pengungkapan ilegal. Server kami menggunakan teknologi enkripsi SSL/TLS (Secure Sockets Layer) tingkat lanjut.</p>
+                    <blockquote class="bg-[#111827] border-r-4 border-[#eab308] p-6 italic font-bold text-xs text-gray-200 uppercase tracking-wide">
+                        "Smart Study Club memegang prinsip Zero-Share Policy: Kami tidak akan pernah menjual, menyewakan, atau mendistribusikan data pribadi Anda kepada entitas pihak ketiga untuk tujuan pemasaran komersial."
+                    </blockquote>
+                    <div class="expanding-line-container">
+                        <span class="text-[9px] font-black uppercase text-gray-400 whitespace-nowrap">End of Block</span>
+                        <div class="expanding-line"></div>
+                    </div>
+                </section>
+
+                {# Section 4 #}
+                <section class="protocol-card-glass p-8 group" data-aos="fade-up">
+                    <h3 class="text-xl font-black text-gray-900 uppercase italic mb-6 border-l-4 border-[#eab308] pl-4">
+                        4. Hak Akses Pengguna
+                    </h3>
+                    <p class="text-sm font-medium text-gray-700 mb-6">Sebagai subjek data, Anda memiliki kontrol penuh atas informasi Anda, termasuk:</p>
+                    <ul class="space-y-4">
+                        <li class="flex gap-4 items-start">
+                            <div class="mt-1.5 h-1.5 w-1.5 bg-[#eab308] rotate-45"></div>
+                            <p class="text-xs font-bold text-gray-800 uppercase">Hak untuk memperbarui profil data melalui pengaturan akun.</p>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <div class="mt-1.5 h-1.5 w-1.5 bg-[#eab308] rotate-45"></div>
+                            <p class="text-xs font-bold text-gray-800 uppercase">Hak untuk meminta penangguhan (deaktivasi) akun dan penghapusan data permanen.</p>
+                        </li>
+                        <li class="flex gap-4 items-start">
+                            <div class="mt-1.5 h-1.5 w-1.5 bg-[#eab308] rotate-45"></div>
+                            <p class="text-xs font-bold text-gray-800 uppercase">Hak untuk mengunduh laporan progres belajar dalam format digital.</p>
+                        </li>
+                    </ul>
+                    <div class="expanding-line-container">
+                        <span class="text-[9px] font-black uppercase text-gray-400 whitespace-nowrap">End of Block</span>
+                        <div class="expanding-line"></div>
+                    </div>
+                </section>
+
+                {# Footer #}
+                <section class="pt-12 border-t-2 border-gray-900" data-aos="fade-up">
+                    <h3 class="text-lg font-black text-gray-900 uppercase mb-4">Persetujuan Protokol</h3>
+                    <p class="text-xs italic font-bold text-gray-400 uppercase leading-relaxed">
+                        Dengan melanjutkan penggunaan platform Smart Study Club Hub, Anda dianggap telah membaca, memahami, dan menyetujui seluruh ketentuan dalam Kebijakan Data ini tanpa terkecuali.
+                    </p>
+                </section>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+</script>
+{% endblock %}

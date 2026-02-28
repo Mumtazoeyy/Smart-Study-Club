@@ -1,0 +1,324 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us | Smart Study Club{% endblock title %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<style>
+    body { font-family: 'Poppins', sans-serif; background-color: #ffffff; overflow-x: hidden; color: #111827; }
+
+    .card-about-transparan {
+        background-color: rgba(255, 255, 255, 0.05); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+    }
+
+    .card-about-transparan:hover {
+        border-color: rgba(0, 0, 0, 0.3);
+        transform: translateY(-2px);
+    }
+
+    /* --- Logo Core Advanced Hover Section --- */
+    .logo-container {
+        position: relative;
+        width: 320px;
+        height: 320px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .logo-orbit {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 2px dashed #111827;
+        border-radius: 50%;
+        animation: spin 40s linear infinite;
+        opacity: 0.2;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Efek Orbit saat Hover: Berputar Cepat & Warna Berubah */
+    .logo-container:hover .logo-orbit {
+        animation: spin 4s linear infinite;
+        opacity: 0.8;
+        border-color: #eab308;
+        border-style: solid;
+    }
+
+    .logo-core {
+        width: 220px;
+        height: 220px;
+        background: #ffffff;
+        border: 2px solid #111827; /* Tanpa bayangan kuning */
+        z-index: 2;
+        border-radius: 50%; 
+        overflow: hidden;    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Hover Canggih: Zoom & Cyber Glow Putih */
+    .logo-container:hover .logo-core {
+        transform: scale(1.1);
+        border-color: #ffffff;
+        box-shadow: 0 0 40px rgba(255, 255, 255, 0.4), 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo-core img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    .logo-container:hover .logo-core img {
+        transform: scale(1.05);
+    }
+    /* ---------------------------------------- */
+
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    .scanline {
+        width: 100%;
+        height: 4px;
+        background: rgba(234, 179, 8, 0.3);
+        position: absolute;
+        top: 0;
+        z-index: 5;
+        animation: scan 4s linear infinite;
+    }
+
+    @keyframes scan {
+        0% { top: 0; opacity: 0; }
+        50% { opacity: 1; }
+        100% { top: 100%; opacity: 0; }
+    }
+
+    .glow-dot {
+        width: 10px;
+        height: 10px;
+        background: #eab308;
+        border: 2px solid #111827;
+        display: inline-block;
+    }
+
+    .progress-track {
+        width: 100%;
+        height: 12px;
+        background: rgba(0, 0, 0, 0.05);
+        border: 1px solid #111827;
+        overflow: hidden;
+    }
+    
+    .progress-fill {
+        height: 100%;
+        background: #eab308;
+    }
+
+    .logo-container:hover .pulse-wrapper.large {
+        transform: translate(-50%, -50%) scale(2.2); /* Skala lebih besar sedikit dari 1.9 */
+        opacity: 0.25; /* Dibuat sedikit lebih tipis agar estetik */
+    }
+
+    /* Mempertahankan class reverse yang sebelumnya */
+    .reverse-spin {
+        animation-direction: reverse !important;
+    }
+
+    /* Setting standar tetap sama agar konsisten */
+    .pulse-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+        transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .logo-container:hover .pulse-wrapper {
+        transform: translate(-50%, -50%) scale(1.78);
+        opacity: 0.4;
+    }
+
+    .pulse-line {
+        width: 220px; 
+        height: 220px;
+        border: 2px dashed #111827;
+        border-radius: 50%;
+        animation: putarSlow 10s linear infinite;
+    }
+
+    @keyframes putarSlow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+</style>
+
+<div class="min-h-screen flex flex-col items-center justify-start pt-4 pb-12">
+        
+    {# Header Section: Industrial Center Design #}
+    <div class="w-full flex flex-col items-center gap-1 mb-16" data-aos="fade-down">
+        
+        <div class="flex items-center gap-3">
+            <div class="h-6 md:h-8 w-1.5 bg-[#eab308]"></div>
+            
+            <h1 class="text-3xl md:text-5xl font-black text-gray-900 tracking-tighter uppercase text-center">
+                About <span class="text-gray-400">SSC Smart Study Club</span>
+            </h1>
+
+            <div class="h-6 md:h-8 w-1.5 bg-[#eab308]"></div>
+        </div>
+
+        <div class="flex flex-col items-center">
+            <p class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-[0.2em] text-center">
+                <span class="text-gray-900">Pusat Informasi</span> 
+                <span class="mx-3 text-gray-200">|</span> 
+                Divisi Pengembangan Digital
+            </p>
+            
+            <div class="mt-2 flex items-center gap-1">
+                <div class="h-[2px] w-8 bg-gray-900"></div>
+                <div class="h-[2px] w-2 bg-[#eab308]"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center w-full max-w-7xl">
+        
+        {# Left Column: Vision & Mission #}
+        <div class="lg:col-span-4 space-y-8 order-2 lg:order-1">
+            <div class="group card-about-transparan p-8 rounded-xl overflow-hidden" data-aos="fade-right">
+                <div class="absolute top-0 right-0 w-12 h-12 bg-gray-200/20 -mr-6 -mt-6 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+                <div class="scanline"></div>
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="glow-dot"></span>
+                    <h3 class="text-gray-900 font-black tracking-widest text-xs uppercase">Visi Kami</h3>
+                </div>
+                <p class="text-gray-500 font-bold text-xs leading-relaxed uppercase tracking-tight">
+                    Menjadi platform pendidikan digital terdepan yang mampu memahami karakter dan kecepatan belajar setiap individu secara akurat melalui dukungan kecerdasan buatan.
+                </p>
+            </div>
+
+            <div class="group card-about-transparan p-8 rounded-xl overflow-hidden" data-aos="fade-right" data-aos-delay="200">
+                <div class="absolute top-0 right-0 w-12 h-12 bg-gray-200/20 -mr-6 -mt-6 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="glow-dot"></span>
+                    <h3 class="text-gray-900 font-black tracking-widest text-xs uppercase">Misi Kami</h3>
+                </div>
+                <ul class="text-gray-500 font-bold text-[10px] space-y-5 uppercase tracking-widest">
+                    <li class="flex items-start gap-3">
+                        <span class="bg-gray-900 text-[#eab308] px-2 py-0.5 font-black italic">01</span>
+                        <span>Mengembangkan sistem ujian adaptif yang otomatis menyesuaikan tingkat kesulitan soal berdasarkan batas kemampuan setiap siswa.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="bg-gray-900 text-[#eab308] px-2 py-0.5 font-black italic">02</span>
+                        <span>Menerapkan teknologi analisis data akurat untuk memberikan rekomendasi materi belajar yang paling efektif dan personal secara real-time.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        {# Center Column: Logo Core #}
+        <div class="lg:col-span-4 flex flex-col items-center justify-center order-1 lg:order-2 mb-12 lg:mb-0">
+            <div class="logo-container">
+                <div class="pulse-wrapper">
+                    <div class="pulse-line"></div>
+                </div>
+
+                <div class="pulse-wrapper large">
+                    <div class="pulse-line reverse-spin"></div>
+                </div>
+                
+                <div class="logo-orbit"></div>
+                <div class="logo-core">
+                    <img src="{% static 'img/1.jpeg' %}" alt="Core Interface">
+                </div>
+            </div>
+            <div class="mt-10 text-center" data-aos="zoom-in">
+                <div class="px-4 py-1.5 bg-gray-900 border-2 border-gray-900 inline-block mb-3 shadow-[4px_4px_0px_#eab308]">
+                    <p class="text-[#eab308] font-black text-[10px] tracking-[0.3em] uppercase">Status Sistem: Aktif</p>
+                </div>
+                <h2 class="text-3xl font-black text-gray-900 tracking-tighter uppercase leading-none">Smart Study Club</h2>
+                <p class="text-gray-400 font-bold text-[10px] mt-2 tracking-[0.2em] uppercase">Inovasi Belajar Tanpa Batas</p>
+            </div>
+        </div>
+
+        {# Right Column: Stats & Action #}
+        <div class="lg:col-span-4 space-y-8 order-3">
+            <div class="group card-about-transparan p-8 rounded-xl overflow-hidden" data-aos="fade-left">
+                <div class="absolute top-0 right-0 w-12 h-12 bg-gray-200/20 -mr-6 -mt-6 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+                <h3 class="text-gray-900 font-black tracking-widest text-xs uppercase mb-8 flex items-center gap-3">
+                    <span class="glow-dot"></span> Statistik Pengguna
+                </h3>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between text-[10px] text-gray-400 mb-2 uppercase font-black tracking-widest">
+                            <span>Pertumbuhan Siswa</span>
+                            <span class="text-gray-900">1500+ Member</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill w-[85%]" data-aos="slide-right" data-aos-duration="2000"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-[10px] text-gray-400 mb-2 uppercase font-black tracking-widest">
+                            <span>Stabilitas Website</span>
+                            <span class="text-gray-900">99.9% Stabil</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill w-[99%]" data-aos="slide-right" data-aos-duration="2000"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group card-about-transparan p-8 rounded-xl overflow-hidden" data-aos="fade-left" data-aos-delay="200">
+                <div class="absolute top-0 right-0 w-12 h-12 bg-gray-200/20 -mr-6 -mt-6 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+                <p class="text-gray-500 font-bold text-[11px] leading-relaxed mb-6 uppercase tracking-tight">
+                    Kami telah menyiapkan kurikulum terbaik untuk perjalanan belajarmu. Daftarkan dirimu segera untuk mulai mengejar impian.
+                </p>
+                <a href="{% url 'account_signup' %}" class="group/btn flex items-center w-full py-4 px-6 bg-gray-900 hover:bg-[#eab308] text-white hover:text-gray-900 font-bold transition-all duration-300">
+                    <span class="text-[10px] uppercase tracking-widest whitespace-nowrap">Daftar Sekarang</span>
+                    <div class="flex-grow flex items-center ml-4">
+                        <div class="h-[1.5px] w-4 bg-white group-hover/btn:bg-gray-900 transition-all duration-500 ease-in-out group-hover/btn:flex-grow"></div>
+                    </div>
+                    <i class="fas fa-arrow-right ml-4 text-[10px]"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    {# Footer Section #}
+    <div class="w-full max-w-7xl mt-24 border-t-2 border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-400 tracking-[0.3em] uppercase font-black">
+        <div class="flex items-center gap-2">
+            <span class="h-3 w-3 bg-gray-900"></span>
+            <span>Versi Sistem 4.0.2</span>
+        </div>
+        <span>© 2026 Smart Study Club Digital Intelligence</span>
+        <span class="bg-[#eab308] text-gray-900 px-3 py-1">Keamanan Terverifikasi</span>
+    </div>
+</div>
+
+<script>
+    AOS.init({ 
+        once: true,
+        duration: 800,
+        easing: 'ease-out-back'
+    });
+</script>
+{% endblock content %}

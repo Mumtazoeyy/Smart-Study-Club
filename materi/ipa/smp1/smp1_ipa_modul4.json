@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 7,
+    "fields": {
+      "title": "IPA Kelas 7 (SMP 1)",
+      "description": "Eksplorasi dasar sains mencakup Metode Ilmiah, Klasifikasi Makhluk Hidup, Zat dan Perubahannya, hingga Suhu dan Kalor.",
+      "course_code": "SCI7-07",
+      "level": "Dasar",
+      "category": 6
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 64,
+    "fields": {
+      "course": 7,
+      "title": "Modul 4: Suhu, Kalor, dan Pemuaian",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 516,
+    "fields": {
+      "module": 64,
+      "title": "Suhu dan Termometer",
+      "content": "Suhu adalah tingkat panas atau dinginnya suatu benda. Tangan kita bisa merasakan panas, tetapi bukan alat ukur yang akurat. Oleh karena itu, kita menggunakan **Termometer**.\n\nTermometer bekerja berdasarkan sifat **Termometrik**, yaitu perubahan sifat zat (biasanya volume cairan seperti raksa atau alkohol) akibat perubahan suhu. \n\nAda empat skala suhu yang umum digunakan:\n1. **Celsius (°C)**: Titik beku 0, Titik didih 100.\n2. **Reamur (°R)**: Titik beku 0, Titik didih 80.\n3. **Fahrenheit (°F)**: Titik beku 32, Titik didih 212.\n4. **Kelvin (K)**: Skala Internasional (SI), Titik beku 273, Titik didih 373.\n\n\n\nPerbandingan skala C : R : (F-32) adalah **5 : 4 : 9**. Ingat, untuk Kelvin cukup tambahkan 273 dari derajat Celsius.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 517,
+    "fields": {
+      "module": 64,
+      "title": "Pemuaian Zat",
+      "content": "Pernahkah kamu melihat kaca jendela yang retak saat cuaca sangat panas atau kabel listrik yang terlihat kendur di siang hari? Itu terjadi karena **Pemuaian**.\n\nPemuaian adalah bertambahnya ukuran benda (panjang, luas, atau volume) karena kenaikan suhu. Sebaliknya, jika suhu turun, benda akan mengalami **Penyusutan**.\n\n1. **Pemuaian Panjang**: Terjadi pada benda padat yang tipis/panjang (seperti rel kereta).\n2. **Pemuaian Luas**: Terjadi pada benda berbentuk kepingan (seperti kaca jendela).\n3. **Pemuaian Volume**: Terjadi pada gas dan cair (seperti raksa dalam termometer).\n\n\n\nAplikasi penting: **Bimetal** (dua keping logam berbeda yang ditempelkan) digunakan pada saklar otomatis setrika listrik. Bimetal akan melengkung saat panas dan memutus arus listrik agar setrika tidak terlalu panas.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 518,
+    "fields": {
+      "module": 64,
+      "title": "Video: Kalor dan Perubahan Wujud",
+      "content": "Panduan Menyimak Video:\n\nKalor adalah energi panas yang berpindah dari benda bersuhu tinggi ke benda bersuhu rendah. \n\nDalam video ini, kamu akan mempelajari dua fungsi kalor:\n1. **Kalor untuk menaikkan suhu**: Rumusnya $Q = m \\cdot c \\cdot \\Delta T$ (dibaca: Macet).\n2. **Kalor untuk mengubah wujud**: Rumusnya $Q = m \\cdot L$ (Kalor Laten), di mana suhu benda tetap meskipun terus dipanaskan.\n\n\n\nTugas: Simak video ini dan perhatikan grafik pemanasan air. Mengapa garisnya mendatar saat es mencair dan saat air menguap? Karena saat itu energi kalor digunakan untuk memutus ikatan partikel, bukan menaikkan suhu!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 519,
+    "fields": {
+      "module": 64,
+      "title": "Perpindahan Kalor",
+      "content": "Kalor berpindah dengan tiga cara unik:\n\n1. **Konduksi**: Perpindahan panas melalui zat perantara tanpa diikuti perpindahan partikelnya (contoh: ujung sendok terasa panas saat mengaduk teh panas).\n2. **Konveksi**: Perpindahan panas yang disertai perpindahan partikel zatnya (contoh: air yang mendidih, terjadinya angin darat dan angin laut).\n3. **Radiasi**: Perpindahan panas tanpa melalui zat perantara (contoh: panas matahari sampai ke bumi, rasa hangat saat berada di dekat api unggun).\n\n[Image illustrating conduction, convection, and radiation using a boiling pot on a stove]\n\nBenda yang mudah menghantarkan panas disebut **Konduktor** (logam), sedangkan yang sulit menghantarkan panas disebut **Isolator** (kayu, plastik, kain).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 520,
+    "fields": {
+      "module": 64,
+      "title": "Kuis: Master Energi Panas",
+      "content": "Hebat! Kamu sudah belajar tentang perbedaan suhu dan kalor, cara benda memuai, hingga cara panas berpindah. Sekarang, mari uji kemampuanmu menghitung konversi suhu dan menganalisis peristiwa perpindahan kalor di sekitarmu. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 64,
+    "fields": {
+      "lesson": 520,
+      "title": "Evaluasi Suhu, Kalor, dan Pemuaian",
+      "description": "Uji pemahaman konversi suhu, rumus kalor, jenis perpindahan panas, dan pemuaian bimetal."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 516,
+    "fields": {
+      "quiz": 64,
+      "text": "Suhu suatu benda adalah 50°C. Jika diukur menggunakan termometer Reamur, suhunya adalah...",
+      "topic": "Konversi Suhu",
+      "option_a": "40°R",
+      "option_b": "60°R",
+      "option_c": "80°R",
+      "option_d": "100°R",
+      "correct_answer": "A",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 517,
+    "fields": {
+      "quiz": 64,
+      "text": "Perpindahan kalor yang disertai dengan perpindahan partikel zat perantaranya disebut...",
+      "topic": "Perpindahan Kalor",
+      "option_a": "Konduksi",
+      "option_b": "Konveksi",
+      "option_c": "Radiasi",
+      "option_d": "Isolasi",
+      "correct_answer": "B",
+      "difficulty_level": -1.0
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 518,
+    "fields": {
+      "quiz": 64,
+      "text": "Mengapa rel kereta api diberikan celah pada sambungannya?",
+      "topic": "Pemuaian",
+      "option_a": "Agar kereta tidak berisik",
+      "option_b": "Memberi ruang saat rel memuai di siang hari agar tidak melengkung",
+      "option_c": "Menghemat bahan besi",
+      "option_d": "Agar air hujan bisa mengalir",
+      "correct_answer": "B",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 519,
+    "fields": {
+      "quiz": 64,
+      "text": "Banyaknya kalor yang diperlukan untuk menaikkan suhu 1 kg air sebesar 1°C disebut...",
+      "topic": "Kalor Jenis",
+      "option_a": "Kalor lebur",
+      "option_b": "Kalor uap",
+      "option_c": "Kalor jenis",
+      "option_d": "Kapasitas kalor",
+      "correct_answer": "C",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 520,
+    "fields": {
+      "quiz": 64,
+      "text": "Panas matahari sampai ke bumi melalui cara perpindahan...",
+      "topic": "Radiasi",
+      "option_a": "Konduksi",
+      "option_b": "Konveksi",
+      "option_c": "Radiasi",
+      "option_d": "Difusi",
+      "correct_answer": "C",
+      "difficulty_level": -1.5
+    }
+  }
+]

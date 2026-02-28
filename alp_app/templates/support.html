@@ -1,0 +1,274 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Support | Smart Study Club{% endblock title %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+    body { font-family: 'Poppins', sans-serif; background-color: #ffffff; overflow-x: hidden; color: #111827; }
+
+    /* Card Transparan (Email & Form) */
+    .card-support-transparan {
+        background-color: rgba(255, 255, 255, 0.05); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card-support-transparan:hover {
+        border-color: rgba(0, 0, 0, 0.3);
+        transform: translateY(-2px);
+    }
+
+    /* Desain QR Container Brutalist */
+    .qr-container {
+        background: white;
+        padding: 6px;
+        border: 2px solid #111827;
+        box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+        width: 85px;
+        height: 85px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .qr-container:hover {
+        transform: rotate(-3deg) scale(1.1);
+        box-shadow: 4px 4px 0px #3b82f6;
+    }
+
+    /* Input Style */
+    .cyber-input {
+        background: rgba(255, 255, 255, 0.8) !important;
+        border: 2px solid #111827 !important;
+        color: #111827 !important;
+        border-radius: 4px !important;
+        font-weight: 700 !important;
+        transition: 0.3s;
+    }
+
+    .cyber-input:focus {
+        box-shadow: 4px 4px 0px #eab308 !important;
+        outline: none;
+    }
+</style>
+
+{# BAGIAN YANG DIEDIT: Menyatukan class industrial-dot-bg dengan container jarak yang diinginkan #}
+<div class="min-h-screen flex flex-col items-center justify-start pt-2 pb-12">
+    <div class="container mx-auto px-6">
+        
+        {# Header #}
+        <div class="flex items-center gap-3 mb-12" data-aos="fade-right">
+            <div class="h-5 w-1.5 bg-[#eab308]"></div>
+            <h2 class="text-xl md:text-2xl font-black text-gray-900 tracking-tight uppercase">
+                Pusat <span class="text-gray-400">Bantuan</span>
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl mx-auto">
+            
+            {# Sisi Kiri: Kontak #}
+            <div class="lg:col-span-4 space-y-6">
+                
+                {# Card Email #}
+                <div class="group relative overflow-hidden card-support-transparan p-8" data-aos="fade-up">
+                    <div class="absolute top-0 right-0 w-12 h-12 bg-gray-200/20 -mr-6 -mt-6 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-[10px] font-bold tracking-widest text-gray-400 group-hover:text-gray-900 uppercase transition-colors">Official Support</span>
+                            <i class="fas fa-envelope text-gray-300 group-hover:text-gray-900"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-gray-900 uppercase mb-3">Email Protokol</h3>
+                        <p class="text-sm text-gray-500 mb-8">Kirim pertanyaan teknis. Respon standar 1x24 jam.</p>
+                        <div class="flex items-center gap-2 w-full">
+                            <span class="text-[10px] font-black uppercase text-gray-900">ilyasamumtaza@gmail.com</span>
+                            <div class="h-[1.5px] w-4 bg-gray-900 transition-all duration-500 group-hover:flex-grow"></div>
+                        </div>
+                    </div>
+                </div>
+
+                {# Card WhatsApp (Tema Hitam Biru Home5) #}
+                <div class="group relative overflow-hidden bg-[#111827] p-8 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#3b82f6 0.5px, transparent 0.5px); background-size: 8px 8px;"></div>
+                    <div class="absolute top-0 right-0 w-12 h-12 bg-white/5 -mr-6 -mt-6 rotate-45 group-hover:bg-blue-500 transition-colors duration-500"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex flex-col gap-1">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.5)]"></div>
+                                    <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Live Help</span>
+                                </div>
+                                <h3 class="text-2xl font-black text-white uppercase">WhatsApp</h3>
+                            </div>
+                            {# Desain QR Container #}
+                            <div class="qr-container" onclick="zoomQR(this)">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wa.me/6282264974290" class="w-full h-full object-contain grayscale hover:grayscale-0 transition-all">
+                            </div>
+                        </div>
+
+                        <p class="text-sm text-gray-400 mb-8">Butuh bantuan cepat? Hubungi tim kami melalui jalur enkripsi WhatsApp.</p>
+
+                        <a href="https://wa.me/6282264974290" onclick="loginRequiredAction(event)" target="_blank" class="flex items-center gap-2 w-full text-blue-400 group-hover:text-white transition-colors">
+                            <span class="text-[10px] font-black uppercase tracking-widest">+62 822-6497-4290</span>
+                            <div class="h-[1.5px] w-4 bg-blue-500/50 group-hover:bg-blue-400 transition-all duration-500 group-hover:flex-grow"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {# Sisi Kanan: Formulir Pesan #}
+            <div class="lg:col-span-8">
+                <div class="group card-support-transparan p-8 md:p-12 relative overflow-hidden" data-aos="fade-left">
+                    {# Animasi Segitiga Kuning di Pojok Kanan Atas saat Hover #}
+                    <div class="absolute top-0 right-0 w-12 h-12 bg-gray-200/20 -mr-6 -mt-6 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-10">
+                            <div class="h-5 w-1.5 bg-gray-900"></div>
+                            <h3 class="text-gray-900 font-bold tracking-wide text-sm uppercase">Kirim Pesan Bantuan</h3>
+                        </div>
+
+                        <form id="supportForm" action="{% url 'support' %}" data-spree="https://formspree.io/f/xwvnogqo" method="POST" class="space-y-8">
+                            {% csrf_token %}
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div class="flex flex-col">
+                                    <label class="text-xs font-bold text-gray-500 uppercase mb-3">Nama Lengkap</label>
+                                    <input type="text" name="name" required placeholder="Masukkan Nama Anda" class="cyber-input px-5 py-4 text-sm">
+                                </div>
+                                <div class="flex flex-col">
+                                    <label class="text-xs font-bold text-gray-500 uppercase mb-3">Alamat Email</label>
+                                    <input type="email" name="email" required placeholder="nama@email.com" class="cyber-input px-5 py-4 text-sm">
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col">
+                                <label class="text-xs font-bold text-gray-500 uppercase mb-3">Pilih Kategori</label>
+                                <select name="category" class="cyber-input px-5 py-4 text-sm">
+                                    <option value="Masalah Teknis Platform">Masalah Website / Platform</option>
+                                    <option value="Pertanyaan Materi">Pertanyaan Mengenai Materi</option>
+                                    <option value="Akses Sertifikat">Masalah Sertifikat</option>
+                                    <option value="Saran & Kritik">Saran dan Kritik</option>
+                                    <option value="lainnya">Lainnya</option>
+                                </select>
+                            </div>
+
+                            <div class="flex flex-col">
+                                <label class="text-xs font-bold text-gray-500 uppercase mb-3">Isi Pesan</label>
+                                <textarea name="message" rows="4" required placeholder="Tuliskan kendala atau pertanyaan Anda di sini..." class="cyber-input px-5 py-4 text-sm resize-none"></textarea>
+                            </div>
+
+                            {# Tombol: Garis memanjang, Ikon Pesawat tetap di kanan #}
+                            <button type="submit" onclick="loginRequiredAction(event)" class="group/btn flex items-center w-full py-5 px-8 bg-gray-900 hover:bg-[#eab308] text-white hover:text-gray-900 font-bold transition-all duration-300">
+                                <span class="text-sm uppercase tracking-widest whitespace-nowrap">Kirim Pesan</span>
+                                <div class="flex-grow flex items-center ml-4">
+                                    <div class="h-[1.5px] w-4 bg-white group-hover/btn:bg-gray-900 transition-all duration-500 ease-in-out group-hover/btn:flex-grow"></div>
+                                </div>
+                                <i class="fas fa-paper-plane ml-4"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        {# Footer #}
+        <div class="w-full max-w-7xl mx-auto mt-20 border-t-2 border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-400 tracking-[0.3em] uppercase font-black">
+            <div class="flex items-center gap-2">
+                <span class="h-3 w-3 bg-gray-900"></span>
+                <span>Framework v4.0.2</span>
+            </div>
+            <span>SSC Intellectual Property © 2026</span>
+            <span class="text-gray-900 bg-[#eab308] px-3 py-1">Security: Encrypted</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    AOS.init({ once: true });
+
+    function zoomQR(el) {
+        const qrUrl = el.querySelector('img').src;
+        
+        Swal.fire({
+            title: 'HUBUNGI KAMI VIA WHATSAPP',
+            text: 'Pindai kode QR untuk terhubung dengan layanan bantuan.',
+            imageUrl: qrUrl.replace('size=150x150', 'size=300x300'),
+            imageWidth: 200, // Ukuran QR pas
+            imageHeight: 200,
+            imageAlt: 'Official WhatsApp QR Code',
+            showConfirmButton: true,
+            confirmButtonText: 'SELESAI',
+            
+            background: 'rgba(15, 15, 15, 0.95)', 
+            backdrop: `rgba(0,0,0,0.85) blur(10px)`,
+            color: '#ffffff',
+            
+            customClass: {
+                popup: 'border border-white/10 backdrop-blur-2xl rounded-2xl shadow-2xl p-4', // Padding popup diperkecil
+                title: 'font-bold tracking-tight uppercase text-lg text-[#eab308] mt-2 mb-0', // Margin atas-bawah minim
+                htmlContainer: 'text-gray-300 text-sm my-2 px-4 leading-normal', // Jarak teks dipadatkan
+                image: 'border-2 border-white/10 rounded-lg bg-white p-1 shadow-sm mt-1', // Border QR diperhalus
+                confirmButton: 'bg-[#eab308] hover:bg-yellow-600 text-black font-bold py-2.5 px-10 rounded-lg transition-all uppercase tracking-widest text-[10px] mt-1 mb-2',
+            },
+            buttonsStyling: false,
+        });
+    }
+
+    const form = document.getElementById('supportForm');
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'TRANSMITTING...',
+            allowOutsideClick: false,
+            didOpen: () => { Swal.showLoading(); },
+            customClass: { popup: 'rounded-none border-4 border-gray-900' }
+        });
+
+        const formData = new FormData(form);
+        try {
+            const dbResponse = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                    'Accept': 'application/json' 
+                }
+            });
+
+            if (dbResponse.ok) {
+                await fetch(form.dataset.spree, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                Swal.fire({
+                    title: 'SUCCESS!',
+                    text: 'Laporan terkirim ke server.',
+                    icon: 'success',
+                    confirmButtonColor: '#111827',
+                    customClass: { popup: 'rounded-none border-4 border-gray-900' }
+                });
+                form.reset();
+            }
+        } catch (error) {
+            Swal.fire({
+                title: 'ERROR!',
+                text: 'Terjadi kegagalan transmisi.',
+                icon: 'error',
+                customClass: { popup: 'rounded-none border-4 border-gray-900' }
+            });
+        }
+    });
+</script>
+{% endblock content %}

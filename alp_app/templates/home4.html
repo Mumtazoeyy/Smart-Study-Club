@@ -1,0 +1,268 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'fontawesome-free-7.1.0-web/css/all.min.css' %}">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<style>
+    /* Background Titik Industrial */
+    .industrial-dot-bg {
+        background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
+        background-size: 16px 16px;
+    }
+
+    /* Card Testimoni - Tema Glassmorphism Industrial */
+    .testimonial-card-industrial {
+        background-color: rgba(255, 255, 255, 0.05); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 0px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .testimonial-card-industrial:hover {
+        transform: translateY(-5px);
+        border-color: #111827;
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* CTA Card Industrial */
+    .cta-card-industrial {
+        background-color: #111827;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .quote-mark-industrial {
+        position: absolute;
+        top: -10px;
+        right: 10px;
+        font-size: 5rem;
+        color: rgba(0, 0, 0, 0.03);
+        font-family: 'Black Ops One', serif;
+        font-weight: 900;
+        pointer-events: none;
+    }
+
+    /* --- FORCED 2x2 GRID FOR TESTIMONIALS ON MOBILE --- */
+    @media (max-width: 640px) {
+        /* Paksa grid menjadi 2 kolom */
+        .grid.grid-cols-1.sm\:grid-cols-2.lg\:grid-cols-4 {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 0.75rem !important;
+        }
+
+        /* Kecilkan padding card agar hemat tempat */
+        .testimonial-card-industrial {
+            padding: 1.25rem !important;
+        }
+
+        /* Sesuaikan ukuran kutipan teks */
+        .testimonial-card-industrial p.text-gray-600 {
+            font-size: 0.7rem !important;
+            margin-bottom: 1rem !important;
+            line-height: 1.3 !important;
+        }
+
+        /* Kecilkan area profile di bawah */
+        .testimonial-card-industrial .pt-6 {
+            padding-top: 0.75rem !important;
+        }
+
+        .testimonial-card-industrial .h-9.w-9 {
+            height: 1.75rem !important;
+            width: 1.75rem !important;
+            font-size: 0.7rem !important;
+            margin-right: 0.5rem !important;
+        }
+
+        .testimonial-card-industrial p.text-\[11px\] {
+            font-size: 8px !important;
+        }
+
+        .testimonial-card-industrial span.text-\[8px\] {
+            font-size: 6px !important;
+        }
+
+        /* Kecilkan tanda petik raksasa di background */
+        .quote-mark-industrial {
+            font-size: 3rem !important;
+            top: -5px !important;
+        }
+    }
+</style>
+
+<div class="">
+    <div class="max-w-7xl mx-auto py-12 pb-12 px-4 sm:px-6 lg:px-8"> 
+        
+        {# Header Section #}
+        <div class="mb-12" data-aos="fade-right"> 
+            <div class="flex items-center gap-3 mb-2">
+                <div class="h-5 w-1.5 bg-[#eab308]"></div>
+                <h2 class="text-2xl md:text-3xl font-black text-gray-900 tracking-tight uppercase">
+                    Kisah <span class="text-gray-400">Pelajar Kami</span>
+                </h2>
+            </div>
+            <p class="text-gray-500 text-xs font-bold uppercase tracking-widest ml-5">Testimoni nyata dari ekosistem SSC.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {# 1. Menampilkan Data Asli dari Database #}
+            {% for review in testimonials %}
+            <div class="group" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
+                <div class="testimonial-card-industrial p-8">
+                    <span class="quote-mark-industrial">“</span>
+                    <div class="absolute top-0 right-0 w-10 h-10 bg-gray-200/20 -mr-5 -mt-5 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="flex text-[#eab308] mb-4 text-[10px]">
+                            {% for i in "12345" %}
+                                <i class="{% if forloop.counter <= review.rating %}fas{% else %}far{% endif %} fa-star mr-1"></i>
+                            {% endfor %}
+                        </div>
+                        <p class="text-gray-600 text-sm font-medium leading-relaxed mb-8 flex-grow">
+                            "Materi di kelas <span class="text-gray-900 font-black">{{ review.course.title }}</span> sangat membantu saya memahami industri ini lebih dalam."
+                        </p>
+                        <div class="pt-6 border-t border-gray-200/50 mt-auto">
+                            <div class="flex items-center">
+                                <div class="h-9 w-9 bg-gray-900 text-[#eab308] flex items-center justify-center mr-3 font-black text-sm rounded-lg">
+                                    {{ review.user.username|slice:":1"|upper }}
+                                </div>
+                                <div>
+                                    <p class="text-[11px] font-black text-gray-900 uppercase tracking-tighter">{{ review.user.username }}</p>
+                                    <span class="text-[8px] font-bold text-blue-500 uppercase tracking-[0.2em]">Verified Member</span>
+                                </div>
+                            </div>
+                            <div class="h-[1.5px] w-4 bg-gray-900 mt-4 transition-all duration-500 group-hover:w-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            {# 2. DATA DUMMY (Akan mengisi sisa slot sampai jadi 4 kotak) #}
+            {% if testimonials|length < 1 %}
+            <div class="group" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-card-industrial p-8">
+                    <span class="quote-mark-industrial">“</span>
+                    <div class="absolute top-0 right-0 w-10 h-10 bg-gray-200/20 -mr-5 -mt-5 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="flex text-[#eab308] mb-4 text-[10px]"><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i></div>
+                        <p class="text-gray-600 text-sm font-medium leading-relaxed mb-8 flex-grow">"Penjelasan mentor sangat teknis namun mudah diikuti. Proyek akhirnya benar-benar profesional."</p>
+                        <div class="pt-6 border-t border-gray-200/50 mt-auto">
+                            <div class="flex items-center">
+                                <div class="h-9 w-9 bg-gray-900 text-[#eab308] flex items-center justify-center mr-3 font-black text-sm rounded-lg">A</div>
+                                <div><p class="text-[11px] font-black text-gray-900 uppercase">Ahmad Fauzi</p><span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest">Fullstack Dev</span></div>
+                            </div>
+                            <div class="h-[1.5px] w-4 bg-gray-900 mt-4 transition-all duration-500 group-hover:w-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if testimonials|length < 2 %}
+            <div class="group" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-card-industrial p-8 border-[#eab308]/30">
+                    <span class="quote-mark-industrial">“</span>
+                    <div class="absolute top-0 right-0 w-10 h-10 bg-[#eab308]/20 -mr-5 -mt-5 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="flex text-[#eab308] mb-4 text-[10px]"><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i></div>
+                        <p class="text-gray-600 text-sm font-medium leading-relaxed mb-8 flex-grow">"Kurikulum Python-nya sangat lengkap. Dari dasar sampai visualisasi data diajarkan dengan rapi."</p>
+                        <div class="pt-6 border-t border-gray-200/50 mt-auto">
+                            <div class="flex items-center">
+                                <div class="h-9 w-9 bg-[#eab308] text-gray-900 flex items-center justify-center mr-3 font-black text-sm rounded-lg">S</div>
+                                <div><p class="text-[11px] font-black text-gray-900 uppercase">Siti Aminah</p><span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest">Data Analyst</span></div>
+                            </div>
+                            <div class="h-[1.5px] w-4 bg-gray-900 mt-4 transition-all duration-500 group-hover:w-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if testimonials|length < 3 %}
+            <div class="group" data-aos="fade-up" data-aos-delay="300">
+                <div class="testimonial-card-industrial p-8">
+                    <span class="quote-mark-industrial">“</span>
+                    <div class="absolute top-0 right-0 w-10 h-10 bg-gray-200/20 -mr-5 -mt-5 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="flex text-[#eab308] mb-4 text-[10px]"><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i></div>
+                        <p class="text-gray-600 text-sm font-medium leading-relaxed mb-8 flex-grow">"Belajar desain bukan cuma soal alat, tapi soal mindset. Dan saya menemukannya di platform SSC."</p>
+                        <div class="pt-6 border-t border-gray-200/50 mt-auto">
+                            <div class="flex items-center">
+                                <div class="h-9 w-9 bg-gray-900 text-[#eab308] flex items-center justify-center mr-3 font-black text-sm rounded-lg">R</div>
+                                <div><p class="text-[11px] font-black text-gray-900 uppercase">Rian Pratama</p><span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest">UI/UX Designer</span></div>
+                            </div>
+                            <div class="h-[1.5px] w-4 bg-gray-900 mt-4 transition-all duration-500 group-hover:w-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if testimonials|length < 4 %}
+            <div class="group" data-aos="fade-up" data-aos-delay="400">
+                <div class="testimonial-card-industrial p-8">
+                    <span class="quote-mark-industrial">“</span>
+                    <div class="absolute top-0 right-0 w-10 h-10 bg-gray-200/20 -mr-5 -mt-5 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+                    <div class="relative z-10 flex flex-col h-full">
+                        <div class="flex text-[#eab308] mb-4 text-[10px]"><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i><i class="fas fa-star mr-1"></i></div>
+                        <p class="text-gray-600 text-sm font-medium leading-relaxed mb-8 flex-grow">"Materi Ads-nya sangat up-to-date. ROI bisnis saya naik signifikan setelah ikut kursus ini."</p>
+                        <div class="pt-6 border-t border-gray-200/50 mt-auto">
+                            <div class="flex items-center">
+                                <div class="h-9 w-9 bg-gray-900 text-[#eab308] flex items-center justify-center mr-3 font-black text-sm rounded-lg">D</div>
+                                <div><p class="text-[11px] font-black text-gray-900 uppercase">Dewi Lestari</p><span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest">Entrepreneur</span></div>
+                            </div>
+                            <div class="h-[1.5px] w-4 bg-gray-900 mt-4 transition-all duration-500 group-hover:w-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        {# CTA Section Tetap Sama #}
+        <div class="relative py-2" data-aos="zoom-in">
+            <div class="cta-card-industrial p-8 md:p-14 overflow-hidden group">
+                <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#3b82f6 0.5px, transparent 0.5px); background-size: 8px 8px;"></div>
+                <div class="absolute top-0 right-0 w-16 h-16 bg-white/5 -mr-8 -mt-8 rotate-45 group-hover:bg-blue-600 transition-colors duration-500"></div>
+
+                <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-left">
+                    <div class="max-w-xl">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="h-1 w-8 bg-blue-500"></div>
+                            <span class="text-[10px] font-black text-blue-400 tracking-[0.4em] uppercase">Masa Depan Karir</span>
+                        </div>
+                        <h3 class="text-3xl md:text-4xl font-black text-white mb-4 tracking-tighter uppercase leading-tight">
+                            Siap Berakselerasi <br class="hidden md:block"> 
+                            <span class="text-gray-500">Tanpa Batas?</span>
+                        </h3>
+                        <p class="text-gray-400 text-[10px] md:text-xs font-bold uppercase tracking-widest leading-relaxed">
+                            Gabung dengan <span class="text-white border-b border-blue-500">{{ total_students|default:"0" }}K+</span> profesional lainnya.
+                        </p>
+                    </div>
+
+                    <div class="w-full md:w-auto">
+                        <a href="{% url 'class_list' %}" class="group relative inline-flex items-center justify-center bg-white text-gray-900 px-10 py-4 font-black transition-all duration-300 uppercase tracking-widest text-[10px] md:text-xs hover:bg-[#eab308] active:scale-95 shadow-xl">
+                            Mulai Sekarang
+                            <svg class="w-4 h-4 ml-3 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    AOS.init({ once: true });
+</script>

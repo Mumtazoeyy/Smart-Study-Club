@@ -1,0 +1,164 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 4,
+    "fields": {
+      "category": 1,
+      "title": "Matematika SMP 7",
+      "description": "Kurikulum lengkap Matematika untuk kelas 7 SMP yang mencakup Bilangan, Aljabar, hingga Geometri."
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 31,
+    "fields": {
+      "course": 4,
+      "title": "Modul 1: Bilangan Bulat",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 201,
+    "fields": {
+      "module": 31,
+      "title": "Konsep Dasar dan Garis Bilangan",
+      "content": "Selamat datang di perjalanan pertama kita dalam matematika SMP! Hal paling mendasar yang harus kamu kuasai sebelum melangkah lebih jauh adalah memahami 'keluarga' angka yang kita sebut Bilangan Bulat.\n\nBilangan bulat bukan hanya angka yang biasa kamu gunakan untuk menghitung benda di tangan (1, 2, 3), tetapi juga mencakup angka nol dan angka-angka negatif yang sering kita temukan dalam kehidupan nyata, seperti suhu udara di kutub atau kedalaman di bawah laut.\n\nMari kita bedah pembagiannya:\n1. Bilangan Bulat Positif: Angka-angka yang nilainya lebih besar dari nol. Contoh: 1, 2, 3, 4, 100, ...\n2. Bilangan Nol: Angka 0 yang menjadi pembatas atau titik tengah. Nol tidak bersifat positif maupun negatif.\n3. Bilangan Bulat Negatif: Angka-angka yang nilainya lebih kecil dari nol. Biasanya digunakan untuk melambangkan hutang atau posisi di bawah permukaan laut. Contoh: -1, -2, -3, -100, ...\n\n\n\nCara Membaca Garis Bilangan:\nBayangkan sebuah garis mendatar seperti gambar di atas. Aturan utamanya sangat sederhana:\n- Semakin ke KANAN letak suatu angka, maka nilainya semakin BESAR.\n- Semakin ke KIRI letak suatu angka, maka nilainya semakin KECIL.\n\nInilah alasan mengapa -1 lebih besar daripada -10. Meskipun angka 10 terlihat lebih besar dari 1, namun karena ada tanda negatif, posisi -10 berada jauh di sebelah kiri -1 pada garis bilangan. Semakin besar angka negatifnya, justru nilainya semakin kecil!",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 202,
+    "fields": {
+      "module": 31,
+      "title": "Rahasia Penjumlahan dan Pengurangan",
+      "content": "Banyak siswa merasa bingung ketika bertemu operasi seperti (-7) + 5 atau 3 - (-2). Supaya kamu tidak pusing menghafal rumus, mari kita gunakan logika sederhana yaitu 'Hutang dan Uang'.\n\nLogika Hutang-Uang:\n- Tanda Negatif (-): Anggap sebagai HUTANG.\n- Tanda Positif (+) atau angka tanpa tanda: Anggap sebagai UANG yang kamu miliki (untuk membayar).\n\nContoh Kasus:\n1. (-10) + 4\nArtinya: Kamu punya Hutang 10, tapi kamu baru bisa membayar 4. Karena uangmu tidak cukup untuk melunasi, maka kamu masih punya Sisa Hutang sebanyak 6. Jadi, (-10) + 4 = -6.\n\n2. (-5) + (-3)\nArtinya: Kamu sudah punya Hutang 5, eh kamu berhutang lagi 3. Sekarang hutangmu bertambah banyak! Jadi, (-5) + (-3) = -8.\n\n\n\nAturan Khusus Pengurangan (Dua Negatif Bertemu):\nAda kejadian unik dalam matematika. Jika ada tanda kurang bertemu dengan angka negatif, maka tandanya akan berubah menjadi TAMBAH. Ibaratnya, seseorang menghapus hutangmu, maka kekayaanmu otomatis bertambah!\nContoh: 5 - (-3) berubah menjadi 5 + 3 = 8.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 203,
+    "fields": {
+      "module": 31,
+      "title": "Teknik Cepat Perkalian dan Pembagian",
+      "content": "Berbeda dengan penjumlahan, dalam perkalian dan pembagian kita tidak menggunakan logika hutang, melainkan 'Aturan Tanda'. Kamu cukup mengingat pola sederhana ini:\n\n1. TANDA SAMA menghasilkan POSITIF:\n- (+) dikali (+) = (+)\n- (-) dikali (-) = (+)\nJadi, kalau tandanya kembar, hasilnya pasti senang (positif).\n\n2. TANDA BEDA menghasilkan NEGATIF:\n- (+) dikali (-) = (-)\n- (-) dikali (+) = (-)\nJika tandanya berbeda, mereka akan bertengkar dan hasilnya menjadi negatif.\n\n\n\nContoh Praktis:\n- Hasil dari (-4) x 5 adalah -20 (karena negatif dikali positif).\n- Hasil dari (-24) : (-6) adalah 4 (karena negatif dibagi negatif hasilnya positif).",
+      "video_url": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 204,
+    "fields": {
+      "module": 31,
+      "title": "Sifat Operasi Hitung: Cara Pintar Menghitung",
+      "content": "Matematika bukan tentang menghitung dengan cara yang sulit, tapi tentang menemukan cara yang cerdas. Ada 3 sifat utama yang akan sering kamu gunakan untuk mempermudah soal ujian:\n\n1. Komutatif (Pertukaran): Angka boleh ditukar tempatnya tanpa mengubah hasil. Ini hanya berlaku untuk TAMBAH dan KALI.\nContoh: 12 + 5 sama saja dengan 5 + 12 = 17.\n\n2. Asosiatif (Pengelompokan): Kamu boleh memilih pasangan angka mana yang mau dihitung duluan agar lebih mudah.\nContoh: (17 + 25) + 75 akan jauh lebih mudah jika kamu hitung (25 + 75) dulu menjadi 100, lalu ditambah 17. Hasilnya 117!\n\n3. Distributif (Penyebaran): Sifat ini sangat berguna untuk perkalian angka besar.\nContoh: 7 x 102 bisa kamu pecah menjadi 7 x (100 + 2). \nCaranya: (7 x 100) + (7 x 2) = 700 + 14 = 714.\n\n",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 205,
+    "fields": {
+      "module": 31,
+      "title": "Kuis Kompetensi: Bilangan Bulat",
+      "content": "Luar biasa! Kamu sudah menyelesaikan seluruh materi dasar Bilangan Bulat. Sekarang adalah waktunya untuk menguji sejauh mana pemahamanmu. Ingat, ketelitian adalah kunci dalam matematika. Perhatikan setiap tanda negatif (-) yang ada, karena satu tanda saja yang terlewat bisa membuat jawabanmu salah total. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 31,
+    "fields": {
+      "lesson": 205,
+      "title": "Kuis Bilangan Bulat",
+      "description": "Latihan soal operasi hitung campuran dan logika bilangan bulat untuk kelas 7."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 201,
+    "fields": {
+      "quiz": 31,
+      "text": "Hasil dari operasi (-12) + 7 - (-5) adalah...",
+      "topic": "Operasi Campuran",
+      "option_a": "0",
+      "option_b": "-10",
+      "option_c": "10",
+      "option_d": "-24",
+      "correct_answer": "A",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 202,
+    "fields": {
+      "quiz": 31,
+      "text": "Dalam sebuah kompetisi, setiap jawaban benar skornya 4, salah skornya -2, dan tidak dijawab -1. Dari 50 soal, Ali menjawab benar 35 dan salah 10. Berapakah skor total Ali?",
+      "topic": "Soal Cerita",
+      "option_a": "120",
+      "option_b": "115",
+      "option_c": "100",
+      "option_d": "105",
+      "correct_answer": "B",
+      "difficulty_level": 1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 203,
+    "fields": {
+      "quiz": 31,
+      "text": "Berapakah hasil dari (-4) x 8 : (-2)?",
+      "topic": "Perkalian & Pembagian",
+      "option_a": "16",
+      "option_b": "-16",
+      "option_c": "8",
+      "option_d": "-8",
+      "correct_answer": "A",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 204,
+    "fields": {
+      "quiz": 31,
+      "text": "Suhu udara di Puncak Jaya mula-mula adalah -5 derajat Celcius. Pada siang hari suhu naik 12 derajat Celcius. Berapakah suhu udara sekarang?",
+      "topic": "Soal Cerita",
+      "option_a": "-17 derajat Celcius",
+      "option_b": "17 derajat Celcius",
+      "option_c": "7 derajat Celcius",
+      "option_d": "-7 derajat Celcius",
+      "correct_answer": "C",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 205,
+    "fields": {
+      "quiz": 31,
+      "text": "Manakah pernyataan perbandingan yang benar di bawah ini?",
+      "topic": "Garis Bilangan",
+      "option_a": "-15 < -20",
+      "option_b": "-5 > -2",
+      "option_c": "-10 < -7",
+      "option_d": "0 < -1",
+      "correct_answer": "C",
+      "difficulty_level": -0.8
+    }
+  }
+]

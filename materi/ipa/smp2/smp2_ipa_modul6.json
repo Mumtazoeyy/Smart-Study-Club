@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 76,
+    "fields": {
+      "course": 8,
+      "title": "Modul 6: Tekanan Zat dan Penerapannya",
+      "order": 6
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 576,
+    "fields": {
+      "module": 76,
+      "title": "Tekanan Zat Padat",
+      "content": "Tekanan adalah besarnya gaya yang bekerja pada setiap satuan luas permukaan benda. Pada zat padat, besarnya tekanan sangat dipengaruhi oleh gaya yang diberikan dan luas bidang tekan.\n\n**Rumus Tekanan:**\n$$P = \\frac{F}{A}$$\nDimana:\n- $P$ = Tekanan (Pascal atau $N/m^2$)\n- $F$ = Gaya (Newton)\n- $A$ = Luas bidang tekan ($m^2$)\n\n**Konsep Penting:**\n1. Semakin besar gaya ($F$), semakin besar tekanannya.\n2. Semakin kecil luas bidang tekan ($A$), semakin besar tekanannya. Inilah alasan mengapa pisau dibuat tajam (ujung tipis) agar tekanannya besar dan mudah memotong, atau mengapa bebek mudah berjalan di lumpur karena kakinya berselaput (luas bidang tekan besar sehingga tekanan kecil).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 577,
+    "fields": {
+      "module": 76,
+      "title": "Tekanan Zat Cair (Hidrostatis) dan Hukum Pascal",
+      "content": "Zat cair memberikan tekanan ke segala arah. Ada dua konsep utama di sini:\n\n1. **Tekanan Hidrostatis**: Tekanan yang disebabkan oleh berat zat cair itu sendiri. Semakin dalam posisi suatu benda dari permukaan, semakin besar tekanannya. Rumusnya: $P_h = \\rho \\cdot g \\cdot h$ (Massa jenis x Gravitasi x Kedalaman).\n\n2. **Hukum Pascal**: Tekanan yang diberikan pada zat cair dalam ruang tertutup akan diteruskan ke segala arah dengan sama besar. Prinsip ini digunakan pada pompa hidrolik, rem mobil, dan kursi dokter gigi.\n\n[Image showing the mechanism of a hydraulic jack based on Pascal's Law]\n\nDengan memberikan gaya kecil pada penampang yang kecil, kita bisa menghasilkan gaya yang sangat besar pada penampang yang besar untuk mengangkat mobil.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 578,
+    "fields": {
+      "module": 76,
+      "title": "Hukum Archimedes: Mengapa Benda Mengapung?",
+      "content": "Hukum Archimedes menyatakan: 'Jika sebuah benda dicelupkan ke dalam zat cair, benda tersebut akan mendapat gaya angkat ke atas ($F_a$) yang besarnya sama dengan berat zat cair yang dipindahkan'.\n\nKondisi benda dalam air:\n- **Mengapung**: Massa jenis benda < massa jenis air.\n- **Melayang**: Massa jenis benda = massa jenis air.\n- **Tenggelam**: Massa jenis benda > massa jenis air.\n\n\n\nPrinsip ini menjelaskan mengapa kapal laut yang sangat berat dan terbuat dari besi bisa mengapung di lautan; itu karena volume kapal yang besar memindahkan air yang sangat banyak, menciptakan gaya angkat yang besar.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 579,
+    "fields": {
+      "module": 76,
+      "title": "Video: Tekanan Gas dan Tekanan Darah",
+      "content": "Tekanan tidak hanya terjadi pada benda terlihat, tapi juga pada udara (gas). Video ini akan menjelaskan tentang Hukum Boyle dan bagaimana paru-paru kita bekerja menggunakan perbedaan tekanan udara untuk bernapas. Selain itu, kita akan membedah bagaimana tekanan darah manusia diukur dan bagaimana proses pengangkutan air dari akar ke daun tumbuhan juga dipengaruhi oleh tekanan kapilaritas dan osmosis.",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 580,
+    "fields": {
+      "module": 76,
+      "title": "Kuis: Master Tekanan",
+      "content": "Uji analisismu mengenai tekanan! Kuis ini berisi soal perhitungan sederhana dan analisis logika tentang fenomena tekanan dalam kehidupan sehari-hari. Siapkan coretan untuk menghitung!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 76,
+    "fields": {
+      "lesson": 580,
+      "title": "Evaluasi Tekanan Zat",
+      "description": "Uji kompetensi tentang tekanan zat padat, hidrostatis, Hukum Pascal, dan Hukum Archimedes."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 576,
+    "fields": {
+      "quiz": 76,
+      "text": "Seorang penyelam berada pada kedalaman 10 meter. Penyelam lain berada pada kedalaman 20 meter. Siapa yang menerima tekanan hidrostatis lebih besar?",
+      "topic": "Tekanan Hidrostatis",
+      "option_a": "Penyelam pada kedalaman 10 meter",
+      "option_b": "Penyelam pada kedalaman 20 meter",
+      "option_c": "Keduanya menerima tekanan yang sama",
+      "option_d": "Tergantung berat badan penyelam",
+      "correct_answer": "B",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 577,
+    "fields": {
+      "quiz": 76,
+      "text": "Prinsip kerja alat pengangkat mobil (dongkrak hidrolik) merupakan penerapan dari...",
+      "topic": "Hukum Pascal",
+      "option_a": "Hukum Archimedes",
+      "option_b": "Hukum Newton",
+      "option_c": "Hukum Pascal",
+      "option_d": "Hukum Boyle",
+      "correct_answer": "C",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 578,
+    "fields": {
+      "quiz": 76,
+      "text": "Jika luas bidang tekan diperkecil sementara gaya tetap, maka tekanan yang dihasilkan akan...",
+      "topic": "Tekanan Zat Padat",
+      "option_a": "Mengecil",
+      "option_b": "Membesar",
+      "option_c": "Tetap",
+      "option_d": "Menjadi nol",
+      "correct_answer": "B",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 579,
+    "fields": {
+      "quiz": 76,
+      "text": "Sebuah benda akan melayang di dalam air jika...",
+      "topic": "Hukum Archimedes",
+      "option_a": "Massa jenis benda lebih besar dari air",
+      "option_b": "Massa jenis benda lebih kecil dari air",
+      "option_c": "Massa jenis benda sama dengan air",
+      "option_d": "Benda tidak memiliki massa jenis",
+      "correct_answer": "C",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 580,
+    "fields": {
+      "quiz": 76,
+      "text": "Alat pengukur tekanan darah (tensimeter) bekerja berdasarkan prinsip...",
+      "topic": "Tekanan dalam Tubuh",
+      "option_a": "Hukum Archimedes",
+      "option_b": "Hukum Pascal",
+      "option_c": "Hukum Newton",
+      "option_d": "Gaya Gesek",
+      "correct_answer": "B",
+      "difficulty_level": 0.8
+    }
+  }
+]

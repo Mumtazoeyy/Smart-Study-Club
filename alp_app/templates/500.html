@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 | System Overload SSC Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .body-bg {
+            background: linear-gradient(to bottom, #f8fafc, #e2e8f0, #94a3b8, #475569);
+            background-attachment: fixed;
+        }
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(220, 38, 38, 0.2);
+            position: absolute;
+            animation: scanline 4s linear infinite;
+        }
+    </style>
+</head>
+<body class="body-bg min-h-screen flex items-center justify-center overflow-hidden">
+
+    <div class="container mx-auto px-6 flex flex-col items-center justify-center text-center relative z-10">
+        
+        {# Efek Angka 500 Besar di Latar Belakang #}
+        <div class="relative mb-4">
+            <h1 class="text-[120px] md:text-[200px] font-black text-red-600 leading-none tracking-tighter opacity-10 select-none">
+                500
+            </h1>
+            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                {# Visual Alarm Icon #}
+                <div class="relative mb-2">
+                    <div class="absolute inset-0 bg-red-600 blur-2xl opacity-20 animate-pulse"></div>
+                    <i class="fas fa-radiation text-5xl md:text-6xl text-gray-900 relative z-10"></i>
+                </div>
+            </div>
+        </div>
+
+        {# Error Header #}
+        <div class="relative -mt-10 md:-mt-16">
+            <h2 class="text-4xl md:text-7xl font-black text-gray-900 tracking-tighter uppercase leading-none">
+                System <br>
+                <span class="relative inline-block px-4 mt-2">
+                    <span class="absolute inset-0 bg-red-600 -skew-x-12 shadow-lg"></span>
+                    <span class="relative z-10 italic text-white">Overload</span>
+                </span>
+            </h2>
+            <p class="mt-6 text-xs font-black text-red-600 tracking-[0.4em] uppercase animate-pulse">
+                Internal Server Error // Status: 500_CRITICAL_FAILURE
+            </p>
+        </div>
+
+        {# Technical Description Box #}
+        <div class="max-w-xl mt-10 border-t-2 border-gray-900 pt-8">
+            <div class="bg-gray-900 text-left p-6 font-mono text-[10px] text-red-400 mb-8 overflow-hidden relative shadow-[8px_8px_0px_#dc2626]">
+                <div class="scanline"></div>
+                <div class="absolute top-2 right-4 opacity-50 uppercase text-[8px]">Core: SSC-v4.0.2</div>
+                <p class="relative z-10">> ERROR_CODE: 0x500_SYSTEM_COLLAPSE</p>
+                <p class="relative z-10">> STATUS: DATA_FLOW_INTERRUPTED</p>
+                <p class="relative z-10">> ACTION: EMERGENCY_REBOOT_RECOMMENDED</p>
+                <div class="mt-4 text-gray-400 relative z-10 border-l border-gray-700 pl-4 italic">
+                    Maaf, inti sistem sedang mengalami lonjakan beban atau kesalahan logika internal. 
+                    Tim teknis kami telah menerima notifikasi otomatis. Silakan muat ulang halaman.
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <button onclick="location.reload()" class="px-8 py-4 bg-gray-900 text-white font-black uppercase text-xs tracking-[0.2em] hover:bg-red-600 transition-all shadow-[6px_6px_0px_#111827] flex items-center justify-center gap-2 active:translate-y-1 active:shadow-none">
+                    <i class="fas fa-sync-alt"></i> Force Reload
+                </button>
+                <a href="/support/" class="px-8 py-4 border-2 border-gray-900 text-gray-900 font-black uppercase text-xs tracking-[0.2em] hover:bg-white transition-all flex items-center justify-center gap-2">
+                    <i class="fas fa-exclamation-circle"></i> Contact Support
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    {# Noise Overlay untuk tekstur industrial #}
+    <div class="fixed inset-0 pointer-events-none opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+
+    <script>
+        console.warn("CRITICAL_ERROR: 500 Internal Server Error detected in SSC Hub.");
+        
+        // Animasi rotasi icon radiasi
+        const icon = document.querySelector('.fa-radiation');
+        icon.style.animation = 'spin 10s linear infinite';
+        
+        const style = document.createElement('style');
+        style.innerHTML = `@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

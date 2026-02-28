@@ -1,0 +1,795 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block title %}Detail Kelas: {{ class_object.title }}{% endblock %}
+
+{% block content %}
+
+<style>
+    /* Card Transparan Glassmorphism sesuai Home5 */
+    .card-glass-transparan {
+        background-color: rgba(255, 255, 255, 0.05); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-glass-transparan:hover {
+        border-color: rgba(0, 0, 0, 0.3);
+        transform: translateY(-2px);
+    }
+
+    /* Efek Garis Memanjang (Signature Home5) */
+    .hover-line-grow {
+        height: 1.5px;
+        width: 1rem;
+        background-color: rgba(59, 130, 246, 0.5); /* Blue-500/50 */
+        transition: all 0.5s ease-in-out;
+    }
+    .group:hover .hover-line-grow {
+        width: 100%;
+        background-color: #3b82f6;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="{% static 'fontawesome-free-7.1.0-web/css/all.min.css' %}">
+
+<div class="py-10 pb-20 -mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {# --- HERO SECTION (MATCHING HOME5 DESIGN) --- #}
+        <div class="fade-in-section mb-16 relative group" data-aos="fade-up">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
+                
+                {# --- KOLOM KIRI: INFO UTAMA (CARD TRANSPARAN) --- #}
+                <div class="lg:col-span-2 card-glass-transparan p-8 md:p-12 relative overflow-hidden h-full flex flex-col group">
+                    
+                    {# Bagian Atas: Header, Judul, Deskripsi #}
+                    <div class="mb-auto">
+                        {# Header Row #}
+                        <div class="flex items-center justify-between mb-10">
+                            <div class="flex items-center gap-3">
+                                <span class="bg-[#eab308] text-gray-900 px-3 py-1 text-[8px] font-black uppercase tracking-[0.2em]">
+                                    {{ class_object.course_code }}
+                                </span>
+                                <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest">Kode Kelas</span>
+                            </div>
+
+                            <svg class="w-5 h-5 text-gray-400 group-hover:text-[#eab308] transition-all duration-300 transform group-hover:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                        </div>
+                        
+                        <h1 class="text-4xl md:text-6xl font-black text-gray-900 mb-6 leading-tight uppercase tracking-tighter italic">
+                            {{ class_object.title }}
+                        </h1>
+                        
+                        <p class="text-gray-500 font-medium text-sm leading-relaxed mb-12 max-w-2xl border-l-2 border-[#eab308]/40 pl-4">
+                            {{ class_object.description|truncatewords:45 }}
+                        </p>
+                    </div>
+
+                    {# --- STATS ROW (Nempel di bawah karena mb-auto di atas) --- #}
+                    <div class="flex items-center gap-8 mb-12">
+                        {# Level #}
+                        <div class="flex flex-col">
+                            <span class="text-[8px] font-black text-gray-400 uppercase tracking-widest mb-1">Tingkat Kesulitan</span>
+                            <span class="text-[10px] font-black text-gray-900 uppercase italic">Level: Dasar</span>
+                        </div>
+                        
+                        <div class="h-8 w-px bg-gray-200"></div>
+                        
+                        {# Modul #}
+                        <div class="flex flex-col">
+                            <span class="text-[8px] font-black text-gray-400 uppercase tracking-widest mb-1">Materi Tersedia</span>
+                            <span class="text-[10px] font-black text-gray-900 uppercase italic">{{ modules|length }} Modul Belajar</span>
+                        </div>
+
+                        <div class="h-8 w-px bg-gray-200"></div>
+
+                        {# Peserta #}
+                        <div class="flex flex-col">
+                            <span class="text-[8px] font-black text-gray-400 uppercase tracking-widest mb-1">Komunitas</span>
+                            <span class="text-[10px] font-black text-gray-900 uppercase italic">
+                                {% with total_students=class_object.enrollment_set.count %}
+                                    {{ total_students }} Siswa Bergabung
+                                {% endwith %}
+                            </span>
+                        </div>
+
+                        {# Rating #}
+                        <a href="{% url 'feedback_view' %}" onclick="loginRequiredAction(event)" class="ml-auto flex flex-col items-end group/rate hover:opacity-80 transition-all text-right">
+                            <span class="text-[8px] font-black text-gray-400 uppercase tracking-widest mb-1">Ulasan Siswa</span>
+                            <div class="flex items-center gap-2">
+                                <div class="flex text-[#eab308]">
+                                    {% for i in "12345" %}
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-2.5 w-2.5 {% if forloop.counter > rating_score %}text-gray-200{% endif %}" viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.004 8.73c-.784-.57-.381-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                    {% endfor %}
+                                </div>
+                                <span class="text-[10px] font-black text-gray-900">{{ rating_score|floatformat:1 }}</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    {# Footer Garis Memanjang #}
+                    <div class="flex items-center gap-3 w-full">
+                        <span class="text-[10px] font-black text-[#eab308] uppercase tracking-[0.3em] whitespace-nowrap">Informasi Detail Kelas</span>
+                        <div class="hover-line-grow !bg-[#eab308]/30"></div>
+                    </div>
+                </div>
+
+                {# --- KOLOM KANAN: PANEL AKSI --- #}
+                <div class="lg:col-span-1">
+                    {# Tetap Biru Gelap (bg-gray-900), tapi hover melayang (translate-y) sesuai style Home5 #}
+                    <div class="bg-gray-900 p-8 relative h-full flex flex-col justify-between overflow-hidden border border-gray-800 transition-all duration-400 ease-in-out hover:-translate-y-1 group">
+                        
+                        {# Pola Dekorasi Background Kuning di atas Hitam #}
+                        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#eab308 0.5px, transparent 0.5px); background-size: 10px 10px;"></div>
+
+                        <div class="relative z-10">
+                            {# Foto Thumbnail Kelas #}
+                            <div class="relative mb-8 group/thumb">
+                                <div class="aspect-video w-full overflow-hidden border border-gray-800 bg-gray-800 relative">
+                                    {% if class_object.thumbnail %}
+                                        <img src="{{ class_object.thumbnail.url }}" alt="{{ class_object.title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover/thumb:scale-105">
+                                    {% else %}
+                                        <div class="w-full h-full flex flex-col items-center justify-center bg-gray-800">
+                                            <i class="fas fa-image text-gray-700 text-3xl mb-2"></i>
+                                            <span class="text-[8px] font-bold text-gray-600 uppercase">Gambar Belum Tersedia</span>
+                                        </div>
+                                    {% endif %}
+                                    
+                                    {# Aksen Garis Kuning di Pojok #}
+                                    <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#eab308]/50"></div>
+                                </div>
+                                <span class="text-[8px] font-black text-gray-500 uppercase tracking-widest mt-2 block">Tampilan Kelas</span>
+                            </div>
+
+                            {# Status Akses #}
+                            <div class="flex justify-between items-start mb-12">
+                                <div>
+                                    <span class="text-[9px] font-black text-[#eab308] uppercase tracking-[0.4em] block mb-2">Status Akses</span>
+                                    <h3 class="text-2xl font-black text-white uppercase tracking-tight italic">Tersedia</h3>
+                                </div>
+                                <div class="h-10 w-10 border border-[#eab308]/30 flex items-center justify-center text-[#eab308]">
+                                    <i class="fas fa-check-circle text-xs"></i>
+                                </div>
+                            </div>
+
+                            {# Progress Bar #}
+                            <div class="space-y-8">
+                                <div>
+                                    <span class="text-[8px] font-black text-gray-500 uppercase tracking-widest block mb-1">Progress Belajar Anda</span>
+                                    <div class="flex items-baseline gap-2">
+                                        <span class="text-4xl font-black text-white italic tracking-tighter">
+                                            {% if is_enrolled %}{{ enrollment.progress_percentage|floatformat:0 }}{% else %}0{% endif %}%
+                                        </span>
+                                        <span class="text-[10px] text-[#eab308] font-bold uppercase">Selesai</span>
+                                    </div>
+                                    <div class="h-[2px] w-full bg-gray-800 mt-2">
+                                        <div class="h-full bg-[#eab308] shadow-[0_0_8px_#eab308]" style="width: {% if is_enrolled %}{{ enrollment.progress_percentage }}{% else %}0{% endif %}%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {# Tombol Aksi Bawah #}
+                        <div class="relative z-10 mt-12">
+                            {% if user.is_authenticated and is_enrolled %} 
+                                {# Jika progress 100%, tampilkan tombol pemicu notifikasi selesai #}
+                                {% if enrollment.progress_percentage >= 100 %}
+                                    <button type="button" onclick="showCourseCompleted()" class="group/btn flex items-center justify-between bg-[#eab308] hover:bg-yellow-400 text-gray-900 px-6 py-4 transition-all duration-300 w-full">
+                                        <span class="text-[10px] font-black uppercase tracking-[0.2em]">Materi Selesai</span>
+                                        <i class="fas fa-check-double text-xs group-hover/btn:scale-125 transition-transform"></i>
+                                    </button>
+                                {% else %}
+                                    {# Jika belum 100%, tampilkan tombol Lanjutkan seperti biasa #}
+                                    <a href="{{ link_to_continue|default:'#' }}" class="group/btn flex items-center justify-between bg-[#eab308] hover:bg-yellow-400 text-gray-900 px-6 py-4 transition-all duration-300">
+                                        <span class="text-[10px] font-black uppercase tracking-[0.2em]">Lanjutkan Materi</span>
+                                        <i class="fas fa-arrow-right text-xs group-hover/btn:translate-x-1 transition-transform"></i>
+                                    </a>
+                                {% endif %}
+                            {% else %}
+                                {# Jika belum daftar (baik sudah login atau belum), tampilkan tombol Daftar #}
+                                <a href="{% url 'course_enroll' class_object.pk %}" 
+                                onclick="loginRequiredAction(event)" 
+                                class="group/btn flex items-center justify-between bg-[#eab308] hover:bg-yellow-400 text-gray-900 px-6 py-4 transition-all duration-300">
+                                    <span class="text-[10px] font-black uppercase tracking-[0.2em]">Daftar Sekarang</span>
+                                    <i class="fas fa-plus text-xs group-hover/btn:rotate-90 transition-transform"></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# --- BAGIAN BAWAH: KURIKULUM & INSTRUKTUR (GLASSMorphism STYLE) --- #}
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mt-12">
+            
+            {# Ditambahkan space-y-12 agar ada jarak antar blok besar #}
+            <div class="lg:col-span-2 space-y-12"> 
+
+                {# --- BLOK KURIKULUM --- #}
+                <div class="fade-in-section group/kurikulum" data-aos="fade-right">
+                    {# Header Kurikulum #}
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="flex items-center gap-3 shrink-0">
+                            <div class="w-1 h-6 bg-[#eab308]"></div>
+                            <h2 class="text-xl font-black text-gray-900 uppercase tracking-tighter italic">Kurikulum Kelas</h2>
+                        </div>
+                        
+                        <div class="relative flex-grow h-[2px] bg-gray-100 overflow-hidden">
+                            <div class="absolute inset-0 bg-[#eab308] transform -translate-x-full group-hover/kurikulum:translate-x-0 transition-transform duration-700 ease-in-out"></div>
+                            <div class="absolute inset-y-0 left-0 w-8 bg-[#eab308]/40"></div>
+                        </div>
+                    </div>
+
+                    {# List Card Materi #}
+                    <div class="space-y-4">
+                        {% for module in modules %}
+                        <div class="card-glass-transparan p-5 relative overflow-hidden group transition-all duration-300 hover:border-gray-200">
+                            <div class="flex items-center justify-between relative z-10">
+                                <div class="flex items-center gap-4">
+                                    <div class="bg-[#eab308] text-gray-900 text-[8px] font-black px-2 py-0.5 uppercase tracking-widest italic">
+                                        UNIT {{ module.order }}
+                                    </div>
+                                    <div>
+                                        <h4 class="font-black text-lg text-gray-900 uppercase tracking-tighter leading-tight">{{ module.title }}</h4>
+                                        <p class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">{{ module.lessons.count }} Materi</p>
+                                    </div>
+                                </div>
+                                <i class="fas fa-layer-group text-gray-100 text-xl group-hover:text-[#eab308]/10 transition-colors"></i>
+                            </div>
+                            
+                            <div class="mt-5 space-y-1 ml-1 border-l border-gray-100 pl-4">
+                                {% for lesson in module.lessons.all %}
+                                <div class="flex items-center justify-between py-2 border-b border-transparent hover:border-gray-50 transition-all group/item">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center transition-all group-hover/item:border-[#eab308] group-hover/item:bg-[#eab308]/5
+                                            {% if lesson.id in completed_lessons %} bg-green-50 border-green-100 text-green-600 {% endif %}">
+                                            {% if lesson.id in completed_lessons %}
+                                                <i class="fas fa-check text-[8px]"></i>
+                                            {% else %}
+                                                <i class="fas {% if lesson.content_type == 'video' %}fa-play{% elif lesson.content_type == 'quiz' %}fa-stopwatch{% else %}fa-file-alt{% endif %} text-[8px] text-gray-400 group-hover/item:text-[#eab308]"></i>
+                                            {% endif %}
+                                        </div>
+
+                                        <a href="{% url 'lesson_content' lesson.pk %}" onclick="loginRequiredAction(event)" class="text-[10px] font-black uppercase tracking-widest transition-all 
+                                            {% if lesson.id in completed_lessons %} text-gray-400 {% else %} text-gray-700 hover:text-[#eab308] {% endif %}">
+                                            {{ lesson.title }}
+                                        </a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div> 
+
+                <div class="group/line mt-8 mb-4"> 
+                    <div class="flex items-center gap-4">
+                        {# Judul di Sisi Kiri #}
+                        <span class="text-[11px] font-black uppercase tracking-[0.3em] text-gray-900 italic shrink-0">
+                            Discussion
+                        </span>
+                        
+                        {# Container Garis #}
+                        <div class="relative h-[2px] flex-grow bg-gray-100 overflow-hidden">
+                            {# Garis Kuning yang muncul saat di-hover #}
+                            <div class="absolute inset-0 bg-[#eab308] transform -translate-x-full group-hover/line:translate-x-0 transition-transform duration-700 ease-in-out"></div>
+                        </div>
+                    </div>
+                </div>
+
+                {# --- BLOK DISKUSI --- #}
+                <div class="card-glass-transparan p-8 md:p-10 relative overflow-hidden flex flex-col group/card">
+                    {# Header Row #}
+                    <div class="flex items-center justify-between mb-8">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-[#eab308] text-gray-900 px-3 py-1 text-[9px] font-black uppercase tracking-wider">
+                                Diskusi
+                            </span>
+                            <span id="msg-count" class="text-[10px] font-bold text-gray-400 uppercase tracking-wide">
+                                {{ discussions|length }} Pesan
+                            </span>
+                        </div>
+
+                        <svg class="w-5 h-5 text-gray-300 group-hover/card:text-[#eab308] transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                    </div>
+
+                    {# Judul & Deskripsi #}
+                    <div class="mb-10">
+                        <h2 class="text-3xl font-black text-gray-900 mb-3 uppercase tracking-tight">
+                            Ruang Tanya Jawab
+                        </h2>
+                        <p class="text-gray-500 font-medium text-sm leading-relaxed max-w-2xl border-l-2 border-[#eab308] pl-4">
+                            Tanyakan hal yang belum dipahami atau berbagi informasi dengan siswa lainnya di sini.
+                        </p>
+                    </div>
+
+                    {# Form Input #}
+                    {% if user.is_authenticated %}
+                    <div class="mb-8 relative z-10">
+                        <form id="discussion-form" action="{% url 'post_discussion' class_object.id %}" method="POST" class="group/form">
+                            {% csrf_token %}
+                            <div class="relative">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Tulis Komentar</span>
+                                </div>
+                                
+                                <textarea id="discussion-content" name="content" rows="3" required
+                                    class="w-full p-5 bg-white/30 backdrop-blur-sm border border-gray-200 focus:border-[#eab308] focus:ring-0 text-gray-900 font-medium transition-all resize-none text-sm placeholder:text-gray-400 shadow-sm"
+                                    placeholder="Apa yang ingin Anda tanyakan?"></textarea>
+                            </div>
+
+                            <div class="flex justify-end mt-4">
+                                <button type="submit" onclick="loginRequiredAction(event)" class="group/btn flex items-center gap-3 bg-gray-900 text-white px-8 py-3 transition-all duration-300 hover:bg-[#eab308] hover:text-gray-900">
+                                    <span class="text-[11px] font-bold uppercase tracking-widest">Kirim Pesan</span>
+                                    <i class="fas fa-paper-plane text-[10px] transition-transform"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    {% endif %}
+
+                    {# Footer Line #}
+                    <div class="flex items-center gap-3 w-full mt-auto">
+                        <span class="text-[9px] font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap">Kolom Komentar</span>
+                        
+                        <div class="h-[1px] flex-grow bg-gray-200 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-[#eab308] transform -translate-x-full group-hover/card:translate-x-0 transition-transform duration-1000 ease-in-out"></div>
+                        </div>
+                        
+                        <div class="w-1 h-1 bg-gray-200 group-hover:bg-[#eab308] transition-colors duration-500 rotate-45"></div>
+                    </div>
+                </div>
+                
+                {# Daftar List Diskusi #}
+                <div id="discussion-list" class="space-y-8 relative z-10 mt-10">
+                    {% for comment in discussions %}
+                        {% if not comment.parent %}
+                        <div class="animate-fade-in group/item" id="comment-{{ comment.id }}">
+                            <div class="flex gap-4 md:gap-6">
+                                {# Avatar Utama #}
+                                <div class="hidden md:block flex-shrink-0">
+                                    <div class="w-10 h-10 bg-white/40 backdrop-blur-sm border border-gray-200 flex items-center justify-center overflow-hidden shadow-sm group-hover/item:border-[#eab308] transition-colors">
+                                        {% if comment.user.user_profile.foto %}
+                                            <img src="{{ comment.user.user_profile.foto.url }}" alt="Profile" class="h-full w-full object-cover">
+                                        {% else %}
+                                            <span class="text-gray-900 font-black text-sm uppercase">{{ comment.user.username|slice:":1" }}</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="flex-1">
+                                    {# Pesan Utama #}
+                                    <div class="bg-white/40 backdrop-blur-sm border border-gray-200 p-5 shadow-sm transition-all hover:border-gray-300">
+                                        <div class="flex items-center justify-between mb-3 border-b border-gray-100 pb-2">
+                                            <div class="flex items-center gap-3">
+                                                <span class="font-black text-gray-900 text-xs uppercase tracking-tight">{{ comment.user.username }}</span>
+                                                {% if comment.user.is_staff %}
+                                                    <span class="bg-[#eab308] text-gray-900 text-[8px] px-2 py-0.5 font-black uppercase">Mentor</span>
+                                                {% endif %}
+                                            </div>
+                                            <span class="text-[9px] text-gray-400 font-bold uppercase">{{ comment.created_at|timesince }} yang lalu</span>
+                                        </div>
+                                        
+                                        <p class="text-gray-700 text-sm leading-relaxed font-medium">{{ comment.content }}</p>
+                                        
+                                        <div class="flex items-center gap-6 mt-4 pt-3 border-t border-gray-100/50">
+                                            {# Tombol Suka #}
+                                            <form action="{% url 'like_comment' comment.id %}" method="POST">
+                                                {% csrf_token %}
+                                                <button type="submit" class="flex items-center gap-2 font-bold text-[10px] uppercase tracking-widest transition-colors {% if request.user in comment.likes.all %}text-red-500{% else %}text-gray-400 hover:text-red-500{% endif %}">
+                                                    <i class="{% if request.user in comment.likes.all %}fas{% else %}far{% endif %} fa-heart"></i> 
+                                                    <span>{{ comment.likes.count }}</span> Suka
+                                                </button>
+                                            </form>
+                                            
+                                            {# Tombol Balas Utama #}
+                                            <button onclick="toggleReplyForm('{{ comment.id }}')" class="flex items-center gap-2 text-gray-400 hover:text-gray-900 font-bold text-[10px] uppercase tracking-widest transition-colors">
+                                                <i class="fas fa-reply"></i> Balas
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    {# Container Replies #}
+                                    <div id="replies-{{ comment.id }}" class="mt-6 space-y-4 border-l-2 border-gray-200 pl-6">
+                                        {% for reply in comment.get_all_replies %}
+                                        <div class="py-2 flex gap-3 items-start group/reply" id="comment-{{ reply.id }}">
+                                            <div class="flex-none">
+                                                <div class="h-8 w-8 bg-white border border-gray-200 flex items-center justify-center overflow-hidden shadow-sm">
+                                                    {% if reply.user.user_profile.foto %}
+                                                        <img src="{{ reply.user.user_profile.foto.url }}" alt="Profile" class="h-full w-full object-cover">
+                                                    {% else %}
+                                                        <span class="text-gray-900 font-black text-[10px] uppercase">{{ reply.user.username|slice:":1" }}</span>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+
+                                            <div class="flex-1">
+                                                <div class="flex items-center gap-2">
+                                                    <span class="font-black text-[9px] text-gray-900 uppercase tracking-widest">@{{ reply.user.username }}</span>
+                                                    
+                                                    {# FITUR BARU: Klik ini untuk membalas reply tersebut #}
+                                                    <button onclick="replyToUser('{{ comment.id }}', '{{ reply.user.username }}')" class="opacity-0 group-hover/reply:opacity-100 text-[8px] font-black text-[#eab308] uppercase tracking-tighter transition-all hover:underline">
+                                                        Balas
+                                                    </button>
+                                                </div>
+                                                <p class="text-xs text-gray-500 mt-1 font-medium">
+                                                    {{ reply.content }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                        
+                                        {# Form Input Balasan (Muncul lewat toggle) #}
+                                        <div id="form-container-{{ comment.id }}" class="hidden mt-4 animate-fade-in">
+                                            <form action="{% url 'reply_comment' comment.id %}" method="POST" class="flex items-stretch gap-0">
+                                                {% csrf_token %}
+                                                <input id="input-{{ comment.id }}" name="content" type="text" required placeholder="TULIS BALASAN..." 
+                                                    class="flex-1 px-4 py-3 text-[10px] tracking-widest uppercase border border-gray-200 focus:border-[#eab308] outline-none bg-white/30 backdrop-blur-sm transition-all"
+                                                    style="height: 40px; box-sizing: border-box;">
+
+                                                <button type="submit" onclick="loginRequiredAction(event)"
+                                                    class="bg-gray-900 text-white px-6 text-[10px] font-black uppercase tracking-widest border border-gray-900 hover:bg-[#eab308] hover:border-[#eab308] hover:text-gray-900 transition-all outline-none"
+                                                    style="height: 40px; box-sizing: border-box; margin-left: -1px;">
+                                                    Kirim
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+            </div> {# Sisi Kanan (Sidebar) tetap di sini jika ada #}
+            
+            {# Kolom Kanan: Mentor & Final #}
+            <div class="lg:col-span-1 space-y-12 fade-in-section lg:sticky lg:top-10 self-start" data-aos="fade-left">
+                
+                {# --- SECTION: INSTRUCTOR --- #}
+                <div class="group/section">
+                    {# Header Mentor - Garis tipis & tegas #}
+                    <div class="flex items-center gap-4 mb-6 group/head">
+                        <div class="flex items-center gap-3 shrink-0">
+                            <div class="w-1 h-5 bg-gray-900"></div>
+                            <h2 class="text-lg font-black text-gray-900 uppercase tracking-tighter italic">Instructor</h2>
+                        </div>
+                        <div class="relative flex-grow h-[1px] bg-gray-200 overflow-hidden">
+                            <div class="absolute inset-0 bg-gray-900 transform -translate-x-full group-hover/head:translate-x-0 transition-transform duration-500 ease-in-out"></div>
+                        </div>
+                    </div>
+                    
+                    {# Card Body Mentor #}
+                    <div class="bg-gray-900 p-8 relative overflow-hidden border border-gray-800 transition-all duration-400 hover:-translate-y-1 group">
+                        {# Pola Dekorasi Background #}
+                        <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#eab308 0.5px, transparent 0.5px); background-size: 10px 10px;"></div>
+
+                        <div class="relative z-10">
+                            {# Profil Mentor #}
+                            <div class="flex flex-col items-center mb-8">
+                                <div class="w-24 h-24 border border-[#eab308]/20 p-1 mb-4 relative transition-colors group-hover:border-[#eab308]">
+                                    <div class="w-full h-full overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+                                        <img src="{% static 'img/1.jpeg' %}" alt="Mentor" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="absolute -top-1 -right-1 w-3 h-3 border-t border-r border-[#eab308]"></div>
+                                    <div class="absolute -bottom-1 -left-1 w-3 h-3 border-b border-l border-[#eab308]"></div>
+                                </div>
+                                <span class="text-[10px] font-black text-[#eab308] uppercase tracking-[0.4em]">Team SSC</span>
+                                <h3 class="text-xl font-black text-white uppercase tracking-tight italic mt-1">Core Intel Unit</h3>
+                            </div>
+
+                            {# Divider #}
+                            <div class="h-[2px] w-full bg-gray-800 my-6 relative overflow-hidden">
+                                <div class="absolute inset-y-0 left-0 w-1/3 bg-[#eab308]/40 group-hover:w-full transition-all duration-700"></div>
+                            </div>
+
+                            {# Quote #}
+                            <p class="text-[10px] text-gray-400 font-medium leading-relaxed italic text-center uppercase tracking-wider mb-8">
+                                "Sistem siap untuk inisialisasi pembelajaran. Memahami pola adalah kunci adaptasi."
+                            </p>
+                        </div>
+
+                        {# Action Button #}
+                        <div class="relative z-10">
+                            <a href="{% url 'support' %}" class="flex items-center justify-between gap-3 bg-[#eab308] text-gray-900 px-6 py-4 hover:bg-yellow-400 transition-all duration-300 group/btn">
+                                <span class="text-[9px] font-black uppercase tracking-[0.2em]">Contact Support</span>
+                                <i class="fas fa-headset text-xs group-hover/btn:rotate-12 transition-transform"></i>
+                            </a>
+                        </div>
+
+                        {# Decorative Footer Line #}
+                        <div class="flex items-center gap-3 w-full mt-8 opacity-20">
+                            <div class="h-[1px] flex-grow bg-gray-700"></div>
+                            <div class="w-1 h-1 bg-[#eab308] rotate-45"></div>
+                            <div class="h-[1px] flex-grow bg-gray-700"></div>
+                        </div>
+                    </div>
+                </div>
+
+                {# --- SECTION: FINAL VALIDATION --- #}
+                <div class="group/section">
+                    {# Header Validation #}
+                    <div class="flex items-center gap-4 mb-6 group/head">
+                        <div class="flex items-center gap-3 shrink-0">
+                            <div class="w-1 h-5 bg-[#eab308]"></div>
+                            <h2 class="text-lg font-black text-gray-900 uppercase tracking-tighter italic">Assessment</h2>
+                        </div>
+                        <div class="relative flex-grow h-[1px] bg-gray-200 overflow-hidden">
+                            <div class="absolute inset-0 bg-[#eab308] transform -translate-x-full group-hover/head:translate-x-0 transition-transform duration-500 ease-in-out"></div>
+                        </div>
+                    </div>
+
+                    {# Final Validation Card #}
+                    <div class="bg-gray-900 p-8 relative overflow-hidden border border-gray-800 transition-all duration-400 hover:-translate-y-1 group">
+                        <div class="absolute top-0 left-0 w-24 h-24 bg-[#eab308]/5 rounded-full blur-3xl -ml-12 -mt-12"></div>
+                        
+                        <div class="relative z-10 flex flex-col items-center text-center">
+                            <div class="w-16 h-16 border border-[#eab308]/20 flex items-center justify-center mb-6 relative transition-colors group-hover:border-[#eab308]">
+                                <i class="fas fa-certificate text-[#eab308] transition-colors"></i>
+                                <div class="absolute -top-1 -right-1 w-3 h-3 border-t border-r border-[#eab308]"></div>
+                            </div>
+
+                            <h3 class="text-xl font-black text-white uppercase tracking-tighter italic">Course Outcome</h3>
+                            <span class="text-[9px] font-black text-[#eab308] uppercase tracking-[0.4em] mt-2 block">Final Achievement</span>
+                            
+                            <div class="h-[2px] w-12 bg-[#eab308]/30 my-6 group-hover:w-20 transition-all duration-500"></div>
+
+                            <div class="w-full space-y-3">
+                                {% if is_enrolled %}
+                                    {% with last_lesson=modules.last.lessons.last %}
+                                        {% with last_result=last_lesson.quiz.quizresult_set.last %}
+                                            
+                                            {# 1. TOMBOL UJIAN (Bisa diklik jika progress 100%) #}
+                                            {% if enrollment.progress_percentage >= 100 %}
+                                                <a href="{% url 'exam_adaptive' last_lesson.quiz.pk %}" 
+                                                class="group/btn flex items-center justify-between bg-[#eab308] text-gray-900 px-6 py-4 transition-all duration-300 hover:bg-yellow-400 w-full">
+                                                    <span class="text-[10px] font-black uppercase tracking-[0.2em]">Retake Validation</span>
+                                                    <i class="fas fa-sync-alt text-xs group-hover/btn:rotate-180 transition-transform duration-500"></i>
+                                                </a>
+                                            {% else %}
+                                                {# Tombol Quiz Terkunci - Diubah jadi button untuk notif #}
+                                                <button type="button" onclick="showValidationLocked()" class="flex items-center justify-between bg-gray-800 text-gray-500 px-6 py-4 w-full border border-gray-700 opacity-50 hover:opacity-100 transition-all">
+                                                    <span class="text-[10px] font-black uppercase tracking-[0.2em]">Validation Locked</span>
+                                                    <i class="fas fa-lock text-xs"></i>
+                                                </button>
+                                            {% endif %}
+
+                                            {# 2. TOMBOL SERTIFIKAT (Bisa diklik jika sudah ada result & theta > 0) #}
+                                            {% if last_result and last_result.user == request.user and last_result.theta_result != 0 %}
+                                                <a href="{% url 'sertifikat_detail' last_lesson.quiz.id %}" 
+                                                class="group/btn-cert flex items-center justify-between border border-[#eab308] text-[#eab308] px-6 py-4 transition-all duration-300 hover:bg-[#eab308]/10 w-full">
+                                                    <span class="text-[10px] font-black uppercase tracking-[0.2em]">Claim Certificate</span>
+                                                    <i class="fas fa-award text-xs group-hover/btn-cert:scale-125 transition-transform"></i>
+                                                </a>
+                                            {% else %}
+                                                {# Tombol Sertifikat Terkunci - Diubah jadi button untuk notif #}
+                                                <button type="button" onclick="showCertLocked()" class="flex items-center justify-between border border-gray-800 text-gray-600 px-6 py-4 w-full opacity-40 hover:opacity-100 transition-all">
+                                                    <span class="text-[10px] font-black uppercase tracking-[0.2em]">Certificate Locked</span>
+                                                    <i class="fas fa-award text-xs"></i>
+                                                </button>
+                                            {% endif %}
+
+                                        {% endwith %}
+                                    {% endwith %}
+                                {% endif %}
+                            </div>
+                            
+                            <div class="flex items-center gap-3 w-full mt-8">
+                                <div class="h-[1px] flex-grow bg-gray-800"></div>
+                                <div class="w-1 h-1 bg-[#eab308] rotate-45"></div>
+                                <div class="h-[1px] flex-grow bg-gray-800"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// 1. FUNGSI TOGGLE FORM BALASAN
+function toggleReplyForm(commentId) {
+    const formContainer = document.getElementById('form-container-' + commentId);
+    const inputField = document.getElementById('input-' + commentId);
+    
+    if (formContainer) {
+        if (formContainer.classList.contains('hidden')) {
+            formContainer.classList.remove('hidden');
+            inputField.focus();
+        } else {
+            formContainer.classList.add('hidden');
+        }
+    }
+}
+
+// 2. FUNGSI REPLY KE USER (MENTION)
+function replyToUser(commentId, username) {
+    const formContainer = document.getElementById('form-container-' + commentId);
+    const inputField = document.getElementById('input-' + commentId);
+    
+    if (formContainer && inputField) {
+        formContainer.classList.remove('hidden');
+        inputField.value = '@' + username + ' ';
+        inputField.focus();
+    }
+}
+
+// 3. FUNGSI LIKE (SISTEM AJAX KE DATABASE)
+function toggleLike(button) {
+    const commentId = button.getAttribute('data-comment-id');
+    const icon = button.querySelector('i');
+    const countSpan = button.querySelector('.like-count');
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    fetch(`/comment/${commentId}/like/`, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': csrfToken,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.liked) {
+            icon.classList.replace('far', 'fas');
+            button.classList.replace('text-gray-400', 'text-red-500');
+        } else {
+            icon.classList.replace('fas', 'far');
+            button.classList.replace('text-red-500', 'text-gray-400');
+        }
+        if (countSpan) countSpan.innerText = data.total_likes;
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+// 4. LOGIC RATING BINTANG & NAVIGASI
+document.addEventListener('DOMContentLoaded', function() {
+    const starContainer = document.getElementById('rating-stars');
+    if (!starContainer) return;
+
+    const stars = starContainer.querySelectorAll('.star-icon');
+    const hoverMsg = document.getElementById('hover-msg');
+    let currentRating = parseFloat("{{ rating_score }}") || 0;
+
+    function updateStars(rating, activeClass = 'text-yellow-400') {
+        stars.forEach((star, index) => {
+            star.classList.remove('text-yellow-400', 'text-blue-400', 'text-gray-200');
+            if (index < Math.round(rating)) {
+                star.classList.add(activeClass);
+            } else {
+                star.classList.add('text-gray-200');
+            }
+        });
+    }
+
+    updateStars(currentRating);
+
+    stars.forEach(star => {
+        star.addEventListener('mouseover', function() {
+            const hoverVal = this.getAttribute('data-index');
+            updateStars(hoverVal, 'text-blue-400');
+            if (hoverMsg) hoverMsg.style.opacity = '1';
+        });
+
+        star.addEventListener('click', function() {
+            window.location.href = "{% url 'feedback_view' %}";
+        });
+    });
+
+    starContainer.addEventListener('mouseleave', function() {
+        updateStars(currentRating, 'text-yellow-400');
+        if (hoverMsg) hoverMsg.style.opacity = '0';
+    });
+});
+
+// 5. FUNGSI RESTART NAVIGASI (MATERI PERTAMA)
+function restartNavigation() {
+    const firstLessonLink = document.querySelector('a[href*="/lesson/"]');
+    if (firstLessonLink) {
+        window.location.href = firstLessonLink.href;
+    } else {
+        window.location.reload();
+    }
+}
+
+// Konfigurasi dasar agar desain seragam dengan fungsi loginRequiredAction
+const industrialConfig = {
+    background: 'rgba(17, 24, 39, 0.8)',
+    backdrop: `rgba(0,0,0,0.6) blur(4px)`,
+    color: '#ffffff',
+    buttonsStyling: false,
+    customClass: {
+        popup: 'border border-gray-700 backdrop-blur-xl rounded-none',
+        title: 'font-black tracking-tighter uppercase text-2xl',
+        confirmButton: 'bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-none transition-all uppercase tracking-widest text-xs'
+    }
+};
+
+// 1. Notif untuk Tombol Lanjut Materi (Jika sudah 100%)
+function showCourseCompleted() {
+    Swal.fire({
+        ...industrialConfig,
+        title: 'MATERI SELESAI',
+        text: 'Unit pembelajaran telah diselesaikan 100%. Kamu dapat mengulang materi melalui kurikulum kelas untuk memperdalam pemahaman, atau langsung menuju ujian validasi untuk menguji kemampuanmu.',icon: 'success',
+        iconColor: '#eab308',
+        confirmButtonText: 'KEMBALI'
+    });
+}
+
+// 2. Notif untuk Validation Locked
+function showValidationLocked() {
+    Swal.fire({
+        ...industrialConfig,
+        title: 'UNIT TERKUNCI',
+        text: 'Selesaikan seluruh materi pembelajaran hingga 100% untuk membuka akses ujian validasi.',
+        icon: 'warning',
+        iconColor: '#fbbf24',
+        confirmButtonText: 'KEMBALI'
+    });
+}
+
+// 3. Notif untuk Certificate Locked
+function showCertLocked() {
+    Swal.fire({
+        ...industrialConfig,
+        title: 'SYARAT BELUM TERCAPAI',
+        text: 'Sertifikat hanya tersedia setelah kamu lulus ujian validasi dengan hasil evaluasi yang ditentukan.',
+        icon: 'info',
+        iconColor: '#fbbf24',
+        confirmButtonText: 'KEMBALI'
+    });
+}
+</script>
+
+{# 6. SISTEM NOTIFIKASI (SWEETALERT) #}
+{% if messages %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const IndustrialToast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            customClass: {
+                popup: 'rounded-none border-4 border-gray-900 shadow-[8px_8px_0px_#eab308] font-sans',
+                title: 'text-xs font-black uppercase tracking-widest text-gray-900',
+                timerProgressBar: 'bg-gray-900',
+            },
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+
+        {% for message in messages %}
+            IndustrialToast.fire({
+                icon: '{% if message.tags == "success" %}success{% elif message.tags == "error" %}error{% elif message.tags == "warning" %}warning{% else %}info{% endif %}',
+                title: '{{ message|safe }}',
+                background: '#ffffff',
+            });
+        {% endfor %}
+    });
+</script>
+{% endif %}
+{% endblock %}

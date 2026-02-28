@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 5,
+    "fields": {
+      "title": "Matematika Kelas 8 (SMP 2)",
+      "description": "Kurikulum Matematika tingkat menengah yang mencakup Pola Bilangan, Koordinat Kartesius, Relasi dan Fungsi, Persamaan Garis Lurus, serta Teorema Pythagoras.",
+      "course_code": "MAT8-05",
+      "level": "Menengah",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 49,
+    "fields": {
+      "course": 5,
+      "title": "Modul 9: Statistika",
+      "order": 9
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 341,
+    "fields": {
+      "module": 49,
+      "title": "Pengumpulan dan Penyajian Data",
+      "content": "Statistika adalah ilmu yang berhubungan dengan pengumpulan, analisis, dan penyajian data. Langkah pertama dalam statistika adalah mengumpulkan data, misalnya melalui survei, wawancara, atau pengamatan langsung.\n\nSetelah data terkumpul (Data Mentah), agar lebih mudah dipahami, kita harus menyajikannya dalam berbagai bentuk visual:\n1. **Tabel Frekuensi**: Menghitung berapa kali setiap angka muncul.\n2. **Diagram Batang**: Cocok untuk membandingkan data kategori.\n3. **Diagram Garis**: Sangat baik untuk melihat tren dari waktu ke waktu (misalnya suhu udara harian).\n4. **Diagram Lingkaran**: Digunakan untuk melihat persentase atau bagian dari keseluruhan.\n\n\n\nKunci utama dalam menyajikan data adalah kejujuran dan ketepatan skala, agar pembaca tidak salah dalam mengambil kesimpulan.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 342,
+    "fields": {
+      "module": 49,
+      "title": "Ukuran Pemusatan Data: Mean, Median, dan Modus",
+      "content": "Bagaimana cara kita mencari 'wakil' dari sekumpulan banyak data? Kita menggunakan tiga nilai pusat berikut:\n\n1. **Mean (Rata-rata)**:\n   Jumlah seluruh data dibagi dengan banyaknya data.\n   $Mean = \\frac{\\sum x}{n}$\n\n2. **Median (Nilai Tengah)**:\n   Nilai yang berada tepat di tengah setelah data **diurutkan dari yang terkecil**. Jika jumlah datanya genap, median adalah rata-rata dari dua angka yang di tengah.\n\n3. **Modus (Nilai Sering Muncul)**:\n   Angka yang memiliki frekuensi paling tinggi atau paling sering muncul dalam kelompok data.\n\n[Image showing the calculation methods for Mean, Median, and Mode with a simple numerical example]\n\nContoh: Data nilai kuis 5, 7, 7, 8, 9.\n- Mean: $(5+7+7+8+9)/5 = 7,2$\n- Median: 7 (angka di tengah setelah urut)\n- Modus: 7 (muncul 2 kali)",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 343,
+    "fields": {
+      "module": 49,
+      "title": "Video: Menghitung Nilai Pusat Data Kelompok",
+      "content": "Panduan Menyimak Video:\n\nMenghitung Mean dan Median untuk data tunggal mungkin terasa mudah. Namun, bagaimana jika datanya sudah disajikan dalam tabel frekuensi? Misalnya, ada 10 siswa yang mendapat nilai 80 dan 5 siswa mendapat nilai 90.\n\nDalam video ini, kamu akan belajar cara menggunakan 'Berat' atau Bobot nilai dalam perhitungan:\n1. Mengalikan setiap nilai dengan frekuensinya.\n2. Mencari letak Median pada tabel frekuensi kumulatif.\n3. Cara menentukan Modus hanya dengan melihat tabel secara sekilas.\n\nTugas: Simak video ini dan perhatikan langkah mencari rata-rata gabungan jika ada satu siswa baru yang masuk ke dalam kelas!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 344,
+    "fields": {
+      "module": 49,
+      "title": "Ukuran Penyebaran Data: Jangkauan dan Kuartil",
+      "content": "Selain nilai pusat, kita perlu tahu seberapa jauh data kita 'tersebar'.\n\n1. **Jangkauan (Range)**: Selisih antara nilai terbesar dan nilai terkecil.\n2. **Kuartil**: Nilai yang membagi data menjadi empat bagian sama besar. Ada Kuartil Bawah ($Q_1$), Kuartil Tengah/Median ($Q_2$), dan Kuartil Atas ($Q_3$).\n3. **Jangkauan Interkuartil**: Selisih antara $Q_3$ dan $Q_1$.\n\n\n\nAnalisis penyebaran data sangat penting dalam dunia industri, misalnya untuk mengecek kualitas barang produksi agar tidak banyak yang cacat atau jauh dari standar rata-rata.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 345,
+    "fields": {
+      "module": 49,
+      "title": "Kuis: Analis Data Muda",
+      "content": "Hebat! Kamu sudah belajar cara mengolah angka menjadi informasi yang bermakna. Statistika adalah ilmu yang paling banyak digunakan di masa depan, mulai dari analis bisnis hingga ilmuwan data. Sekarang, siapkan kalkulator atau coretanmu. Ingat: URUTKAN DATA terlebih dahulu sebelum mencari Median. Selamat mengerjakan kuis!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 49,
+    "fields": {
+      "lesson": 345,
+      "title": "Evaluasi Materi Statistika",
+      "description": "Uji kemampuan menghitung mean, median, modus, jangkauan, serta interpretasi diagram data."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 341,
+    "fields": {
+      "quiz": 49,
+      "text": "Rata-rata (mean) dari data: 6, 8, 5, 10, 6, 9, 5, 7 adalah...",
+      "topic": "Mean",
+      "option_a": "6,5",
+      "option_b": "7,0",
+      "option_c": "7,5",
+      "option_d": "8,0",
+      "correct_answer": "B",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 342,
+    "fields": {
+      "quiz": 49,
+      "text": "Median dari data: 3, 5, 4, 6, 8, 7, 3 adalah...",
+      "topic": "Median",
+      "option_a": "4",
+      "option_b": "5",
+      "option_c": "6",
+      "option_d": "3",
+      "correct_answer": "B",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 343,
+    "fields": {
+      "quiz": 49,
+      "text": "Dari data 4, 5, 5, 6, 7, 7, 7, 8, 9, nilai modusnya adalah...",
+      "topic": "Modus",
+      "option_a": "5",
+      "option_b": "6",
+      "option_c": "7",
+      "option_d": "9",
+      "correct_answer": "C",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 344,
+    "fields": {
+      "quiz": 49,
+      "text": "Selisih antara nilai tertinggi dan terendah dalam suatu kumpulan data disebut...",
+      "topic": "Jangkauan",
+      "option_a": "Modus",
+      "option_b": "Median",
+      "option_c": "Kuartil",
+      "option_d": "Jangkauan",
+      "correct_answer": "D",
+      "difficulty_level": -1.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 345,
+    "fields": {
+      "quiz": 49,
+      "text": "Jika rata-rata nilai dari 10 siswa adalah 75, dan masuk satu siswa dengan nilai 86, berapakah rata-rata barunya?",
+      "topic": "Mean Gabungan",
+      "option_a": "76",
+      "option_b": "77",
+      "option_c": "78",
+      "option_d": "80",
+      "correct_answer": "A",
+      "difficulty_level": 1.1
+    }
+  }
+]

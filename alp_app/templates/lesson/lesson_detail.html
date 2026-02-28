@@ -1,0 +1,454 @@
+{% extends 'base.html' %} 
+{% load lesson_tags %} 
+{% block title %}{{ lesson.title }} - Mode Baca{% endblock %}
+
+{% block content %}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+
+<style>
+    /* 1. Reset & Global Hide */
+    footer, #section5 { display: none !important; }
+    
+    :root {
+        --accent-color: #eab308;
+        --bg-main: #f8fafc;
+        --text-deep: #0f172a;
+        --text-muted: #334155;
+    }
+
+    /* TEMA DARI HOME 5 */
+    .industrial-dot-bg {
+        background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
+        background-size: 16px 16px;
+    }
+
+    .card-reading-glass {
+        background-color: rgba(255, 255, 255, 0.7); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* 2. Full Width Layout */
+    .reading-section {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        width: 100%;
+        margin: 0;
+    }
+
+    .content-render {
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        line-height: 1.7;
+        white-space: pre-line;
+        word-break: break-word;
+    }
+
+    .content-render h2 {
+        color: var(--text-deep);
+        font-size: 1.85rem;
+        font-weight: 900;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 4px solid var(--text-deep);
+        text-transform: uppercase;
+        letter-spacing: -0.025em;
+    }
+
+    /* 3. Progress Bar Modern */
+    .reading-progress-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: #e2e8f0;
+        z-index: 1000;
+    }
+    .reading-progress-bar {
+        height: 100%;
+        background: var(--accent-color);
+        width: 0%;
+        transition: width 0.2s ease-out;
+        border-right: 2px solid #000;
+    }
+
+    /* Efek Blur Halaman Belakang saat Modal Muncul */
+    body.swal2-shown > *:not(.swal2-container) {
+        filter: blur(12px); /* Membuat konten materi di belakang jadi kabur */
+        transition: filter 0.4s ease;
+    }
+
+    /* Custom Icon agar warnanya pas #eab308 */
+    .swal2-icon.swal2-success {
+        border-color: #eab308 !important;
+        color: #eab308 !important;
+    }
+    .swal2-icon.swal2-success [class^=swal2-success-line] {
+        background-color: #eab308 !important;
+    }
+    .swal2-icon.swal2-success .swal2-success-ring {
+        border: .25em solid rgba(234, 179, 8, 0.3) !important;
+    }
+</style>
+
+<div class="reading-progress-container">
+    <div class="reading-progress-bar" id="progressBar"></div>
+</div>
+
+<div class="fixed top-24 right-6 z-[100]">
+    <button onclick="openReportModal()" 
+            class="group relative flex items-center justify-center w-14 h-14 bg-[#eab308] hover:bg-black text-black hover:text-[#eab308] transition-colors duration-500 rounded-none border-2 border-[#eab308] shadow-lg">
+        
+        <div class="relative z-20">
+            <i class="fas fa-triangle-exclamation text-xl"></i>
+        </div>
+
+        <div class="absolute right-0 pr-14 opacity-0 group-hover:opacity-100 group-hover:right-full transition-all duration-500 ease-out pointer-events-none z-10">
+            <div class="bg-black text-[#eab308] text-[9px] font-black uppercase tracking-[0.2em] px-5 py-2 whitespace-nowrap border-l-4 border-[#eab308] shadow-2xl">
+                System Issue Report
+            </div>
+        </div>
+    </button>
+</div>
+
+<main class="pt-4 pb-16 bg-[#f8fafc] industrial-dot-bg min-h-screen">
+    <div class="max-w-[98%] mx-auto px-4">
+        <div class="reading-section">
+
+            {# Header dengan Gaya Home 5 #}
+            <header class="mb-6 bg-white p-8 border border-black/10 shadow-sm relative overflow-hidden group">
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gray-100 -mr-8 -mt-8 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
+                
+                <nav class="flex items-center space-x-2 text-[10px] font-black tracking-widest uppercase text-gray-400 mb-4">
+                    <a href="{% url 'course_detail' lesson.module.course.pk %}" class="hover:text-black transition">
+                        {{ lesson.module.course.title }}
+                    </a>
+                    <span>/</span>
+                    <span class="text-gray-900">Modul {{ lesson.module.order }}</span>
+                </nav>
+
+                <h1 class="text-4xl md:text-6xl font-black text-gray-900 leading-none uppercase tracking-tighter mb-6">
+                    {{ lesson.title }}
+                </h1>
+
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center bg-black text-white px-3 py-1 text-[10px] font-black uppercase tracking-widest">
+                        {% if lesson.video_url %}STASIUN VIDEO & BACA{% else %}DOKUMEN LAYAR LEBAR{% endif %}
+                    </div>
+                    <div class="h-[1px] flex-grow bg-gray-200"></div>
+                </div>
+            </header>
+            
+            {# Main Article dengan Glassmorphism #}
+            <article class="card-reading-glass p-6 md:p-12 mb-8 relative">
+                {% if lesson.video_url %}
+                <div class="mb-12 border-[1px] border-black/10 shadow-2xl overflow-hidden bg-black max-w-5xl mx-auto">
+                    <div class="aspect-video relative">
+                        <iframe 
+                            class="absolute top-0 left-0 w-full h-full" 
+                            src="{{ lesson.video_url|youtube_embed }}" 
+                            title="YouTube video player"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if lesson.image %}
+                <div class="mb-10 flex justify-center">
+                    <div class="max-w-2xl w-full border border-black/10 shadow-lg overflow-hidden bg-white">
+                        <img src="{{ lesson.image.url }}" alt="{{ lesson.title }}" class="w-full h-auto block">
+                        <div class="bg-gray-50 px-4 py-2 border-t border-black/5">
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] italic">REF//{{ lesson.title }}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="content-render max-w-5xl mx-auto">
+                    {{ lesson.content|safe }}
+                </div>
+            </article>
+
+            {# Navigation & Action Area #}
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
+                {# Tombol Selesai ala Card Biru Home 5 - Bahasa Standar #}
+                <div class="lg:col-span-2 bg-[#111827] p-5 relative overflow-hidden group h-[100px] flex flex-col justify-center" data-aos="fade-up">
+                    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#3b82f6 0.5px, transparent 0.5px); background-size: 8px 8px;"></div>
+                    <div class="absolute top-0 right-0 w-10 h-10 bg-white/5 -mr-5 -mt-5 rotate-45 group-hover:bg-blue-500 transition-colors duration-500"></div>
+
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)] animate-pulse"></div>
+                            <span class="text-[9px] font-bold tracking-[0.2em] text-blue-400 uppercase">Status Belajar</span>
+                            <h3 class="text-lg font-black text-white uppercase tracking-tight">Selesaikan Materi Ini</h3>
+                        </div>
+
+                        <div class="flex flex-row items-center gap-4 w-full">
+                            <span class="text-[9px] font-black uppercase text-blue-400/40 whitespace-nowrap tracking-[0.15em]">
+                                Progres Disimpan
+                            </span>
+                            <div class="flex-grow flex items-center">
+                                <div class="h-[1px] w-0 bg-blue-500/20 group-hover:w-full group-hover:bg-blue-400 transition-all duration-1000 ease-out"></div>
+                            </div>
+                            <div class="flex items-center gap-3 shrink-0">
+                                {% if user.is_authenticated %}
+                                    {% if lesson|is_completed_by:user %}
+                                        <span class="bg-blue-500/10 text-blue-400 border border-blue-500/30 px-4 py-2 font-black uppercase text-[9px] tracking-widest">
+                                            Selesai Dibaca
+                                        </span>
+                                        {% get_next_lesson_url lesson as next_url %}
+                                        {# PERBAIKAN: Menambahkan tag deteksi kuis #}
+                                        {% check_next_is_quiz lesson as next_is_quiz %}
+                                        {% if next_url %}
+                                        <button onclick="forceQuizCheck(event, '{{ next_url }}', {% if next_is_quiz %}true{% else %}false{% endif %})" 
+                                                class="bg-white text-black px-5 py-2 font-black uppercase text-[9px] hover:bg-[#eab308] transition-all duration-300 shadow-[3px_3px_0px_#3b82f6]">
+                                            Lanjut Materi <i class="fas fa-arrow-right ml-1"></i>
+                                        </button>
+                                        {% endif %}
+                                    {% else %}
+                                        <form id="complete-lesson-form" method="POST" action="{% url 'mark_lesson_complete' lesson.id %}" class="m-0">
+                                            {% csrf_token %}
+                                            <button type="submit" class="group/btn flex items-center gap-3 bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 transition-all duration-300">
+                                                <span class="text-[9px] font-black uppercase tracking-widest">Tandai Selesai</span>
+                                                <div class="h-[1px] w-3 bg-white/50 group-hover/btn:w-6 transition-all duration-500"></div>
+                                            </button>
+                                        </form>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {# Navigation Index #}
+                <div class="lg:col-span-1 card-reading-glass flex items-stretch justify-between relative overflow-hidden transition-all duration-300 h-[100px] border border-black/5 group/main">
+                    <div class="absolute top-0 right-0 w-10 h-10 bg-[#eab308]/10 -mr-5 -mt-5 rotate-45 z-0 transition-all duration-500 group-hover/main:bg-[#eab308]"></div>
+                    
+                    {% get_previous_lesson_url lesson as prev_url %}
+                    <a href="{{ prev_url|default:'#' }}" 
+                    class="group/nav flex-1 flex items-center justify-center z-10 border-r border-black/5 bg-transparent transition-all {% if not prev_url %}opacity-20 cursor-not-allowed{% endif %}">
+                        <div class="relative flex items-center">
+                            <i class="fas fa-arrow-left text-xs text-black group-hover/nav:text-[#eab308] transition-all duration-300 transform group-hover/nav:-translate-x-2"></i>
+                        </div>
+                    </a>
+
+                    <a href="{% url 'course_detail' lesson.module.course.pk %}" 
+                    class="group/nav flex-1 flex items-center justify-center z-10 bg-transparent transition-all">
+                        <div class="relative flex flex-col items-center">
+                            <i class="fas fa-square text-[10px] text-black group-hover/nav:text-[#eab308] transition-all duration-300 transform group-hover/nav:scale-[1.8]"></i>
+                        </div>
+                    </a>
+
+                    {% get_next_lesson_url lesson as next_footer_url %}
+                    {# PERBAIKAN: Menambahkan tag deteksi kuis untuk footer #}
+                    {% check_next_is_quiz lesson as next_footer_is_quiz %}
+                    <button onclick="forceQuizCheck(event, '{{ next_footer_url }}', {% if next_footer_is_quiz %}true{% else %}false{% endif %})" 
+                            class="group/nav flex-1 flex items-center justify-center z-10 border-l border-black/5 bg-transparent transition-all {% if not next_footer_url %}opacity-20 cursor-not-allowed{% endif %}">
+                        <div class="relative flex items-center">
+                            <i class="fas fa-arrow-right text-xs text-black group-hover/nav:text-[#eab308] transition-all duration-300 transform group-hover/nav:translate-x-2"></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <p id="status-message" class="text-center text-[10px] font-black text-gray-400 uppercase tracking-[0.4em] mt-8"></p>
+        </div>
+    </div>
+</main>
+
+<script>
+    window.onscroll = function() {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+    };
+
+    document.getElementById('complete-lesson-form')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const form = this;
+        const statusDiv = document.getElementById('status-message');
+        statusDiv.innerText = "// SYNCING PROGRES...";
+
+        fetch(form.action, {
+            method: 'POST',
+            headers: { 'X-Requested-With': 'XMLHttpRequest', 'X-CSRFToken': form.querySelector('[name="csrfmiddlewaretoken"]').value },
+            body: new FormData(form)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.status === 'success') {
+                location.reload();
+            }
+        });
+    });
+
+    window.forceQuizCheck = function(e, targetUrl, isQuiz) {
+        if (!targetUrl || targetUrl === '#' || targetUrl === '') return;
+        if (e) e.preventDefault();
+
+        if (isQuiz === true || targetUrl.includes('/quiz/')) {
+            Swal.fire({
+                title: 'SISTEM DETEKSI',
+                html: `
+                    <div class="flex flex-col items-center">
+                        <div class="h-[1px] w-10 bg-yellow-500/50 mb-4"></div>
+                        <p class="text-[10px] font-bold tracking-[0.2em] text-gray-300 uppercase leading-relaxed">
+                            MODUL BERIKUTNYA ADALAH EVALUASI KUIS.<br>LANJUTKAN KE HALAMAN PENGUJIAN?
+                        </p>
+                    </div>
+                `,
+                icon: 'info',
+                iconColor: '#eab308',
+                showCancelButton: true,
+                confirmButtonText: 'MULAI KUIS',
+                cancelButtonText: 'KEMBALI',
+                buttonsStyling: false,
+                // Desain Transparan (Glassmorphism)
+                customClass: {
+                    popup: `
+                        rounded-none 
+                        border border-white/10 
+                        bg-black/60 
+                        backdrop-blur-xl 
+                        -webkit-backdrop-blur-xl 
+                        p-8 shadow-none
+                    `,
+                    title: 'font-black uppercase text-2xl text-white tracking-widest mb-2',
+                    htmlContainer: 'mt-2 mb-6',
+                    actions: 'flex gap-4 w-full justify-center', 
+                    confirmButton: `
+                        flex-1 rounded-none bg-yellow-500 text-black font-black 
+                        py-3 px-6 hover:bg-white transition-all 
+                        uppercase text-[10px] tracking-widest
+                    `,
+                    cancelButton: `
+                        flex-1 rounded-none border border-white/20 bg-transparent 
+                        text-white font-black py-3 px-6 hover:bg-white/10 
+                        transition-all uppercase text-[10px] tracking-widest
+                    `
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = targetUrl;
+                }
+            });
+        } else {
+            window.location.href = targetUrl;
+        }
+    };
+
+    let startTime = Date.now();
+    function kirimDurasi() {
+        let endTime = Date.now();
+        let durasiDetik = Math.floor((endTime - startTime) / 1000);
+        if (durasiDetik > 5) {
+            const url = "/update-study-time/"; 
+            const data = JSON.stringify({ duration: durasiDetik });
+            if (navigator.sendBeacon) {
+                navigator.sendBeacon(url, data);
+            } else {
+                fetch(url, { method: 'POST', body: data, keepalive: true });
+            }
+        }
+    }
+    window.addEventListener('pagehide', kirimDurasi);
+    setInterval(function() {
+        kirimDurasi();
+        startTime = Date.now();
+    }, 30000); 
+
+    function openReportModal() {
+        Swal.fire({
+            background: 'rgba(17, 24, 39, 0.95)',
+            backdrop: `rgba(0,0,0,0.6)`, // Efek blur sudah dihandle CSS di atas
+            color: '#ffffff',
+            buttonsStyling: false,
+            
+            title: 'REPORT SYSTEM ISSUE',
+            html: `
+                <div class="text-left space-y-4 px-2 mt-6">
+                    <div class="space-y-1">
+                        <p class="text-[10px] text-[#eab308] font-black uppercase tracking-[0.2em]">Kategori Kerusakan:</p>
+                        <select id="issue-cat" class="w-full bg-black/50 border border-gray-700 text-white p-3 text-xs rounded-none outline-none focus:border-[#eab308] transition-all">
+                            <option value="Materi">Video/Materi Tidak Bisa Diakses</option>
+                            <option value="Teknis">Fitur/Tombol Error</option>
+                            <option value="Konten">Typo atau Kesalahan Penjelasan</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
+                    </div>
+                    
+                    <div class="space-y-1">
+                        <p class="text-[10px] text-[#eab308] font-black uppercase tracking-[0.2em]">Detail Kendala:</p>
+                        <textarea id="issue-msg" placeholder="Jelaskan secara spesifik..." 
+                            class="w-full bg-black/50 border border-gray-700 text-white p-3 text-xs rounded-none h-32 outline-none focus:border-[#eab308] transition-all resize-none"></textarea>
+                    </div>
+                </div>
+            `,
+            showCancelButton: true,
+            confirmButtonText: 'KIRIM LAPORAN',
+            cancelButtonText: 'BATAL',
+            customClass: {
+                popup: 'border border-gray-700 rounded-none shadow-2xl',
+                title: 'font-black tracking-tighter uppercase text-2xl text-[#eab308]',
+                confirmButton: 'bg-[#eab308] hover:bg-[#ca9a07] text-black font-bold py-3 px-8 rounded-none transition-all uppercase tracking-widest text-[10px] ml-2',
+                cancelButton: 'bg-transparent border border-gray-700 text-gray-500 font-bold py-3 px-8 rounded-none transition-all uppercase tracking-widest text-[10px]'
+            },
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const formData = new FormData();
+                formData.append('name', "{{ request.user.username }}");
+                formData.append('email', "{{ request.user.email }}");
+                formData.append('category', document.getElementById('issue-cat').value);
+                
+                const detailPesan = `[LAPORAN OTOMATIS MATERI]\nMateri: {{ lesson.title }}\nURL: ${window.location.href}\n\nDetail: ${document.getElementById('issue-msg').value}`;
+                formData.append('message', detailPesan);
+
+                fetch("{% url 'support' %}", {
+                    method: "POST",
+                    body: formData,
+                    headers: { "X-CSRFToken": "{{ csrf_token }}" }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.status === 'success') {
+                        Swal.fire({
+                            background: 'rgba(17, 24, 39, 0.98)',
+                            color: '#fff',
+                            icon: 'success',
+                            title: 'TERKIRIM',
+                            text: 'Laporan berhasil disimpan ke database.',
+                            confirmButtonText: 'OK',
+                            buttonsStyling: false,
+                            customClass: {
+                                popup: 'border border-gray-700 rounded-none',
+                                title: 'font-black text-[#eab308] uppercase tracking-tighter',
+                                confirmButton: 'bg-[#eab308] text-black font-bold py-2 px-6 rounded-none uppercase text-xs'
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
+</script>
+
+{% endblock %}

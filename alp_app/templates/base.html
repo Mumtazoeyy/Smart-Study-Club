@@ -1,0 +1,870 @@
+{% load static %}
+{% load account %}
+
+{% load static %}
+{% load account %}
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Smart Study Club | E-Learning Industrial{% endblock title %}</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="{% static 'fontawesome-free-7.1.0-web/css/all.min.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+
+    .body-bg {
+        background-image: 
+            radial-gradient(#cbd5e1 0.8px, transparent 0.8px), 
+            linear-gradient(to bottom, #ffffff 0%, #f1f5f9 50%, #cbd5e1 100%);
+        background-size: 16px 16px, 100% 100%;
+        background-attachment: fixed;        
+        background-color: #ffffff;
+    }
+
+    /* Custom Scrollbar agar senada dengan tema industrial */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #111827;
+        border-radius: 0px;
+    }
+
+    /* Base Styles - Industrial Light */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #ffffff;
+        overflow-x: hidden;
+    }
+
+    /* Header Industrial Style - Transparan & Siku Tajam */
+    header.industrial-nav {
+        background-color: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    /* Utilities */
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Navigation Logic */
+    .nav-link {
+        transition: all 0.3s ease;
+        position: relative;
+        white-space: nowrap;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-weight: 900;
+    }
+
+    #nav-indicator {
+        position: absolute;
+        bottom: -2px;
+        height: 2px;
+        background-color: #eab308;
+        opacity: 0;
+        pointer-events: none;
+        will-change: transform, width;
+    }
+
+    /* Search Expand */
+    .search-expand-wrapper {
+        max-width: 0;
+        opacity: 0;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        transition: max-width 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    }
+
+    .search-expand-wrapper.is-active {
+        max-width: 450px;
+        opacity: 1;
+    }
+
+    /* Industrial Input - Siku Tajam */
+    .industrial-input {
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid #111827;
+        border-radius: 0px; 
+        box-shadow: 4px 4px 0px #111827;
+        transition: all 0.3s ease;
+    }
+
+    .industrial-input:focus {
+        box-shadow: 0px 0px 0px #111827;
+        transform: translate(2px, 2px);
+        outline: none;
+        border-color: #eab308;
+    }
+
+    /* Sidebar Industrial */
+    .sidebar-industrial {
+        border-left: 1px solid rgba(0,0,0,0.1);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 0px;
+    }
+
+    .menu-item {
+        border: 1px solid transparent;
+        border-radius: 0px;
+        transition: all 0.2s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    .menu-item:hover {
+        border-color: #111827;
+        background: #ffffff;
+        box-shadow: 4px 4px 0px #eab308;
+        transform: translate(-2px, -2px);
+    }
+
+    /* Skew Badge */
+    .skew-badge {
+        transform: skewX(-10deg);
+        display: inline-block;
+    }
+
+    /* Mobile Responsive Fixes */
+    @media (max-width: 1024px) {
+        .industrial-nav {
+            background-color: rgba(255, 255, 255, 0.8); /* Lebih solid di HP agar terbaca */
+        }
+    }
+
+    /* Animations */
+    main { animation: slideUpFade 0.6s ease-out; }
+    @keyframes slideUpFade {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+
+<body class="body-bg text-gray-800 font-sans flex flex-col min-h-screen">
+
+    <header class="industrial-nav fixed top-0 left-0 right-0 z-50">
+        <div id="navbarContainer" class="relative w-full px-4 md:px-6 py-3 flex items-center min-h-[75px]">
+            
+            {# Logo Section #}
+            <div class="flex items-center gap-4 flex-shrink-0">
+                <a href="/" class="group flex items-center gap-2">
+                    <div class="p-1 border border-gray-900 bg-white shadow-[4px_4px_0px_#eab308] 
+                                transition-all duration-300 
+                                group-hover:shadow-none 
+                                group-hover:translate-x-[4px] 
+                                group-hover:translate-y-[4px]">
+                        <img src="{% static 'img/1.jpeg' %}" alt="Logo" class="w-8 h-8 md:w-10 md:h-10 object-cover" />
+                    </div>
+
+                    <span class="text-base md:text-xl font-black text-gray-900 tracking-tighter select-none uppercase
+                                transition-colors duration-200 
+                                group-hover:text-[#eab308]">
+                        SSC<span class="hidden sm:inline"> Smart Study Club</span>
+                    </span>
+                </a>
+            </div>
+            
+            {# Desktop Navigation #}
+            <div class="hidden lg:flex flex-grow items-center justify-center px-4">
+                <nav id="main-nav" class="flex items-center relative">
+                    <div class="hidden lg:flex gap-10 relative" id="nav-wrapper">
+                        <div id="nav-indicator"></div>
+                        <a href="{% url 'home_master' %}" class="nav-link py-2 text-[10px] {% if request.resolver_match.url_name == 'home_master' %}text-gray-900 active-link{% else %}text-gray-400 hover:text-gray-900{% endif %}">Home</a>
+                        <a href="{% url 'course_list' %}" class="nav-link py-2 text-[10px] {% if request.resolver_match.url_name == 'course_list' %}text-gray-900 active-link{% else %}text-gray-400 hover:text-gray-900{% endif %}">Class</a>
+                        <a href="{% url 'support' %}" class="nav-link py-2 text-[10px] {% if request.resolver_match.url_name == 'support' %}text-gray-900 active-link{% else %}text-gray-400 hover:text-gray-900{% endif %}">Support</a>
+                        <a href="{% url 'about' %}" class="nav-link py-2 text-[10px] {% if request.resolver_match.url_name == 'about' %}text-gray-900 active-link{% else %}text-gray-400 hover:text-gray-900{% endif %}">About Us</a>
+                    </div>
+                </nav>
+
+                {% if request.resolver_match.url_name != 'home_master' %}
+                <div class="search-expand-wrapper ml-12 is-active animate-slide-right">
+                    <form action="{% url 'course_list' %}" method="GET" class="relative group flex items-center">
+                        
+                        <input type="text" name="q" placeholder="CARI MATERI..." value="{{ request.GET.q|default:'' }}"
+                            class="w-64 lg:w-72 border-2 border-gray-900 bg-white px-4 pl-10 py-2 text-[10px] font-black tracking-[0.15em] uppercase outline-none transition-all duration-300 focus:border-[#eab308]">
+                        
+                        <button type="submit" class="absolute left-0 top-0 bottom-0 w-10 flex items-center justify-center text-gray-900 hover:text-[#eab308] transition-colors duration-300">
+                            <i class="fa-solid fa-magnifying-glass text-[11px]"></i>
+                        </button>
+
+                        <div class="absolute inset-0 -z-10 bg-[#eab308] translate-x-0 translate-y-0 group-focus-within:translate-x-1 group-focus-within:translate-y-1 transition-transform duration-300 ease-out"></div>
+                    </form>
+                </div>
+                {% endif %}
+
+                <style>
+                    /* Animasi muncul halus dari kiri ke kanan */
+                    @keyframes slideRight {
+                        from { 
+                            opacity: 0; 
+                            transform: translateX(-20px); /* Mulai dari 20px ke kiri */
+                        }
+                        to { 
+                            opacity: 1; 
+                            transform: translateX(0);    /* Berakhir di posisi asli */
+                        }
+                    }
+                    
+                    .animate-slide-right {
+                        animation: slideRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                    }
+                </style>
+            </div>
+
+            {# User Section / Mobile Menu Trigger #}
+            <div class="flex items-center flex-shrink-0 ml-auto gap-3"> 
+                {% if user.is_authenticated %}
+                <button id="profileButton" class="group focus:outline-none flex items-center gap-3 p-1 border border-transparent hover:border-gray-900 transition-all duration-300">
+                    <div class="text-right hidden sm:block"> 
+                        <div class="text-gray-900 font-black text-[10px] uppercase leading-none tracking-widest">
+                            {% firstof user.user_profile.nama_lengkap user.username %}
+                        </div>
+                        <div class="bg-[#eab308] text-[#111827] text-[8px] font-black uppercase tracking-widest mt-1 px-2 py-0.5 skew-badge">
+                            {{ user.user_profile.get_hierarchy_name }}
+                        </div>
+                    </div>
+                    <div class="relative w-9 h-9 md:w-10 md:h-10 border border-gray-900 bg-white shadow-[3px_3px_0px_#111827] group-hover:shadow-none transition-all">
+                        {% if user.user_profile.foto %}
+                            <img src="{{ user.user_profile.foto.url }}" class="w-full h-full object-cover" alt="Profil">
+                        {% else %}
+                            <div class="w-full h-full flex items-center justify-center bg-gray-100">
+                                <i class="fa-solid fa-user text-gray-400"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                </button>
+                {% else %}
+                <div class="flex gap-2">
+                    <a href="{% url 'account_login' %}" class="text-gray-900 hover:bg-[#eab308] border border-gray-900 px-4 py-2 text-[10px] font-black uppercase tracking-widest transition-all shadow-[4px_4px_0px_#111827] hover:shadow-none">Sign In</a>
+                    <button onclick="document.getElementById('profileSidebar').classList.remove('translate-x-full'); document.getElementById('sidebarOverlay').classList.remove('opacity-0', 'pointer-events-none');" class="lg:hidden text-gray-900 border border-gray-900 px-3 bg-white shadow-[3px_3px_0px_#111827] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    {# Sidebar Overlay #}
+    <div id="sidebarOverlay" class="fixed inset-0 bg-gray-900/40 backdrop-blur-sm z-[60] opacity-0 pointer-events-none transition-all duration-500"></div>
+
+    {# Sidebar (Mobile & User Navigation) #}
+    <aside id="profileSidebar" class="sidebar-industrial fixed right-0 top-0 h-full w-72 md:w-80 z-[70] shadow-2xl transform translate-x-full transition-transform duration-500 ease-in-out">
+        <div class="flex flex-col h-full">
+            <div class="p-6 md:p-8 bg-white/50 border-b border-gray-900">
+                <div class="flex justify-between items-center mb-8">
+                    <span class="font-black text-[10px] uppercase tracking-[0.3em] text-gray-400">Navigation Core</span>
+                    <button id="closeSidebar" class="text-gray-900 hover:text-red-600 transition-colors">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                {% if user.is_authenticated %}
+                <div class="flex flex-col items-center text-center">
+                    <div class="w-20 h-20 border border-gray-900 shadow-[6px_6px_0px_#eab308] mb-6 overflow-hidden">
+                        {% if user.user_profile.foto %}
+                            <img src="{{ user.user_profile.foto.url }}" class="w-full h-full object-cover" alt="Foto">
+                        {% else %}
+                            <div class="w-full h-full bg-gray-200 flex items-center justify-center"><i class="fa-solid fa-user text-2xl text-gray-400"></i></div>
+                        {% endif %}
+                    </div>
+                    <h4 class="text-sm font-black text-gray-900 uppercase tracking-tighter">
+                        {% firstof user.user_profile.nama_lengkap user.username %}
+                    </h4>
+                    <div class="mt-2 bg-[#eab308] px-3 py-1 skew-badge">
+                        <p class="text-[8px] text-gray-900 font-black uppercase tracking-widest">{{ user.email }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+
+            <nav class="flex-grow p-6 space-y-1.5 overflow-y-auto scrollbar-hide">
+                {# Mobile Main Nav (Only visible on Mobile) #}
+                <div class="lg:hidden space-y-1.5 mb-8 border-b border-dashed border-gray-200 pb-8">
+                    <a href="{% url 'home_master' %}" class="menu-item flex items-center px-4 py-3 text-gray-900"><span class="font-black text-[10px] uppercase tracking-widest">Home</span></a>
+                    <a href="{% url 'course_list' %}" class="menu-item flex items-center px-4 py-3 text-gray-900"><span class="font-black text-[10px] uppercase tracking-widest">Class</span></a>
+                    <a href="{% url 'support' %}" class="menu-item flex items-center px-4 py-3 text-gray-900"><span class="font-black text-[10px] uppercase tracking-widest">Support</span></a>
+                    <a href="{% url 'about' %}" class="menu-item flex items-center px-4 py-3 text-gray-900"><span class="font-black text-[10px] uppercase tracking-widest">About Us</span></a>
+                </div>
+
+                <p class="text-[9px] font-black text-gray-400 uppercase tracking-[0.4em] ml-2 mb-4">[ Access Point ]</p>
+
+                <a href="{% url 'dashboard' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
+                    <i class="fa-solid fa-chart-pie w-6 text-[#eab308] text-xs"></i>
+                    <span class="font-black text-[10px] uppercase tracking-widest">Dashboard</span>
+                </a>
+
+                <a href="{% url 'my_courses' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
+                    <i class="fa-solid fa-clone w-6 text-[#eab308] text-xs"></i>
+                    <span class="font-black text-[10px] uppercase tracking-widest">My Class</span>
+                </a>
+
+                <a href="{% url 'list_sertifikat' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
+                    <i class="fa-solid fa-award w-6 text-[#eab308] text-xs"></i>
+                    <span class="font-black text-[10px] uppercase tracking-widest">Certificates</span>
+                </a>
+
+                <a href="{% url 'leaderboard' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
+                    <i class="fa-solid fa-trophy w-6 text-[#eab308] text-xs"></i>
+                    <span class="font-black text-[10px] uppercase tracking-widest">Leaderboard</span>
+                </a>
+
+                <a href="{% url 'feedback_view' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
+                    <i class="fa-solid fa-comment-dots w-6 text-[#eab308] text-xs"></i>
+                    <span class="font-black text-[10px] uppercase tracking-widest">Feedback</span>
+                </a>
+
+                <a href="{% url 'discussion_view' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
+                    <i class="fa-solid fa-comments w-6 text-[#eab308] text-xs"></i>
+                    <span class="font-black text-[10px] uppercase tracking-widest">Discussion</span>
+                </a>
+
+                <a href="{% url 'profile_settings' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
+                    <i class="fa-solid fa-user-gear w-6 text-[#eab308] text-xs"></i>
+                    <span class="font-black text-[10px] uppercase tracking-widest">Settings</span>
+                </a>
+
+                <a href="{% url 'history_full_view' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
+                    <i class="fa-solid fa-clock-rotate-left w-6 text-[#eab308] text-xs"></i>
+                    <span class="font-black text-[10px] uppercase tracking-widest">History</span>
+                </a>
+
+                {% if user.is_staff %}
+                <div class="pt-6 mt-6 border-t border-dashed border-gray-300">
+                    <p class="text-[9px] font-black text-blue-600 uppercase tracking-[0.4em] ml-2 mb-4">[ Admin Core Management ]</p>
+                    
+                    <a href="{% url 'manager_dashboard' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 mb-2 text-blue-600 border border-transparent hover:border-blue-600">
+                        <i class="fa-solid fa-cubes w-6 text-xs"></i>
+                        <span class="font-black text-[10px] uppercase tracking-widest">Manager</span>
+                    </a>
+                    
+                    <a href="/admin/" class="menu-item flex items-center gap-x-3 px-4 py-3 text-red-600 border border-transparent hover:border-red-600">
+                        <i class="fa-solid fa-shield-halved w-6 text-xs"></i>
+                        <span class="font-black text-[10px] uppercase tracking-widest">Database</span>
+                    </a>
+                </div>
+                {% endif %}
+            </nav>
+
+            {% if user.is_authenticated %}
+            <div class="p-6 bg-white/50 border-t border-gray-900">
+                <form method="POST" action="{% url 'account_logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="w-full py-4 border border-gray-900 bg-white text-gray-900 hover:bg-red-600 hover:text-white font-black text-[10px] uppercase tracking-[0.3em] transition-all shadow-[6px_6px_0px_#111827] hover:shadow-none active:translate-x-1 active:translate-y-1">
+                        Log Out
+                    </button>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+    </aside>
+
+    {# SweetAlert Message System #}
+    {% if messages %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                customClass: {
+                    popup: 'rounded-none border-2 border-gray-900 shadow-[6px_6px_0px_#eab308] font-sans',
+                    title: 'text-[10px] font-black uppercase tracking-widest text-gray-900',
+                    timerProgressBar: 'bg-gray-900',
+                }
+            });
+
+            {% for message in messages %}
+                Toast.fire({
+                    icon: '{% if message.tags == "success" %}success{% elif message.tags == "error" %}error{% else %}info{% endif %}',
+                    title: '{{ message|safe }}',
+                    background: '#ffffff',
+                });
+            {% endfor %}
+        });
+    </script>
+    {% endif %}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const wrapper = document.getElementById('nav-wrapper');
+            const indicator = document.getElementById('nav-indicator');
+            const links = document.querySelectorAll('.nav-link');
+            const activeLink = document.querySelector('.active-link');
+            
+            const profileButton = document.getElementById('profileButton');
+            const profileSidebar = document.getElementById('profileSidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+            const closeSidebar = document.getElementById('closeSidebar');
+
+            // Nav Indicator Logic
+            function moveIndicator(el) {
+                if (!el || !indicator) return;
+                indicator.style.width = `${el.offsetWidth}px`;
+                indicator.style.transform = `translateX(${el.offsetLeft}px)`;
+                indicator.style.opacity = '1';
+            }
+
+            if (activeLink) {
+                setTimeout(() => {
+                    indicator.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), width 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease';
+                    moveIndicator(activeLink);
+                }, 100);
+            }
+
+            links.forEach(link => {
+                link.addEventListener('mouseenter', () => moveIndicator(link));
+            });
+
+            wrapper?.addEventListener('mouseleave', () => {
+                if (activeLink) moveIndicator(activeLink);
+                else indicator.style.opacity = '0';
+            });
+
+            // Sidebar Control
+            function toggleSidebar(isOpen) {
+                if (isOpen) {
+                    profileSidebar.classList.remove('translate-x-full');
+                    sidebarOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                } else {
+                    profileSidebar.classList.add('translate-x-full');
+                    sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+                }
+            }
+
+            if (profileButton) profileButton.addEventListener('click', () => toggleSidebar(true));
+            if (closeSidebar) closeSidebar.addEventListener('click', () => toggleSidebar(false));
+            if (sidebarOverlay) sidebarOverlay.addEventListener('click', () => toggleSidebar(false));
+        });
+    </script>
+
+    <main class="flex-grow pt-[1px] px-4 text-gray-900">
+        <div class="max-w-7xl mx-auto py-32">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <section id="section5" class="bg-yellow-400 text-gray-900 px-8 py-16 border-t-4 border-gray-900 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-center gap-3 mb-10">
+            <div id="rotateBox" class="w-6 h-6 bg-yellow-400 border-2 border-gray-900 shadow-[2px_2px_0px_#000]"></div>
+            <span class="text-gray-900 text-2xl font-black uppercase tracking-tighter">Smart Study Club</span>
+        </div>
+
+        <h2 class="text-xs font-black mb-10 bg-gray-900 text-white inline-block px-4 py-1 uppercase tracking-[0.3em]">
+            Pusat Informasi
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-[13px]">
+            <div class="col-span-1">
+                <h3 class="font-black mb-4 uppercase tracking-widest text-gray-900 border-b-2 border-yellow-400 inline-block">Tentang SSC</h3>
+                <p class="text-gray-600 leading-relaxed font-medium">
+                    Smart Study Club adalah platform E-Learning adaptif yang menggunakan teknologi AI untuk menyesuaikan materi dan kuis sesuai kecepatan belajar Anda. Kami fokus pada personalisasi untuk memaksimalkan potensi akademik setiap pelajar.
+                </p>
+            </div>
+
+            <div class="col-span-1">
+                <h3 class="font-black mb-6 uppercase tracking-widest text-gray-900 border-b-4 border-yellow-400 inline-block">Hubungi Kami</h3>
+                <ul class="text-gray-600 space-y-4 font-bold text-sm">
+                    
+                    {# Alamat -> Google Maps #}
+                    <li class="flex items-start gap-4 group cursor-pointer" onclick="confirmRedirect('maps')">
+                        <span class="mt-1 flex-shrink-0 w-9 h-9 flex items-center justify-center bg-gray-100 text-gray-900 border-2 border-gray-900 transition-all duration-200 group-hover:bg-gray-900 group-hover:text-yellow-400 group-hover:shadow-[4px_4px_0px_#eab308] group-hover:-translate-y-1">
+                            <i class="fas fa-map-marker-alt text-sm"></i>
+                        </span> 
+                        <span class="leading-relaxed group-hover:text-gray-900 transition-colors italic">
+                            WWR9+G77, Jl. Ir. Bung Tomo, Kepatihan, Ringinpitu, Tulungagung
+                        </span>
+                    </li>
+
+                    {# Email -> support.html #}
+                    <li class="flex items-center gap-4 group cursor-pointer" onclick="confirmRedirect('support')">
+                        <span class="flex-shrink-0 w-9 h-9 flex items-center justify-center bg-gray-100 text-gray-900 border-2 border-gray-900 transition-all duration-200 group-hover:bg-gray-900 group-hover:text-yellow-400 group-hover:shadow-[4px_4px_0px_#eab308] group-hover:-translate-y-1">
+                            <i class="fas fa-envelope text-sm"></i>
+                        </span> 
+                        <span class="lowercase group-hover:text-gray-900 transition-colors">ilyasamumtaza@gmail.com</span>
+                    </li>
+
+                    {# WhatsApp -> WA Direct #}
+                    <li class="flex items-center gap-4 group cursor-pointer" onclick="confirmRedirect('wa')">
+                        <span class="flex-shrink-0 w-9 h-9 flex items-center justify-center bg-gray-100 text-gray-900 border-2 border-gray-900 transition-all duration-200 group-hover:bg-[#25D366] group-hover:text-white group-hover:border-[#25D366] group-hover:shadow-[4px_4px_0px_#111827] group-hover:-translate-y-1">
+                            <i class="fab fa-whatsapp text-lg"></i>
+                        </span>
+                        <span class="tracking-tighter group-hover:text-gray-900 transition-colors">+62 822 6497 4290</span>
+                    </li>
+                </ul>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                function loginRequiredAction(event) {
+                    {% if not user.is_authenticated %}
+                        event.preventDefault(); 
+                        
+                        Swal.fire({
+                            title: 'AKSES TERBATAS',
+                            text: "Silakan login terlebih dahulu untuk mengakses fitur ini.",
+                            icon: 'warning',
+                            iconColor: '#fbbf24', // Warna kuning industrial
+                            showCancelButton: true,
+                            confirmButtonText: 'SIGN IN SEKARANG',
+                            cancelButtonText: 'NANTI SAJA',
+                            
+                            // Konfigurasi Tampilan Transparan & Custom
+                            background: 'rgba(17, 24, 39, 0.8)', // Dark transparan sesuai footer
+                            backdrop: `rgba(0,0,0,0.6) blur(4px)`, // Efek blur pada background luar
+                            color: '#ffffff',
+                            
+                            customClass: {
+                                popup: 'border border-gray-700 backdrop-blur-xl rounded-none', // Kotak tegas & blur
+                                title: 'font-black tracking-tighter uppercase text-2xl', // Font industrial
+                                confirmButton: 'bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-none transition-all uppercase tracking-widest text-xs',
+                                cancelButton: 'bg-transparent border border-gray-600 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-none transition-all uppercase tracking-widest text-xs'
+                            },
+                            buttonsStyling: false, // Mematikan style default agar class kita jalan
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = "{% url 'account_login' %}";
+                            }
+                        });
+                        return false;
+                    {% endif %}
+                    return true;
+                }
+
+                function confirmRedirect(type) {
+                    let config = {};
+
+                    if (type === 'maps') {
+                        config = {
+                            title: 'Buka Navigasi?',
+                            text: 'Sistem akan mengarahkan Anda ke Smart Study Club di Google Maps.',
+                            icon: 'question',
+                            url: 'https://maps.google.com/?cid=12591796307297526321&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNl', // Link akurat ke Smart Study Club
+                            external: true
+                        };
+                    } else if (type === 'support') {
+                        config = {
+                            title: 'Buka Support?',
+                            text: 'Kirim pesan prioritas melalui halaman dukungan kami.',
+                            icon: 'info',
+                            url: "{% url 'support' %}",
+                            external: false
+                        };
+                    } else if (type === 'wa') {
+                        config = {
+                            title: 'Hubungi WhatsApp?',
+                            text: 'Buka aplikasi WhatsApp untuk chat dengan tim SSC.',
+                            icon: 'success',
+                            url: 'https://wa.me/6282264974290?text=Halo%20Smart%20Study%20Club%2C%20saya%20butuh%20bantuan...',
+                            external: true
+                        };
+                    }
+
+                    Swal.fire({
+                        title: config.title,
+                        text: config.text,
+                        icon: config.icon,
+                        showCancelButton: true,
+                        confirmButtonColor: '#111827',
+                        cancelButtonColor: '#94a3b8',
+                        confirmButtonText: 'Ya, Lanjutkan',
+                        cancelButtonText: 'Batal',
+                        background: '#ffffff',
+                        customClass: {
+                            popup: 'rounded-none border-4 border-gray-900 shadow-[10px_10px_0px_#eab308]',
+                            title: 'font-black uppercase tracking-tighter text-sm',
+                            confirmButton: 'rounded-none font-bold uppercase text-xs tracking-widest',
+                            cancelButton: 'rounded-none font-bold uppercase text-xs tracking-widest'
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            if (config.external) {
+                                window.open(config.url, '_blank');
+                            } else {
+                                window.location.href = config.url;
+                            }
+                        }
+                    });
+                }
+            </script>
+
+            <div class="col-span-1">
+                <h3 class="font-black mb-4 uppercase tracking-widest text-gray-900 border-b-2 border-yellow-400 inline-block">Kebijakan Privasi</h3>
+                <p class="text-gray-600 leading-relaxed font-medium">
+                    Kami menjamin kerahasiaan data dan kemajuan belajar Anda. Data hanya digunakan untuk personalisasi kurikulum dan evaluasi internal. Keamanan informasi adalah prioritas utama kami.
+                </p>
+            </div>
+
+            <div class="col-span-1">
+                <h3 class="font-black mb-6 uppercase tracking-widest text-gray-900 border-b-4 border-yellow-400 inline-block">Jejaring Sosial</h3>
+                <div class="flex flex-wrap gap-3 mt-2">
+                    
+                    {# Google Maps #}
+                    <a href="javascript:void(0)" onclick="confirmRedirect('maps')" aria-label="Google" class="social-icon group">
+                        <img src="https://cdn.simpleicons.org/googlemaps/111827" alt="Google" class="w-6 h-6 transition-transform group-hover:scale-110" />
+                        <span class="social-label">google Maps</span>
+                    </a>
+
+                    {# Gmail -> Support #}
+                    <a href="javascript:void(0)" onclick="confirmRedirect('support')" aria-label="Gmail" class="social-icon group">
+                        <img src="https://cdn.simpleicons.org/gmail/111827" alt="Gmail" class="w-6 h-6 transition-transform group-hover:scale-110" />
+                        <span class="social-label">Email</span>
+                    </a>
+
+                    {# WhatsApp #}
+                    <a href="javascript:void(0)" onclick="confirmRedirect('wa')" aria-label="WhatsApp" class="social-icon group">
+                        <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp" class="w-6 h-6 transition-transform group-hover:scale-110" />
+                        <span class="social-label">WhatsApp</span>
+                    </a>
+
+                    {# Instagram (Placeholder) #}
+                    <a href="https://instagram.com/mumtaz_oeyy" target="_blank" aria-label="Instagram" class="social-icon group">
+                        <img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram" class="w-6 h-6 transition-transform group-hover:scale-110" />
+                        <span class="social-label">Instagram</span>
+                    </a>
+
+                    {# X / Twitter (Placeholder) #}
+                    <a href="https://x.com/username_anda" target="_blank" aria-label="X" class="social-icon group">
+                        <img src="https://cdn.simpleicons.org/x/000000" alt="X" class="w-6 h-6 transition-transform group-hover:scale-110" />
+                        <span class="social-label">X</span>
+                    </a>
+
+                    {# Facebook (Placeholder) #}
+                    <a href="https://facebook.com/username_anda" target="_blank" aria-label="Facebook" class="social-icon group">
+                        <img src="https://cdn.simpleicons.org/facebook/1877F2" alt="Facebook" class="w-6 h-6 transition-transform group-hover:scale-110" />
+                        <span class="social-label">Facebook</span>
+                    </a>
+
+                    {# Discord (Placeholder) #}
+                    <a href="https://discord.gg/invite-code" target="_blank" aria-label="Discord" class="social-icon group">
+                        <img src="https://cdn.simpleicons.org/discord/5865F2" alt="Discord" class="w-6 h-6 transition-transform group-hover:scale-110" />
+                        <span class="social-label">Discord</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes rotate360 { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .rotate-active { animation: rotate360 4s linear infinite; }
+        
+        /* Social Icon Industrial Style */
+        .social-icon { 
+            position: relative; 
+            background-color: white; 
+            border: 2px solid #111827;
+            width: 2.8rem; 
+            height: 2.8rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            transition: all 0.2s ease; 
+            cursor: pointer;
+        }
+        .social-icon img { width: 1.4rem; height: 1.4rem; filter: grayscale(1); transition: all 0.3s ease; }
+        
+        .social-icon:hover { 
+            background-color: #facc15; /* Yellow-400 */
+            box-shadow: 4px 4px 0px #111827;
+            transform: translate(-2px, -2px);
+        }
+        .social-icon:hover img { filter: grayscale(0) brightness(1); }
+
+        .social-label { 
+            position: absolute; 
+            top: -35px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            background: #111827;
+            color: white;
+            padding: 2px 8px;
+            font-size: 9px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0; 
+            white-space: nowrap; 
+            transition: all 0.2s ease; 
+            pointer-events: none; 
+        }
+        .social-icon:hover .social-label { opacity: 1; top: -45px; }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const rotateBox = document.getElementById("rotateBox");
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) rotateBox.classList.add("rotate-active");
+                    else rotateBox.classList.remove("rotate-active");
+                });
+            }, { threshold: 0.5 });
+            observer.observe(rotateBox);
+        });
+    </script>
+</section>
+
+<footer class="bg-gray-900 text-gray-400 mt-auto border-t-2 border-yellow-400">
+    <style>
+        /* CSS Tambahan khusus Footer agar 2x2 di Mobile */
+        @media (max-width: 640px) {
+            .footer-container {
+                padding-top: 1.5rem !important;
+                padding-bottom: 1.5rem !important;
+            }
+            .footer-content {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1.5rem 0.5rem !important;
+            }
+            /* Copyright memakan 2 kolom (full width di atas) */
+            .footer-copy {
+                grid-column: span 2 !important;
+                margin-bottom: 0 !important;
+                text-align: center !important;
+            }
+            /* Link-link dibagi rata di bawahnya */
+            .footer-links {
+                grid-column: span 2 !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem !important;
+                text-align: center !important;
+            }
+        }
+    </style>
+
+    <div class="w-full min-h-[60px] flex items-center justify-center px-6 footer-container">
+        <div class="w-full flex flex-col md:flex-row justify-between items-center text-[10px] font-bold uppercase tracking-[0.2em] footer-content">
+            <p class="text-center md:text-left mb-4 md:mb-0 footer-copy">
+                &copy; 2025 <span class="text-white">Smart Study Club (SSC)</span>. Industrial System v1.0
+            </p>
+            <div class="flex gap-6 footer-links">
+                <a href="{% url 'terms' %}" class="hover:text-yellow-400 transition-colors underline decoration-gray-700 underline-offset-4">Syarat & Ketentuan</a>
+                <a href="{% url 'privacy' %}" class="hover:text-yellow-400 transition-colors underline decoration-gray-700 underline-offset-4">Kebijakan Data</a>
+                <a href="{% url 'sitemap' %}" class="hover:text-yellow-400 transition-colors underline decoration-gray-700 underline-offset-4">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* Tambahkan ini untuk mengunci layout mobile */
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    /* Pastikan sidebar punya z-index tertinggi agar tidak tertutup elemen lain */
+    #profileSidebar {
+        z-index: 9999 !important;
+    }
+
+    /* Pastikan tombol pemicunya (profileButton) juga punya z-index tinggi */
+    #profileButton {
+        z-index: 70;
+    }
+</style>
+
+{% if not user.is_authenticated %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (!sessionStorage.getItem('promo_popup_shown')) {
+            setTimeout(function() {
+                Swal.fire({
+                    width: window.innerWidth < 768 ? '95vw' : '55vw',
+                    maxWidth: '800px',
+                    padding: '0',
+                    html: `
+                        <div class="bg-[#0a0a0a] text-white overflow-hidden flex flex-col border border-gray-800 shadow-2xl">
+                            
+                            <div class="p-8 md:p-12 text-center border-b border-gray-900">
+                                <div class="inline-block px-4 py-1 bg-[#eab308] text-black text-[10px] font-black uppercase tracking-[0.2em] mb-6 rounded-full">
+                                    Kesempatan Terbatas
+                                </div>
+                                <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-tight mb-4">
+                                    BELAJAR LEBIH <span class="text-[#eab308]">MUDAH & SERU</span>
+                                </h2>
+                                <p class="text-gray-400 text-xs md:text-sm max-w-lg mx-auto leading-relaxed">
+                                    Bingung mulai belajar dari mana? Yuk gabung sekarang! Dapatkan akses ke materi pilihan yang bikin kamu makin jago di bidangmu.
+                                </p>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 bg-[#0f172a]/30">
+                                <div class="p-6 border-b md:border-b-0 md:border-r border-gray-900 text-center group">
+                                    <i class="fas fa-layer-group text-[#eab308] mb-3 text-xl block"></i>
+                                    <p class="text-white font-bold text-sm mb-1 uppercase tracking-wider">Materi Lengkap</p>
+                                    <p class="text-[9px] text-gray-500 uppercase tracking-widest font-medium">Bebas akses kapan saja</p>
+                                </div>
+                                <div class="p-6 border-b md:border-b-0 md:border-r border-gray-900 text-center group">
+                                    <i class="fas fa-check-circle text-[#eab308] mb-3 text-xl block"></i>
+                                    <p class="text-white font-bold text-sm mb-1 uppercase tracking-wider">Latihan Soal</p>
+                                    <p class="text-[9px] text-gray-500 uppercase tracking-widest font-medium">Uji kemampuanmu</p>
+                                </div>
+                                <div class="p-6 text-center group">
+                                    <i class="fas fa-medal text-[#eab308] mb-3 text-xl block"></i>
+                                    <p class="text-white font-bold text-sm mb-1 uppercase tracking-wider">Sertifikat Resmi</p>
+                                    <p class="text-[9px] text-gray-500 uppercase tracking-widest font-medium">Bukti skill nyata kamu</p>
+                                </div>
+                            </div>
+
+                            <div class="p-8 md:p-10 bg-[#0a0a0a]">
+                                <button onclick="Swal.clickConfirm()" class="w-full bg-white hover:bg-[#eab308] text-black font-black py-4 transition-all uppercase tracking-[0.2em] text-[13px] shadow-xl flex items-center justify-center gap-3 active:scale-95">
+                                    DAFTAR SEKARANG JUGA<i class="fas fa-arrow-right"></i>
+                                </button>
+                                <div class="mt-6 flex flex-wrap justify-center gap-4 md:gap-8 opacity-80">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-bolt text-[8px] text-[#eab308]"></i>
+                                        <p class="text-[8px] text-gray-200 uppercase tracking-widest font-bold">Pendaftaran Gratis Tanpa Biaya</p>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-rocket text-[8px] text-[#eab308]"></i> <p class="text-[8px] text-gray-200 uppercase tracking-widest font-bold">Akses Mudah Langsung Join</p> 
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    `,
+                    background: 'transparent',
+                    backdrop: `rgba(0,0,0,0.92) blur(12px)`,
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                    buttonsStyling: false,
+                    allowOutsideClick: false,
+                    customClass: {
+                        popup: 'rounded-none border-0',
+                        closeButton: 'text-gray-500 hover:text-[#eab308] p-4 transition-colors'
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "{% url 'login_view' %}";
+                    }
+                });
+                sessionStorage.setItem('promo_popup_shown', 'true');
+            }, 1200);
+        }
+    });
+</script>
+{% endif %}
+
+</body>
+</html>

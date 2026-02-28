@@ -1,0 +1,163 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block title %}Kelasku - Smart Study Club{% endblock %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link rel="stylesheet" href="{% static 'fontawesome-free-7.1.0-web/css/all.min.css' %}">
+
+<style>
+    .course-card-industrial {
+        background-color: rgba(255, 255, 255, 0.05); 
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 0px; 
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        height: 100%; /* Memastikan semua card sama tinggi dalam satu row */
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .course-card-industrial:hover {
+        transform: translateY(-5px);
+        border-color: rgba(0, 0, 0, 0.3);
+        background-color: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+    }
+
+    .progress-track {
+        background: rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        height: 8px;
+        position: relative;
+    }
+    .progress-fill {
+        background: #111827;
+        height: 100%;
+        transition: width 1s ease-in-out;
+    }
+</style>
+
+<div class="min-h-screen">
+    <div class="container mx-auto px-6 min-h-screen flex flex-col items-center justify-start pt-2 pb-12">
+        
+        {# Header Section #}
+        <div class="w-full flex flex-col gap-1 mb-12" data-aos="fade-right">
+            <div class="flex items-center gap-3">
+                <div class="h-5 w-1.5 bg-[#eab308]"></div>
+                <h2 class="text-2xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase text-left">
+                    Daftar <span class="text-gray-400">Kelas Ku</span>
+                </h2>
+            </div>
+            <div class="ml-[1.15rem]">
+                <p class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-[0.2em] text-left">
+                    User Learning Path <span class="mx-2 text-gray-200">|</span> Progress Belajar Industrial
+                </p>
+            </div>
+        </div>
+
+        {# Course Grid Section #}
+        <section class="w-full">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+
+                {% for enrollment in enrollments %} 
+                <div class="group" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00"> 
+                    <div class="course-card-industrial">
+                        
+                        <div class="absolute top-0 right-0 w-10 h-10 bg-gray-200/20 -mr-5 -mt-5 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500 z-30"></div>
+
+                        {# Thumbnail Area #}
+                        <div class="w-full h-32 md:h-44 bg-gray-100 flex items-center justify-center relative overflow-hidden border-b border-gray-200/50">
+                            {% if enrollment.course.thumbnail %}
+                                <img src="{{ enrollment.course.thumbnail.url }}" class="h-full w-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" alt="{{ enrollment.course.title }}">
+                            {% else %}
+                                <div class="h-full w-full flex items-center justify-center bg-gray-50 text-gray-200 uppercase font-black text-[10px]">No Thumbnail</div>
+                            {% endif %}
+                            
+                            <div class="absolute top-2 left-2 z-20">
+                                <span class="bg-[#eab308] text-gray-900 text-[7px] md:text-[8px] font-black px-1.5 py-0.5 rounded uppercase border border-gray-900/10 shadow-sm">
+                                    {{ enrollment.progress_percentage|floatformat:0 }}% DONE
+                                </span>
+                            </div>
+
+                            <div class="absolute top-2 right-2 z-40">
+                                <span class="px-1.5 py-0.5 text-[7px] md:text-[8px] font-black uppercase border backdrop-blur-md
+                                    {% if enrollment.course.level == 'Dasar' %} text-blue-500 border-blue-500/50 bg-blue-500/10
+                                    {% elif enrollment.course.level == 'Menengah' %} text-yellow-500 border-yellow-500/50 bg-yellow-500/10
+                                    {% else %} text-red-500 border-red-500/50 bg-red-500/10 {% endif %}">
+                                    {{ enrollment.course.level|default:"UMUM" }}
+                                </span>
+                            </div>
+                        </div>
+                        
+                        {# Content Area #}
+                        <div class="p-3 md:p-6 flex flex-col flex-grow">
+                            {# Bagian Atas: Kategori & Judul #}
+                            <div class="mb-4">
+                                <span class="text-[8px] md:text-[9px] text-gray-400 font-bold uppercase tracking-widest block mb-1">
+                                    {{ enrollment.course.category.name|default:"CORE" }}
+                                </span>
+                                <h5 class="text-sm md:text-lg font-black text-gray-900 leading-tight uppercase tracking-tighter group-hover:text-gray-600 transition-colors line-clamp-2">
+                                    {{ enrollment.course.title }}
+                                </h5>
+                            </div>
+
+                            {# Bagian Bawah: Didorong ke dasar menggunakan mt-auto #}
+                            <div class="mt-auto">
+                                {# Progress Bar #}
+                                <div class="mb-4">
+                                    <div class="progress-track">
+                                        <div class="progress-fill" style="width: {{ enrollment.progress_percentage }}%"></div>
+                                    </div>
+                                    <p class="text-[7px] md:text-[8px] font-bold text-gray-400 mt-2 uppercase tracking-widest">
+                                        Last Access: {{ enrollment.last_accessed|date:"d M Y" }}
+                                    </p>
+                                </div>
+                                
+                                {# Button #}
+                                <a href="{% url 'course_detail' enrollment.course.pk %}" class="inline-flex items-center justify-center w-full bg-gray-900 hover:bg-[#eab308] text-white hover:text-gray-900 font-black py-2 md:py-3 transition-all duration-300 text-[8px] md:text-[10px] uppercase tracking-widest active:scale-95">
+                                    Lanjut Belajar <i class="fas fa-play ml-1 md:ml-2 text-[8px] md:text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+
+                                {# Garis Dinamis Bawah #}
+                                <div class="h-[1.5px] w-4 bg-gray-900 mt-3 md:mt-4 transition-all duration-500 group-hover:w-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-span-full py-24 text-center">
+                    <div class="border-2 border-dashed border-gray-300 p-12 inline-block">
+                        <i class="fas fa-book-open text-4xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-900 font-black uppercase tracking-tighter">Belum Ada Kelas</p>
+                        <a href="{% url 'class_list' %}" class="mt-4 inline-block text-[10px] font-black text-[#eab308] border-b-2 border-[#eab308] uppercase tracking-widest">Buka Katalog</a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </section>
+
+        {# Footer Info Area #}
+        <div class="w-full mt-24 pt-8 border-t-2 border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2 text-[9px] font-black text-gray-400 uppercase tracking-widest">
+                <span class="w-2 h-2 bg-yellow-400"></span>
+                System Status: Operational
+            </div>
+            <div class="text-[9px] font-black text-gray-900 uppercase tracking-widest">
+                Pathfinder Version 2.1
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    AOS.init({ once: true, duration: 800, easing: 'ease-out-back' });
+</script>
+{% endblock %}

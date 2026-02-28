@@ -1,0 +1,164 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 4,
+    "fields": {
+      "category": 1,
+      "title": "Matematika SMP 7",
+      "description": "Kurikulum lengkap Matematika untuk kelas 7 SMP yang mencakup Bilangan, Aljabar, hingga Geometri."
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 35,
+    "fields": {
+      "course": 4,
+      "title": "Modul 5: Perbandingan",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 221,
+    "fields": {
+      "module": 35,
+      "title": "Konsep Dasar Rasio dan Perbandingan",
+      "content": "Pernahkah kamu memperhatikan resep masakan? Misalnya, untuk membuat 1 gelas teh manis, dibutuhkan 2 sendok gula. Jika kamu ingin membuat 5 gelas teh, berapa sendok gula yang kamu butuhkan? Inilah inti dari **Perbandingan**.\n\nPerbandingan (atau Rasio) adalah cara kita membandingkan dua nilai atau lebih yang memiliki satuan yang sejenis. Dalam matematika, perbandingan biasanya ditulis dalam bentuk $a : b$ atau $\\frac{a}{b}$.\n\nSyarat utama dalam membandingkan:\n1. Satuan harus sama (misalnya, cm dengan cm, bukan cm dengan km).\n2. Bentuknya harus paling sederhana.\n\n\n\nContoh: Jika umur Andi 15 tahun dan umur Budi 20 tahun, maka perbandingan umur mereka adalah $15 : 20$. Jika kita bagi keduanya dengan angka 5, maka bentuk sederhananya adalah $3 : 4$.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 222,
+    "fields": {
+      "module": 35,
+      "title": "Perbandingan Senilai: 'Satu Naik, Semua Naik'",
+      "content": "Perbandingan Senilai terjadi jika dua variabel berubah ke arah yang sama. Jika nilai satu variabel bertambah besar, maka variabel lainnya juga ikut bertambah besar.\n\nContoh nyata:\n- Semakin banyak buku yang kamu beli, semakin besar harga yang harus dibayar.\n- Semakin jauh jarak yang ditempuh kendaraan, semakin banyak bensin yang dihabiskan.\n\nRumus Cepat:\n$\\frac{a_1}{b_1} = \\frac{a_2}{b_2}$ atau gunakan **Perkalian Silang**.\n\nContoh Soal:\nHarga 3 buah cokelat adalah Rp15.000. Berapakah harga 10 buah cokelat?\nLangkah: $\\frac{3}{15.000} = \\frac{10}{x}$\n$3x = 150.000 \\to x = 50.000$.\nJadi, harga 10 cokelat adalah Rp50.000.\n\n",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 223,
+    "fields": {
+      "module": 35,
+      "title": "Perbandingan Berbalik Nilai: 'Satu Naik, Satu Turun'",
+      "content": "Hati-hati, jenis ini sering menipu! Perbandingan Berbalik Nilai terjadi jika satu variabel bertambah besar, namun variabel lainnya justru bertambah **KECIL**.\n\nContoh nyata:\n- Semakin banyak pekerja bangunan, semakin CEPAT (sedikit waktu) waktu pengerjaannya.\n- Semakin cepat kamu mengendarai motor, semakin SINGKAT waktu yang dibutuhkan untuk sampai tujuan.\n\nRumus Cepat:\n$a_1 \\times b_1 = a_2 \\times b_2$ (Dikali lurus, bukan silang).\n\nContoh Soal:\nSebuah rumah dikerjakan oleh 10 pekerja dan selesai dalam 30 hari. Jika pekerja ditambah menjadi 15 orang, berapa hari rumah itu akan selesai?\nLangkah: $10 \\times 30 = 15 \\times x$\n$300 = 15x \\to x = 20$.\nJadi, dengan 15 pekerja, rumah selesai dalam 20 hari saja.\n\n[Image showing the inverse relationship: as the number of workers increases, the number of days decreases]",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 224,
+    "fields": {
+      "module": 35,
+      "title": "Skala Peta: Memperkecil Dunia",
+      "content": "Skala adalah penerapan perbandingan senilai yang paling populer. Skala digunakan untuk menggambar objek yang sangat besar (seperti gedung atau negara) ke dalam kertas kecil.\n\nRumus Skala:\n$\\text{Skala} = \\frac{\\text{Jarak pada Peta (JP)}}{\\text{Jarak Sebenarnya (JS)}}$\n\nContoh: Skala 1 : 500.000\nArtinya: Setiap 1 cm di peta mewakili 500.000 cm (atau 5 km) di dunia nyata.\n\nTips Detektif:\n1. Selalu ubah satuan JS (biasanya km) menjadi cm dengan dikali 100.000 sebelum menghitung.\n2. Jika mencari JS, rumusnya menjadi: $JS = JP \\times \\text{Angka Skala}$.\n\n",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 225,
+    "fields": {
+      "module": 35,
+      "title": "Kuis: Uji Logika Perbandingan",
+      "content": "Selamat! Kamu telah menyelesaikan modul terakhir. Perbandingan adalah alat yang sangat kuat untuk memecahkan masalah logika sehari-hari. Sebelum menjawab kuis ini, tanyakan pada dirimu: 'Jika variabel A bertambah, apakah B akan ikut bertambah (Senilai) atau justru berkurang (Berbalik Nilai)?'. Fokus pada logika tersebut dan selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 35,
+    "fields": {
+      "lesson": 225,
+      "title": "Kuis Perbandingan SMP 7",
+      "description": "Evaluasi pemahaman rasio, perbandingan senilai, berbalik nilai, dan skala peta."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 221,
+    "fields": {
+      "quiz": 35,
+      "text": "Perbandingan paling sederhana dari 45 menit : 1,5 jam adalah...",
+      "topic": "Rasio Sederhana",
+      "option_a": "1 : 2",
+      "option_b": "2 : 3",
+      "option_c": "1 : 3",
+      "option_d": "3 : 4",
+      "correct_answer": "A",
+      "difficulty_level": -0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 222,
+    "fields": {
+      "quiz": 35,
+      "text": "Sebuah mobil membutuhkan 5 liter bensin untuk menempuh 60 km. Jika bensin yang tersedia 8 liter, jarak yang dapat ditempuh adalah...",
+      "topic": "Perbandingan Senilai",
+      "option_a": "84 km",
+      "option_b": "96 km",
+      "option_c": "100 km",
+      "option_d": "110 km",
+      "correct_answer": "B",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 223,
+    "fields": {
+      "quiz": 35,
+      "text": "Sebuah persediaan makanan untuk 20 ekor ayam akan habis dalam 15 hari. Jika ayam ditambah 5 ekor lagi, maka persediaan makanan akan habis dalam...",
+      "topic": "Perbandingan Berbalik Nilai",
+      "option_a": "12 hari",
+      "option_b": "10 hari",
+      "option_c": "18 hari",
+      "option_d": "20 hari",
+      "correct_answer": "A",
+      "difficulty_level": 0.9
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 224,
+    "fields": {
+      "quiz": 35,
+      "text": "Jarak kota A dan B pada peta adalah 4 cm. Jika skala peta 1 : 2.000.000, maka jarak sebenarnya kota tersebut adalah...",
+      "topic": "Skala",
+      "option_a": "8 km",
+      "option_b": "80 km",
+      "option_c": "800 km",
+      "option_d": "50 km",
+      "correct_answer": "B",
+      "difficulty_level": 0.4
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 225,
+    "fields": {
+      "quiz": 35,
+      "text": "Seorang kontraktor memprakirakan gedung akan selesai dalam 60 hari oleh 15 pekerja. Jika ingin selesai dalam 45 hari, berapa tambahan pekerja yang dibutuhkan?",
+      "topic": "Perbandingan Berbalik Nilai",
+      "option_a": "20 orang",
+      "option_b": "10 orang",
+      "option_c": "5 orang",
+      "option_d": "25 orang",
+      "correct_answer": "C",
+      "difficulty_level": 1.4
+    }
+  }
+]

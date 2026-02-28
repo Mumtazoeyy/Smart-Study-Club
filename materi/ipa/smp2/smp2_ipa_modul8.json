@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 78,
+    "fields": {
+      "course": 8,
+      "title": "Modul 8: Sistem Ekskresi Manusia",
+      "order": 8
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 586,
+    "fields": {
+      "module": 78,
+      "title": "Ginjal dan Proses Pembentukan Urine",
+      "content": "Ginjal adalah organ ekskresi utama yang berfungsi menyaring darah. Di dalam ginjal terdapat jutaan unit penyaring kecil yang disebut **Nefron**. \n\nProses pembentukan urine terjadi dalam tiga tahap utama:\n1. **Filtrasi (Penyaringan)**: Terjadi di Glomerulus. Hasilnya adalah **Urine Primer** yang masih mengandung zat berguna seperti glukosa dan asam amino.\n2. **Reabsorpsi (Penyerapan Kembali)**: Terjadi di Tubulus Kontortus Proksimal. Zat yang masih berguna diserap kembali ke darah. Hasilnya adalah **Urine Sekunder**.\n3. **Augmentasi (Pengeluaran Zat)**: Terjadi di Tubulus Kontortus Distal. Penambahan zat sisa yang tidak diperlukan lagi oleh tubuh. Hasilnya adalah **Urine Sejati** yang kemudian dialirkan ke kantung kemih.\n\n\n\nGinjal menjaga keseimbangan air dalam tubuh. Jika kamu kurang minum, ginjal akan menyerap lebih banyak air sehingga urine yang keluar menjadi pekat dan sedikit.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 587,
+    "fields": {
+      "module": 78,
+      "title": "Kulit, Paru-paru, dan Hati",
+      "content": "Selain ginjal, tubuh kita memiliki tiga organ ekskresi lainnya:\n\n1. **Kulit**: Mengekskresikan keringat yang mengandung air, garam, dan sedikit urea melalui kelenjar keringat. Kulit juga berfungsi mengatur suhu tubuh.\n2. **Paru-paru**: Mengekskresikan uap air ($H_2O$) dan Karbon Dioksida ($CO_2$) sebagai sisa pernapasan seluler.\n3. **Hati (Hepar)**: Organ ini berfungsi merombak sel darah merah yang sudah tua menjadi empedu. Hati juga berperan dalam menetralkan racun dan mengubah amonia yang berbahaya menjadi urea yang lebih aman untuk dibuang oleh ginjal.\n\n\n\nKeempat organ ini bekerja sama secara harmonis untuk menjaga kondisi internal tubuh tetap stabil (Homeostasis).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 588,
+    "fields": {
+      "module": 78,
+      "title": "Gangguan dan Penyakit pada Sistem Ekskresi",
+      "content": "Sistem ekskresi yang terganggu dapat berakibat fatal. Beberapa gangguan yang umum terjadi antara lain:\n\n- **Albuminuria**: Ditemukannya protein (albumin) dalam urine, menandakan kerusakan pada alat penyaring di ginjal.\n- **Diabetes Mellitus**: Ditemukannya glukosa dalam urine karena hormon insulin tidak bekerja maksimal.\n- **Batu Ginjal**: Terbentuknya endapan kristal kalsium karbonat di dalam ginjal atau saluran urine, biasanya karena kurang minum atau sering menahan kencing.\n- **Nefritis**: Kerusakan pada nefron akibat infeksi bakteri *Streptococcus*.\n- **Jerawat dan Biang Keringat**: Gangguan pada kelenjar minyak dan kelenjar keringat pada kulit.\n\n\n\nUpaya menjaga kesehatan ekskresi meliputi minum air putih yang cukup, tidak menahan buang air kecil, serta membatasi konsumsi garam dan gula berlebih.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 589,
+    "fields": {
+      "module": 78,
+      "title": "Video: Bagaimana Ginjal Menyaring Darah?",
+      "content": "Video ini akan membawa kamu melihat simulasi mikroskopis di dalam glomerulus. Kamu akan memahami mengapa sel darah merah tidak boleh lolos ke dalam urine dan bagaimana ginjal mengatur tekanan darah kita. Simak juga penjelasan tentang prosedur Cuci Darah (Hemodialisis) bagi penderita gagal ginjal kronis.",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 590,
+    "fields": {
+      "module": 78,
+      "title": "Kuis: Detektif Ekskresi",
+      "content": "Waktunya menguji kemampuan analisismu! Kuis ini akan memberikan beberapa skenario hasil uji laboratorium urine, dan kamu harus menebak gangguan apa yang dialami oleh pasien tersebut. Gunakan pemahamanmu tentang tahapan filtrasi, reabsorpsi, dan augmentasi!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 78,
+    "fields": {
+      "lesson": 590,
+      "title": "Evaluasi Sistem Ekskresi",
+      "description": "Uji kompetensi tentang fungsi ginjal, nefron, organ kulit, paru-paru, hati, serta diagnosis penyakit melalui urine."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 586,
+    "fields": {
+      "quiz": 78,
+      "text": "Tempat terjadinya proses filtrasi (penyaringan darah) di dalam ginjal adalah...",
+      "topic": "Proses Ginjal",
+      "option_a": "Tubulus Proksimal",
+      "option_b": "Glomerulus",
+      "option_c": "Tubulus Distal",
+      "option_d": "Kantung Kemih",
+      "correct_answer": "B",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 587,
+    "fields": {
+      "quiz": 78,
+      "text": "Jika hasil tes urine seseorang menunjukkan adanya kandungan glukosa, maka kemungkinan besar terjadi kerusakan pada tahap...",
+      "topic": "Analisis Penyakit",
+      "option_a": "Filtrasi",
+      "option_b": "Augmentasi",
+      "option_c": "Reabsorpsi",
+      "option_d": "Defekasi",
+      "correct_answer": "C",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 588,
+    "fields": {
+      "quiz": 78,
+      "text": "Zat sisa metabolisme yang diekskresikan melalui paru-paru adalah...",
+      "topic": "Organ Ekskresi",
+      "option_a": "Urea dan Garam",
+      "option_b": "Empedu dan Racun",
+      "option_c": "Karbon Dioksida dan Uap Air",
+      "option_d": "Keringat dan Minyak",
+      "correct_answer": "C",
+      "difficulty_level": -1.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 589,
+    "fields": {
+      "quiz": 78,
+      "text": "Hati mengekskresikan zat warna empedu yang merupakan hasil dari perombakan...",
+      "topic": "Hati",
+      "option_a": "Lemak",
+      "option_b": "Sel darah putih yang mati",
+      "option_c": "Sel darah merah yang sudah tua",
+      "option_d": "Protein hewani",
+      "correct_answer": "C",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 590,
+    "fields": {
+      "quiz": 78,
+      "text": "Penyakit ginjal yang disebabkan oleh infeksi bakteri sehingga menyebabkan peradangan pada nefron disebut...",
+      "topic": "Penyakit Ekskresi",
+      "option_a": "Batu Ginjal",
+      "option_b": "Diabetes Insipidus",
+      "option_c": "Nefritis",
+      "option_d": "Hepatitis",
+      "correct_answer": "C",
+      "difficulty_level": 0.8
+    }
+  }
+]

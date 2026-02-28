@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 5,
+    "fields": {
+      "title": "Matematika Kelas 8 (SMP 2)",
+      "description": "Kurikulum Matematika tingkat menengah yang mencakup Pola Bilangan, Koordinat Kartesius, Relasi dan Fungsi, Persamaan Garis Lurus, serta Teorema Pythagoras.",
+      "course_code": "MAT8-05",
+      "level": "Menengah",
+      "category": 1
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 45,
+    "fields": {
+      "course": 5,
+      "title": "Modul 5: Sistem Persamaan Linear Dua Variabel",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 321,
+    "fields": {
+      "module": 45,
+      "title": "Apa itu SPLDV?",
+      "content": "Pernahkah kamu pergi ke toko alat tulis dan membeli paket barang? Misalnya, harga 2 buku dan 3 pensil adalah Rp15.000, sedangkan harga 1 buku dan 2 pensil adalah Rp8.000. Bagaimana cara kita tahu harga satu buah buku saja? Inilah kegunaan utama dari **SPLDV**.\n\nSistem Persamaan Linear Dua Variabel (SPLDV) adalah kumpulan dua atau lebih persamaan linear yang memiliki dua variabel yang sama (biasanya $x$ dan $y$). Dikatakan sebuah 'sistem' karena kedua persamaan ini saling berhubungan untuk mencari satu jawaban yang memuaskan keduanya.\n\n\n\nBentuk umum SPLDV:\n$ax + by = c$\n$dx + ey = f$\n\nTujuan kita adalah mencari pasangan $(x, y)$ yang disebut sebagai **Himpunan Penyelesaian**.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 322,
+    "fields": {
+      "module": 45,
+      "title": "Metode Eliminasi: Menghilangkan untuk Menemukan",
+      "content": "Metode **Eliminasi** adalah cara menyelesaikan SPLDV dengan 'menghilangkan' salah satu variabel agar kita bisa menghitung variabel yang lain. Ini adalah metode yang paling disukai karena langkah-langkahnya yang sistematis.\n\nLangkah-langkahnya:\n1. Pilih variabel mana yang ingin dihilangkan ($x$ atau $y$).\n2. Samakan koefisien variabel tersebut dengan cara mengalikan persamaan dengan angka tertentu.\n3. Kurangkan atau jumlahkan kedua persamaan tersebut sehingga variabel tersebut menjadi nol.\n\n\n\nContoh: Mencari $x$ dari:\n$x + y = 5$\n$x - y = 1$\nJika kita jumlahkan keduanya, maka $y$ akan hilang ($y + (-y) = 0$), sehingga didapat $2x = 6$, maka $x = 3$.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 323,
+    "fields": {
+      "module": 45,
+      "title": "Video: Metode Campuran (Eliminasi-Substitusi)",
+      "content": "Panduan Menyimak Video:\n\nDalam ujian, waktu sangatlah berharga. Metode **Campuran** adalah metode tercepat untuk menyelesaikan SPLDV. Caranya adalah dengan melakukan Eliminasi terlebih dahulu untuk mendapatkan satu nilai, lalu menggunakan metode **Substitusi** (memasukkan nilai tersebut ke persamaan lain) untuk mendapatkan nilai sisanya.\n\n\n\nMateri Utama Video:\n1. Cara eliminasi untuk mendapatkan variabel pertama.\n2. Cara memasukkan (substitusi) hasil tersebut ke dalam persamaan yang paling sederhana.\n3. Menuliskan Himpunan Penyelesaian dalam bentuk HP = {(x, y)}.\n\nTugas: Simak video ini dan perhatikan bagaimana cara menyamakan koefisien jika angka di depan $x$ dan $y$ tidak ada yang sama!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 324,
+    "fields": {
+      "module": 45,
+      "title": "Menyelesaikan Soal Cerita SPLDV",
+      "content": "Bagian tersulit sekaligus paling seru dari SPLDV adalah menerjemahkan soal cerita menjadi bahasa matematika. Kuncinya adalah menentukan apa yang menjadi $x$ dan apa yang menjadi $y$.\n\nContoh Kasus:\nDi sebuah parkiran terdapat 20 kendaraan yang terdiri dari mobil (roda 4) dan motor (roda 2). Jika jumlah total roda adalah 56, berapakah jumlah mobil?\n\nCara Mengerjakan:\n1. Misal: Mobil = $x$, Motor = $y$.\n2. Persamaan 1 (Jumlah Kendaraan): $x + y = 20$\n3. Persamaan 2 (Jumlah Roda): $4x + 2y = 56$\n4. Selesaikan dengan eliminasi atau campuran.\n\n[Image illustrating a word problem with cars and motorcycles being translated into algebraic equations]\n\nHasilnya: $x = 8$ (mobil) dan $y = 12$ (motor). Logika ini sangat membantu dalam manajemen stok barang atau perhitungan keuangan sederhana.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 325,
+    "fields": {
+      "module": 45,
+      "title": "Kuis: Uji Logika Sistem Persamaan",
+      "content": "Selamat! Kamu telah mencapai akhir dari rangkaian materi Semester 1. SPLDV adalah puncak dari kemampuan aljabarmu di kelas 8. Kamu dituntut untuk teliti dalam menghitung perkalian koefisien dan perubahan tanda. Siapkan kertas coretan, fokus pada metode eliminasi, dan temukan nilai $x$ dan $y$ dengan tepat. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 45,
+    "fields": {
+      "lesson": 325,
+      "title": "Evaluasi SPLDV Kelas 8",
+      "description": "Uji kemampuan menyelesaikan sistem persamaan linear menggunakan metode eliminasi, substitusi, dan soal cerita."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 321,
+    "fields": {
+      "quiz": 45,
+      "text": "Nilai y yang memenuhi sistem persamaan x + y = 7 dan x - y = 3 adalah...",
+      "topic": "Penyelesaian SPLDV",
+      "option_a": "2",
+      "option_b": "5",
+      "option_c": "4",
+      "option_d": "10",
+      "correct_answer": "A",
+      "difficulty_level": -0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 322,
+    "fields": {
+      "quiz": 45,
+      "text": "Himpunan penyelesaian dari 2x + y = 10 dan x + y = 7 adalah...",
+      "topic": "Metode Campuran",
+      "option_a": "{(3, 4)}",
+      "option_b": "{(4, 3)}",
+      "option_c": "{(2, 5)}",
+      "option_d": "{(5, 2)}",
+      "correct_answer": "A",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 323,
+    "fields": {
+      "quiz": 45,
+      "text": "Harga 3 buku dan 2 pensil adalah Rp13.000. Jika harga 1 buku dan 2 pensil adalah Rp7.000, maka harga 1 buku adalah...",
+      "topic": "Soal Cerita",
+      "option_a": "Rp2.000",
+      "option_b": "Rp3.000",
+      "option_c": "Rp4.000",
+      "option_d": "Rp5.000",
+      "correct_answer": "B",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 324,
+    "fields": {
+      "quiz": 45,
+      "text": "Jika 3x + 2y = 12 dan x + y = 5, maka nilai dari x + 2y adalah...",
+      "topic": "Manipulasi SPLDV",
+      "option_a": "7",
+      "option_b": "8",
+      "option_c": "9",
+      "option_d": "10",
+      "correct_answer": "B",
+      "difficulty_level": 1.1
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 325,
+    "fields": {
+      "quiz": 45,
+      "text": "Metode yang dilakukan dengan cara mengganti salah satu variabel ke persamaan lain disebut metode...",
+      "topic": "Istilah Metode",
+      "option_a": "Eliminasi",
+      "option_b": "Substitusi",
+      "option_c": "Grafik",
+      "option_d": "Induksi",
+      "correct_answer": "B",
+      "difficulty_level": -1.5
+    }
+  }
+]

@@ -1,0 +1,166 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 9,
+    "fields": {
+      "title": "IPA Kelas 9 (SMP 3)",
+      "description": "Materi tingkat akhir mencakup Reproduksi, Genetika, Listrik Statis & Dinamis, hingga Bioteknologi.",
+      "course_code": "IPA9-SMP3",
+      "level": "Mahir",
+      "category": 6
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 81,
+    "fields": {
+      "course": 9,
+      "title": "Modul 1: Sistem Reproduksi Manusia",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 601,
+    "fields": {
+      "module": 81,
+      "title": "Pembelahan Sel: Mitosis dan Meiosis",
+      "content": "Sebelum memahami sistem reproduksi, kita harus mengerti bagaimana sel memperbanyak diri. Ada dua jenis pembelahan sel:\n\n1. **Mitosis**: Pembelahan yang menghasilkan dua sel anakan dengan jumlah kromosom yang sama dengan induknya (diploid/2n). Berfungsi untuk pertumbuhan dan perbaikan sel tubuh yang rusak.\n2. **Meiosis**: Pembelahan yang menghasilkan empat sel anakan dengan jumlah kromosom setengah dari induknya (haploid/n). Pembelahan ini hanya terjadi pada sel kelamin (sperma dan sel telur).\n\nTahapan pembelahan meliputi: **Profase, Metafase, Anafase, dan Telofase**. Memahami perbedaan keduanya sangat penting untuk mengerti mengapa anak memiliki kemiripan namun tidak identik dengan orang tuanya.\n\n",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 602,
+    "fields": {
+      "module": 81,
+      "title": "Struktur dan Fungsi Organ Reproduksi Pria",
+      "content": "Sistem reproduksi pria berfungsi untuk menghasilkan sel kelamin jantan (sperma).\n\n- **Testis**: Berjumlah sepasang dan berfungsi menghasilkan sperma serta hormon testosteron.\n- **Skrotum**: Kantong pelindung testis yang menjaga suhu agar optimal untuk produksi sperma.\n- **Epididimis**: Tempat penyimpanan dan pematangan sperma sementara.\n- **Vas Deferens**: Saluran panjang yang menghubungkan epididimis ke uretra.\n- **Uretra**: Saluran keluarnya sperma dan juga urine.\n- **Kelenjar Reproduksi**: Meliputi vesikula seminalis, kelenjar prostat, dan kelenjar cowper yang menghasilkan cairan semen untuk memberi energi pada sperma.\n\n[Image of the male reproductive system anatomy with labels]\n",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 603,
+    "fields": {
+      "module": 81,
+      "title": "Struktur dan Fungsi Organ Reproduksi Wanita",
+      "content": "Sistem reproduksi wanita lebih kompleks karena selain menghasilkan sel telur, juga berfungsi sebagai tempat perkembangan janin.\n\n- **Ovarium (Indung Telur)**: Menghasilkan sel telur (ovum) dan hormon estrogen/progesteron.\n- **Tuba Fallopi (Oviduk)**: Saluran tempat terjadinya pembuahan (fertilisasi) antara sperma dan ovum.\n- **Uterus (Rahim)**: Tempat menempel dan berkembangnya janin selama kehamilan.\n- **Vagina**: Saluran keluar untuk darah menstruasi dan jalan lahir bayi.\n\n[Image of the female reproductive system anatomy with labels]\n\nSetiap bulan, jika tidak terjadi pembuahan, dinding rahim yang menebal akan meluruh bersama sel telur yang mati dalam proses yang disebut **Menstruasi**.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 604,
+    "fields": {
+      "module": 81,
+      "title": "Siklus Menstruasi, Fertilisasi, dan Kehamilan",
+      "content": "Siklus menstruasi rata-rata berlangsung 28 hari dan dipengaruhi oleh hormon. Jika sperma berhasil bertemu dengan sel telur di tuba fallopi, terjadilah **Fertilisasi** yang menghasilkan Zigot.\n\nZigot kemudian membelah menjadi embrio dan menempel di dinding rahim (implantasi). Selama 9 bulan, janin mendapatkan nutrisi dan oksigen dari ibu melalui **Plasenta** (ari-ari). Pelajari fase perkembangan embrio dari bulan ke bulan pada gambar untuk melihat keajaiban awal mula kehidupan.\n\n",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 605,
+    "fields": {
+      "module": 81,
+      "title": "Kuis: Ahli Biologi Reproduksi",
+      "content": "Waktunya menguji pemahamanmu tentang sistem reproduksi. Kuis ini mencakup perbedaan mitosis-meiosis, fungsi organ, hingga mekanisme menstruasi. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 81,
+    "fields": {
+      "lesson": 605,
+      "title": "Evaluasi Sistem Reproduksi",
+      "description": "Uji kompetensi tentang pembelahan sel, anatomi reproduksi, dan kesehatan reproduksi."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 601,
+    "fields": {
+      "quiz": 81,
+      "text": "Pembelahan sel yang menghasilkan 4 sel anakan haploid (n) dan terjadi pada sel kelamin adalah...",
+      "topic": "Pembelahan Sel",
+      "option_a": "Mitosis",
+      "option_b": "Meiosis",
+      "option_c": "Amitosis",
+      "option_d": "Oksidasi",
+      "correct_answer": "B",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 602,
+    "fields": {
+      "quiz": 81,
+      "text": "Tempat terjadinya proses pembuahan (fertilisasi) antara sel sperma dan sel telur adalah...",
+      "topic": "Organ Wanita",
+      "option_a": "Ovarium",
+      "option_b": "Rahim",
+      "option_c": "Tuba Fallopi",
+      "option_d": "Vagina",
+      "correct_answer": "C",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 603,
+    "fields": {
+      "quiz": 81,
+      "text": "Bagian pada organ reproduksi pria yang berfungsi sebagai tempat penyimpanan dan pematangan sperma adalah...",
+      "topic": "Organ Pria",
+      "option_a": "Testis",
+      "option_b": "Skrotum",
+      "option_c": "Epididimis",
+      "option_d": "Vas Deferens",
+      "correct_answer": "C",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 604,
+    "fields": {
+      "quiz": 81,
+      "text": "Peristiwa peluruhan dinding rahim yang disertai pendarahan karena tidak terjadi pembuahan disebut...",
+      "topic": "Siklus Reproduksi",
+      "option_a": "Ovulasi",
+      "option_b": "Menstruasi",
+      "option_c": "Fertilisasi",
+      "option_d": "Implantasi",
+      "correct_answer": "B",
+      "difficulty_level": -1.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 605,
+    "fields": {
+      "quiz": 81,
+      "text": "Penyakit reproduksi yang disebabkan oleh bakteri Treponema pallidum adalah...",
+      "topic": "Penyakit",
+      "option_a": "AIDS",
+      "option_b": "Gonore",
+      "option_c": "Sifilis (Raja Singa)",
+      "option_d": "Keputihan",
+      "correct_answer": "C",
+      "difficulty_level": 0.8
+    }
+  }
+]

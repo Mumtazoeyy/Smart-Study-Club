@@ -1,0 +1,155 @@
+[
+  {
+    "model": "alp_app.module",
+    "pk": 70,
+    "fields": {
+      "course": 7,
+      "title": "Modul 10: Tata Surya dan Benda Langit",
+      "order": 10
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 546,
+    "fields": {
+      "module": 70,
+      "title": "Sistem Tata Surya dan Karakteristik Planet",
+      "content": "Tata surya kita adalah sebuah sistem yang terikat oleh gaya gravitasi Matahari sebagai pusatnya. Matahari memiliki massa yang sangat besar (sekitar 99,8% dari total massa tata surya), sehingga gravitasinya mampu menahan planet-planet pada orbitnya.\n\nPlanet-planet di tata surya dibagi menjadi dua kelompok besar:\n1. **Planet Dalam (Terestrial)**: Merkurius, Venus, Bumi, dan Mars. Planet ini berukuran kecil, berbatu, padat, dan memiliki sedikit atau tanpa satelit.\n2. **Planet Luar (Jovian)**: Jupiter, Saturnus, Uranus, dan Neptunus. Planet ini berukuran raksasa, tersusun dari gas dan es, memiliki banyak satelit, dan memiliki sistem cincin.\n\n\n\nDi antara Mars dan Jupiter, terdapat Sabuk Asteroid yang memisahkan kedua kelompok planet ini. Selain itu, ada planet kerdil seperti Pluto yang sudah tidak lagi dikategorikan sebagai planet utama sejak tahun 2006.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 547,
+    "fields": {
+      "module": 70,
+      "title": "Gerak Bumi: Rotasi dan Revolusi",
+      "content": "Bumi melakukan dua gerakan sekaligus yang sangat berpengaruh terhadap kehidupan kita:\n\n1. **Rotasi Bumi**: Perputaran Bumi pada porosnya. Gerakan ini membutuhkan waktu 24 jam dan menyebabkan terjadinya siang dan malam, gerak semu harian matahari (matahari seolah terbit dari timur), serta perbedaan waktu di berbagai belahan bumi.\n2. **Revolusi Bumi**: Pergerakan Bumi mengelilingi Matahari dalam orbit elips. Gerakan ini membutuhkan waktu 365,25 hari (1 tahun). Akibat dari revolusi bumi adalah terjadinya perubahan musim, perbedaan lamanya siang dan malam di daerah kutub, serta terlihatnya rasi bintang yang berbeda-beda setiap bulan.\n\n\n\nKemiringan sumbu bumi sebesar 23,5 derajat saat berevolusi adalah alasan utama mengapa kita memiliki musim yang berbeda di belahan bumi utara dan selatan.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 548,
+    "fields": {
+      "module": 70,
+      "title": "Bulan sebagai Satelit Alami Bumi",
+      "content": "Bulan adalah satu-satunya satelit alami Bumi. Uniknya, waktu rotasi bulan sama dengan waktu revolusinya mengelilingi bumi (sekitar 27,3 hari). Inilah yang menyebabkan wajah bulan yang menghadap bumi selalu sama.\n\nFase-fase bulan (seperti bulan sabit, bulan separuh, dan bulan purnama) terjadi karena perubahan posisi Bulan terhadap Matahari jika dilihat dari Bumi. Selain itu, gaya gravitasi bulan adalah penyebab utama terjadinya pasang surut air laut di bumi.\n\n[Image showing the phases of the moon: new moon, waxing crescent, first quarter, full moon]\n\nAda kalanya, posisi Bumi, Bulan, dan Matahari berada pada satu garis lurus yang memicu terjadinya fenomena alam yang spektakuler, yaitu Gerhana.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 549,
+    "fields": {
+      "module": 70,
+      "title": "Gerhana Matahari dan Gerhana Bulan",
+      "content": "Gerhana terjadi ketika satu benda langit masuk ke dalam bayang-bayang benda langit lainnya. Ada dua bayangan utama yang terbentuk: **Umbra** (bayangan inti yang gelap total) dan **Penumbra** (bayangan kabur/samar).\n\n1. **Gerhana Bulan**: Terjadi saat posisi Bumi berada di antara Matahari dan Bulan. Cahaya matahari ke bulan terhalang oleh bumi.\n2. **Gerhana Matahari**: Terjadi saat posisi Bulan berada di antara Matahari dan Bumi. Cahaya matahari ke bumi terhalang oleh bulan. Gerhana matahari hanya terjadi pada siang hari saat fase bulan baru.\n\n\n\nIngat, jangan pernah melihat gerhana matahari secara langsung tanpa alat pelindung mata karena radiasinya dapat merusak retina mata.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 550,
+    "fields": {
+      "module": 70,
+      "title": "Kuis: Astronom Cilik",
+      "content": "Selamat! Kamu telah menyelesaikan perjalanan luar angkasa ini. Kuis terakhir ini akan menguji pemahamanmu tentang karakteristik planet, akibat gerak bumi, fase bulan, hingga mekanisme terjadinya gerhana. Gunakan logikamu untuk membayangkan posisi benda-benda langit tersebut. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 70,
+    "fields": {
+      "lesson": 550,
+      "title": "Evaluasi Akhir Tata Surya",
+      "description": "Uji kompetensi tentang susunan planet, gerak bumi dan bulan, serta fenomena gerhana."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 546,
+    "fields": {
+      "quiz": 70,
+      "text": "Planet yang dikenal sebagai planet merah karena mengandung banyak besi oksida adalah...",
+      "topic": "Karakteristik Planet",
+      "option_a": "Venus",
+      "option_b": "Mars",
+      "option_c": "Jupiter",
+      "option_d": "Saturnus",
+      "correct_answer": "B",
+      "difficulty_level": -1.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 547,
+    "fields": {
+      "quiz": 70,
+      "text": "Peristiwa pergantian musim di belahan bumi merupakan akibat dari...",
+      "topic": "Gerak Bumi",
+      "option_a": "Rotasi Bumi",
+      "option_b": "Revolusi Bumi",
+      "option_c": "Rotasi Bulan",
+      "option_d": "Revolusi Bulan",
+      "correct_answer": "B",
+      "difficulty_level": 0.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 548,
+    "fields": {
+      "quiz": 70,
+      "text": "Mengapa wajah bulan yang terlihat dari bumi selalu sama?",
+      "topic": "Bulan",
+      "option_a": "Karena bulan tidak berputar pada porosnya",
+      "option_b": "Karena bulan tidak memantulkan cahaya matahari",
+      "option_c": "Karena kala rotasi bulan sama dengan kala revolusinya terhadap bumi",
+      "option_d": "Karena jarak bulan ke bumi sangat dekat",
+      "correct_answer": "C",
+      "difficulty_level": 0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 549,
+    "fields": {
+      "quiz": 70,
+      "text": "Gerhana bulan terjadi apabila posisi benda langit berada pada satu garis lurus dengan urutan...",
+      "topic": "Gerhana",
+      "option_a": "Matahari - Bulan - Bumi",
+      "option_b": "Bumi - Matahari - Bulan",
+      "option_c": "Matahari - Bumi - Bulan",
+      "option_d": "Matahari - Merkurius - Bumi",
+      "correct_answer": "C",
+      "difficulty_level": 0.5
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 550,
+    "fields": {
+      "quiz": 70,
+      "text": "Bayangan inti yang sangat gelap saat terjadi gerhana disebut dengan...",
+      "topic": "Gerhana",
+      "option_a": "Umbra",
+      "option_b": "Penumbra",
+      "option_c": "Atmosfer",
+      "option_d": "Korona",
+      "correct_answer": "A",
+      "difficulty_level": -1.0
+    }
+  }
+]

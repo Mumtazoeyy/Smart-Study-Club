@@ -1,0 +1,164 @@
+[
+  {
+    "model": "alp_app.course",
+    "pk": 4,
+    "fields": {
+      "category": 1,
+      "title": "Matematika SMP 7",
+      "description": "Kurikulum lengkap Matematika untuk kelas 7 SMP yang mencakup Bilangan, Aljabar, hingga Geometri."
+    }
+  },
+  {
+    "model": "alp_app.module",
+    "pk": 32,
+    "fields": {
+      "course": 4,
+      "title": "Modul 2: Himpunan",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 206,
+    "fields": {
+      "module": 32,
+      "title": "Konsep Dasar: Membedakan Himpunan dan Kelompok",
+      "content": "Pernahkah kamu merapikan koleksi sepatu berdasarkan warnanya, atau menyusun buku pelajaran di tas sesuai jadwal hari esok? Tanpa kamu sadari, kegiatan mengelompokkan benda-benda tersebut adalah inti dari pelajaran kita kali ini: Himpunan.\n\nDalam matematika, Himpunan bukan sekadar 'kelompok' biasa. Himpunan adalah kumpulan benda atau objek yang didefinisikan secara JELAS (well-defined). Kata 'Jelas' di sini sangat sakti. Artinya, semua orang di dunia ini harus punya pendapat yang sama saat menentukan apakah suatu benda masuk ke kelompok itu atau tidak.\n\nMari kita bandingkan agar kamu paham perbedaannya:\n\n1. Contoh Himpunan (Pasti dan Jelas):\n- Himpunan hewan berkaki empat. Jika kamu menyebut 'Kambing', semua orang setuju itu berkaki empat.\n- Himpunan warna lampu lalu lintas. Anggotanya pasti Merah, Kuning, dan Hijau.\n- Himpunan bilangan asli kurang dari 5. Anggotanya pasti 1, 2, 3, dan 4.\n\n2. Contoh BUKAN Himpunan (Tidak Jelas/Subjektif):\n- Kelompok lukisan yang indah. Kata 'indah' itu relatif. Lukisan yang menurutmu keren, mungkin menurut temanmu biasa saja.\n- Kelompok siswa yang pintar. Pintar itu luas; ada yang pintar nyanyi, ada yang pintar hitung. Tidak ada batas yang pasti.\n- Kelompok makanan yang lezat. Lezat itu urusan lidah masing-masing orang.\n\nTips Cepat: Jika dalam sebuah kelompok ada kata sifat (indah, ganteng, pintar, lezat, besar, tinggi), maka hampir bisa dipastikan itu BUKAN himpunan karena penilaiannya berbeda-beda bagi setiap orang.",
+      "video_url": null,
+      "content_type": "text",
+      "order": 1
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 207,
+    "fields": {
+      "module": 32,
+      "title": "Aturan Main: Cara Menulis dan Notasi Himpunan",
+      "content": "Sama seperti kita yang harus pakai seragam saat sekolah, himpunan juga punya 'seragam' atau aturan baku dalam penulisannya supaya matematikawan di seluruh dunia tidak bingung. Berikut aturan mainnya:\n\n1. Nama Himpunan: Harus pakai Huruf Kapital (A, B, C, ... Z).\n2. Pembatas Anggota: Anggota himpunan wajib dikurung oleh Kurung Kurawal { } dan dipisahkan dengan tanda koma.\n3. Simbol Anggota: Jika sebuah benda adalah anggota himpunan, kita pakai simbol mirip huruf E (epsilon): $\\in$. Jika bukan anggota, simbolnya dicoret: $\\notin$.\n\nContoh: Jika A = {Jeruk, Apel, Mangga}, maka Jeruk $\\in$ A, tapi Semangka $\\notin$ A.\n\nAda 3 cara sakti untuk menyajikan sebuah himpunan:\n\n- Metode Deskripsi (Kata-kata): Menjelaskan syaratnya saja.\nContoh: P = {Bilangan ganjil antara 1 dan 10}.\n\n- Metode Enumerasi (Mendaftarkan): Menulis semua anggotanya satu-satu.\nContoh: P = {3, 5, 7, 9}.\n\n- Metode Notasi Pembentuk Himpunan: Menggunakan simbol x sebagai wakil anggota.\nContoh: P = {x | 1 < x < 10, x adalah bilangan ganjil}.\n(Dibaca: P adalah himpunan yang anggotanya x, sedemikian hingga x lebih besar dari 1 dan lebih kecil dari 10, di mana x adalah bilangan ganjil).",
+      "video_url": null,
+      "content_type": "text",
+      "order": 2
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 208,
+    "fields": {
+      "module": 32,
+      "title": "Video: Mengenal Himpunan Semesta dan Diagram Venn",
+      "content": "Belajar matematika akan jauh lebih seru kalau kita bisa melihat gambarnya. Itulah gunanya Diagram Venn. Sebelum melihat gambar, kamu harus kenal dulu dengan 'pemilik rumah' dari semua himpunan, yaitu Himpunan Semesta.\n\n1. Himpunan Semesta (S):\nIni adalah himpunan yang memuat SEMUA objek yang sedang kita bicarakan. Digambarkan dengan kotak persegi panjang besar dengan huruf S di pojok kiri atas.\n\n2. Diagram Venn:\nIni adalah cara menggambarkan himpunan menggunakan lingkaran di dalam kotak semesta tadi. Anggota-anggotanya dituliskan di dalam lingkaran dan biasanya diberi titik di depan angkanya.\n\n\n\nBayangkan kita bicara soal angka 1-10 (Ini Semesta kita). Lalu ada Himpunan A yang isinya angka genap (2, 4, 6, 8, 10). Dalam gambar, angka genap masuk ke dalam lingkaran, sedangkan angka ganjil (1, 3, 5, 7, 9) tetap di dalam kotak tapi di luar lingkaran.\n\nTugas Menonton: Simak video berikut untuk melihat bagaimana jika ada dua lingkaran (himpunan) yang saling berpotongan karena punya anggota yang sama!",
+      "video_url": "https://www.youtube.com/embed/fA8o4qY7OTo",
+      "content_type": "video",
+      "order": 3
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 209,
+    "fields": {
+      "module": 32,
+      "title": "Jenis Himpunan: Himpunan Kosong dan Kardinalitas",
+      "content": "Ada beberapa istilah khusus dalam himpunan yang sering keluar di ujian. Mari kita pelajari satu per satu dengan santai:\n\n1. Himpunan Kosong:\nIni adalah himpunan yang tidak punya anggota sama sekali. Disimbolkan dengan { } atau $\\emptyset$. \nContoh: Himpunan nama bulan yang diawali huruf 'Z'. Karena tidak ada bulan 'Zanuari', maka itu adalah himpunan kosong.\nIngat! {0} itu BUKAN himpunan kosong, karena dia punya satu anggota, yaitu angka nol.\n\n2. Kardinalitas Himpunan ($n(A)$):\nIni cuma nama keren untuk 'Jumlah Anggota'. Jika ada himpunan A = {merah, kuning, hijau}, maka jumlah anggotanya ada 3. Kita tulis $n(A) = 3$.\n\n3. Himpunan Bagian (Subset):\nHimpunan A disebut himpunan bagian dari B jika SEMUA anggota A ada di dalam B. Simbolnya $\\subset$.\nContoh: A = {1, 2} dan B = {1, 2, 3, 4}. Karena semua angka di A ada di B, maka A $\\subset$ B.\n\n[Image showing circle A inside circle B to represent the subset relationship]",
+      "video_url": null,
+      "content_type": "text",
+      "order": 4
+    }
+  },
+  {
+    "model": "alp_app.lesson",
+    "pk": 210,
+    "fields": {
+      "module": 32,
+      "title": "Kuis Seru: Seberapa Ahli Kamu tentang Himpunan?",
+      "content": "Hebat! Kamu sudah melahap semua materi tentang Himpunan, mulai dari definisinya sampai cara menggambarnya. Sekarang, waktunya pembuktian. Kerjakan soal-soal kuis berikut untuk menguji ketelitianmu. Ingat: dalam matematika, ketelitian sama pentingnya dengan kecerdasan. Selamat mengerjakan!",
+      "video_url": null,
+      "content_type": "quiz",
+      "order": 5
+    }
+  },
+  {
+    "model": "alp_app.quiz",
+    "pk": 32,
+    "fields": {
+      "lesson": 210,
+      "title": "Kuis Himpunan SMP 7",
+      "description": "Uji pemahamanmu tentang konsep dasar, notasi, dan jenis-jenis himpunan."
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 206,
+    "fields": {
+      "quiz": 32,
+      "text": "Manakah di antara kelompok berikut yang merupakan HIMPUNAN?",
+      "topic": "Konsep Dasar",
+      "option_a": "Kelompok makanan yang lezat",
+      "option_b": "Kelompok gunung yang sangat tinggi",
+      "option_c": "Kelompok hewan yang bertelur (Ovipar)",
+      "option_d": "Kelompok lukisan yang indah",
+      "correct_answer": "C",
+      "difficulty_level": -1.2
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 207,
+    "fields": {
+      "quiz": 32,
+      "text": "Jika A = {x | 5 < x < 12, x adalah bilangan ganjil}, maka anggota dari himpunan A adalah...",
+      "topic": "Notasi Himpunan",
+      "option_a": "{5, 7, 9, 11}",
+      "option_b": "{7, 9, 11}",
+      "option_c": "{5, 7, 9, 11, 13}",
+      "option_d": "{7, 9}",
+      "correct_answer": "B",
+      "difficulty_level": 0.4
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 208,
+    "fields": {
+      "quiz": 32,
+      "text": "Simbol yang benar untuk menyatakan 'Himpunan Kosong' adalah...",
+      "topic": "Jenis Himpunan",
+      "option_a": "{0}",
+      "option_b": "S",
+      "option_c": "{}",
+      "option_d": "E",
+      "correct_answer": "C",
+      "difficulty_level": -0.8
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 209,
+    "fields": {
+      "quiz": 32,
+      "text": "Diketahui K = {huruf pembentuk kata 'MATEMATIKA'}. Berapakah nilai kardinalitas n(K)?",
+      "topic": "Kardinalitas",
+      "option_a": "10",
+      "option_b": "6",
+      "option_c": "7",
+      "option_d": "8",
+      "correct_answer": "B",
+      "difficulty_level": 0.6
+    }
+  },
+  {
+    "model": "alp_app.question",
+    "pk": 210,
+    "fields": {
+      "quiz": 32,
+      "text": "Jika P = {1, 2} dan Q = {1, 2, 3, 4, 5}, maka pernyataan yang benar adalah...",
+      "topic": "Himpunan Bagian",
+      "option_a": "P anggota dari Q",
+      "option_b": "Q adalah himpunan bagian dari P",
+      "option_c": "P adalah himpunan bagian dari Q",
+      "option_d": "P sama dengan Q",
+      "correct_answer": "C",
+      "difficulty_level": 0.3
+    }
+  }
+]

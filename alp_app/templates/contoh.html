@@ -1,0 +1,162 @@
+if request.method == 'POST':
+        question_id = request.POST.get('question_id')
+        user_answer = request.POST.get('answer')
+        
+        if not question_id:
+            return redirect('quiz_detail', quiz_pk=quiz.pk)
+
+        question = get_object_or_404(Question, id=question_id)
+        
+        answered_ids = request.session.get('answered_ids', [])
+        if int(question_id) not in answered_ids:
+            answered_ids.append(int(question_id))
+            request.session['answered_ids'] = answered_ids
+        
+        # 3. UPDATE THETA REAL-TIME
+        is_correct = (user_answer == question.correct_answer)
+        if is_correct:
+            request.session['correct_answers'] += 1
+        else:
+            wrong_topics = request.session.get('wrong_topics', [])
+            if question.topic not in wrong_topics:
+                wrong_topics.append(question.topic)
+                request.session['wrong_topics'] = wrong_topics
+            
+        new_theta = update_theta_mle(
+            current_theta=user_profile.ability_score,
+            question_beta=question.difficulty_level,
+            is_correct=is_correct
+        )
+        
+        user_profile.ability_score = new_theta
+        user_profile.save()
+
+        request.session['quiz_step'] += 1
+
+        # 4. CEK APAKAH KUIS SELESAI (BERDASARKAN JUMLAH MAX)
+        if request.session['quiz_step'] > MAX_QUESTIONS:
+            user_score = request.session['correct_answers']
+            final_wrong_topics = request.session.get('wrong_topics', [])
+            score_percentage = (user_score / MAX_QUESTIONS) * 100 if MAX_QUESTIONS > 0 else 0
+            is_passed = score_percentage >= MIN_PASS_SCORE
+            
+            # PEMBERSIHAN SESI MENGGUNAKAN LOOPING
+            quiz_session_keys = ['quiz_step', 'correct_answers', 'answered_ids', 'wrong_topics']
+            for key in quiz_session_keys:
+                if key in request.session:
+                    del request.session[key]
+            request.session.modified = True
+
+            QuizResult.objects.create(
+                user=request.user,
+                course=lesson.module.course,
+                quiz=quiz,
+                score=user_score,
+                total_questions=MAX_QUESTIONS,
+                theta_result=new_theta
+            )
+
+            StudyHistory.objects.create(
+                user=request.user,
+                activity_name=f"Menyelesaikan Kuis: {quiz.title}",
+                link=request.path
+            )
+
+            # --- TAMBAHKAN LOGIKA CARI MATERI BERIKUTNYA DI SINI ---
+            from django.db.models import Q
+            next_lesson = Lesson.objects.filter(
+                module__course=quiz.lesson.module.course
+            ).filter(
+                Q(module__order__gt=quiz.lesson.module.order) | 
+                Q(module__order=quiz.lesson.module.order, order__gt=quiz.lesson.order)
+            ).order_by('module__order', 'order').first()
+            # -------------------------------------------------------
+
+            if is_passed:
+                mark_lesson_complete_logic(request.user, lesson.pk)
+            
+            return render(request, 'quiz/quiz_score.html', {
+                'score': user_score,
+                'total': MAX_QUESTIONS,
+                'percentage': score_percentage,
+                'is_passed': is_passed,
+                'theta_akhir': new_theta,
+                'quiz': quiz,
+                'wrong_topics': final_wrong_topics,
+                'next_lesson': next_lesson,  
+                'materi_awal': materi_awal,
+            })
+
+    # 5. SELEKSI SOAL ADAPTIF
+    answered_ids = request.session.get('answered_ids', [])
+    next_question = Question.objects.filter(quiz=quiz).exclude(id__in=answered_ids).annotate(
+        selisih=Func(F('difficulty_level') - user_profile.ability_score, function='ABS')
+    ).order_by('selisih').first()
+
+    # JIKA SOAL HABIS SEBELUM MENCAPAI MAX_QUESTIONS
+    if not next_question:
+        user_score = request.session.get('correct_answers', 0)
+        final_wrong_topics = request.session.get('wrong_topics', [])
+        actual_total = len(answered_ids)
+        score_percentage = (user_score / actual_total) * 100 if actual_total > 0 else 0
+        is_passed = score_percentage >= MIN_PASS_SCORE
+        final_theta = user_profile.ability_score
+
+        # --- TAMBAHKAN INI (Sama seperti sebelumnya) ---
+        from django.db.models import Q
+        next_lesson = Lesson.objects.filter(
+            module__course=quiz.lesson.module.course
+        ).filter(
+            Q(module__order__gt=quiz.lesson.module.order) | 
+            Q(module__order=quiz.lesson.module.order, order__gt=quiz.lesson.order)
+        ).order_by('module__order', 'order').first()
+        # -----------------------------------------------
+
+        # PEMBERSIHAN SESI MENGGUNAKAN LOOPING (DIPERBAIKI)
+        quiz_session_keys = ['quiz_step', 'correct_answers', 'answered_ids', 'wrong_topics']
+        for key in quiz_session_keys:
+            if key in request.session:
+                del request.session[key]
+        request.session.modified = True
+
+        QuizResult.objects.create(
+            user=request.user,
+            course=lesson.module.course,
+            quiz=quiz,
+            score=user_score,
+            total_questions=actual_total,
+            theta_result=final_theta
+        )
+
+        return render(request, 'quiz/quiz_score.html', {
+            'score': user_score,
+            'total': actual_total,
+            'percentage': score_percentage,
+            'is_passed': is_passed,
+            'theta_akhir': final_theta,
+            'quiz': quiz,
+            'wrong_topics': final_wrong_topics,
+            'next_lesson': next_lesson,
+            'materi_awal': materi_awal,
+        })
+
+    context = {
+        'quiz': quiz,
+        'question': next_question, 
+        'step': request.session.get('quiz_step', 1),
+        'total_steps': MAX_QUESTIONS,
+        'current_question_index': request.session.get('quiz_step', 1),
+        'total_questions': MAX_QUESTIONS,
+        'question_range': list(range(1, MAX_QUESTIONS + 1)),
+        'materi_awal': materi_awal,
+    }
+    return render(request, 'quiz/quiz_detail.html', context)
+
+    context = {
+        'quiz': quiz,
+        'question': next_question, 
+        'step': len(answered_ids) + 1,
+        'total_questions': MAX_QUESTIONS,
+        'question_range': list(range(1, MAX_QUESTIONS + 1)),
+        'total_steps': MAX_QUESTIONS,
+    }
