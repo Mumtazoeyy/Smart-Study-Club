@@ -791,11 +791,11 @@
         if (!sessionStorage.getItem('promo_popup_shown')) {
             setTimeout(function() {
                 Swal.fire({
-                    width: window.innerWidth < 768 ? '95vw' : '55vw',
-                    maxWidth: '800px',
+                    // Laptop tetap 55vw, di HP kita lepas agar mengikuti max-width custom di bawah
+                    width: window.innerWidth < 768 ? '100%' : '55vw',
                     padding: '0',
                     html: `
-                        <div class="bg-[#0a0a0a] text-white overflow-hidden flex flex-col border border-gray-800 shadow-2xl">
+                        <div class="bg-[#0a0a0a] text-white flex flex-col border border-gray-800 shadow-2xl overflow-hidden">
                             
                             <div class="p-8 md:p-12 text-center border-b border-gray-900">
                                 <div class="inline-block px-4 py-1 bg-[#eab308] text-black text-[10px] font-black uppercase tracking-[0.2em] mb-6 rounded-full">
@@ -804,40 +804,42 @@
                                 <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter leading-tight mb-4">
                                     BELAJAR LEBIH <span class="text-[#eab308]">MUDAH & SERU</span>
                                 </h2>
-                                <p class="text-gray-400 text-xs md:text-sm max-w-lg mx-auto leading-relaxed">
-                                    Bingung mulai belajar dari mana? Yuk gabung sekarang! Dapatkan akses ke materi pilihan yang bikin kamu makin jago di bidangmu.
+                                <p class="text-gray-400 text-xs md:text-sm max-w-lg mx-auto">
+                                    Gabung sekarang dan dapatkan akses materi eksklusif.
                                 </p>
                             </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-3 bg-[#0f172a]/30">
-                                <div class="p-6 border-b md:border-b-0 md:border-r border-gray-900 text-center group">
+                            <div class="flex flex-col md:flex-row bg-[#0f172a]/30">
+                                <div class="flex-1 p-6 border-b md:border-b-0 md:border-r border-gray-900 text-center">
                                     <i class="fas fa-layer-group text-[#eab308] mb-3 text-xl block"></i>
-                                    <p class="text-white font-bold text-sm mb-1 uppercase tracking-wider">Materi Lengkap</p>
-                                    <p class="text-[9px] text-gray-500 uppercase tracking-widest font-medium">Bebas akses kapan saja</p>
+                                    <p class="text-white font-bold text-sm uppercase">Materi Lengkap</p>
+                                    <p class="text-[9px] text-gray-500 uppercase">Bebas akses kapan saja</p>
                                 </div>
-                                <div class="p-6 border-b md:border-b-0 md:border-r border-gray-900 text-center group">
+                                <div class="flex-1 p-6 border-b md:border-b-0 md:border-r border-gray-900 text-center">
                                     <i class="fas fa-check-circle text-[#eab308] mb-3 text-xl block"></i>
-                                    <p class="text-white font-bold text-sm mb-1 uppercase tracking-wider">Latihan Soal</p>
-                                    <p class="text-[9px] text-gray-500 uppercase tracking-widest font-medium">Uji kemampuanmu</p>
+                                    <p class="text-white font-bold text-sm uppercase">Latihan Soal</p>
+                                    <p class="text-[9px] text-gray-500 uppercase">Uji kemampuanmu</p>
                                 </div>
-                                <div class="p-6 text-center group">
+                                <div class="flex-1 p-6 text-center">
                                     <i class="fas fa-medal text-[#eab308] mb-3 text-xl block"></i>
-                                    <p class="text-white font-bold text-sm mb-1 uppercase tracking-wider">Sertifikat Resmi</p>
-                                    <p class="text-[9px] text-gray-500 uppercase tracking-widest font-medium">Bukti skill nyata kamu</p>
+                                    <p class="text-white font-bold text-sm uppercase">Sertifikat Resmi</p>
+                                    <p class="text-[9px] text-gray-500 uppercase">Bukti skill nyata</p>
                                 </div>
                             </div>
 
                             <div class="p-8 md:p-10 bg-[#0a0a0a]">
-                                <button onclick="Swal.clickConfirm()" class="w-full bg-white hover:bg-[#eab308] text-black font-black py-4 transition-all uppercase tracking-[0.2em] text-[13px] shadow-xl flex items-center justify-center gap-3 active:scale-95">
-                                    DAFTAR SEKARANG JUGA<i class="fas fa-arrow-right"></i>
+                                <button onclick="Swal.clickConfirm()" class="w-full bg-white text-black font-black py-4 uppercase tracking-[0.2em] text-[13px] flex items-center justify-center gap-3">
+                                    DAFTAR SEKARANG JUGA <i class="fas fa-arrow-right"></i>
                                 </button>
-                                <div class="mt-6 flex flex-wrap justify-center gap-4 md:gap-8 opacity-80">
+                                
+                                <div class="mt-6 flex flex-col md:flex-row justify-center items-center gap-4 opacity-80">
                                     <div class="flex items-center gap-2">
                                         <i class="fas fa-bolt text-[8px] text-[#eab308]"></i>
-                                        <p class="text-[8px] text-gray-200 uppercase tracking-widest font-bold">Pendaftaran Gratis Tanpa Biaya</p>
+                                        <p class="text-[8px] text-gray-200 uppercase font-bold">Pendaftaran Gratis</p>
                                     </div>
                                     <div class="flex items-center gap-2">
-                                        <i class="fas fa-rocket text-[8px] text-[#eab308]"></i> <p class="text-[8px] text-gray-200 uppercase tracking-widest font-bold">Akses Mudah Langsung Join</p> 
+                                        <i class="fas fa-rocket text-[8px] text-[#eab308]"></i> 
+                                        <p class="text-[8px] text-gray-200 uppercase font-bold">Akses Mudah</p>
                                     </div>
                                 </div>
                             </div>
@@ -851,12 +853,13 @@
                     buttonsStyling: false,
                     allowOutsideClick: false,
                     customClass: {
-                        popup: 'rounded-none border-0',
+                        container: '!p-2', // Memaksa container agar tidak menjepit pop-up
+                        popup: 'rounded-none border-0 !w-full !max-w-[95vw] md:!max-w-[850px] !m-0 p-0', 
                         closeButton: 'text-gray-500 hover:text-[#eab308] p-4 transition-colors'
                     }
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = "{% url 'login_view' %}";
+                        window.location.href = "{% url 'account_login' %}";
                     }
                 });
                 sessionStorage.setItem('promo_popup_shown', 'true');
