@@ -6,7 +6,7 @@ from .views import ClassListView
 from django.shortcuts import render
 
 urlpatterns = [
-    path('', views.home_master, name='home_master'), 
+    path('', views.home_master, name='home_master'),
 
     path('accounts/login/', views.login_view, name='login_view'),
     path('accounts/signup/', views.signup_view, name='signup_view'),
@@ -40,6 +40,8 @@ urlpatterns = [
     path('sertifikat/list/', views.list_sertifikat_view, name='list_sertifikat'),
 
     path('post-discussion/<int:course_id>/', views.post_discussion, name='post_discussion'),
+
+    path('calibrate-irt/', views.calibrate_difficulty_view, name='calibrate_irt'),
 
     path('feedback/', views.feedback_view, name='feedback_view'),
     path('discussion/', views.discussion_view, name='discussion_view'),

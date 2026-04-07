@@ -11,9 +11,9 @@ from profiles_app.models import Profile
 from django.core.exceptions import ObjectDoesNotExist
 
 import csv  # Tambahkan ini
-from django.http import HttpResponse  
-from django.utils.timezone import localtime, now 
-from django.utils import timezone 
+from django.http import HttpResponse
+from django.utils.timezone import localtime, now
+from django.utils import timezone
 
 # =========================================================
 # 1. LOGIKA INLINES
@@ -60,18 +60,18 @@ class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False
     verbose_name_plural = 'Informasi Tambahan (Kelas)'
-    
+
     # Field ini akan muncul sebagai teks statis di Admin (Tidak bisa diketik)
     readonly_fields = (
-        'ability_score', 
-        'total_waktu_belajar', 
+        'ability_score',
+        'total_waktu_belajar',
         'nilai_rata_rata',
         'perubahan_waktu_belajar'
     )
-    
+
     # Menentukan urutan tampilan field di form Admin
     fields = (
-        'kelas', 'nama_lengkap', 'foto', 'level', 'bio', 
+        'kelas', 'nama_lengkap', 'foto', 'level', 'bio',
         'ability_score', 'total_waktu_belajar', 'nilai_rata_rata'
     )
 
@@ -96,7 +96,7 @@ class UserAdmin(BaseUserAdmin):
         from django.http import HttpResponse
         from django.utils.timezone import localtime
         from django.utils import timezone
-        
+
         # Memastikan data paling mutakhir dari database
         queryset = queryset.all()
 
@@ -108,14 +108,14 @@ class UserAdmin(BaseUserAdmin):
 
         response = HttpResponse(content_type='text/csv; charset=utf-8')
         response['Content-Disposition'] = f'attachment; filename="{filename}"'
-        
+
         # Anti-Cache agar data selalu real-time
         response['Cache-Control'] = 'no-cache, no-store, must-revalidate'
         response['Pragma'] = 'no-cache'
         response.write(u'\ufeff'.encode('utf8'))
-        
+
         writer = csv.writer(response, delimiter=';', quoting=csv.QUOTE_MINIMAL)
-        
+
         # Header Kolom
         writer.writerow(['Username', 'Nama Lengkap', 'Kelas', 'Ability Score (Theta)', 'Kuis', 'Skor', 'Total Soal', 'Tanggal & Waktu'])
 
@@ -126,19 +126,19 @@ class UserAdmin(BaseUserAdmin):
 
             # Ambil data real-time langsung dari database
             results = QuizResult.objects.filter(user=user).all().order_by('date')
-            
+
             if results.exists():
                 for res in results:
                     theta_fix = str(res.theta_result).replace('.', ',')
                     waktu_lokal = localtime(res.date).strftime('%d/%m/%Y %H:%M:%S')
                     writer.writerow([
-                        user.username, 
-                        nama_lengkap, 
-                        kelas, 
-                        theta_fix, 
-                        res.quiz.title, 
-                        res.score, 
-                        res.total_questions, 
+                        user.username,
+                        nama_lengkap,
+                        kelas,
+                        theta_fix,
+                        res.quiz.title,
+                        res.score,
+                        res.total_questions,
                         f" {waktu_lokal}"
                     ])
             else:
@@ -218,7 +218,7 @@ class UserAdmin(BaseUserAdmin):
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('title', 'course_code', 'category', 'level') 
+    list_display = ('title', 'course_code', 'category', 'level')
     list_filter = ('category', 'level')
     search_fields = ('title', 'course_code')
 
@@ -249,16 +249,16 @@ class ModuleAdmin(admin.ModelAdmin):
 
 @admin.register(Lesson)
 class LessonAdmin(admin.ModelAdmin):
-    list_display = ('title', 'module', 'content_type', 'image_preview') 
+    list_display = ('title', 'module', 'content_type', 'image_preview')
     list_filter = ('module__course', 'content_type')
-    
+
     fields = ('module', 'title', 'content', 'image', 'video_url', 'content_type', 'order', 'is_quiz')
-    
+
     def image_preview(self, obj):
         if obj.image:
             return mark_safe(f'<img src="{obj.image.url}" width="50" height="50" style="object-fit: cover; border-radius: 4px;" />')
         return "No Image"
-    image_preview.short_description = 'Preview'    
+    image_preview.short_description = 'Preview'
 
 @admin.register(StudySession)
 class StudySessionAdmin(admin.ModelAdmin):
@@ -293,18 +293,27 @@ class DiscussionAdmin(admin.ModelAdmin):
     def get_queryset(self, request):
         qs = super().get_queryset(request)
         return qs.filter(parent__isnull=True)
-    
+
 # Di bagian bawah admin.py
 @admin.register(SupportReport)
 class SupportReportAdmin(admin.ModelAdmin):
     # Kolom yang muncul di daftar tabel utama
     list_display = ('nama', 'kategori', 'status', 'created_at')
-    
+
     # Kolom status bisa diedit langsung (Dropdown akan otomatis muncul karena 'choices' di model)
     list_editable = ('status',)
-    
+
     list_filter = ('status', 'kategori', 'created_at')
     search_fields = ('nama', 'pesan', 'email')
     readonly_fields = ('created_at',)
     ordering = ('-created_at',)
 
+# Pastikan UserAnswer di-import agar tidak muncul NameError
+from .models import UserAnswer
+
+@admin.register(UserAnswer)
+class UserAnswerAdmin(admin.ModelAdmin):
+    # 'theta_at_time' sudah dihapus agar tidak AttributeError
+    list_display = ('user', 'question', 'is_correct', 'created_at')
+    list_filter = ('is_correct', 'created_at')
+    search_fields = ('user__username', 'question__text')

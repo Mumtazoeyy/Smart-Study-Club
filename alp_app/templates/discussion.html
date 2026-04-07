@@ -10,19 +10,19 @@
 
 <style>
     body { font-family: 'Poppins', sans-serif; background-color: #ffffff; overflow-x: hidden; color: #111827; }
-    
+
     /* Industrial Glassmorphism Card */
     .discussion-card-industrial {
-        background-color: rgba(255, 255, 255, 0.05); 
-        backdrop-filter: blur(12px); 
+        background-color: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         border: 1px solid rgba(0, 0, 0, 0.1);
-        border-radius: 0px; 
+        border-radius: 0px;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         overflow: hidden;
     }
-    
+
     .discussion-card-industrial:hover {
         transform: translateY(-5px);
         border-color: rgba(0, 0, 0, 0.3);
@@ -35,7 +35,7 @@
         background: #ffffff !important;
         border: 2px solid #111827 !important;
         color: #111827 !important;
-        border-radius: 0px !important; 
+        border-radius: 0px !important;
         font-weight: 700 !important;
         transition: all 0.2s ease;
     }
@@ -61,7 +61,7 @@
 
 <div class="min-h-screen">
     <div class="container mx-auto px-6 pt-2 pb-12">
-        
+
         {# Header Section (Sesuai Gaya about.html) #}
         <div class="w-full flex flex-col items-center gap-1 mb-16" data-aos="fade-down">
             <div class="flex items-center gap-3">
@@ -73,8 +73,8 @@
             </div>
             <div class="flex flex-col items-center">
                 <p class="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-[0.2em] text-center">
-                    <span class="text-gray-900">Knowledge Exchange</span> 
-                    <span class="mx-3 text-gray-200">|</span> 
+                    <span class="text-gray-900">Knowledge Exchange</span>
+                    <span class="mx-3 text-gray-200">|</span>
                     Digital Intelligence Division
                 </p>
                 <div class="mt-2 flex items-center gap-1">
@@ -104,7 +104,7 @@
             <div class="lg:w-2/3 space-y-4">
                 {% for comment in comments %}
                 <div class="discussion-card-industrial p-4 md:p-5 group" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
-                    
+
                     {# Aksen Siku #}
                     <div class="absolute top-0 right-0 w-10 h-10 bg-gray-200/20 -mr-5 -mt-5 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
 
@@ -112,10 +112,10 @@
                         {# Avatar #}
                         <div class="flex-none hidden md:block">
                             <div class="h-14 w-14 bg-white border-2 border-gray-900 flex items-center justify-center overflow-hidden shadow-[4px_4px_0px_#111827] transition-all duration-300">
-                                
+
                                 {% if comment.user.user_profile.foto %}
-                                    <img src="{{ comment.user.user_profile.foto.url }}" 
-                                        alt="{{ comment.user.username }}" 
+                                    <img src="{{ comment.user.user_profile.foto.url }}"
+                                        alt="{{ comment.user.username }}"
                                         class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110">
                                 {% else %}
                                     <span class="text-gray-900 font-black text-xl transition-transform duration-300 group-hover:scale-125 uppercase">
@@ -125,7 +125,7 @@
 
                             </div>
                         </div>
-                        
+
                         <div class="flex-1">
                             {# Header Section #}
                             <div class="flex items-center justify-between mb-2 w-full">
@@ -137,9 +137,9 @@
 
                                 {# Link langsung ke halaman Kelas #}
                                 <div class="flex-none">
-                                    <a href="{% url 'course_detail' comment.course.id %}" 
-                                    class="bg-gray-900 text-[#eab308] px-3 py-1 font-black text-[9px] uppercase tracking-[0.2em] border border-gray-900 shadow-[3px_3px_0px_#eab308] 
-                                            inline-block transition-all duration-200 
+                                    <a href="{% url 'course_detail' comment.course.id %}"
+                                    class="bg-gray-900 text-[#eab308] px-3 py-1 font-black text-[9px] uppercase tracking-[0.2em] border border-gray-900 shadow-[3px_3px_0px_#eab308]
+                                            inline-block transition-all duration-200
                                             hover:bg-[#eab308] hover:text-gray-900 hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]">
                                         {{ comment.course.course_code }}
                                     </a>
@@ -150,7 +150,7 @@
                             <p class="text-gray-600 text-sm leading-relaxed mb-1 font-medium">
                                 {{ comment.content }}
                             </p>
-                            
+
                             {# Interaction Footer - Border-t dihilangkan atau pt dikecilkan sesuai keinginan #}
                             <div class="flex items-center gap-8 pt-2">
                                 <form action="{% url 'like_comment' comment.id %}" method="POST" class="inline">
@@ -165,7 +165,7 @@
                                     <span class="text-gray-900">{{ comment.get_total_replies_count }} Replies</span>
                                 </button>
                             </div>
-                            
+
                             {# Replies Section #}
                             <div id="replies-{{ comment.id }}" class="hidden mt-8 space-y-6 border-l-2 border-gray-900 pl-6">
                                 {% for reply in comment.get_all_replies %}
@@ -198,16 +198,16 @@
                                     </div>
                                 </div>
                                 {% endfor %}
-                                
+
                                 {# Form Input: Satu untuk semua di bawah #}
                                 <form action="{% url 'reply_comment' comment.id %}" method="POST" class="mt-4 flex items-stretch gap-0 group">
                                     {% csrf_token %}
-                                        
-                                    <input id="input-{{ comment.id }}" name="content" type="text" required placeholder="TULIS BALASAN..." 
+
+                                    <input id="input-{{ comment.id }}" name="content" type="text" required placeholder="TULIS BALASAN..."
                                         class="flex-1 px-4 py-3 text-[10px] tracking-widest uppercase border-2 border-gray-900 focus:border-[#eab308] outline-none bg-transparent transition-all"
                                         style="height: 42px; box-sizing: border-box;">
 
-                                    <button type="submit" 
+                                    <button type="submit"
                                         class="bg-gray-900 text-white px-6 text-[10px] font-black uppercase tracking-widest border-2 border-gray-900 hover:bg-[#eab308] hover:border-[#eab308] hover:text-gray-900 transition-all outline-none"
                                         style="height: 42px; box-sizing: border-box; margin-left: -2px;">
                                         Kirim
@@ -228,12 +228,12 @@
             {# Right Column: Sidebar #}
             <div class="lg:w-1/3">
                 <div class="space-y-8 sticky top-10" data-aos="fade-left">
-                    
+
                     {# 1. Tips Pengguna (Design Biru Gelap Home5) #}
                     <div class="group relative overflow-hidden bg-[#111827] p-8 transition-all duration-300 hover:bg-gray-800">
                         <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#3b82f6 0.5px, transparent 0.5px); background-size: 8px 8px;"></div>
                         <div class="absolute top-0 right-0 w-12 h-12 bg-white/5 -mr-6 -mt-6 rotate-45 group-hover:bg-blue-500 transition-colors duration-500"></div>
-                        
+
                         <div class="relative z-10">
                             <div class="flex items-center justify-between mb-6">
                                 <div class="flex items-center gap-2">
@@ -262,7 +262,7 @@
                     <div class="group relative overflow-hidden bg-[#111827] p-8 transition-all duration-300 hover:bg-gray-800">
                         <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#3b82f6 0.5px, transparent 0.5px); background-size: 8px 8px;"></div>
                         <div class="absolute top-0 right-0 w-12 h-12 bg-white/5 -mr-6 -mt-6 rotate-45 group-hover:bg-blue-500 transition-colors duration-500"></div>
-                        
+
                         <div class="relative z-10">
                             <div class="flex items-center gap-2 mb-8">
                                 <div class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
@@ -289,7 +289,7 @@
                     <a href="{% url 'feedback_view' %}" class="group relative overflow-hidden bg-[#111827] p-8 transition-all duration-300 hover:bg-gray-800 block">
                         <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#3b82f6 0.5px, transparent 0.5px); background-size: 8px 8px;"></div>
                         <div class="absolute top-0 right-0 w-12 h-12 bg-white/5 -mr-6 -mt-6 rotate-45 group-hover:bg-blue-500 transition-colors duration-500"></div>
-                        
+
                         <div class="relative z-10">
                             <div class="flex items-center justify-between mb-4">
                                 <div class="flex items-center gap-2">
@@ -302,24 +302,24 @@
                             </div>
                             <h3 class="text-2xl font-black text-white uppercase tracking-tight mb-3">Ada Kendala?</h3>
                             <p class="text-sm text-gray-400 font-medium leading-relaxed mb-8">Jangan ragu untuk bertanya atau memberi saran. Kami siap membantu menyelesaikan masalahmu.</p>
-                            
+
                             <div class="flex items-center gap-2 w-full text-blue-400 group-hover:text-white transition-colors">
                                 <span class="text-[10px] font-black uppercase tracking-widest whitespace-nowrap">Tulis Sekarang</span>
                                 <div class="h-[1.5px] w-4 bg-blue-500/50 group-hover:bg-blue-400 transition-all duration-500 ease-in-out group-hover:flex-grow"></div>
                             </div>
                         </div>
                     </a>
-
-                    {# Footer Sidebar #}
-                    <div class="pt-4 flex justify-between items-center text-[9px] font-black text-gray-400 uppercase tracking-widest">
-                        <span>SSC Versi 1.0.4</span>
-                        <div class="flex items-center gap-1">
-                            <span class="h-2 w-2 bg-blue-500 shadow-[0_0_5px_#3b82f6]"></span>
-                            <span>Koneksi Aman</span>
-                        </div>
-                    </div>
                 </div>
             </div>
+        </div>
+        {# Footer Sidebar #}
+        <div class="w-full max-w-7xl mt-24 border-t-2 border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-400 tracking-[0.3em] uppercase font-black">
+            <div class="flex items-center gap-2">
+                <span class="h-3 w-3 bg-gray-900"></span>
+                <span>Platform Active & Ready</span>
+            </div>
+            <span>© 2025 Smart Study Club (SSC)</span>
+            <span class="bg-[#eab308] text-gray-900 px-3 py-1">User Acceptance Testing (UAT).</span>
         </div>
     </div>
 </div>
@@ -334,8 +334,8 @@
 
     function toggleReply(id) {
         const element = document.getElementById('replies-' + id);
-        if (element) { 
-            element.classList.toggle('hidden'); 
+        if (element) {
+            element.classList.toggle('hidden');
             if(!element.classList.contains('hidden')) {
                 element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }

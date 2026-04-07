@@ -7,9 +7,9 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # --- SECURITY & DEBUG ---
-SECRET_KEY = 'django-insecure-c&v)pd1zrisbvgi3hw$rij06ga6=nrjyj-cmd9g38efxxzle#b' 
-DEBUG = False
-ALLOWED_HOSTS = ['*']
+SECRET_KEY = 'django-insecure-c&v)pd1zrisbvgi3hw$rij06ga6=nrjyj-cmd9g38efxxzle#b'
+DEBUG = True
+ALLOWED_HOSTS = ['ilyasabdullah.pythonanywhere.com', 'localhost', '127.0.0.1', '.pythonanywhere.com']
 SITE_ID = 1 # Wajib untuk django.contrib.sites
 
 # --- APPLICATION DEFINITION ---
@@ -21,7 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites', 
+    'django.contrib.sites',
 
     # Third-party Apps
     'widget_tweaks',
@@ -29,10 +29,10 @@ INSTALLED_APPS = [
     # Allauth (HANYA AKUN LOKAL)
     'allauth',
     'allauth.account',
-    
+
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.google', 
-    
+    'allauth.socialaccount.providers.google',
+
     # Project App
     'alp_app',
     'profiles_app',
@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-AUTH_PASSWORD_VALIDATORS = [] 
+AUTH_PASSWORD_VALIDATORS = []
 
 # --- STATIC & MEDIA ---
 STATIC_URL = 'static/'
@@ -99,7 +99,7 @@ AUTHENTICATION_BACKENDS = [
 ACCOUNT_FORMS = {
 }
 
-LOGIN_REDIRECT_URL = '/' 
+LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_EMAIL_REQUIRED = True
@@ -107,9 +107,9 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_EMAIL_VERIFICATION = "none"           
-ACCOUNT_PASSWORD_MIN_LENGTH = 1               
-ACCOUNT_USERNAME_MIN_LENGTH = 1               
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_PASSWORD_MIN_LENGTH = 1
+ACCOUNT_USERNAME_MIN_LENGTH = 1
 
 # --- EMAIL CONFIGURATION (PRODUCTION/REAL) ---
 # Hapus atau komentar EMAIL_BACKEND console tadi
@@ -117,10 +117,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'ilyasamumtaza@gmail.com' 
+EMAIL_HOST_USER = 'ilyasamumtaza@gmail.com'
 
 # Ganti ini dengan 16 digit kode "App Password" dari Google Account kamu
-EMAIL_HOST_PASSWORD = '' 
+EMAIL_HOST_PASSWORD = 'qgnv ahqy nbyd eual'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -142,3 +142,7 @@ SOCIALACCOUNT_PROVIDERS = {
 SOCIALACCOUNT_LOGIN_ON_GET = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Tambahkan ini di paling bawah settings.py
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

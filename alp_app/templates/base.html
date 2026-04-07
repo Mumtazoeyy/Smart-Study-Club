@@ -18,11 +18,11 @@
     <style>
 
     .body-bg {
-        background-image: 
-            radial-gradient(#cbd5e1 0.8px, transparent 0.8px), 
+        background-image:
+            radial-gradient(#cbd5e1 0.8px, transparent 0.8px),
             linear-gradient(to bottom, #ffffff 0%, #f1f5f9 50%, #cbd5e1 100%);
         background-size: 16px 16px, 100% 100%;
-        background-attachment: fixed;        
+        background-attachment: fixed;
         background-color: #ffffff;
     }
 
@@ -97,7 +97,7 @@
     .industrial-input {
         background: rgba(255, 255, 255, 0.8);
         border: 1px solid #111827;
-        border-radius: 0px; 
+        border-radius: 0px;
         box-shadow: 4px 4px 0px #111827;
         transition: all 0.3s ease;
     }
@@ -158,26 +158,26 @@
 
     <header class="industrial-nav fixed top-0 left-0 right-0 z-50">
         <div id="navbarContainer" class="relative w-full px-4 md:px-6 py-3 flex items-center min-h-[75px]">
-            
+
             {# Logo Section #}
             <div class="flex items-center gap-4 flex-shrink-0">
                 <a href="/" class="group flex items-center gap-2">
-                    <div class="p-1 border border-gray-900 bg-white shadow-[4px_4px_0px_#eab308] 
-                                transition-all duration-300 
-                                group-hover:shadow-none 
-                                group-hover:translate-x-[4px] 
+                    <div class="p-1 border border-gray-900 bg-white shadow-[4px_4px_0px_#eab308]
+                                transition-all duration-300
+                                group-hover:shadow-none
+                                group-hover:translate-x-[4px]
                                 group-hover:translate-y-[4px]">
                         <img src="{% static 'img/1.jpeg' %}" alt="Logo" class="w-8 h-8 md:w-10 md:h-10 object-cover" />
                     </div>
 
                     <span class="text-base md:text-xl font-black text-gray-900 tracking-tighter select-none uppercase
-                                transition-colors duration-200 
+                                transition-colors duration-200
                                 group-hover:text-[#eab308]">
                         SSC<span class="hidden sm:inline"> Smart Study Club</span>
                     </span>
                 </a>
             </div>
-            
+
             {# Desktop Navigation #}
             <div class="hidden lg:flex flex-grow items-center justify-center px-4">
                 <nav id="main-nav" class="flex items-center relative">
@@ -193,10 +193,10 @@
                 {% if request.resolver_match.url_name != 'home_master' %}
                 <div class="search-expand-wrapper ml-12 is-active animate-slide-right">
                     <form action="{% url 'course_list' %}" method="GET" class="relative group flex items-center">
-                        
+
                         <input type="text" name="q" placeholder="CARI MATERI..." value="{{ request.GET.q|default:'' }}"
                             class="w-64 lg:w-72 border-2 border-gray-900 bg-white px-4 pl-10 py-2 text-[10px] font-black tracking-[0.15em] uppercase outline-none transition-all duration-300 focus:border-[#eab308]">
-                        
+
                         <button type="submit" class="absolute left-0 top-0 bottom-0 w-10 flex items-center justify-center text-gray-900 hover:text-[#eab308] transition-colors duration-300">
                             <i class="fa-solid fa-magnifying-glass text-[11px]"></i>
                         </button>
@@ -209,16 +209,16 @@
                 <style>
                     /* Animasi muncul halus dari kiri ke kanan */
                     @keyframes slideRight {
-                        from { 
-                            opacity: 0; 
+                        from {
+                            opacity: 0;
                             transform: translateX(-20px); /* Mulai dari 20px ke kiri */
                         }
-                        to { 
-                            opacity: 1; 
+                        to {
+                            opacity: 1;
                             transform: translateX(0);    /* Berakhir di posisi asli */
                         }
                     }
-                    
+
                     .animate-slide-right {
                         animation: slideRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
                     }
@@ -226,10 +226,10 @@
             </div>
 
             {# User Section / Mobile Menu Trigger #}
-            <div class="flex items-center flex-shrink-0 ml-auto gap-3"> 
+            <div class="flex items-center flex-shrink-0 ml-auto gap-3">
                 {% if user.is_authenticated %}
                 <button id="profileButton" class="group focus:outline-none flex items-center gap-3 p-1 border border-transparent hover:border-gray-900 transition-all duration-300">
-                    <div class="text-right hidden sm:block"> 
+                    <div class="text-right hidden sm:block">
                         <div class="text-gray-900 font-black text-[10px] uppercase leading-none tracking-widest">
                             {% firstof user.user_profile.nama_lengkap user.username %}
                         </div>
@@ -303,42 +303,42 @@
 
                 <p class="text-[9px] font-black text-gray-400 uppercase tracking-[0.4em] ml-2 mb-4">[ Access Point ]</p>
 
-                <a href="{% url 'dashboard' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
+                <a href="{% url 'dashboard' %}" onclick="loginRequiredAction(event)" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
                     <i class="fa-solid fa-chart-pie w-6 text-[#eab308] text-xs"></i>
                     <span class="font-black text-[10px] uppercase tracking-widest">Dashboard</span>
                 </a>
 
-                <a href="{% url 'my_courses' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
+                <a href="{% url 'my_courses' %}" onclick="loginRequiredAction(event)" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
                     <i class="fa-solid fa-clone w-6 text-[#eab308] text-xs"></i>
                     <span class="font-black text-[10px] uppercase tracking-widest">My Class</span>
                 </a>
 
-                <a href="{% url 'list_sertifikat' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
+                <a href="{% url 'list_sertifikat' %}" onclick="loginRequiredAction(event)" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
                     <i class="fa-solid fa-award w-6 text-[#eab308] text-xs"></i>
                     <span class="font-black text-[10px] uppercase tracking-widest">Certificates</span>
                 </a>
 
-                <a href="{% url 'leaderboard' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
+                <a href="{% url 'leaderboard' %}" onclick="loginRequiredAction(event)" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
                     <i class="fa-solid fa-trophy w-6 text-[#eab308] text-xs"></i>
                     <span class="font-black text-[10px] uppercase tracking-widest">Leaderboard</span>
                 </a>
 
-                <a href="{% url 'feedback_view' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
+                <a href="{% url 'feedback_view' %}" onclick="loginRequiredAction(event)" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
                     <i class="fa-solid fa-comment-dots w-6 text-[#eab308] text-xs"></i>
                     <span class="font-black text-[10px] uppercase tracking-widest">Feedback</span>
                 </a>
 
-                <a href="{% url 'discussion_view' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
+                <a href="{% url 'discussion_view' %}" onclick="loginRequiredAction(event)" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
                     <i class="fa-solid fa-comments w-6 text-[#eab308] text-xs"></i>
                     <span class="font-black text-[10px] uppercase tracking-widest">Discussion</span>
                 </a>
 
-                <a href="{% url 'profile_settings' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
+                <a href="{% url 'profile_settings' %}" onclick="loginRequiredAction(event)" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
                     <i class="fa-solid fa-user-gear w-6 text-[#eab308] text-xs"></i>
                     <span class="font-black text-[10px] uppercase tracking-widest">Settings</span>
                 </a>
 
-                <a href="{% url 'history_full_view' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
+                <a href="{% url 'history_full_view' %}" onclick="loginRequiredAction(event)" class="menu-item flex items-center gap-x-3 px-4 py-3 text-gray-900">
                     <i class="fa-solid fa-clock-rotate-left w-6 text-[#eab308] text-xs"></i>
                     <span class="font-black text-[10px] uppercase tracking-widest">History</span>
                 </a>
@@ -346,12 +346,12 @@
                 {% if user.is_staff %}
                 <div class="pt-6 mt-6 border-t border-dashed border-gray-300">
                     <p class="text-[9px] font-black text-blue-600 uppercase tracking-[0.4em] ml-2 mb-4">[ Admin Core Management ]</p>
-                    
+
                     <a href="{% url 'manager_dashboard' %}" class="menu-item flex items-center gap-x-3 px-4 py-3 mb-2 text-blue-600 border border-transparent hover:border-blue-600">
                         <i class="fa-solid fa-cubes w-6 text-xs"></i>
                         <span class="font-black text-[10px] uppercase tracking-widest">Manager</span>
                     </a>
-                    
+
                     <a href="/admin/" class="menu-item flex items-center gap-x-3 px-4 py-3 text-red-600 border border-transparent hover:border-red-600">
                         <i class="fa-solid fa-shield-halved w-6 text-xs"></i>
                         <span class="font-black text-[10px] uppercase tracking-widest">Database</span>
@@ -407,7 +407,7 @@
             const indicator = document.getElementById('nav-indicator');
             const links = document.querySelectorAll('.nav-link');
             const activeLink = document.querySelector('.active-link');
-            
+
             const profileButton = document.getElementById('profileButton');
             const profileSidebar = document.getElementById('profileSidebar');
             const sidebarOverlay = document.getElementById('sidebarOverlay');
@@ -482,12 +482,12 @@
             <div class="col-span-1">
                 <h3 class="font-black mb-6 uppercase tracking-widest text-gray-900 border-b-4 border-yellow-400 inline-block">Hubungi Kami</h3>
                 <ul class="text-gray-600 space-y-4 font-bold text-sm">
-                    
+
                     {# Alamat -> Google Maps #}
                     <li class="flex items-start gap-4 group cursor-pointer" onclick="confirmRedirect('maps')">
                         <span class="mt-1 flex-shrink-0 w-9 h-9 flex items-center justify-center bg-gray-100 text-gray-900 border-2 border-gray-900 transition-all duration-200 group-hover:bg-gray-900 group-hover:text-yellow-400 group-hover:shadow-[4px_4px_0px_#eab308] group-hover:-translate-y-1">
                             <i class="fas fa-map-marker-alt text-sm"></i>
-                        </span> 
+                        </span>
                         <span class="leading-relaxed group-hover:text-gray-900 transition-colors italic">
                             WWR9+G77, Jl. Ir. Bung Tomo, Kepatihan, Ringinpitu, Tulungagung
                         </span>
@@ -497,7 +497,7 @@
                     <li class="flex items-center gap-4 group cursor-pointer" onclick="confirmRedirect('support')">
                         <span class="flex-shrink-0 w-9 h-9 flex items-center justify-center bg-gray-100 text-gray-900 border-2 border-gray-900 transition-all duration-200 group-hover:bg-gray-900 group-hover:text-yellow-400 group-hover:shadow-[4px_4px_0px_#eab308] group-hover:-translate-y-1">
                             <i class="fas fa-envelope text-sm"></i>
-                        </span> 
+                        </span>
                         <span class="lowercase group-hover:text-gray-900 transition-colors">ilyasamumtaza@gmail.com</span>
                     </li>
 
@@ -515,34 +515,50 @@
             <script>
                 function loginRequiredAction(event) {
                     {% if not user.is_authenticated %}
-                        event.preventDefault(); 
-                        
-                        Swal.fire({
-                            title: 'AKSES TERBATAS',
-                            text: "Silakan login terlebih dahulu untuk mengakses fitur ini.",
-                            icon: 'warning',
-                            iconColor: '#fbbf24', // Warna kuning industrial
-                            showCancelButton: true,
-                            confirmButtonText: 'SIGN IN SEKARANG',
-                            cancelButtonText: 'NANTI SAJA',
-                            
-                            // Konfigurasi Tampilan Transparan & Custom
-                            background: 'rgba(17, 24, 39, 0.8)', // Dark transparan sesuai footer
-                            backdrop: `rgba(0,0,0,0.6) blur(4px)`, // Efek blur pada background luar
-                            color: '#ffffff',
-                            
-                            customClass: {
-                                popup: 'border border-gray-700 backdrop-blur-xl rounded-none', // Kotak tegas & blur
-                                title: 'font-black tracking-tighter uppercase text-2xl', // Font industrial
-                                confirmButton: 'bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-none transition-all uppercase tracking-widest text-xs',
-                                cancelButton: 'bg-transparent border border-gray-600 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-none transition-all uppercase tracking-widest text-xs'
-                            },
-                            buttonsStyling: false, // Mematikan style default agar class kita jalan
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = "{% url 'account_login' %}";
-                            }
-                        });
+                        event.preventDefault();
+
+                        // 1. Tutup Sidebar & Overlay terlebih dahulu agar tidak menutupi notifikasi
+                        const profileSidebar = document.getElementById('profileSidebar');
+                        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+                        if (profileSidebar) profileSidebar.classList.add('translate-x-full');
+                        if (sidebarOverlay) sidebarOverlay.classList.add('opacity-0', 'pointer-events-none');
+
+                        // 2. Tampilkan SweetAlert dengan delay sedikit agar transisi tutup sidebar selesai
+                        setTimeout(() => {
+                            Swal.fire({
+                                title: 'AKSES TERBATAS',
+                                text: "Silakan login terlebih dahulu untuk mengakses fitur ini.",
+                                icon: 'warning',
+                                iconColor: '#fbbf24',
+                                showCancelButton: true,
+                                confirmButtonText: 'SIGN IN SEKARANG',
+                                cancelButtonText: 'NANTI SAJA',
+
+                                background: 'rgba(17, 24, 39, 0.95)', // Dibuat lebih pekat
+                                backdrop: `rgba(0,0,0,0.7) blur(8px)`,
+                                color: '#ffffff',
+
+                                // Memastikan SweetAlert berada di lapisan paling depan
+                                willOpen: () => {
+                                    const container = Swal.getContainer();
+                                    if (container) container.style.zIndex = '10000';
+                                },
+
+                                customClass: {
+                                    popup: 'border-2 border-yellow-500 rounded-none',
+                                    title: 'font-black tracking-tighter uppercase text-2xl',
+                                    confirmButton: 'bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-none transition-all uppercase tracking-widest text-xs mx-2',
+                                    cancelButton: 'bg-transparent border border-gray-600 hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-none transition-all uppercase tracking-widest text-xs mx-2'
+                                },
+                                buttonsStyling: false,
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = "{% url 'account_login' %}";
+                                }
+                            });
+                        }, 300); // Delay 300ms
+
                         return false;
                     {% endif %}
                     return true;
@@ -615,7 +631,7 @@
             <div class="col-span-1">
                 <h3 class="font-black mb-6 uppercase tracking-widest text-gray-900 border-b-4 border-yellow-400 inline-block">Jejaring Sosial</h3>
                 <div class="flex flex-wrap gap-3 mt-2">
-                    
+
                     {# Google Maps #}
                     <a href="javascript:void(0)" onclick="confirmRedirect('maps')" aria-label="Google" class="social-icon group">
                         <img src="https://cdn.simpleicons.org/googlemaps/111827" alt="Google" class="w-6 h-6 transition-transform group-hover:scale-110" />
@@ -665,34 +681,34 @@
     <style>
         @keyframes rotate360 { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         .rotate-active { animation: rotate360 4s linear infinite; }
-        
+
         /* Social Icon Industrial Style */
-        .social-icon { 
-            position: relative; 
-            background-color: white; 
+        .social-icon {
+            position: relative;
+            background-color: white;
             border: 2px solid #111827;
-            width: 2.8rem; 
-            height: 2.8rem; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            transition: all 0.2s ease; 
+            width: 2.8rem;
+            height: 2.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
             cursor: pointer;
         }
         .social-icon img { width: 1.4rem; height: 1.4rem; filter: grayscale(1); transition: all 0.3s ease; }
-        
-        .social-icon:hover { 
+
+        .social-icon:hover {
             background-color: #facc15; /* Yellow-400 */
             box-shadow: 4px 4px 0px #111827;
             transform: translate(-2px, -2px);
         }
         .social-icon:hover img { filter: grayscale(0) brightness(1); }
 
-        .social-label { 
-            position: absolute; 
-            top: -35px; 
-            left: 50%; 
-            transform: translateX(-50%); 
+        .social-label {
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
             background: #111827;
             color: white;
             padding: 2px 8px;
@@ -700,10 +716,10 @@
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 1px;
-            opacity: 0; 
-            white-space: nowrap; 
-            transition: all 0.2s ease; 
-            pointer-events: none; 
+            opacity: 0;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            pointer-events: none;
         }
         .social-icon:hover .social-label { opacity: 1; top: -45px; }
     </style>
@@ -755,7 +771,7 @@
     <div class="w-full min-h-[60px] flex items-center justify-center px-6 footer-container">
         <div class="w-full flex flex-col md:flex-row justify-between items-center text-[10px] font-bold uppercase tracking-[0.2em] footer-content">
             <p class="text-center md:text-left mb-4 md:mb-0 footer-copy">
-                &copy; 2025 <span class="text-white">Smart Study Club (SSC)</span>. Industrial System v1.0
+                &copy; 2025 <span class="text-white">Smart Study Club (SSC)</span>. User Acceptance Testing (UAT).
             </p>
             <div class="flex gap-6 footer-links">
                 <a href="{% url 'terms' %}" class="hover:text-yellow-400 transition-colors underline decoration-gray-700 underline-offset-4">Syarat & Ketentuan</a>
@@ -796,7 +812,7 @@
                     padding: '0',
                     html: `
                         <div class="bg-[#0a0a0a] text-white flex flex-col border border-gray-800 shadow-2xl overflow-hidden">
-                            
+
                             <div class="p-8 md:p-12 text-center border-b border-gray-900">
                                 <div class="inline-block px-4 py-1 bg-[#eab308] text-black text-[10px] font-black uppercase tracking-[0.2em] mb-6 rounded-full">
                                     Kesempatan Terbatas
@@ -831,14 +847,14 @@
                                 <button onclick="Swal.clickConfirm()" class="w-full bg-white text-black font-black py-4 uppercase tracking-[0.2em] text-[13px] flex items-center justify-center gap-3">
                                     DAFTAR SEKARANG JUGA <i class="fas fa-arrow-right"></i>
                                 </button>
-                                
+
                                 <div class="mt-6 flex flex-col md:flex-row justify-center items-center gap-4 opacity-80">
                                     <div class="flex items-center gap-2">
                                         <i class="fas fa-bolt text-[8px] text-[#eab308]"></i>
                                         <p class="text-[8px] text-gray-200 uppercase font-bold">Pendaftaran Gratis</p>
                                     </div>
                                     <div class="flex items-center gap-2">
-                                        <i class="fas fa-rocket text-[8px] text-[#eab308]"></i> 
+                                        <i class="fas fa-rocket text-[8px] text-[#eab308]"></i>
                                         <p class="text-[8px] text-gray-200 uppercase font-bold">Akses Mudah</p>
                                     </div>
                                 </div>
@@ -854,7 +870,7 @@
                     allowOutsideClick: false,
                     customClass: {
                         container: '!p-2', // Memaksa container agar tidak menjepit pop-up
-                        popup: 'rounded-none border-0 !w-full !max-w-[95vw] md:!max-w-[850px] !m-0 p-0', 
+                        popup: 'rounded-none border-0 !w-full !max-w-[95vw] md:!max-w-[850px] !m-0 p-0',
                         closeButton: 'text-gray-500 hover:text-[#eab308] p-4 transition-colors'
                     }
                 }).then((result) => {

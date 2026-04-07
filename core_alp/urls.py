@@ -19,4 +19,7 @@ urlpatterns = [
 
 # --- KONFIGURASI UNTUK MELAYANI FILE MEDIA SAAT DEBUG=TRUE ---
 if settings.DEBUG:
+    # Melayani file MEDIA (foto)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # Melayani file STATIC (CSS, JS, Icons) - TAMBAHKAN INI
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

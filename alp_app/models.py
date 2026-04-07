@@ -2,8 +2,8 @@
 
 from django.db import models
 from django.contrib.auth.models import User
-from django.conf import settings 
-from django.urls import reverse 
+from django.conf import settings
+from django.urls import reverse
 
 # -----------------------------------------------
 # 1. MODEL KURIKULUM (Kelas, Modul, Pelajaran)
@@ -13,8 +13,8 @@ class Category(models.Model):
     slug = models.SlugField(unique=True, null=True, blank=True)
 
     def __str__(self):
-        return self.name    
-    
+        return self.name
+
 class Course(models.Model):
     title = models.CharField(max_length=200, verbose_name="Judul Kelas")
     description = models.TextField(verbose_name="Deskripsi Singkat")
@@ -22,7 +22,7 @@ class Course(models.Model):
     thumbnail = models.ImageField(upload_to='course_thumbnails/', null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True, related_name='courses')
     level = models.CharField(max_length=20, choices=[('Dasar', 'Dasar'), ('Menengah', 'Menengah'), ('Lanjut', 'Lanjut')], default='Dasar')
-    
+
     def __str__(self):
         return self.title
 
@@ -52,16 +52,16 @@ class Lesson(models.Model):
     content = models.TextField(blank=True, null=True, verbose_name="Isi Materi / Deskripsi")
     image = models.ImageField(upload_to='lessons/images/', null=True, blank=True, verbose_name="Gambar Materi")
     video_url = models.URLField(
-        blank=True, 
-        null=True, 
-        verbose_name="URL Video YouTube", 
+        blank=True,
+        null=True,
+        verbose_name="URL Video YouTube",
         help_text="Contoh: https://www.youtube.com/embed/..."
     )
 
     # --- PENGATURAN KONTEN ---
     content_type = models.CharField(
-        max_length=50, 
-        choices=[('video', 'Video'), ('text', 'Teks/Artikel'), ('quiz', 'Kuis')], 
+        max_length=50,
+        choices=[('video', 'Video'), ('text', 'Teks/Artikel'), ('quiz', 'Kuis')],
         default='text'
     )
     order = models.IntegerField(default=0, verbose_name="Urutan")
@@ -75,14 +75,14 @@ class Lesson(models.Model):
 
     def get_absolute_url(self):
         return reverse('lesson_content', args=[self.pk])
-    
+
     def save(self, *args, **kwargs):
         # Jika tipe konten adalah 'quiz', otomatis True. Jika BUKAN, otomatis False.
         if self.content_type == 'quiz':
             self.is_quiz = True
         else:
             self.is_quiz = False
-            
+
         super().save(*args, **kwargs)
 
 # -----------------------------------------------
@@ -91,9 +91,9 @@ class Lesson(models.Model):
 
 class Quiz(models.Model):
     lesson = models.OneToOneField(
-        'Lesson', 
-        on_delete=models.CASCADE, 
-        related_name='quiz', 
+        'Lesson',
+        on_delete=models.CASCADE,
+        related_name='quiz',
         limit_choices_to={'content_type': 'quiz'},
         verbose_name="Terkait dengan Pelajaran"
     )
@@ -107,11 +107,11 @@ class Quiz(models.Model):
 class Question(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='questions', verbose_name="Kuis")
     text = models.TextField(verbose_name="Teks Pertanyaan")
-    
+
     # --- TAMBAHAN UNTUK REMEDIAL TERFOKUS ---
     topic = models.CharField(
-        max_length=100, 
-        default="Umum", 
+        max_length=100,
+        default="Umum",
         verbose_name="Topik/Pokok Materi",
         help_text="Contoh: Aljabar, Struktur Kalimat, Geometri, dll. Digunakan untuk saran belajar jika jawaban salah."
     )
@@ -121,13 +121,13 @@ class Question(models.Model):
     option_b = models.CharField(max_length=255)
     option_c = models.CharField(max_length=255)
     option_d = models.CharField(max_length=255)
-    
+
     CORRECT_CHOICES = [('A', 'A'), ('B', 'B'), ('C', 'C'), ('D', 'D')]
     correct_answer = models.CharField(max_length=1, choices=CORRECT_CHOICES, verbose_name="Jawaban Benar")
 
     # --- TAMBAHAN UNTUK ADAPTIVE LEARNING (IRT MODEL RASCH) ---
     difficulty_level = models.FloatField(
-        default=0.0, 
+        default=0.0,
         verbose_name="Tingkat Kesulitan (Beta)",
         help_text="Gunakan nilai antara -3.0 (mudah) hingga +3.0 (sulit). 0.0 adalah tingkat kesulitan rata-rata."
     )
@@ -146,7 +146,7 @@ class Enrollment(models.Model):
     progress_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0.00, verbose_name="Persentase Progres")
     last_accessed = models.DateTimeField(auto_now=True, verbose_name="Terakhir Diakses")
     rating = models.IntegerField(default=0) # Tambahkan ini
-    
+
     class Meta:
         unique_together = ('user', 'course')
         ordering = ['-last_accessed']
@@ -156,16 +156,16 @@ class Enrollment(models.Model):
 
 class QuizResult(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    course = models.ForeignKey('Course', on_delete=models.CASCADE) 
+    course = models.ForeignKey('Course', on_delete=models.CASCADE)
     quiz = models.ForeignKey('Quiz', on_delete=models.CASCADE, null=True, blank=True)
     score = models.IntegerField(verbose_name="Skor Benar")
     total_questions = models.IntegerField(default=0, verbose_name="Total Pertanyaan")
     theta_result = models.FloatField(default=0.0) # Menyimpan nilai Theta saat kuis selesai
     date = models.DateTimeField(auto_now_add=True)
-    
+
     def __str__(self):
         return f"Hasil Kuis {self.user.username} (Skor: {self.score}/{self.total_questions})"
-    
+
 class LessonCompletion(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
@@ -181,7 +181,7 @@ class StudySession(models.Model):
 
     def __str__(self):
         return f"Sesi Belajar {self.user.username} ({self.duration} menit)"
-    
+
 class Discussion(models.Model):
     course = models.ForeignKey('Course', on_delete=models.CASCADE, related_name='discussions')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -205,18 +205,18 @@ class Discussion(models.Model):
         all_replies = []
         # Ambil balasan langsung dari pesan ini
         direct_replies = self.replies.all().order_by('created_at')
-        
+
         for reply in direct_replies:
             # Masukkan balasan langsung ke daftar
             all_replies.append(reply)
             # REKURSI: Panggil fungsi ini lagi untuk mencari anak dari balasan ini
             all_replies.extend(reply.get_all_replies())
-            
+
         return all_replies
-    
+
     def get_total_replies_count(self):
         return len(self.get_all_replies())
-    
+
 class SupportReport(models.Model):
     # 1. Definisikan list pilihan status
     STATUS_CHOICES = [
@@ -229,13 +229,13 @@ class SupportReport(models.Model):
     email = models.EmailField()
     kategori = models.CharField(max_length=50)
     pesan = models.TextField()
-    
+
     # 2. Tambahkan parameter 'choices' di sini agar muncul dropdown
     status = models.CharField(
-        max_length=20, 
-        choices=STATUS_CHOICES, 
+        max_length=20,
+        choices=STATUS_CHOICES,
         default='Pending'
-    ) 
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -244,4 +244,15 @@ class SupportReport(models.Model):
 
     def __str__(self):
         return f"{self.nama} - {self.kategori}"
-    
+
+# alp_app/models.py
+
+class UserAnswer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    selected_option = models.CharField(max_length=1)  # Menyimpan 'A', 'B', 'C', atau 'D'
+    is_correct = models.BooleanField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} - Q{self.question.id} - {self.is_correct}"
