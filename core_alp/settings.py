@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'debug_toolbar',
 
     # Third-party Apps
     'widget_tweaks',
@@ -50,11 +51,16 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'allauth.account.middleware.AccountMiddleware', # Allauth Middleware
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'core_alp.urls'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 # --- TEMPLATES ---
 TEMPLATES = [

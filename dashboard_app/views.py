@@ -5,16 +5,20 @@ from alp_app.models import Enrollment, Course, StudySession, QuizResult
 from .models import StudyHistory
 from django.db.models import Avg, Sum
 from datetime import timedelta
-import json
+import json, datetime
 from django.utils import timezone
 from django.urls import reverse
 from django.contrib import messages
+from django.utils import timezone
+from django.utils.timezone import make_aware
+from django.db.models import Avg, Sum
 
 # dashboard_app/views.py
 
 @login_required
 def dashboard_view(request):
     user = request.user
+    context = {}
 
     # --- 1. Akses Profile ---
     try:
@@ -49,17 +53,29 @@ def dashboard_view(request):
 
     indikator_waktu_str = f"Minggu ini: {int(current_week_duration_min)} menit"
 
-    # --- 2.2. Nilai Rata-rata ---
-    average_score = QuizResult.objects.filter(user=user).aggregate(Avg('score'))['score__avg']
-    nilai_rata_rata_persen = round(average_score, 1) if average_score is not None else 'N/A'
+    # --- 2.2. Nilai Rata-rata (Perbaikan Persentase untuk Card) ---
+    quiz_stats_total = QuizResult.objects.filter(user=user).aggregate(
+        avg_score=Avg('score'),
+        avg_total=Avg('total_questions')
+    )
 
-    if average_score is not None and average_score < 70:
-        indikator_nilai_str = "Rata-rata di bawah 70%. Fokus pada review!"
-    elif average_score is not None:
-        indikator_nilai_str = "Performa stabil dan bagus."
+    avg_score_raw = quiz_stats_total['avg_score']
+    avg_total_q = quiz_stats_total['avg_total']
+
+    if avg_score_raw is not None and avg_total_q and avg_total_q > 0:
+        # Hitung persentase rata-rata dari semua kuis
+        nilai_rata_rata_persen = round((avg_score_raw / avg_total_q) * 100, 1)
     else:
-        indikator_nilai_str = "Belum ada kuis yang dikerjakan."
+        nilai_rata_rata_persen = 0
 
+    # Indikator teks berdasarkan persentase (0-100)
+    if nilai_rata_rata_persen == 0:
+        indikator_nilai_str = "Belum ada kuis yang dikerjakan."
+    elif nilai_rata_rata_persen < 70:
+        indikator_nilai_str = "Rata-rata di bawah 70%. Fokus pada review!"
+    else:
+        indikator_nilai_str = "Performa stabil dan bagus."
+        
     # --- 2.3. Rekomendasi Cerdas ---
     rekomendasi_cerdas = None
     if enrolled_courses.exists():
@@ -91,19 +107,64 @@ def dashboard_view(request):
 
     history_list = StudyHistory.objects.filter(user=user).order_by('-timestamp')[:5]
 
-    # --- 2.5. DATA CHART.JS ---
+    # --- 2.5. DATA CHART.JS (Dibatasi 7 Hari Terakhir) ---
     chart_labels_list = []
     chart_data_scores_list = []
     chart_data_minutes_list = []
 
-    for i in range(6, -1, -1):
-        target_date = today - timedelta(days=i)
-        chart_labels_list.append(target_date.strftime('%d %b'))
-        study_day = StudySession.objects.filter(user=user, date=target_date).aggregate(Sum('duration'))['duration__sum'] or 0
-        chart_data_minutes_list.append(float(study_day))
-        quiz_day = QuizResult.objects.filter(user=user, date=target_date).aggregate(Avg('score'))['score__avg'] or 0
-        chart_data_scores_list.append(float(quiz_day))
+    # Tentukan batas tanggal (7 hari terakhir)
+    tujuh_hari_lalu = timezone.now().date() - timedelta(days=7)
 
+    # Ambil tanggal unik HANYA dari 7 hari terakhir
+    dates_study = StudySession.objects.filter(
+        user=user, 
+        date__gte=tujuh_hari_lalu
+    ).values_list('date', flat=True)
+    
+    dates_quiz = QuizResult.objects.filter(
+        user=user, 
+        date__gte=tujuh_hari_lalu
+    ).values_list('date', flat=True)
+    
+    # Gabungkan dan urutkan
+    active_dates = sorted(list(set(list(dates_study) + list(dates_quiz))))
+
+    for target_date in active_dates:
+        # 1. Total durasi belajar
+        study_day = StudySession.objects.filter(
+            user=user, 
+            date=target_date
+        ).aggregate(total=Sum('duration'))['total'] or 0
+        
+        # 2. Perbaikan Perhitungan Skor Kuis (Konversi ke Persentase)
+        # Kita ambil rata-rata skor (jumlah benar) dan rata-rata total_questions
+        quiz_stats = QuizResult.objects.filter(
+            user=user, 
+            date=target_date
+        ).aggregate(
+            avg_score=Avg('score'),
+            avg_total=Avg('total_questions')
+        )
+        
+        raw_score = quiz_stats['avg_score'] or 0
+        total_q = quiz_stats['avg_total'] or 5 # Default 5 jika data total_questions nol
+        
+        # Hitung persentase: (Benar / Total Soal) * 100
+        if total_q > 0:
+            quiz_percentage = (raw_score / total_q) * 100
+        else:
+            quiz_percentage = 0
+        
+        chart_labels_list.append(target_date.strftime('%d %b'))
+        chart_data_minutes_list.append(float(study_day))
+        chart_data_scores_list.append(float(quiz_percentage)) # Sekarang nilainya 80.0
+
+    context.update({
+        'chart_labels': json.dumps(chart_labels_list),
+        'chart_data_scores': json.dumps(chart_data_scores_list),
+        'chart_data_hours': json.dumps(chart_data_minutes_list), 
+    })
+    
     # --- 2.6. LOGIKA PANGKAT/STATUS PELAJAR (SINKRON DENGAN MODEL) ---
     # Kita panggil fungsi yang sudah kita buat di models.py agar hasilnya 100% sama dengan base.html
     pangkat_nama = profile.get_hierarchy_name

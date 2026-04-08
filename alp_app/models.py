@@ -104,16 +104,37 @@ class Quiz(models.Model):
     def __str__(self):
         return f"Kuis: {self.title} ({self.lesson.title})"
 
+# 1. Tambahkan model Topic di atas class Question
+class Topic(models.Model):
+    name = models.CharField(max_length=100, unique=True, verbose_name="Nama Topik")
+
+    class Meta:
+        verbose_name = "Topik Materi"
+        verbose_name_plural = "Topik Materi"
+
+    def __str__(self):
+        return self.name
+
+# 2. Update class Question
 class Question(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='questions', verbose_name="Kuis")
     text = models.TextField(verbose_name="Teks Pertanyaan")
 
-    # --- TAMBAHAN UNTUK REMEDIAL TERFOKUS ---
+    # Ini dibiarkan dulu sebagai CharField agar data teks 277 soal aman
     topic = models.CharField(
         max_length=100,
         default="Umum",
+        verbose_name="Topik (Teks)",
+    )
+
+    # Ini adalah field baru yang akan jadi dropdown dinamis (Bahasa Arab, dll)
+    topic_relation = models.ForeignKey(
+        Topic, 
+        on_delete=models.SET_NULL, 
+        null=True, 
+        blank=True,
         verbose_name="Topik/Pokok Materi",
-        help_text="Contoh: Aljabar, Struktur Kalimat, Geometri, dll. Digunakan untuk saran belajar jika jawaban salah."
+        help_text="Pilih topik materi dari daftar. Gunakan menu Topik Materi untuk menambah baru."
     )
 
     # Opsi Jawaban
@@ -133,8 +154,13 @@ class Question(models.Model):
     )
 
     def __str__(self):
-        # Saya tambahkan self.topic di sini agar di halaman Admin Anda bisa langsung tahu topik soal tersebut
-        return f"[{self.topic}] {self.quiz.title} - #{self.id} (β: {self.difficulty_level})"
+        # Prioritaskan menampilkan nama dari relasi jika ada
+        if self.topic_relation:
+            topic_name = self.topic_relation.name
+        else:
+            topic_name = self.topic
+            
+        return f"[{topic_name}] {self.quiz.title} - #{self.id} (β: {self.difficulty_level})"
 
 # -----------------------------------------------
 # 3. MODEL TRACKING (Enrollment, Session, Result)

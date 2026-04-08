@@ -41,69 +41,65 @@
 <div class="min-h-screen">
     <div class="container mx-auto px-6 min-h-screen pt-4 pb-12 space-y-8">
 
-        {# HEADER SECTION - Diadaptasi menjadi Gaya Industrial Minimalis home5.html #}
-        <header class="group relative overflow-hidden card-forum-transparan p-8 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 transition-all duration-300" data-aos="fade-down">
+        {# HEADER SECTION - Industrial Minimalist Responsive Edition #}
+        <header class="group relative overflow-hidden card-forum-transparan p-5 md:p-8 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 transition-all duration-300" data-aos="fade-down">
             
-            {# Siku Pojok: Dari abu-abu ke kuning saat hover (Khas home5.html) #}
+            {# Siku Pojok #}
             <div class="absolute top-0 right-0 w-12 h-12 bg-gray-200/20 -mr-6 -mt-6 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
 
-            <div class="text-center md:text-left flex-shrink-0 relative z-10">
-                {# Row Judul: Balok Kuning + Nama #}
+            <div class="text-center md:text-left flex-shrink-0 relative z-10 w-full md:w-auto">
+                {# Row Judul: Responsif pada ukuran font #}
                 <div class="flex items-center justify-center md:justify-start gap-3 mb-2">
-                    <div class="h-6 w-1.5 bg-[#eab308]"></div> {# Bar Kuning Industrial #}
-                    <h1 class="text-3xl font-black text-gray-900 uppercase tracking-tighter">
+                    <div class="h-6 w-1.5 bg-[#eab308]"></div> 
+                    <h1 class="text-xl sm:text-2xl md:text-3xl font-black text-gray-900 uppercase tracking-tighter">
                         Halo, <span class="text-gray-400">{% firstof profile.nama_lengkap user.username %}</span>! 🚀
                     </h1>
                 </div>
                 
-                <div class="flex items-center justify-center md:justify-start gap-2">
-                    <p class="text-gray-500 text-[10px] font-bold uppercase tracking-[0.2em]">Status Pelajar:</p>
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
+                    <p class="text-gray-500 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em]">Status Pelajar:</p>
                     
                     <button onclick="openStatusModal()" class="group relative overflow-hidden cursor-pointer inline-flex items-center gap-2 px-3 py-1 bg-white/5 backdrop-blur-md border border-gray-900/20 hover:border-gray-900 transition-all duration-300 shadow-[2px_2px_0px_rgba(0,0,0,0.05)] hover:shadow-[3px_3px_0px_#eab308]">
-                        {# Gunakan pangkat.color_class #}
                         <i class="fas fa-award text-[10px] {{ pangkat.color_class }} group-hover:text-gray-900 transition-colors duration-300"></i> 
                         
                         <span class="text-[9px] font-black uppercase tracking-widest text-gray-500 group-hover:text-gray-900 transition-colors duration-300">
-                            {# Gunakan pangkat.nama #}
                             {{ pangkat.nama }}
                         </span>
-                        <div class="h-[1px] w-0 bg-gray-900 transition-all duration-500 group-hover:w-3"></div>
+                        <div class="hidden sm:block h-[1px] w-0 bg-gray-900 transition-all duration-500 group-hover:w-3"></div>
                     </button>
                 </div>
 
-                {# Gunakan pangkat.deskripsi #}
-                <p class="text-[10px] text-gray-400 font-bold uppercase mt-3 tracking-widest">{{ pangkat.deskripsi }}</p>   
+                <p class="text-[9px] md:text-[10px] text-gray-400 font-bold uppercase mt-3 tracking-widest">{{ pangkat.deskripsi }}</p>   
             </div>
                     
-            <div class="flex items-center gap-6 w-full md:w-auto justify-center md:justify-end relative z-10">
-                {# Theta Info dengan Garis Dinamis #}
-                <div onclick="openThetaModal()" class="hidden sm:block w-48 text-right cursor-pointer group/theta">
+            <div class="flex items-center gap-4 md:gap-6 w-full md:w-auto justify-center md:justify-end relative z-10">
+                {# Theta Info: Diaktifkan untuk mobile dengan penyesuaian lebar #}
+                <div onclick="openThetaModal()" class="flex-grow md:flex-none max-w-[150px] md:w-48 text-right cursor-pointer group/theta">
                     <div class="flex justify-between items-end mb-1.5">
-                        <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest group-hover/theta:text-gray-900 transition-colors">Ability (Theta)</span>
-                        <span class="text-[10px] font-black text-yellow-600 bg-gray-900 px-1.5 text-white">{{ profile.ability_score|default:"0.0" }} θ</span>
+                        <span class="text-[8px] md:text-[9px] font-black text-gray-400 uppercase tracking-widest group-hover/theta:text-gray-900 transition-colors">Ability (Theta)</span>
+                        <span class="text-[9px] md:text-[10px] font-black text-yellow-600 bg-gray-900 px-1.5 text-white">{{ profile.ability_score|default:"0.0" }} θ</span>
                     </div>
-                    {# Progress Bar Tipis ala Industrial #}
-                    <div class="w-full bg-gray-200/50 h-1.5 border border-gray-900 overflow-hidden">
+                    <div class="w-full bg-gray-200/50 h-1 md:h-1.5 border border-gray-900 overflow-hidden">
                         <div class="progress-pulse bg-yellow-400 h-full transition-all duration-[1500ms]" 
                             style="width: {{ ability_percentage|default:'50' }}%">
                         </div>
                     </div>
                 </div>
 
-                {# Frame Foto Profil #}
-                <div class="relative w-16 h-16 flex-shrink-0">
+                {# Frame Foto Profil: Ukuran sedikit mengecil di mobile agar tidak penuh #}
+                <div class="relative w-14 h-14 md:w-16 md:h-16 flex-shrink-0">
                     {% if profile.foto %}
                         <img src="{{ profile.foto.url }}" 
                             class="w-full h-full object-cover border-2 border-gray-900 shadow-[4px_4px_0px_#eab308] group-hover:shadow-[2px_2px_0px_#eab308] transition-all" 
                             alt="Foto Profil">
                     {% else %}
-                        <div class="w-full h-full bg-gray-900 flex items-center justify-center text-2xl text-yellow-400 font-black shadow-[4px_4px_0px_#eab308]">
+                        <div class="w-full h-full bg-gray-900 flex items-center justify-center text-xl md:text-2xl text-yellow-400 font-black shadow-[4px_4px_0px_#eab308]">
                             {{ user.username|slice:":1"|upper }}
                         </div>
                     {% endif %}
                     
                     {# Status Online Indikator #}
-                    <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 border-2 border-gray-900 flex items-center justify-center">
+                    <div class="absolute -bottom-1 -right-1 w-4 h-4 md:w-5 md:h-5 bg-green-500 border-2 border-gray-900 flex items-center justify-center">
                         <span class="absolute inline-flex h-full w-full bg-green-400 opacity-75 animate-ping"></span>
                         <div class="relative w-1.5 h-1.5 bg-white"></div>
                     </div>
@@ -471,9 +467,10 @@
 </script>
 
 <script>
-    const labels = JSON.parse('{{ chart_labels|safe }}' || '["W1", "W2", "W3", "W4"]');
-    const dataScores = JSON.parse('{{ chart_data_scores|safe }}' || '[0, 0, 0, 0]');
-    const dataMinutes = JSON.parse('{{ chart_data_minutes|safe }}' || '[0, 0, 0, 0]');
+    // Pastikan menggunakan chart_data_hours agar sinkron dengan views.py
+    const labels = JSON.parse('{{ chart_labels|safe }}' || '[]');
+    const dataScores = JSON.parse('{{ chart_data_scores|safe }}' || '[]');
+    const dataMinutes = JSON.parse('{{ chart_data_hours|safe }}' || '[]'); // BERUBAH DI SINI
 
     const ctx = document.getElementById('performanceChart').getContext('2d');
     
@@ -485,20 +482,20 @@
                 {
                     label: 'Nilai Kuis (%)',
                     data: dataScores,
-                    borderColor: '#eab308', // Yellow-500
+                    borderColor: '#eab308',
                     backgroundColor: 'rgba(234, 179, 8, 0.1)', 
-                    tension: 0.2, // Lebih kaku (industrial)
+                    tension: 0.4, // Dibuat lebih halus
                     fill: true,
-                    pointRadius: 6,
+                    pointRadius: 4,
                     pointBackgroundColor: '#111827',
                     yAxisID: 'y'
                 },
                 {
                     label: 'Waktu (Menit)',
                     data: dataMinutes,
-                    borderColor: '#111827', // Black
+                    borderColor: '#111827',
                     backgroundColor: 'transparent',
-                    tension: 0.2,
+                    tension: 0.4,
                     borderWidth: 2,
                     borderDash: [5, 5],
                     pointRadius: 4,
@@ -511,25 +508,8 @@
             responsive: true,
             maintainAspectRatio: false,
             scales: {
-                y: { 
-                    beginAtZero: true, 
-                    max: 100,
-                    grid: { color: '#f1f5f9' },
-                    ticks: { font: { weight: 'bold' } }
-                },
-                y1: { 
-                    position: 'right', 
-                    beginAtZero: true,
-                    grid: { display: false }
-                }
-            },
-            plugins: {
-                legend: { 
-                    labels: { 
-                        font: { weight: 'bold', size: 10 },
-                        usePointStyle: true 
-                    } 
-                }
+                y: { beginAtZero: true, max: 100 },
+                y1: { position: 'right', beginAtZero: true }
             }
         }
     });

@@ -1,8 +1,7 @@
-# core_alp/urls.py (Harus Diperiksa di Proyek Utama Anda)
+# core_alp/urls.py
 
 from django.contrib import admin
 from django.urls import path, include
-# Impor yang diperlukan untuk media files:
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -12,14 +11,20 @@ urlpatterns = [
 
     path('', include('alp_app.urls')),
     path('profile/', include('profiles_app.urls')),
-    path('dashboard/', include('dashboard_app.urls')), # <-- APP DASHBOARD
+    path('dashboard/', include('dashboard_app.urls')),
     path('manager/', include('manager_app.urls')),
-
 ]
 
-# --- KONFIGURASI UNTUK MELAYANI FILE MEDIA SAAT DEBUG=TRUE ---
+# --- KONFIGURASI TAMBAHAN SAAT DEBUG = TRUE ---
 if settings.DEBUG:
-    # Melayani file MEDIA (foto)
+    # 1. Tambahkan Rute untuk Django Debug Toolbar
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
+
+    # 2. Melayani file MEDIA (foto profil, dll)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    # Melayani file STATIC (CSS, JS, Icons) - TAMBAHKAN INI
+    
+    # 3. Melayani file STATIC (CSS, JS, Icons)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

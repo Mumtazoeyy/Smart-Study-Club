@@ -120,22 +120,51 @@
     <div class="w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
 
         <div class="lg:col-span-8 bg-[#111827] p-6 border-2 border-gray-800 rounded-xl">
+            {# Header Terminal #}
             <div class="flex justify-between items-center mb-4 border-b border-gray-800 pb-2">
-                <span class="text-kecil font-bold text-gray-500 uppercase italic font-mono tracking-tighter">System_Log_v1.0.exe</span>
+                <span class="text-[10px] font-bold text-gray-500 uppercase italic font-mono tracking-tighter">System_Log_v1.0.exe</span>
                 <div class="flex gap-1">
-                    <div class="w-2 h-2 rounded-full bg-red-500"></div>
-                    <div class="w-2 h-2 rounded-full bg-yellow-500"></div>
-                    <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                    <div class="w-2 h-2 rounded-full bg-red-500/80"></div>
+                    <div class="w-2 h-2 rounded-full bg-yellow-500/80"></div>
+                    <div class="w-2 h-2 rounded-full bg-green-500/80"></div>
                 </div>
             </div>
+
+            {# Konten Log #}
             <div class="font-mono text-[11px] space-y-2 text-gray-400">
                 <p><span class="text-blue-500">[{{ "now"|date:"H:i" }}]</span> >> Monitoring sistem aktif...</p>
+
+                {# Log 1: Peringatan Masalah Support #}
                 {% if total_masalah > 0 %}
-                <p><span class="text-red-500">[WARNING]</span> >> Terdapat {{ total_masalah }} laporan support butuh tindakan segera!</p>
+                <p class="animate-pulse">
+                    <span class="text-red-500 font-bold">[WARNING]</span> >> Terdapat {{ total_masalah }} laporan support butuh tindakan segera!
+                </p>
                 {% endif %}
-                <p><span class="text-blue-500">[{{ "now"|date:"H:i" }}]</span> >> Database <span class="text-yellow-400">ssc_db</span> terhubung.</p>
-                <p><span class="text-green-500">[STATUS]</span> >> Dashboard Master dimuat oleh {{ user.username }}.</p>
-                <p class="text-blue-600 animate-pulse mt-4">_ Menunggu aktivitas berikutnya...</p>
+
+                {# Log 2: Data Real dari SupportReport (Pesan Bantuan) #}
+                {% for laporan in laporan_baru %}
+                <p>
+                    <span class="text-yellow-500">[{{ laporan.status|upper }}]</span> >> Tiket #{{ laporan.id }} dari <span class="text-white">{{ laporan.nama }}</span>: 
+                    <span class="text-gray-500">"{{ laporan.pesan|truncatechars:35 }}"</span>
+                </p>
+                {% endfor %}
+
+                {# Log 3: Data Real dari Aktivitas Belajar (StudyHistory) #}
+                {% for aktivitas in aktivitas_belajar %}
+                <p>
+                    <span class="text-green-500">[{{ aktivitas.timestamp|date:"H:i" }}]</span> >> 
+                    <span class="text-blue-400">@{{ aktivitas.user.username }}</span>: 
+                    <span class="italic">{{ aktivitas.activity_name }}</span>
+                </p>
+                {% endfor %}
+
+                {# Footer Log #}
+                <p><span class="text-blue-500">[{{ "now"|date:"H:i" }}]</span> >> Sesi aktif: <span class="text-white">{{ user.username }}</span> (Master)</p>
+                
+                <div class="flex items-center gap-2 mt-4">
+                    <span class="text-blue-600 animate-pulse">_ Menunggu aktivitas berikutnya</span>
+                    <span class="w-2 h-4 bg-blue-600 animate-[bounce_1s_infinite]"></span>
+                </div>
             </div>
         </div>
 

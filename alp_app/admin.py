@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.safestring import mark_safe
 from .models import (
-    Course, Module, Lesson, Enrollment, Category, Quiz, Question, QuizResult, LessonCompletion, StudySession, Discussion, SupportReport,
+    Course, Module, Lesson, Enrollment, Category, Quiz, Question, QuizResult, LessonCompletion, StudySession, Discussion, SupportReport, Topic
 )
 from profiles_app.models import Profile
 from django.core.exceptions import ObjectDoesNotExist
@@ -225,8 +225,19 @@ class CourseAdmin(admin.ModelAdmin):
 class QuestionInline(admin.TabularInline):
     model = Question
     extra = 3
-    fields = ('text', 'topic', 'option_a', 'option_b', 'option_c', 'option_d', 'correct_answer', 'difficulty_level')
+    fields = ('text', 'topic_relation', 'option_a', 'option_b', 'option_c', 'option_d', 'correct_answer', 'difficulty_level')
 
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+    # Gunakan topic_relation agar muncul dropdown Topic
+    list_display = ('id', 'quiz', 'text_preview', 'topic_relation', 'difficulty_level')
+    list_filter = ('topic_relation', 'quiz')
+    search_fields = ('text', 'topic_relation__name')
+
+    def text_preview(self, obj):
+        return obj.text[:50] + "..." if obj.text else "-"
+    text_preview.short_description = 'Isi Pertanyaan'
+    
 @admin.register(Quiz)
 class QuizAdmin(admin.ModelAdmin):
     list_display = ('title', 'lesson', 'is_quiz')
@@ -317,3 +328,8 @@ class UserAnswerAdmin(admin.ModelAdmin):
     list_display = ('user', 'question', 'is_correct', 'created_at')
     list_filter = ('is_correct', 'created_at')
     search_fields = ('user__username', 'question__text')
+
+@admin.register(Topic)
+class TopicAdmin(admin.ModelAdmin):
+    list_display = ('name',) # Menampilkan kolom nama topik
+    search_fields = ('name',) # Agar bisa cari topik berdasarkan nama

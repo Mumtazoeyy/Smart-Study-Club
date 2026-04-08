@@ -1,26 +1,50 @@
 # alp_app/views.py
 
-from django.shortcuts import render, redirect
-from django.contrib.auth import login
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib import messages
+# ==========================================
+# STANDARD LIBRARY & THIRD PARTY
+# ==========================================
+import json
+import math
+from django.utils import timezone
+
+# ==========================================
+# DJANGO CORE IMPORTS
+# ==========================================
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.http import JsonResponse
+from django.contrib import messages
 from django.db import transaction
-from django.db.models import Avg, Count # Import fungsi agregasi
+from django.db.models import Avg, Count, Q, F, Func
+from django.views.generic import ListView, DetailView
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 
-# --- IMPORT MODEL YANG BENAR ---
-# Import dari App alp_app
-from .models import Category, Enrollment, Course, Lesson, Quiz
-# Import dari App profiles yang baru
-from profiles_app.models import Profile
-from allauth.account.decorators import login_required
-
-# alp_app/views.py
-from django.db.models import Count
+# AUTH & PERMISSIONS
+from django.contrib.auth import login
 from django.contrib.auth.models import User
-from .models import Course, Enrollment, Discussion
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
+from allauth.account.decorators import login_required as allauth_login_required
 
-# alp_app/views.py
+# ==========================================
+# LOCAL APP IMPORTS (alp_app)
+# ==========================================
+from .models import (
+    Category, Enrollment, Course, Lesson, Quiz, 
+    Module, Discussion, Question, QuizResult, 
+    StudySession, SupportReport, UserAnswer
+)
+from .forms import ExtendedSignupForm
+from .utils import mark_lesson_complete_logic
+
+# ==========================================
+# EXTERNAL APPS IMPORTS
+# ==========================================
+from profiles_app.models import Profile
+from dashboard_app.models import StudyHistory
+from core_alp.irt_engine import update_theta_mle
 
 def custom_404(request, exception):
     return render(request, '404.html', status=404)
@@ -33,8 +57,9 @@ def trigger_error(request):
     return 1 / 0
 
 def home_master(request):
-    """Merender halaman Home Master dengan data statistik riil."""
+    """Merender halaman Home Master dengan data statistik riil dan log sistem."""
 
+    # --- Statistik Eksisting ---
     total_peserta = Enrollment.objects.count()
     total_kursus = Course.objects.count()
     total_ulasan = Enrollment.objects.filter(rating__gt=0).count()
@@ -43,12 +68,21 @@ def home_master(request):
     total_lessons = Lesson.objects.count()
     total_quizzes = Quiz.objects.count()
 
-    # 5. Kursus Terpopuler
+    # --- LOGIKA BARU UNTUK SYSTEM LOG ---
+    # 1. Ambil 3 laporan support terbaru yang belum selesai
+    laporan_baru = SupportReport.objects.exclude(status='Selesai').order_by('-id')[:3]
+    
+    # 2. Ambil 3 aktivitas belajar terbaru dari seluruh user
+    aktivitas_belajar = StudyHistory.objects.all().order_by('-timestamp')[:3]
+    
+    # 3. Hitung total masalah untuk peringatan [WARNING]
+    total_masalah = SupportReport.objects.exclude(status='Selesai').count()
+
+    # --- Kursus & Testimonial ---
     popular_courses = Course.objects.annotate(
         num_students=Count('enrollment')
     ).order_by('-num_students')[:4]
 
-    # Ambil 3 pendaftaran terbaru yang memberi rating 4 atau 5
     real_testimonials = Enrollment.objects.filter(rating__gte=4).order_by('-id')[:3]
 
     context = {
@@ -56,11 +90,16 @@ def home_master(request):
         'total_courses': total_kursus,
         'courses': popular_courses,
         'review_count': total_ulasan,
-        'total_discussions': total_diskusi, # Kirim variabel ini ke template
-        'testimonials': real_testimonials, # Kirim ke template
+        'total_discussions': total_diskusi,
+        'testimonials': real_testimonials,
         'total_categories': total_categories,
         'total_lessons': total_lessons,
         'total_quizzes': total_quizzes,
+        
+        # Tambahan context untuk System Log
+        'laporan_baru': laporan_baru,
+        'aktivitas_belajar': aktivitas_belajar,
+        'total_masalah': total_masalah,
     }
 
     return render(request, 'home_master.html', context)
@@ -226,8 +265,6 @@ def kelas_view(request):
     }
     return render(request, 'kelas.html', context)
 
-from django.shortcuts import render
-
 def support_view(request):
     return render(request, 'support.html')
 
@@ -264,22 +301,6 @@ def login_view(request):
 
     return render(request, 'signin.html', {'form': form}) # Ini akan merender signin.html
 
-# alp_app/views.py
-
-# alp_app/views.py
-
-from django.shortcuts import render, redirect
-from django.contrib.auth import login
-from django.http import JsonResponse
-from django.contrib import messages
-from .forms import ExtendedSignupForm  # Form yang mewarisi SignupForm Allauth
-
-# Import model
-from .models import Enrollment, Course
-from profiles_app.models import Profile
-
-# alp_app/views.py
-
 def signup_view(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -309,25 +330,6 @@ def signup_view(request):
         form = ExtendedSignupForm()
 
     return render(request, 'signup.html', {'form': form})
-
-# alp_app/views.py
-
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView
-from django.db.models import Q
-# Import semua Model yang digunakan
-from .models import Course, Enrollment, Module, Lesson
-
-# ----------------------------------------------------
-# 1. VIEW UNTUK DAFTAR KELAS (course_list)
-# ----------------------------------------------------
-
-# alp_app/views.py
-from .models import Course, Category # Tambahkan Category
-
-from django.views.generic import ListView
-from django.db.models import Q
-from .models import Course, Category  # Pastikan Category diimport
 
 class ClassListView(ListView):
     model = Course
@@ -367,17 +369,6 @@ class ClassListView(ListView):
         context['categories'] = Category.objects.all()
 
         return context
-
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from django.db.models import F, Func
-from .models import Quiz, Question, QuizResult
-
-# IMPORT LOGIKA CORE
-from core_alp.irt_engine import update_theta_mle
-from dashboard_app.models import StudyHistory
-from .utils import mark_lesson_complete_logic
 
 @login_required
 def quiz_detail(request, quiz_pk):
@@ -606,10 +597,6 @@ def lesson_content(request, lesson_pk):
     # SEMUA tipe materi (teks maupun video) sekarang menggunakan SATU template gabungan ini
     return render(request, 'lesson/lesson_detail.html', context)
 
-# alp_app/views.py (Tambahkan kode ini)
-from django.contrib import messages
-from .models import Course, Enrollment # Pastikan Enrollment sudah diimport
-
 @login_required
 def course_enroll(request, course_pk):
     # Ambil objek Course
@@ -636,17 +623,6 @@ def course_enroll(request, course_pk):
     # 3. Redirect kembali ke halaman detail kelas
     return redirect('course_detail', pk=course.pk)
 
-# alp_app/views.py
-
-# alp_app/views.py
-
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect
-from django.http import JsonResponse
-from .utils import mark_lesson_complete_logic
-
-# ... (Pastikan Anda sudah mengimpor model lain yang dibutuhkan di sini)
-
 @login_required
 def mark_lesson_complete(request, lesson_id):
     # Hanya izinkan permintaan POST
@@ -670,13 +646,6 @@ def mark_lesson_complete(request, lesson_id):
             return redirect('dashboard') # Arahkan ke tempat aman jika gagal
 
     return JsonResponse({'status': 'error', 'message': 'Hanya menerima POST request.'}, status=405)
-
-import json
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from .models import StudySession
-from django.utils import timezone
-import math
 
 @csrf_exempt
 def update_study_time(request):
@@ -707,11 +676,6 @@ def update_study_time(request):
 
     return JsonResponse({'status': 'invalid_method'}, status=405)
 
-# alp_app/views.py
-from django.db.models import F, Func
-from .models import Question, QuizResult
-from core_alp.irt_engine import update_theta_mle # Sesuaikan path importnya
-
 def get_next_adaptive_question(user, quiz, request): # Tambahkan parameter request
     """Mencari soal yang kesulitannya (Beta) paling mendekati kemampuan (Theta) user"""
     user_theta = user.user_profile.ability_score
@@ -726,9 +690,6 @@ def get_next_adaptive_question(user, quiz, request): # Tambahkan parameter reque
     ).order_by('selisih').first()
 
     return next_question
-
-# Tambahkan logika ini di dalam view yang memproses jawaban kuis
-from core_alp.irt_engine import update_theta_mle
 
 def submit_answer(request, question_id):
     user_profile = request.user.user_profile
@@ -870,86 +831,109 @@ def proses_hasil_ujian(request, quiz, total_steps):
         'theta_akhir': request.user.user_profile.ability_score, # Tambahkan ini juga untuk tampilan score
         'is_exam': total_steps >= 20,
     })
-# alp_app/views.py
 
 @login_required
 def remedial_quiz(request, course_pk):
-
-    user_profile = request.user.user_profile
+    user = request.user
+    user_profile = getattr(user, 'user_profile', None)
     course = get_object_or_404(Course, pk=course_pk)
 
-    # 1. Ambil topik yang salah dari kuis sebelumnya (disimpan di session)
-    # Jika session kosong (misal karena refresh), kita ambil default 'Umum'
+    # 1. AMBIL TOPIK REMEDIAL
     last_wrong_topics = request.session.get('last_wrong_topics', [])
 
+    # Fallback ke Database jika session kosong
     if not last_wrong_topics:
-        messages.info(request, "Tidak ada data remedial. Silakan selesaikan kuis utama terlebih dahulu.")
-        return redirect('course_detail', pk=course_pk)
+        # DISESUAIKAN: Mengambil nama dari topic_relation
+        last_wrong_topics = list(UserAnswer.objects.filter(
+            user=user,
+            is_correct=False,
+            question__quiz__lesson__module__course=course
+        ).values_list('question__topic_relation__name', flat=True).distinct())
 
-    # 2. Cari bank soal yang sesuai dengan topik-topik salah tersebut di Course ini
-    # Kita gunakan filter 'topic__in' untuk mencakup semua pokok inti yang gagal dikuasai
+    # 2. CARI BANK SOAL
+    # DISESUAIKAN: Filter menggunakan topic_relation__name
     remedial_pool = Question.objects.filter(
         quiz__lesson__module__course=course,
-        topic__in=last_wrong_topics
+        topic_relation__name__in=[t for t in last_wrong_topics if t]
     )
 
+    # --- Jika pool topik kosong, ambil soal apa saja dari course ini ---
+    if not remedial_pool.exists():
+        remedial_pool = Question.objects.filter(quiz__lesson__module__course=course)
+    
     total_available = remedial_pool.count()
+    
     if total_available == 0:
-        messages.warning(request, "Bank soal untuk topik remedial tersebut belum tersedia.")
+        messages.warning(request, "Bank soal untuk kelas ini belum tersedia.")
         return redirect('course_detail', pk=course_pk)
 
-    # 3. Batasi jumlah soal remedial (misal 5 soal agar fokus)
+    # 3. BATASI JUMLAH SOAL
     MAX_REMEDIAL = min(total_available, 5)
 
-    # 4. Inisialisasi Sesi Remedial (Mirip quiz_detail tapi khusus remedial)
+    # 4. INISIALISASI SESI
     if 'remedial_step' not in request.session or request.GET.get('reset'):
         request.session['remedial_step'] = 1
         request.session['remedial_correct'] = 0
         request.session['remedial_answered_ids'] = []
+        request.session.modified = True
 
-    # 5. Logika POST (Proses Jawaban)
+    # 5. LOGIKA POST
     if request.method == 'POST':
         question_id = request.POST.get('question_id')
-        user_answer = request.POST.get('answer')
+        user_answer_text = request.POST.get('answer')
         question = get_object_or_404(Question, id=question_id)
 
-        is_correct = (user_answer == question.correct_answer)
+        is_correct = (user_answer_text == question.correct_answer)
+        
         if is_correct:
             request.session['remedial_correct'] += 1
 
-        # Tetap update Theta agar kemampuan siswa tetap terpantau
-        user_profile.ability_score = update_theta_mle(
-            user_profile.ability_score,
-            question.difficulty_level,
-            is_correct
+        # Simpan History
+        UserAnswer.objects.create(
+            user=user,
+            question=question,
+            selected_option=user_answer_text,
+            is_correct=is_correct
         )
-        user_profile.save()
 
-        request.session['remedial_answered_ids'].append(int(question_id))
+        # Update Theta (Adaptive)
+        current_ability = user_profile.ability_score if user_profile else 0.0
+        new_theta = update_theta_mle(current_ability, question.difficulty_level, is_correct)
+        
+        if user_profile:
+            user_profile.ability_score = new_theta
+            user_profile.save()
+
+        # Update session
+        answered_ids = request.session.get('remedial_answered_ids', [])
+        answered_ids.append(int(question_id))
+        request.session['remedial_answered_ids'] = answered_ids
         request.session['remedial_step'] += 1
+        request.session.modified = True
 
-        # Cek Selesai
+        # Selesai
         if request.session['remedial_step'] > MAX_REMEDIAL:
-            score = request.session['remedial_correct']
+            final_score = request.session['remedial_correct']
+            
+            for key in ['remedial_step', 'remedial_correct', 'remedial_answered_ids']:
+                request.session.pop(key, None)
 
-            # Bersihkan sesi remedial
-            del request.session['remedial_step']
-            del request.session['remedial_correct']
-            del request.session['remedial_answered_ids']
-            # Topik salah tetap dipertahankan sampai user sukses remedial atau pindah kuis
-
-            return render(request, 'quiz/quiz_score.html', {
-                'score': score,
+            return render(request, 'quiz_score.html', {
+                'score': final_score,
                 'total': MAX_REMEDIAL,
-                'percentage': (score / MAX_REMEDIAL) * 100,
+                'percentage': (final_score / MAX_REMEDIAL) * 100,
                 'is_remedial': True,
-                'course': course
+                'course': course,
+                'theta_akhir': new_theta
             })
 
-    # 6. Seleksi Soal Remedial Berikutnya (ADAPTIF: Beta ≈ Theta)
+    # 6. SELEKSI SOAL BERIKUTNYA
     answered_ids = request.session.get('remedial_answered_ids', [])
+    current_theta = user_profile.ability_score if user_profile else 0.0
+
+    # Menggunakan ABS untuk mencari soal dengan difficulty terdekat dengan kemampuan user
     next_q = remedial_pool.exclude(id__in=answered_ids).annotate(
-        selisih=Func(F('difficulty_level') - user_profile.ability_score, function='ABS')
+        selisih=Func(F('difficulty_level') - current_theta, function='ABS')
     ).order_by('selisih').first()
 
     if not next_q:
@@ -957,26 +941,12 @@ def remedial_quiz(request, course_pk):
 
     return render(request, 'quiz/quiz_detail.html', {
         'question': next_q,
-        'step': request.session['remedial_step'],
+        'step': request.session.get('remedial_step', 1),
         'total_steps': MAX_REMEDIAL,
         'is_remedial': True,
-        'judul_kuis': f"Latihan Remedial: {', '.join(last_wrong_topics)}"
+        'course': course,
+        'judul_kuis': f"Penguatan: {', '.join(last_wrong_topics[:1])}" if last_wrong_topics else "Latihan Remedial"
     })
-
-# alp_app/views.py
-import json
-from django.shortcuts import render, get_object_or_404, redirect
-from django.http import JsonResponse
-from django.views.decorators.http import require_POST
-from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.decorators import login_required
-from django.db.models import Avg
-from django.views.generic import DetailView
-from django.urls import reverse  # Tambahkan import ini
-from .models import Course, Enrollment, Lesson
-# alp_app/views.py
-from django.db.models import Q, Avg # Pastikan Q dan Avg diimport
-from django.urls import reverse
 
 class ClassDetailView(DetailView):
     model = Course
@@ -1089,14 +1059,6 @@ def my_courses_view(request):
         'enrollments': user_enrollments
     })
 
-# alp_app/views.py
-from django.shortcuts import get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
-from .models import Discussion, Lesson
-# alp_app/views.py
-import json
-from django.http import JsonResponse
-
 @login_required
 def post_discussion(request, course_id):
     if request.method == 'POST':
@@ -1157,10 +1119,6 @@ def post_discussion(request, course_id):
 
     return redirect('course_detail', pk=course_id)
 
-from django.shortcuts import render
-from django.http import JsonResponse
-from .models import SupportReport
-
 def support_view(request):
     if request.method == 'POST':
         # Ambil data dari form
@@ -1192,11 +1150,6 @@ def support_view(request):
 
     # Untuk Method GET
     return render(request, 'support.html')
-
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages
-from .models import Quiz, QuizResult
 
 @login_required
 def sertifikat_view(request, quiz_id=None):
@@ -1265,13 +1218,6 @@ def list_sertifikat_view(request):
         'results': results,
     }
     return render(request, 'list_sertifikat.html', context)
-
-# alp_app/views.py
-import math
-from django.db.models import Count, Q
-from django.contrib.admin.views.decorators import staff_member_required
-from django.contrib import messages
-from .models import Question, UserAnswer, QuizResult # pastikan import sesuai
 
 # FUNGSI 1: Simpan Jawaban (Panggil ini di dalam fungsi submit kuis kamu)
 def save_user_answers(user, question_id, user_choice):

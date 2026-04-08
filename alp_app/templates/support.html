@@ -14,8 +14,8 @@
 
     /* Card Transparan (Email & Form) */
     .card-support-transparan {
-        background-color: rgba(255, 255, 255, 0.05); 
-        backdrop-filter: blur(12px); 
+        background-color: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         border: 1px solid rgba(0, 0, 0, 0.1);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -65,7 +65,7 @@
 {# BAGIAN YANG DIEDIT: Menyatukan class industrial-dot-bg dengan container jarak yang diinginkan #}
 <div class="min-h-screen flex flex-col items-center justify-start pt-2 pb-12">
     <div class="container mx-auto px-6">
-        
+
         {# Header #}
         <div class="flex items-center gap-3 mb-12" data-aos="fade-right">
             <div class="h-5 w-1.5 bg-[#eab308]"></div>
@@ -75,10 +75,10 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl mx-auto">
-            
+
             {# Sisi Kiri: Kontak #}
             <div class="lg:col-span-4 space-y-6">
-                
+
                 {# Card Email #}
                 <div class="group relative overflow-hidden card-support-transparan p-8" data-aos="fade-up">
                     <div class="absolute top-0 right-0 w-12 h-12 bg-gray-200/20 -mr-6 -mt-6 rotate-45 group-hover:bg-[#eab308] transition-colors duration-500"></div>
@@ -91,7 +91,7 @@
                         <p class="text-sm text-gray-500 mb-8">Kirim pertanyaan teknis. Respon standar 1x24 jam.</p>
                         <div class="flex items-center gap-2 w-full">
                             <span class="text-[10px] font-black uppercase text-gray-900">ilyasamumtaza@gmail.com</span>
-                            <div class="h-[1.5px] w-4 bg-gray-900 transition-all duration-500 group-hover:flex-grow"></div>
+                            <div class="h-[1.5px] w-4 bg-gray-900 group-hover:bg-[#eab308] transition-all duration-500 group-hover:flex-grow"></div>
                         </div>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
                 <div class="group relative overflow-hidden bg-[#111827] p-8 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
                     <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#3b82f6 0.5px, transparent 0.5px); background-size: 8px 8px;"></div>
                     <div class="absolute top-0 right-0 w-12 h-12 bg-white/5 -mr-6 -mt-6 rotate-45 group-hover:bg-blue-500 transition-colors duration-500"></div>
-                    
+
                     <div class="relative z-10">
                         <div class="flex items-center justify-between mb-6">
                             <div class="flex flex-col gap-1">
@@ -118,9 +118,10 @@
 
                         <p class="text-sm text-gray-400 mb-8">Butuh bantuan cepat? Hubungi tim kami melalui jalur enkripsi WhatsApp.</p>
 
-                        <a href="https://wa.me/6282264974290" onclick="loginRequiredAction(event)" target="_blank" class="flex items-center gap-2 w-full text-blue-400 group-hover:text-white transition-colors">
-                            <span class="text-[10px] font-black uppercase tracking-widest">+62 822-6497-4290</span>
-                            <div class="h-[1.5px] w-4 bg-blue-500/50 group-hover:bg-blue-400 transition-all duration-500 group-hover:flex-grow"></div>
+                        <a href="https://wa.me/6282264974290" onclick="loginRequiredAction(event)" target="_blank" class="flex items-center gap-2 w-full text-white group-hover:text-blue-400 transition-colors">
+                            <span class="text-[12px] font-black uppercase tracking-widest">+62 822-6497-4290</span>
+                            
+                            <div class="h-[1.5px] w-4 bg-white/50 group-hover:bg-blue-400 transition-all duration-500 group-hover:flex-grow"></div>
                         </a>
                     </div>
                 </div>
@@ -135,7 +136,13 @@
                     <div class="relative z-10">
                         <div class="flex items-center gap-3 mb-10">
                             <div class="h-5 w-1.5 bg-gray-900"></div>
-                            <h3 class="text-gray-900 font-bold tracking-wide text-sm uppercase">Kirim Pesan Bantuan</h3>
+                            
+                            <div class="flex items-center gap-3 flex-grow">
+                                <h3 class="text-gray-900 font-bold tracking-wide text-sm uppercase">
+                                    Kirim Pesan Bantuan
+                                </h3>
+                                <div class="h-[1.5px] w-4 bg-gray-900 group-hover:bg-[#eab308] transition-all duration-500 group-hover:flex-grow"></div>
+                            </div>
                         </div>
 
                         <form id="supportForm" action="{% url 'support' %}" data-spree="https://formspree.io/f/xwvnogqo" method="POST" class="space-y-8">
@@ -167,7 +174,6 @@
                                 <textarea name="message" rows="4" required placeholder="Tuliskan kendala atau pertanyaan Anda di sini..." class="cyber-input px-5 py-4 text-sm resize-none"></textarea>
                             </div>
 
-                            {# Tombol: Garis memanjang, Ikon Pesawat tetap di kanan #}
                             <button type="submit" onclick="loginRequiredAction(event)" class="group/btn flex items-center w-full py-5 px-8 bg-gray-900 hover:bg-[#eab308] text-white hover:text-gray-900 font-bold transition-all duration-300">
                                 <span class="text-sm uppercase tracking-widest whitespace-nowrap">Kirim Pesan</span>
                                 <div class="flex-grow flex items-center ml-4">
@@ -183,13 +189,13 @@
         </div>
 
         {# Footer #}
-        <div class="w-full max-w-7xl mx-auto mt-20 border-t-2 border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-400 tracking-[0.3em] uppercase font-black">
+        <div class="w-full max-w-7xl mt-24 border-t-2 border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-400 tracking-[0.3em] uppercase font-black">
             <div class="flex items-center gap-2">
                 <span class="h-3 w-3 bg-gray-900"></span>
-                <span>Framework v4.0.2</span>
+                <span>Platform Active & Ready</span>
             </div>
-            <span>SSC Intellectual Property © 2026</span>
-            <span class="text-gray-900 bg-[#eab308] px-3 py-1">Security: Encrypted</span>
+            <span>© 2025 Smart Study Club (SSC)</span>
+            <span class="bg-[#eab308] text-gray-900 px-3 py-1">User Acceptance Testing (UAT).</span>
         </div>
     </div>
 </div>
@@ -199,7 +205,7 @@
 
     function zoomQR(el) {
         const qrUrl = el.querySelector('img').src;
-        
+
         Swal.fire({
             title: 'HUBUNGI KAMI VIA WHATSAPP',
             text: 'Pindai kode QR untuk terhubung dengan layanan bantuan.',
@@ -209,11 +215,11 @@
             imageAlt: 'Official WhatsApp QR Code',
             showConfirmButton: true,
             confirmButtonText: 'SELESAI',
-            
-            background: 'rgba(15, 15, 15, 0.95)', 
+
+            background: 'rgba(15, 15, 15, 0.95)',
             backdrop: `rgba(0,0,0,0.85) blur(10px)`,
             color: '#ffffff',
-            
+
             customClass: {
                 popup: 'border border-white/10 backdrop-blur-2xl rounded-2xl shadow-2xl p-4', // Padding popup diperkecil
                 title: 'font-bold tracking-tight uppercase text-lg text-[#eab308] mt-2 mb-0', // Margin atas-bawah minim
@@ -240,9 +246,9 @@
             const dbResponse = await fetch(form.action, {
                 method: 'POST',
                 body: formData,
-                headers: { 
+                headers: {
                     'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
-                    'Accept': 'application/json' 
+                    'Accept': 'application/json'
                 }
             });
 
