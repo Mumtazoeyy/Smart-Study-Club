@@ -154,7 +154,7 @@
                                     {% if next_lesson %}
                                         Lanjutkan Materi Berikutnya
                                     {% else %}
-                                        Selesaikan Kursus (Kembali ke Silabus)
+                                        Selesaikan Kursus (Kembali ke Course)
                                     {% endif %}
                                 </span>
                                 <i class="fas {% if next_lesson %}fa-arrow-right{% else %}fa-check-double{% endif %} text-[#eab308] text-xs"></i>
@@ -185,7 +185,7 @@
 
                         {# 4. Dashboard #}
                         <a href="{% url 'course_detail' quiz.lesson.module.course.pk %}" class="btn-action-glass md:col-span-2 py-4 px-6 flex justify-center border-dashed">
-                            <span class="btn-text text-[10px] font-black uppercase tracking-widest text-gray-400">Kembali ke Silabus Kelas</span>
+                            <span class="btn-text text-[10px] font-black uppercase tracking-widest text-gray-400">Kembali ke Course</span>
                             <div class="btn-line-anim"></div>
                         </a>
                     </div>

@@ -459,6 +459,8 @@ def quiz_detail(request, quiz_pk):
         answered_ids = request.session.get('answered_ids', [])
 
         if int(question_id) not in answered_ids:
+            save_user_answers(request.user, question_id, user_answer)
+            
             answered_ids.append(int(question_id))
             request.session['answered_ids'] = answered_ids
 
@@ -1219,20 +1221,26 @@ def list_sertifikat_view(request):
     }
     return render(request, 'list_sertifikat.html', context)
 
-# FUNGSI 1: Simpan Jawaban (Panggil ini di dalam fungsi submit kuis kamu)
+# FUNGSI 1: Simpan Jawaban (Sudah diperbaiki agar sinkron dengan model Question)
 def save_user_answers(user, question_id, user_choice):
-    question = Question.objects.get(id=question_id)
-    # Cek apakah pilihan user sama dengan kunci jawaban di model Option
-    correct_option = question.options.filter(is_correct=True).first()
-    is_correct = (str(user_choice) == str(correct_option.option_text))
+    try:
+        question = Question.objects.get(id=question_id)
+        
+        # Samakan logika pengecekan dengan yang ada di quiz_detail/exam_adaptive
+        # Kita bandingkan pilihan user (user_choice) dengan correct_answer (teks)
+        is_correct = (str(user_choice).strip() == str(question.correct_answer).strip())
 
-    UserAnswer.objects.create(
-        user=user,
-        question=question,
-        selected_option=user_choice,
-        is_correct=is_correct
-    )
-
+        # Buat data baru di tabel UserAnswer
+        UserAnswer.objects.create(
+            user=user,
+            question=question,
+            selected_option=user_choice,
+            is_correct=is_correct
+        )
+        print(f"✅ Berhasil simpan jawaban untuk soal ID {question_id}")
+    except Exception as e:
+        print(f"❌ Gagal simpan UserAnswer: {e}")
+        
 # FUNGSI 2: Tombol Rahasia Kalkulasi (Auto-Calibration)
 @staff_member_required
 def calibrate_difficulty_view(request):
