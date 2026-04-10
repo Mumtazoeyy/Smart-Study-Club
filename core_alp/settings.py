@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # --- SECURITY & DEBUG ---
 SECRET_KEY = 'django-insecure-c&v)pd1zrisbvgi3hw$rij06ga6=nrjyj-cmd9g38efxxzle#b'
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['ilyasabdullah.pythonanywhere.com', 'localhost', '127.0.0.1', '.pythonanywhere.com']
 SITE_ID = 1 # Wajib untuk django.contrib.sites
 
@@ -22,7 +22,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'debug_toolbar',
 
     # Third-party Apps
     'widget_tweaks',
@@ -51,16 +50,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'allauth.account.middleware.AccountMiddleware', # Allauth Middleware
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'core_alp.urls'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
-
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
 
 # --- TEMPLATES ---
 TEMPLATES = [
