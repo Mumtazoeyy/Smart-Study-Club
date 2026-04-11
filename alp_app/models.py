@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.urls import reverse
+from django.db.models import Avg
 
 # -----------------------------------------------
 # 1. MODEL KURIKULUM (Kelas, Modul, Pelajaran)
@@ -171,7 +172,7 @@ class Enrollment(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name="Kelas yang Diikuti")
     progress_percentage = models.DecimalField(max_digits=5, decimal_places=2, default=0.00, verbose_name="Persentase Progres")
     last_accessed = models.DateTimeField(auto_now=True, verbose_name="Terakhir Diakses")
-    rating = models.IntegerField(default=0) # Tambahkan ini
+    rating = models.IntegerField(default=0)
 
     class Meta:
         unique_together = ('user', 'course')
@@ -179,6 +180,27 @@ class Enrollment(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.course.title}"
+
+    # --- LOGIKA OTOMATIS (MENGHITUNG DARI HISTORY & QUIZ) ---
+
+    @property
+    def average_score(self):
+        """Otomatis menghitung Nilai Rata-rata Kuis"""
+        avg = QuizResult.objects.filter(user=self.user, course=self.course).aggregate(Avg('score'))['score__avg']
+        return round(avg, 2) if avg else 0.00
+
+    @property
+    def theta_result(self):
+        """Otomatis mengambil Skor Kemampuan (Theta) terbaru"""
+        latest_quiz = QuizResult.objects.filter(user=self.user, course=self.course).order_by('-date').first()
+        return latest_quiz.theta_result if latest_quiz else 0.0
+
+    @property
+    def total_study_time(self):
+        """Otomatis menghitung Total Waktu Belajar (Jam)"""
+        # Simulasi: setiap 1 riwayat belajar dihitung 15 menit (0.25 jam)
+        count = StudyHistory.objects.filter(user=self.user).count()
+        return round(count * 0.25, 2)
 
 class QuizResult(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -207,6 +229,19 @@ class StudySession(models.Model):
 
     def __str__(self):
         return f"Sesi Belajar {self.user.username} ({self.duration} menit)"
+
+class StudyHistory(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='study_history')
+    activity_name = models.CharField(max_length=255)
+    link = models.CharField(max_length=255)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = "Study Histories"
+        ordering = ['-timestamp']
+
+    def __str__(self):
+        return f"{self.user.username} - {self.activity_name}"
 
 class Discussion(models.Model):
     course = models.ForeignKey('Course', on_delete=models.CASCADE, related_name='discussions')

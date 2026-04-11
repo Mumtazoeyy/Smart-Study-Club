@@ -484,6 +484,9 @@ def quiz_detail(request, quiz_pk):
             request.session['quiz_step'] = len(answered_ids) + 1
             request.session.modified = True
 
+            request.session['quiz_step'] = len(answered_ids) + 1
+            request.session.modified = True
+
         # CEK APAKAH KUIS SELESAI
         if len(answered_ids) >= MAX_QUESTIONS:
             user_score = request.session.get('correct_answers', 0)
@@ -698,19 +701,14 @@ def submit_answer(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     is_correct = (request.POST.get('answer') == question.correct_answer)
 
-    # 1. Update Theta secara Real-time (Sesuai Flowchart Langkah 10)
     new_theta = update_theta_mle(
         current_theta=user_profile.ability_score,
         question_beta=question.difficulty_level, # Ini adalah parameter Beta (β)
         is_correct=is_correct
     )
 
-    # 2. Simpan skor baru ke profil siswa
     user_profile.ability_score = new_theta
     user_profile.save()
-
-    # 3. Langkah 11 Flowchart: Cek apakah kuis selesai atau cari soal berikutnya
-    # yang tingkat kesulitannya (β) mendekati new_theta
 
 @login_required
 def exam_adaptive(request, quiz_pk):

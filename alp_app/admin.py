@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.utils.safestring import mark_safe
 from .models import (
-    Course, Module, Lesson, Enrollment, Category, Quiz, Question, QuizResult, LessonCompletion, StudySession, Discussion, SupportReport, Topic
+    Course, Module, Lesson, Enrollment, Category, Quiz, Question, QuizResult, LessonCompletion, StudySession, StudyHistory, Discussion, SupportReport, Topic
 )
 from profiles_app.models import Profile
 from django.core.exceptions import ObjectDoesNotExist
@@ -14,6 +14,7 @@ import csv  # Tambahkan ini
 from django.http import HttpResponse
 from django.utils.timezone import localtime, now
 from django.utils import timezone
+from django.urls import path
 
 # =========================================================
 # 1. LOGIKA INLINES
@@ -21,26 +22,55 @@ from django.utils import timezone
 
 class EnrollmentInline(admin.TabularInline):
     model = Enrollment
-    extra = 0
-    readonly_fields = ('course', 'progress_percentage', 'last_accessed')
+    extra = 1
+    # Gunakan 'formatted_theta' agar tampilan di tabel ringkas
+    readonly_fields = ('last_accessed', 'average_score', 'formatted_theta', 'total_study_time')
     can_delete = True
     classes = ['inline-history']
-    fields = ('course', 'rating', 'progress_percentage', 'last_accessed')
+    fields = (
+        'course', 
+        'rating', 
+        'progress_percentage', 
+        'average_score', 
+        'formatted_theta', # Memanggil fungsi pembulatan di bawah
+        'total_study_time', 
+        'last_accessed'
+    )
+
+    def formatted_theta(self, obj):
+        return round(obj.theta_result, 2) if obj.theta_result else 0.0
+    formatted_theta.short_description = 'Theta (IRT)'
 
 class QuizResultInline(admin.TabularInline):
     model = QuizResult
-    extra = 0
-    readonly_fields = ('quiz', 'score', 'total_questions', 'theta_result', 'date')
+    extra = 1
+    readonly_fields = ('date', 'formatted_theta')
     can_delete = True
     classes = ['inline-history']
+    # Ganti theta_result (DB) menjadi formatted_theta (Fungsi)
+    fields = ('course', 'quiz', 'score', 'total_questions', 'formatted_theta', 'date')
+
+    def formatted_theta(self, obj):
+        if obj.theta_result is not None:
+            return round(float(obj.theta_result), 2)
+        return "0.0"
+    formatted_theta.short_description = 'Theta Result'
 
 class LessonCompletionInline(admin.TabularInline):
     model = LessonCompletion
-    extra = 0
-    readonly_fields = ('lesson', 'completed_at')
+    extra = 1
+    readonly_fields = ('completed_at',)
     can_delete = True
     classes = ['inline-history']
+    fields = ('lesson', 'completed_at')
 
+class StudyHistoryInline(admin.TabularInline):
+    model = StudyHistory
+    extra = 1
+    readonly_fields = ('timestamp',)
+    can_delete = True
+    classes = ['inline-history']
+    fields = ('activity_name', 'link', 'timestamp')
 # =========================================================
 # 2. CATEGORY ADMIN
 # =========================================================
@@ -61,18 +91,20 @@ class ProfileInline(admin.StackedInline):
     can_delete = False
     verbose_name_plural = 'Informasi Tambahan (Kelas)'
 
-    # Field ini akan muncul sebagai teks statis di Admin (Tidak bisa diketik)
+    # Field ini memanggil fungsi @property dari models.py
     readonly_fields = (
-        'ability_score',
-        'total_waktu_belajar',
-        'nilai_rata_rata',
+        'get_calculated_theta',
+        'get_calculated_time',
+        'get_calculated_avg',
         'perubahan_waktu_belajar'
     )
 
     # Menentukan urutan tampilan field di form Admin
     fields = (
         'kelas', 'nama_lengkap', 'foto', 'level', 'bio',
-        'ability_score', 'total_waktu_belajar', 'nilai_rata_rata'
+        'get_calculated_theta', 
+        'get_calculated_time', 
+        'get_calculated_avg'
     )
 
 # Pastikan untuk unregister User bawaan sebelum mendaftarkan kembali yang kustom
@@ -83,7 +115,7 @@ except admin.sites.NotRegistered:
 
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
-    inlines = (ProfileInline, EnrollmentInline, QuizResultInline, LessonCompletionInline)
+    inlines = (ProfileInline, EnrollmentInline, QuizResultInline, LessonCompletionInline, StudyHistoryInline)
     list_display = BaseUserAdmin.list_display + ('get_kelas',)
     list_filter = BaseUserAdmin.list_filter + ('is_staff', 'is_superuser', 'user_profile__kelas')
 
@@ -129,7 +161,8 @@ class UserAdmin(BaseUserAdmin):
 
             if results.exists():
                 for res in results:
-                    theta_fix = str(res.theta_result).replace('.', ',')
+                    theta_rounded = round(res.theta_result, 2) if res.theta_result else 0.0
+                    theta_fix = str(theta_rounded).replace('.', ',')
                     waktu_lokal = localtime(res.date).strftime('%d/%m/%Y %H:%M:%S')
                     writer.writerow([
                         user.username,
@@ -161,6 +194,94 @@ class UserAdmin(BaseUserAdmin):
 
     export_progres_csv.short_description = "Download CSV Progres User"
 
+    def generate_random_history(self, request, object_id):
+        import random
+        from django.utils import timezone
+        from django.db.models import Avg, Sum
+        from django.shortcuts import redirect
+        from django.contrib import messages
+        # Import model sesuai file models.py kamu
+        from .models import Course, Module, Lesson, StudyHistory, LessonCompletion, Enrollment, QuizResult
+
+        actual_id = object_id.split('/')[0]
+        user = self.get_object(request, actual_id)
+        
+        # 1. Pilih Course secara acak
+        course = Course.objects.order_by('?').first()
+        if not course:
+            self.message_user(request, "Gagal: Tidak ada Course tersedia!", messages.ERROR)
+            return redirect("..")
+
+        # 2. Daftarkan User (Enrollment) jika belum ada
+        enrollment, created = Enrollment.objects.get_or_create(
+            user=user,
+            course=course,
+            defaults={'last_accessed': timezone.now()}
+        )
+
+        # 3. Ambil 2 Modul pertama agar urut
+        modules = Module.objects.filter(course=course).order_by('id')[:2]
+        
+        for module in modules:
+            lessons = Lesson.objects.filter(module=module).order_by('id')
+            for lesson in lessons:
+                # Tambah ke History
+                StudyHistory.objects.get_or_create(
+                    user=user,
+                    activity_name=f"{module.title}: {lesson.title}",
+                    link=f"/course/lesson/{lesson.id}/"
+                )
+                # Tambah ke Completion
+                LessonCompletion.objects.get_or_create(user=user, lesson=lesson)
+
+                # Jika ada kuis, buat hasil kuis dengan skor bervariasi
+                if hasattr(lesson, 'quiz') and lesson.quiz:
+                    QuizResult.objects.get_or_create(
+                        user=user,
+                        quiz=lesson.quiz,
+                        course=course,
+                        defaults={
+                            'score': random.choice([70, 80, 85, 90, 100]),
+                            'total_questions': 10,
+                            'theta_result': random.uniform(0.1, 1.5), 
+                            'date': timezone.now()
+                        }
+                    )
+
+        # =========================================================
+        # 4. LOGIKA UPDATE DATABASE ASLI
+        # =========================================================
+        
+        # Hitung Progress secara nyata (karena progress_percentage adalah field DB asli)
+        total_lessons_in_course = Lesson.objects.filter(module__course=course).count()
+        user_completed = LessonCompletion.objects.filter(user=user, lesson__module__course=course).count()
+        
+        actual_progress = 0
+        if total_lessons_in_course > 0:
+            actual_progress = (user_completed / total_lessons_in_course) * 100
+
+        # Simpan hanya ke field yang ada di database (bukan property)
+        enrollment.progress_percentage = actual_progress
+        enrollment.last_accessed = timezone.now()
+        enrollment.save()
+
+        # Update juga field point di Profile jika ada (ini field DB asli)
+        profile = getattr(user, 'user_profile', None)
+        if profile:
+            # Contoh menambah poin setiap kali generate history
+            profile.points += 10
+            profile.save()
+
+        self.message_user(request, f"Berhasil! Data '{course.title}' digenerate. Statistik akan otomatis terhitung di tampilan.", messages.SUCCESS)
+        return redirect("..")
+    
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path('<path:object_id>/generate-history/', self.admin_site.admin_view(self.generate_random_history), name='generate-random-history'),
+        ]
+        return custom_urls + urls
+    
     def get_kelas(self, obj):
         # Ambil label kelas dari model Profile via related_name 'user_profile'
         try:
@@ -209,7 +330,15 @@ class UserAdmin(BaseUserAdmin):
         });
         </script>
         """
-        extra_context['title'] = mark_safe(str(self.model._meta.verbose_name_plural.capitalize()) + js_code)
+        # Tombol Generate diletakkan di samping nama user
+        btn_style = "background: #28a745; color: white; padding: 5px 15px; border-radius: 4px; text-decoration: none; font-size: 12px; margin-left: 20px; vertical-align: middle; font-weight: normal;"
+        generate_url = f"./generate-history/"
+        magic_button = f'<a href="{generate_url}" style="{btn_style}">🎲 Generate Random History</a>'
+        
+        # Menggabungkan Judul, Tombol Magic, dan JS Code
+        title_text = str(self.model._meta.verbose_name.capitalize())
+        extra_context['title'] = mark_safe(f"{title_text} {magic_button} {js_code}")
+        
         return super().change_view(request, object_id, form_url, extra_context)
 
 # =========================================================

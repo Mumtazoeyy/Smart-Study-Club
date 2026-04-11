@@ -299,7 +299,7 @@ def leaderboard_view(request):
     leaderboard_data = Profile.objects.select_related('user')\
         .exclude(user__is_staff=True)\
         .exclude(user__is_superuser=True)\
-        .order_by('-ability_score')[:10]
+        .order_by('-ability_score')
 
     return render(request, 'leaderboard.html', {
         'leaderboard_data': leaderboard_data

@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # --- SECURITY & DEBUG ---
 SECRET_KEY = 'django-insecure-c&v)pd1zrisbvgi3hw$rij06ga6=nrjyj-cmd9g38efxxzle#b'
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['ilyasabdullah.pythonanywhere.com', 'localhost', '127.0.0.1', '.pythonanywhere.com']
 SITE_ID = 1 # Wajib untuk django.contrib.sites
 

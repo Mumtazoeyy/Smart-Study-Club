@@ -16,20 +16,3 @@ urlpatterns = [
 
 # --- KONFIGURASI TAMBAHAN ---
 
-if settings.DEBUG:
-    # 1. Rute untuk Django Debug Toolbar (Hanya saat Debug)
-    import debug_toolbar
-    urlpatterns = [
-        path('__debug__/', include(debug_toolbar.urls)),
-    ] + urlpatterns
-    
-    # 2. Melayani file STATIC & MEDIA (Cara standar saat Debug)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-else:
-    # 3. PENTING: Agar gambar tetap muncul di PythonAnywhere saat DEBUG = False
-    urlpatterns += [
-        path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT}),
-        path('static/<path:path>', serve, {'document_root': settings.STATIC_ROOT}),
-    ]
