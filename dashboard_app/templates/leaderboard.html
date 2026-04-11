@@ -62,24 +62,37 @@
             </div>
         </div>
 
-        {# --- TOMBOL SKALA KEMAMPUAN (LIGHT VERSION) --- #}
+        {# --- TOMBOL SKALA KEMAMPUAN (UNIFIED DESIGN) --- #}
         <div class="mb-8 flex flex-wrap items-center gap-4" data-aos="fade-up" data-aos-delay="100">
-            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Indikator:</span>
+            <span class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] flex items-center gap-2">
+                <span class="w-4 h-[1px] bg-gray-300"></span>
+                Indikator Kemampuan
+            </span>
             
-            <div class="flex flex-wrap gap-2">
-                <button onclick="showAbilityInfo('beginner')" class="flex items-center gap-2 px-3 py-1 border border-gray-200 rounded-full hover:border-[#eab308] hover:bg-gray-50 transition-all group">
-                    <span class="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-[#eab308]"></span>
-                    <span class="text-[10px] font-bold text-gray-500 group-hover:text-gray-900">Beginner</span>
+            <div class="flex flex-wrap gap-3">
+                {# Tombol Beginner #}
+                <button onclick="showAbilityInfo('beginner')" 
+                    class="flex items-center gap-3 px-4 py-1.5 border border-gray-200 bg-white rounded-none hover:border-[#eab308] hover:bg-gray-50 transition-all group relative overflow-hidden">
+                    <span class="w-2 h-2 rounded-full bg-gray-300 group-hover:bg-[#eab308] transition-colors"></span>
+                    <span class="text-[10px] font-black text-gray-500 uppercase tracking-widest group-hover:text-gray-900">Beginner</span>
+                    {# Garis dekoratif bawah agar presisi industrial #}
+                    <div class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#eab308] group-hover:w-full transition-all duration-300"></div>
                 </button>
 
-                <button onclick="showAbilityInfo('intermediate')" class="flex items-center gap-2 px-3 py-1 border border-gray-900 rounded-full bg-gray-900 hover:bg-black transition-all group">
-                    <span class="w-1.5 h-1.5 rounded-full bg-[#eab308]"></span>
-                    <span class="text-[10px] font-bold text-white">Intermediate</span>
+                {# Tombol Intermediate #}
+                <button onclick="showAbilityInfo('intermediate')" 
+                    class="flex items-center gap-3 px-4 py-1.5 border border-gray-200 bg-white rounded-none hover:border-[#eab308] hover:bg-gray-50 transition-all group relative overflow-hidden">
+                    <span class="w-2 h-2 rounded-full bg-gray-300 group-hover:bg-[#eab308] transition-colors"></span>
+                    <span class="text-[10px] font-black text-gray-500 uppercase tracking-widest group-hover:text-gray-900">Intermediate</span>
+                    <div class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#eab308] group-hover:w-full transition-all duration-300"></div>
                 </button>
 
-                <button onclick="showAbilityInfo('expert')" class="flex items-center gap-2 px-3 py-1 border border-gray-200 rounded-full hover:border-gray-900 hover:bg-gray-50 transition-all group">
-                    <span class="w-1.5 h-1.5 rounded-full bg-gray-900 group-hover:bg-[#eab308]"></span>
-                    <span class="text-[10px] font-bold text-gray-500 group-hover:text-gray-900">Expert</span>
+                {# Tombol Expert #}
+                <button onclick="showAbilityInfo('expert')" 
+                    class="flex items-center gap-3 px-4 py-1.5 border border-gray-200 bg-white rounded-none hover:border-[#eab308] hover:bg-gray-50 transition-all group relative overflow-hidden">
+                    <span class="w-2 h-2 rounded-full bg-gray-300 group-hover:bg-[#eab308] transition-colors"></span>
+                    <span class="text-[10px] font-black text-gray-500 uppercase tracking-widest group-hover:text-gray-900">Expert</span>
+                    <div class="absolute bottom-0 left-0 h-[2px] w-0 bg-[#eab308] group-hover:w-full transition-all duration-300"></div>
                 </button>
             </div>
         </div>
@@ -165,6 +178,15 @@
                 </div>
             {% endfor %}
         </div>
+    </div>
+    {# Footer Info Area #}
+    <div class="w-full max-w-7xl mt-24 border-t-2 border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-400 tracking-[0.3em] uppercase font-black">
+        <div class="flex items-center gap-2">
+            <span class="h-3 w-3 bg-gray-900"></span>
+            <span>Platform Active & Ready</span>
+        </div>
+        <span>© 2025 Smart Study Club (SSC)</span>
+        <span class="bg-[#eab308] text-gray-900 px-3 py-1">User Acceptance Testing (UAT).</span>
     </div>
 </div>
 

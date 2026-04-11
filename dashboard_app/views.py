@@ -294,8 +294,16 @@ from django.db.models import Avg
 from alp_app.models import QuizResult # Pastikan path import sesuai dengan folder app Anda
 
 def leaderboard_view(request):
-    # .exclude(user__is_staff=True) akan membuang semua akun admin/staff dari daftar
-    # .exclude(user__is_superuser=True) untuk memastikan superuser juga hilang
+    # 1. OPTIONAL: Jalankan auto-sync singkat (agar data selalu fresh saat dibuka)
+    # Ini memastikan profil mengambil nilai Theta terakhir dari QuizResult
+    all_profiles = Profile.objects.all()
+    for p in all_profiles:
+        latest_quiz = QuizResult.objects.filter(user=p.user).order_by('-date').first()
+        if latest_quiz:
+            p.ability_score = latest_quiz.theta_result
+            p.save()
+
+    # 2. Ambil data untuk ditampilkan (Tanpa Admin/Staff)
     leaderboard_data = Profile.objects.select_related('user')\
         .exclude(user__is_staff=True)\
         .exclude(user__is_superuser=True)\

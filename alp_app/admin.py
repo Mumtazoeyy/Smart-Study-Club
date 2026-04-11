@@ -294,10 +294,29 @@ class UserAdmin(BaseUserAdmin):
 
     def change_view(self, request, object_id, form_url='', extra_context=None):
         extra_context = extra_context or {}
+        
+        # Ambil teks judul (User)
+        title_text = str(self.model._meta.verbose_name.capitalize())
+        
+        # Generate URL
+        generate_url = f"./generate-history/"
+        
+        # EDIT: Tambahkan 'display:none' dan ID 'magic-btn' pada tombol
+        btn_style = "display:none; background: #28a745; color: white; padding: 5px 15px; border-radius: 4px; text-decoration: none; font-size: 12px; margin-left: 20px; vertical-align: middle; font-weight: normal;"
+        magic_button = f'<a id="magic-btn" href="{generate_url}" style="{btn_style}">🎲 Generate Random History</a>'
+        
+        # EDIT: Bungkus judul dengan span dan ID agar bisa diklik
+        trigger_title = f'<span id="toggle-trigger" style="cursor:pointer;">{title_text}</span>'
+
         js_code = """
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
         $(document).ready(function() {
+            // FITUR BARU: Klik judul untuk memunculkan/menyembunyikan tombol
+            $('#toggle-trigger').on('click', function() {
+                $('#magic-btn').toggle();
+            });
+
             $('.inline-group h2').each(function() {
                 var header = $(this);
                 var actionHtml = `
@@ -330,14 +349,9 @@ class UserAdmin(BaseUserAdmin):
         });
         </script>
         """
-        # Tombol Generate diletakkan di samping nama user
-        btn_style = "background: #28a745; color: white; padding: 5px 15px; border-radius: 4px; text-decoration: none; font-size: 12px; margin-left: 20px; vertical-align: middle; font-weight: normal;"
-        generate_url = f"./generate-history/"
-        magic_button = f'<a href="{generate_url}" style="{btn_style}">🎲 Generate Random History</a>'
         
-        # Menggabungkan Judul, Tombol Magic, dan JS Code
-        title_text = str(self.model._meta.verbose_name.capitalize())
-        extra_context['title'] = mark_safe(f"{title_text} {magic_button} {js_code}")
+        # Menggabungkan Judul yang bisa diklik, Tombol Tersembunyi, dan JS Code
+        extra_context['title'] = mark_safe(f"{trigger_title} {magic_button} {js_code}")
         
         return super().change_view(request, object_id, form_url, extra_context)
 
