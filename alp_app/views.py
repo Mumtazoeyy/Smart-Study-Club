@@ -34,7 +34,7 @@ from allauth.account.decorators import login_required as allauth_login_required
 from .models import (
     Category, Enrollment, Course, Lesson, Quiz, 
     Module, Discussion, Question, QuizResult, 
-    StudySession, SupportReport, UserAnswer
+    StudySession, SupportReport, Topic, UserAnswer
 )
 from .forms import ExtendedSignupForm
 from .utils import mark_lesson_complete_logic
@@ -466,13 +466,25 @@ def quiz_detail(request, quiz_pk):
 
             is_correct = (user_answer == question.correct_answer)
             if is_correct:
-                request.session['correct_answers'] += 1
+                request.session['correct_answers'] = request.session.get('correct_answers', 0) + 1
             else:
                 wrong_topics = request.session.get('wrong_topics', [])
-                if question.topic and question.topic not in wrong_topics:
-                    wrong_topics.append(question.topic)
-                    request.session['wrong_topics'] = wrong_topics
-
+                
+                # AMBIL TOPIK LEWAT QUESTION
+                # Karena Topic tidak punya field 'course', kita ambil topik dari semua soal yang ada di kuis ini
+                official_topics = list(Topic.objects.filter(
+                    question__quiz=quiz
+                ).values_list('name', flat=True).distinct())
+                
+                question_topic = question.topic.strip() if question.topic else None
+                
+                if question_topic and question_topic in official_topics:
+                    if question_topic not in wrong_topics:
+                        wrong_topics.append(question_topic)
+                        request.session['wrong_topics'] = wrong_topics
+            
+            request.session.modified = True
+            
             new_theta = update_theta_mle(
                 current_theta=user_profile.ability_score,
                 question_beta=question.difficulty_level,
@@ -912,18 +924,36 @@ def remedial_quiz(request, course_pk):
         request.session.modified = True
 
         # Selesai
+        # --- BAGIAN SELESAI ---
         if request.session['remedial_step'] > MAX_REMEDIAL:
             final_score = request.session['remedial_correct']
             
+            # 1. AMBIL OBJEK QUIZ (untuk tombol Coba Lagi)
+            quiz_obj = Quiz.objects.filter(lesson__module__course=course).first()
+
+            # 2. AMBIL MATERI PERTAMA (untuk tombol Review Materi - Baris 173)
+            # Kita cari Lesson pertama dari Module pertama di Course ini
+            materi_awal = Lesson.objects.filter(module__course=course).order_by('id').first()
+            
+            # Update Theta (Adaptive)
+            current_ability = user_profile.ability_score if user_profile else 0.0
+            new_theta = update_theta_mle(current_ability, question.difficulty_level, is_correct)
+            
+            if user_profile:
+                user_profile.ability_score = new_theta
+                user_profile.save()
+
             for key in ['remedial_step', 'remedial_correct', 'remedial_answered_ids']:
                 request.session.pop(key, None)
 
-            return render(request, 'quiz_score.html', {
+            return render(request, 'quiz/quiz_score.html', {
                 'score': final_score,
                 'total': MAX_REMEDIAL,
                 'percentage': (final_score / MAX_REMEDIAL) * 100,
                 'is_remedial': True,
                 'course': course,
+                'quiz': quiz_obj,
+                'materi_awal': materi_awal,  # <--- TAMBAHKAN INI
                 'theta_akhir': new_theta
             })
 
