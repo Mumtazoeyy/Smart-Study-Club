@@ -19,3 +19,7 @@ def update_theta_mle(current_theta, question_beta, is_correct):
 
     # Batasi agar tetap di range standar IRT -3.0 sampai 3.0
     return max(min(round(new_theta, 2), 3.0), -3.0)
+
+
+
+

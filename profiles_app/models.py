@@ -76,24 +76,40 @@ class Profile(models.Model):
 
     @property
     def get_calculated_time(self):
-        from alp_app.models import StudyHistory
-        count = StudyHistory.objects.filter(user=self.user).count()
-        # Hasilnya akan tetap rapi (misal: 2.5 atau 2.75)
-        return round(count * 0.25, 2)
+        from alp_app.models import StudySession
+        from django.db.models import Sum
+        
+        # Karena di database kamu tidak ada end_time, tapi ada field 'duration'
+        # Kita langsung jumlahkan saja field duration tersebut.
+        total_duration = StudySession.objects.filter(
+            user=self.user
+        ).aggregate(
+            total=Sum('duration')
+        )['total']
+        
+        # Jika total_duration sudah dalam satuan menit, langsung return.
+        # Jika dalam detik, bagi 60. (Asumsi: duration kamu dalam menit/angka)
+        if total_duration:
+            return round(float(total_duration), 2)
+        
+        return 0.00
 
     @property
     def get_hierarchy_name(self):
-        # Menggunakan kalkulasi waktu otomatis agar level ikut terupdate
-        total_min = int(self.get_calculated_time * 60)
-        
-        if total_min > 300:
+        total_min = self.get_calculated_time
+        # 1. Pelajar Setia (Lebih dari 5 Jam / 300 Menit)
+        if total_min >= 300:
             return "Pelajar Setia"
+        # 2. Pelajar Teladan (Minimal 1 Jam DAN Poin Tinggi >= 80)
         elif total_min >= 60 and self.points >= 80:
             return "Pelajar Teladan"
+        # 3. Pelajar Aktif (Minimal 1 Jam / 60 Menit)
         elif total_min >= 60:
             return "Pelajar Aktif"
+        # 4. Pelajar Pemula (Minimal 1 Menit)
         elif total_min >= 1:
             return "Pelajar Pemula"
+        # 5. Pelajar Baru (0 Menit atau Baru Daftar)
         else:
             return "Pelajar Baru"
     
