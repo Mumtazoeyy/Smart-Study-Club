@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.core.exceptions import ObjectDoesNotExist
-from django.db.models import Avg # Tambahkan import ini
+from django.db.models import Avg
 
 class Profile(models.Model):
     # DAFTAR PILIHAN KELAS
@@ -18,28 +18,28 @@ class Profile(models.Model):
         ('sma3', 'Kelas 12 (SMA 3)'),
     ]
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_profile') 
-    
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_profile')
+
     kelas = models.CharField(
-        max_length=20, 
-        choices=KELAS_CHOICES, 
-        blank=True, 
-        null=True, 
+        max_length=20,
+        choices=KELAS_CHOICES,
+        blank=True,
+        null=True,
         verbose_name="Kelas Akademik"
     )
-    
+
     foto = models.ImageField(upload_to='profile_pics', blank=True, null=True)
     nama_lengkap = models.CharField(max_length=100, blank=True)
     level = models.CharField(max_length=50, blank=True, default="Pelajar Aktif")
     bio = models.TextField(max_length=500, blank=True)
-    
+
     # Field statis tetap ada agar tidak merusak database (Migration tetap aman)
     ability_score = models.FloatField(
-        default=0.0, 
+        default=0.0,
         verbose_name="Skor Kemampuan (Theta)",
         help_text="Estimasi kemampuan siswa berdasarkan Model Rasch (IRT)"
     )
-    
+
     total_waktu_belajar = models.DecimalField(
         max_digits=10, decimal_places=2, default=0.00, verbose_name="Total Waktu Belajar (Jam)"
     )
@@ -57,28 +57,49 @@ class Profile(models.Model):
 
     # === LOGIKA OTOMATIS: MENGHITUNG DARI AKTIVITAS NYATA ===
 
-    # === LOGIKA OTOMATIS: MENGHITUNG DARI AKTIVITAS NYATA ===
-
     @property
     def get_calculated_theta(self):
         from alp_app.models import QuizResult
+        # Ambil hasil kuis terbaru
         latest = QuizResult.objects.filter(user=self.user).order_by('-date').first()
-        # Pembulatan ke 2 angka di belakang koma (misal: 0.41)
-        return round(latest.theta_result, 2) if latest else 0.0
+        if latest:
+            # Membulatkan ke 2 angka desimal agar tidak panjang di dashboard
+            return round(float(latest.theta_result), 2)
+        return 0.00
+
+    @property
+    def get_theta_percentage(self):
+        """Menghitung persentase untuk Progress Bar Kuning di Dashboard"""
+        try:
+            theta = float(self.get_calculated_theta)
+            # Rumus Normalisasi: ((theta + 3) / 6) * 100
+            # Range theta biasanya -3 sampai 3. Kita kunci di 0-100%
+            percentage = ((theta + 3) / 6) * 100
+            return round(min(max(percentage, 0), 100), 1)
+        except:
+            return 50.0
 
     @property
     def get_calculated_avg(self):
-        from django.db import models
+        from django.db.models import Avg
         from alp_app.models import QuizResult
-        avg = QuizResult.objects.filter(user=self.user).aggregate(models.Avg('score'))['score__avg']
-        # Pembulatan ke 2 angka di belakang koma (misal: 85.50)
-        return round(float(avg), 2) if avg else 0.00
+        
+        # Mengambil rata-rata skor
+        avg = QuizResult.objects.filter(user=self.user).aggregate(Avg('score'))['score__avg']
+        
+        # Jika ada nilainya, bulatkan ke 2 angka desimal (misal: 27.29)
+        if avg is not None:
+            return round(float(avg), 2)
+            
+        return 0.00
+        
+    
 
     @property
     def get_calculated_time(self):
         from alp_app.models import StudySession
         from django.db.models import Sum
-        
+
         # Karena di database kamu tidak ada end_time, tapi ada field 'duration'
         # Kita langsung jumlahkan saja field duration tersebut.
         total_duration = StudySession.objects.filter(
@@ -86,12 +107,12 @@ class Profile(models.Model):
         ).aggregate(
             total=Sum('duration')
         )['total']
-        
+
         # Jika total_duration sudah dalam satuan menit, langsung return.
         # Jika dalam detik, bagi 60. (Asumsi: duration kamu dalam menit/angka)
         if total_duration:
             return round(float(total_duration), 2)
-        
+
         return 0.00
 
     @property
@@ -112,7 +133,7 @@ class Profile(models.Model):
         # 5. Pelajar Baru (0 Menit atau Baru Daftar)
         else:
             return "Pelajar Baru"
-    
+
 # --- SIGNALS ---
 
 @receiver(post_save, sender=User)

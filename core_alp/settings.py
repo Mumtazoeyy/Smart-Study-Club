@@ -141,11 +141,9 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-# Biar user nggak perlu milih akun lagi kalau cuma punya satu
 SOCIALACCOUNT_LOGIN_ON_GET = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Tambahkan ini di paling bawah settings.py
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

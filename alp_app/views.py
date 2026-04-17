@@ -693,14 +693,14 @@ def update_study_time(request):
 
     return JsonResponse({'status': 'invalid_method'}, status=405)
 
-def get_next_adaptive_question(user, quiz, request): # Tambahkan parameter request
+def get_next_adaptive_question(user, quiz, request):
     """Mencari soal yang kesulitannya (Beta) paling mendekati kemampuan (Theta) user"""
     user_theta = user.user_profile.ability_score
 
     # 1. Ambil daftar ID soal yang sudah dijawab dari session
     answered_ids = request.session.get('answered_question_ids', [])
 
-    # 2. Cari soal yang belum dijawab & paling mendekati kemampuan user (Langkah 8 Flowchart)
+    # 2. Cari soal yang belum dijawab & paling mendekati kemampuan user
     from django.db.models import F, Func
     next_question = Question.objects.filter(quiz=quiz).exclude(id__in=answered_ids).annotate(
         selisih=Func(F('difficulty_level') - user_theta, function='ABS')

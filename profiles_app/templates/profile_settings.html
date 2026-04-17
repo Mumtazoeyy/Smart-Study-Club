@@ -66,7 +66,7 @@
             </h1>
         </div>
         <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] mt-1">
-            <span class="text-gray-900">Keamanan Akun</span> / Profil Pengguna
+            <span class="text-gray-900">Keamanan Akun</span> / Profile Pengguna
         </p>
     </div>
 
@@ -122,14 +122,22 @@
                             <div class="hidden">{{ profile_form.foto }}</div>
                         </div>
                         <div class="text-center sm:text-left">
-                            <span class="text-[9px] font-black text-white uppercase tracking-widest bg-gray-900 px-3 py-1 inline-block mb-2">Level Saat Ini</span>
-                            <h4 class="text-2xl font-black text-[#eab308] uppercase tracking-tighter">{{ pangkat.nama|default:"Siswa Baru" }}</h4>
-                            <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest mt-1">Status: Anggota Aktif</p>
+                            <span class="text-[9px] font-black text-white uppercase tracking-widest bg-gray-900 px-3 py-1 inline-block mb-2">
+                                Status Saat Ini
+                            </span>
+
+                            <h4 class="text-2xl font-black text-[#eab308] uppercase tracking-tighter">
+                                {{ profile.get_hierarchy_name|default:"Siswa Baru" }}
+                            </h4>
+
+                            <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest mt-1">
+                                Status: Anggota Aktif
+                            </p>
                         </div>
                     </div>
 
                     <div class="space-y-2">
-                        <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest">Username (Hanya Baca)</label>
+                        <label class="block text-[10px] font-black text-gray-400 uppercase tracking-widest">Username (Read Only)</label>
                         <div class="relative">
                             <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400">
                                 <i class="fas fa-user text-[10px]"></i>
@@ -239,7 +247,7 @@
             <div class="p-8 md:px-12 bg-gray-900 flex flex-col sm:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-2 order-2 sm:order-1">
                     <span class="w-2 h-2 bg-green-500 animate-pulse"></span>
-                    <span class="text-[9px] font-black text-gray-500 uppercase tracking-[0.2em]">Sistem Siap Sinkronisasi</span>
+                    <span class="text-[9px] font-black text-gray-500 uppercase tracking-[0.2em]">Auto-Sync System</span>
                 </div>
                 <div class="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto order-1 sm:order-2">
                     <a href="{% url 'dashboard' %}" class="text-[10px] font-black text-gray-400 hover:text-white uppercase tracking-[0.2em] transition-colors">Batal</a>
